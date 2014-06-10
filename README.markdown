@@ -10,20 +10,73 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 
 TK
 
-## Stuff to copy from Obj-C guide?
+## Table of Contents
 
-* Language – US English
-* Spacing
-* Comments
-* The Official Smiley Face
+* [Language](#language)
+* [Spacing](#spacing)
+* [Comments](#comments)
+* [Smiley Face](#smiley-face)
 
-## Topics to include?
+## Language
 
-* Positional arguments vs named arguments.
+US English should be used.
 
-* Rely on type inference or (sometimes?) be explicit on type.
+**Preferred:**
+```swift
+var color = "red"
+```
 
-* Spaces after passing named arguments or not? (e.g. `obj:myObject'` vs `obj: myObject`)
+**Not Preferred:**
+```swift
+var colour = "red"
+```
 
-* Case pattern matching
+## Spacing
+
+* Indent using 2 spaces (this conserves space in print and makes line wrapping less likely). Never indent with tabs. Be sure to set this preference in Xcode.
+* Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
+
+**Preferred:**
+```swift
+if user.isHappy {
+  //Do something
+} else {
+  //Do something else
+}
+```
+
+**Not Preferred:**
+```swift
+if user.isHappy
+{
+    //Do something
+}
+else {
+    //Do something else
+}
+```
+
+* There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but often there should probably be new methods.
+
+## Comments
+
+When they are needed, comments should be used to explain **why** a particular piece of code does something. Any comments that are used must be kept up-to-date or deleted.
+
+Block comments should generally be avoided, as code should be as self-documenting as possible, with only the need for intermittent, few-line explanations. *Exception: This does not apply to those comments used to generate documentation.*
+
+## Smiley Face
+
+Smiley faces are a very prominent style feature of the raywenderlich.com site!  It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic.  The end square bracket is used because it represents the largest smile able to be captured using ascii art.  A half-hearted smile is represented if an end parenthesis is used, and thus not preferred.
+
+**Preferred:**
+```
+:]
+```
+
+**Not Preferred:**
+```
+:)
+```  
+
+
 
