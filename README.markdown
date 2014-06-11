@@ -15,6 +15,7 @@ TK
 * [Language](#language)
 * [Spacing](#spacing)
 * [Comments](#comments)
+* [Semicolons](#semicolons)
 * [Smiley Face](#smiley-face)
 
 ## Language
@@ -63,6 +64,26 @@ else {
 When they are needed, comments should be used to explain **why** a particular piece of code does something. Any comments that are used must be kept up-to-date or deleted.
 
 Block comments should generally be avoided, as code should be as self-documenting as possible, with only the need for intermittent, few-line explanations. *Exception: This does not apply to those comments used to generate documentation.*
+
+## Semicolons
+
+Swift does not require a semicolon after each statement in your code. They are only required if you wish to combine multiple statements on a single line.
+
+Multiple statements should not be placed on a single line and semicolons should not be used.
+
+The only exception to this rule is the `for-conditional-increment` construct, which requires semicolons. However, alternative `for-in` constructs should be used where possible.
+
+**Preferred:**
+```swift
+var swift = "not a scripting language"
+```
+
+**Not Preferred:**
+```swift
+var swift = "not a scripting language";
+```
+
+**NOTE**: Swift is very different to JavaScript, where omitting semicolons is [generally considered unsafe](http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript)
 
 ## Smiley Face
 
