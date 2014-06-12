@@ -16,6 +16,7 @@ TK
 * [Spacing](#spacing)
 * [Comments](#comments)
 * [Semicolons](#semicolons)
+* [Class Prefixes](#class-prefixes)
 * [Smiley Face](#smiley-face)
 
 ## Language
@@ -64,6 +65,26 @@ else {
 When they are needed, comments should be used to explain **why** a particular piece of code does something. Any comments that are used must be kept up-to-date or deleted.
 
 Block comments should generally be avoided, as code should be as self-documenting as possible, with only the need for intermittent, few-line explanations. *Exception: This does not apply to those comments used to generate documentation.*
+
+## Class Prefixes
+
+Swift types are all automatically namespaced by the module that contains them. As a result, prefixes re not required in order to minimize naming collisions. If two names from different modules collide you can disambiguate by prefixing the type name with the module name:
+
+```swift
+import MyModule
+
+var myClass = MyModule.MyClass()
+```
+
+You **should not** add prefixes to your Swift types.
+
+If you need to expose a Swift type for use within Objective-C you can provide a suitable prefix (following our [Objective-C style guide](https://github.com/raywenderlich/objective-c-style-guide)) as follows:
+
+```swift
+@objc (RWTChicken) class Chicken {
+   ...
+}
+```
 
 ## Semicolons
 
