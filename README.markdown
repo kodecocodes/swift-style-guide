@@ -17,6 +17,7 @@ TK
 * [Comments](#comments)
 * [Semicolons](#semicolons)
 * [Class Prefixes](#class-prefixes)
+* [Type Inference](#type-inference)
 * [Smiley Face](#smiley-face)
 
 ## Language
@@ -66,25 +67,6 @@ When they are needed, comments should be used to explain **why** a particular pi
 
 Block comments should generally be avoided, as code should be as self-documenting as possible, with only the need for intermittent, few-line explanations. *Exception: This does not apply to those comments used to generate documentation.*
 
-## Class Prefixes
-
-Swift types are all automatically namespaced by the module that contains them. As a result, prefixes re not required in order to minimize naming collisions. If two names from different modules collide you can disambiguate by prefixing the type name with the module name:
-
-```swift
-import MyModule
-
-var myClass = MyModule.MyClass()
-```
-
-You **should not** add prefixes to your Swift types.
-
-If you need to expose a Swift type for use within Objective-C you can provide a suitable prefix (following our [Objective-C style guide](https://github.com/raywenderlich/objective-c-style-guide)) as follows:
-
-```swift
-@objc (RWTChicken) class Chicken {
-   ...
-}
-```
 
 ## Semicolons
 
@@ -106,9 +88,49 @@ var swift = "not a scripting language";
 
 **NOTE**: Swift is very different to JavaScript, where omitting semicolons is [generally considered unsafe](http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript)
 
+## Class Prefixes
+
+Swift types are all automatically namespaced by the module that contains them. As a result, prefixes re not required in order to minimize naming collisions. If two names from different modules collide you can disambiguate by prefixing the type name with the module name:
+
+```swift
+import MyModule
+
+var myClass = MyModule.MyClass()
+```
+
+You **should not** add prefixes to your Swift types.
+
+If you need to expose a Swift type for use within Objective-C you can provide a suitable prefix (following our [Objective-C style guide](https://github.com/raywenderlich/objective-c-style-guide)) as follows:
+
+```swift
+@objc (RWTChicken) class Chicken {
+   ...
+}
+```
+
+## Type Inference
+
+The Swift compiler is able to infer the type of variables and constants. You can provide an explicit type via a type alias (which is indicated by the type after the colon), but in the majority of cases this is not necessary.
+
+Wherever the compile is able to infer the type for a constant or variable, type aliases should not be used, resulting in more compact code.  
+
+**Preferred:**
+```swift
+let message = "Click the button"
+var currentBounds = computeViewBounds() 
+```
+
+**Not Preferred:**
+```swift
+let message: String = "Click the button"
+var currentBounds: CGRect = computeViewBounds()
+```
+
+**NOTE**: As a result, descriptive variable and constant names even more important than before.
+ 
 ## Smiley Face
 
-Smiley faces are a very prominent style feature of the raywenderlich.com site!  It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic.  The end square bracket is used because it represents the largest smile able to be captured using ascii art.  A half-hearted smile is represented if an end parenthesis is used, and thus not preferred.
+Smiley faces are a very prominent style feature of the raywenderlich.com site!  It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic.  The end square bracket is used because it represents the largest smile able to be captured using ASCII art.  A half-hearted smile is represented if an end parenthesis is used, and thus not preferred.
 
 **Preferred:**
 ```
