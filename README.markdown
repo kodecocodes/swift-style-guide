@@ -17,6 +17,7 @@ TK
 * [Comments](#comments)
 * [Semicolons](#semicolons)
 * [Classes and Structures](#classes-and-structures)
+* [Use of Self](#use-of-self)
 * [Class Prefixes](#class-prefixes)
 * [Type Inference](#type-inference)
 * [Smiley Face](#smiley-face)
@@ -124,6 +125,22 @@ The example above demonstrates the following style guidelines:
      + private methods
  + Multiple variables and structures can be defined on a single line if they share a common purpose / context
 
+## Use of Self
+
+Swift does not require the use of the `self` keyword to access an object's properties or invoke its methods. The `self` keyword should not be used in contexts where the compiler does not require its usage.
+
+The only reason for requiring the use of `self` is to differentiate between property names and arguments when initialising a class or structure:
+
+```swift
+class BoardLocation {
+  let row: Int, column: Int
+  
+  init(row: Int,column: Int) {
+    self.row = row
+    self.column = column
+  }
+}
+```
 
 ## Class Prefixes
 
