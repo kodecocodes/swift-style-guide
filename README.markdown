@@ -16,6 +16,7 @@ TK
 * [Spacing](#spacing)
 * [Comments](#comments)
 * [Semicolons](#semicolons)
+* [Classes and Structures](#classes-and-structures)
 * [Class Prefixes](#class-prefixes)
 * [Type Inference](#type-inference)
 * [Smiley Face](#smiley-face)
@@ -87,6 +88,42 @@ var swift = "not a scripting language";
 ```
 
 **NOTE**: Swift is very different to JavaScript, where omitting semicolons is [generally considered unsafe](http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript)
+
+## Classes and Structures
+
+Classes and structures (i.e. types defined using `struct`) should be organized as follows:
+
+```swift
+class Circle: Shape {
+  let x: Int, y: Int
+  let radius: Double
+  
+  init(x: Int, y: Int, radius: Double) {
+    self.x = x
+    self.y = y
+    self.radius = radius
+  }
+    
+  func describe() -> String {
+    return "I am a circle at (\(x),\(y)) with an area of \(computeArea())"
+  }
+  
+  func computeArea() -> Double {
+    return M_PI * radius * radius
+  }  
+}
+```
+
+The example above demonstrates the following style guidelines:
+
+ + Properties, variables, constants, argument declarations and other statements where a type is specified should be formatted with a space after the colon but not before, e.g. `x: Int`, and `Circle: Shape`.
+ + Classes and structures should be organised in the following order:
+     + variable and constant properties
+     + initializers
+     + public methods
+     + private methods
+ + Multiple variables and structures can be defined on a single line if they share a common purpose / context
+
 
 ## Class Prefixes
 
