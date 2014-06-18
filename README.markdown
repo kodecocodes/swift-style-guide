@@ -18,6 +18,7 @@ TK
 * [Semicolons](#semicolons)
 * [Classes and Structures](#classes-and-structures)
 * [Use of Self](#use-of-self)
+* [Var vs. let](#var-vs-let)
 * [Class Prefixes](#class-prefixes)
 * [Type Inference](#type-inference)
 * [Smiley Face](#smiley-face)
@@ -141,6 +142,13 @@ class BoardLocation {
   }
 }
 ```
+
+## Var vs. let
+
+With Swift, constants are defined using the `let` keyword, and variables with the `var` keyword. Any value which **is** a constant **must** be defined appropriately, using the `let` keyword. As a result, you will likely find yourself using `let` far more than `var`.
+
+**NOTE:** One technique that might help meet this standard is to define everything as a constant and only change it to a variable when the compiler complains!
+
 
 ## Class Prefixes
 
