@@ -165,7 +165,7 @@ With Swift, constants are defined using the `let` keyword, and variables with th
 
 ## Class Prefixes
 
-Swift types are all automatically namespaced by the module that contains them. As a result, prefixes re not required in order to minimize naming collisions. If two names from different modules collide you can disambiguate by prefixing the type name with the module name:
+Swift types are all automatically namespaced by the module that contains them. As a result, prefixes are not required in order to minimize naming collisions. If two names from different modules collide you can disambiguate by prefixing the type name with the module name:
 
 ```swift
 import MyModule
