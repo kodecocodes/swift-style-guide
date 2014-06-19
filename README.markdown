@@ -107,17 +107,17 @@ class Circle: Shape {
       radius = newValue / 2
     }
   }
-  
+
   init(x: Int, y: Int, radius: Double) {
     self.x = x
     self.y = y
     self.radius = radius
   }
-    
+
   func describe() -> String {
     return "I am a circle at (\(x),\(y)) with an area of \(computeArea())"
   }
-  
+
   func computeArea() -> Double {
     return M_PI * radius * radius
   }  
@@ -144,7 +144,7 @@ The only reason for requiring the use of `self` is to differentiate between prop
 ```swift
 class BoardLocation {
   let row: Int, column: Int
-  
+
   init(row: Int,column: Int) {
     self.row = row
     self.column = column
@@ -188,7 +188,7 @@ Wherever the compile is able to infer the type for a constant or variable, type 
 **Preferred:**
 ```swift
 let message = "Click the button"
-var currentBounds = computeViewBounds() 
+var currentBounds = computeViewBounds()
 ```
 
 **Not Preferred:**
@@ -198,7 +198,7 @@ var currentBounds: CGRect = computeViewBounds()
 ```
 
 **NOTE**: As a result, descriptive variable and constant names even more important than before.
- 
+
 ## Smiley Face
 
 Smiley faces are a very prominent style feature of the raywenderlich.com site!  It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic.  The end square bracket is used because it represents the largest smile able to be captured using ASCII art.  A half-hearted smile is represented if an end parenthesis is used, and thus not preferred.
@@ -212,6 +212,3 @@ Smiley faces are a very prominent style feature of the raywenderlich.com site!  
 ```
 :)
 ```  
-
-
-
