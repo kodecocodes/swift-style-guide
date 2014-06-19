@@ -201,7 +201,7 @@ let message: String = "Click the button"
 var currentBounds: CGRect = computeViewBounds()
 ```
 
-**NOTE**: As a result, descriptive variable and constant names even more important than before.
+**NOTE**: As a result, descriptive variable and constant names are even more important than before.
 
 ## Smiley Face
 
