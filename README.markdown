@@ -99,17 +99,25 @@ Classes and structures (i.e. types defined using `struct`) should be organized a
 class Circle: Shape {
   let x: Int, y: Int
   let radius: Double
-  
+  var diameter {
+    get {
+      return radius * 2
+    }
+    set {
+      radius = newValue / 2
+    }
+  }
+
   init(x: Int, y: Int, radius: Double) {
     self.x = x
     self.y = y
     self.radius = radius
   }
-    
+
   func describe() -> String {
     return "I am a circle at (\(x),\(y)) with an area of \(computeArea())"
   }
-  
+
   func computeArea() -> Double {
     return M_PI * radius * radius
   }  
@@ -119,7 +127,8 @@ class Circle: Shape {
 The example above demonstrates the following style guidelines:
 
  + Properties, variables, constants, argument declarations and other statements where a type is specified should be formatted with a space after the colon but not before, e.g. `x: Int`, and `Circle: Shape`.
- + Classes and structures should be organised in the following order:
+ + Getter and setter definitions should be indented. The same applies to property observers.
+ + Classes and structures should be organized in the following order:
      + variable and constant properties
      + initializers
      + public methods
@@ -135,7 +144,7 @@ The only reason for requiring the use of `self` is to differentiate between prop
 ```swift
 class BoardLocation {
   let row: Int, column: Int
-  
+
   init(row: Int,column: Int) {
     self.row = row
     self.column = column
@@ -179,7 +188,7 @@ Wherever the compile is able to infer the type for a constant or variable, type 
 **Preferred:**
 ```swift
 let message = "Click the button"
-var currentBounds = computeViewBounds() 
+var currentBounds = computeViewBounds()
 ```
 
 **Not Preferred:**
@@ -189,7 +198,7 @@ var currentBounds: CGRect = computeViewBounds()
 ```
 
 **NOTE**: As a result, descriptive variable and constant names even more important than before.
- 
+
 ## Smiley Face
 
 Smiley faces are a very prominent style feature of the raywenderlich.com site!  It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic.  The end square bracket is used because it represents the largest smile able to be captured using ASCII art.  A half-hearted smile is represented if an end parenthesis is used, and thus not preferred.
@@ -203,6 +212,3 @@ Smiley faces are a very prominent style feature of the raywenderlich.com site!  
 ```
 :)
 ```  
-
-
-
