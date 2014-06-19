@@ -97,9 +97,9 @@ Classes and structures (i.e. types defined using `struct`) should be organized a
 
 ```swift
 class Circle: Shape {
-  let x: Int, y: Int
-  let radius: Double
-  var diameter {
+  var x: Int, y: Int
+  var radius: Double
+  var diameter: Double {
     get {
       return radius * 2
     }
@@ -112,6 +112,10 @@ class Circle: Shape {
     self.x = x
     self.y = y
     self.radius = radius
+  }
+
+  convenience init(x: Int, y: Int, diameter: Double) {
+    self.init(x: x, y: y, radius: diameter / 2)
   }
 
   func describe() -> String {
