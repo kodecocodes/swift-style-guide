@@ -99,6 +99,14 @@ Classes and structures (i.e. types defined using `struct`) should be organized a
 class Circle: Shape {
   let x: Int, y: Int
   let radius: Double
+  var diameter {
+    get {
+      return radius * 2
+    }
+    set {
+      radius = newValue / 2
+    }
+  }
   
   init(x: Int, y: Int, radius: Double) {
     self.x = x
@@ -119,7 +127,8 @@ class Circle: Shape {
 The example above demonstrates the following style guidelines:
 
  + Properties, variables, constants, argument declarations and other statements where a type is specified should be formatted with a space after the colon but not before, e.g. `x: Int`, and `Circle: Shape`.
- + Classes and structures should be organised in the following order:
+ + Getter and setter definitions should be indented. The same applies to property observers.
+ + Classes and structures should be organized in the following order:
      + variable and constant properties
      + initializers
      + public methods
