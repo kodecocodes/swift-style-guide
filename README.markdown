@@ -21,7 +21,7 @@ TK
 * [Var vs. let](#var-vs-let)
 * [Class Prefixes](#class-prefixes)
 * [Type Inference](#type-inference)
-* [Type Chocie](#type-choice)
+* [Type Choice](#type-choice)
 * [Smiley Face](#smiley-face)
 
 ## Language
