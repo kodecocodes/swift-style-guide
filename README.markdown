@@ -211,7 +211,7 @@ When programming in Swift, always use Swift's native types when available. If yo
 **Preferred:**
 ```swift
 let width = 120.0                                           //Float
-let widthString = width.bridgeToObjectiveC().stringValue    //Float
+let widthString = width.bridgeToObjectiveC().stringValue    //String
 ```
 
 **Not Preferred:**
