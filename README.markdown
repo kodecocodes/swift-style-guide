@@ -21,6 +21,7 @@ TK
 * [Var vs. let](#var-vs-let)
 * [Class Prefixes](#class-prefixes)
 * [Type Inference](#type-inference)
+* [Type Choice](#type-choice)
 * [Smiley Face](#smiley-face)
 
 ## Language
@@ -202,6 +203,23 @@ var currentBounds: CGRect = computeViewBounds()
 ```
 
 **NOTE**: As a result, descriptive variable and constant names are even more important than before.
+
+## Type Choice
+
+When programming in Swift, always use Swift's native types when available. If you need to use methods only available to Objective-C objects, Swift offers bridging to Objective-C so you can still use these methods.
+
+**Preferred:**
+```swift
+let width = 120.0                                           //Float
+let widthString = width.bridgeToObjectiveC().stringValue    //String
+```
+
+**Not Preferred:**
+```swift
+let width: NSNumber = 120.0                                 //NSNumber
+let widthString: NSString = width.stringValue               //NSString
+```
+
 
 ## Smiley Face
 
