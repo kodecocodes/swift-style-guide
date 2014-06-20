@@ -156,7 +156,7 @@ class BoardLocation {
 }
 ```
 
-## Var vs. let
+## Var vs. Let
 
 With Swift, constants are defined using the `let` keyword, and variables with the `var` keyword. Any value which **is** a constant **must** be defined appropriately, using the `let` keyword. As a result, you will likely find yourself using `let` far more than `var`.
 
@@ -187,7 +187,7 @@ If you need to expose a Swift type for use within Objective-C you can provide a 
 
 The Swift compiler is able to infer the type of variables and constants. You can provide an explicit type via a type alias (which is indicated by the type after the colon), but in the majority of cases this is not necessary.
 
-Wherever the compile is able to infer the type for a constant or variable, type aliases should not be used, resulting in more compact code.  
+Wherever the compiler is able to infer the type for a constant or variable, type aliases should not be used, resulting in more compact code.  
 
 **Preferred:**
 ```swift
