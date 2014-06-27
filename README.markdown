@@ -20,6 +20,7 @@ TK
 * [Semicolons](#semicolons)
 * [Classes and Structures](#classes-and-structures)
 * [Function Declarations](#function-declarations)
+* [Closures](#closures)
 * [Control Flow](#control-flow)
 * [Use of Self](#use-of-self)
 * [Var vs. let](#var-vs-let)
@@ -245,6 +246,25 @@ For functions with long signatures, add line breaks at appropriate points and ad
 func reticulateSplines(spline: Double[], adjustmentFactor: Double,
     translateConstant: Int, comment: String) -> Bool {
   // reticulate code goes here
+}
+```
+
+
+## Closures
+
+Use trailing closure syntax wherever possible. In all cases, give the closure parameters descriptive names:
+
+```swift
+return SKAction.customActionWithDuration(effect.duration) { node, elapsedTime in 
+  // more code goes here
+}
+```
+
+For single-expression closures where the context is clear, use implicit returns:
+
+```swift
+attendeeList.sort { a, b in
+  a > b
 }
 ```
 
