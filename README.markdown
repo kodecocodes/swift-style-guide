@@ -206,11 +206,11 @@ var currentBounds: CGRect = computeViewBounds()
 
 ## Type Choice
 
-When programming in Swift, always use Swift's native types when available. If you need to use methods only available to Objective-C objects, Swift offers bridging to Objective-C so you can still use these methods.
+When programming in Swift, always use Swift's native types when available. Swift offers bridging to Objective-C so you can still use the full set of methods as needed.
 
 **Preferred:**
 ```swift
-let width = 120.0                                           //Float
+let width = 120.0                                           //Double
 let widthString = width.bridgeToObjectiveC().stringValue    //String
 ```
 
@@ -219,6 +219,8 @@ let widthString = width.bridgeToObjectiveC().stringValue    //String
 let width: NSNumber = 120.0                                 //NSNumber
 let widthString: NSString = width.stringValue               //NSString
 ```
+
+In Sprite Kit code, use `CGFloat` if it make the code more succinct by avoiding too many conversions.
 
 
 ## Smiley Face
