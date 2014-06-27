@@ -15,6 +15,7 @@ TK
 * [Language](#language)
 * [Spacing](#spacing)
 * [Comments](#comments)
+* [Naming](#naming)
 * [Semicolons](#semicolons)
 * [Classes and Structures](#classes-and-structures)
 * [Function Declarations](#function-declarations)
@@ -71,6 +72,55 @@ else {
 When they are needed, comments should be used to explain **why** a particular piece of code does something. Any comments that are used must be kept up-to-date or deleted.
 
 Block comments should generally be avoided, as code should be as self-documenting as possible, with only the need for intermittent, few-line explanations. *Exception: This does not apply to those comments used to generate documentation.*
+
+
+## Naming
+
+Use descriptive names with camel case for classes, methods, variables, etc. Class names and constants in module scope should be capitalized, while method names and variables should start with a lower case letter.
+
+**Preferred:**
+
+```swift
+let MaximumWidgetCount = 100
+
+class WidgetContainer {
+  var widgetButton: UIButton
+  let widgetHeightPercentage = 0.85
+}
+```
+
+**Not Preferred:**
+
+```swift
+let MAX_WIDGET_COUNT = 100
+
+class app_widgetContainer {
+  var wBut: UIButton
+  let wHeightPct = 0.85
+}
+```
+
+For functions and init methods, prefer named parameters for all arguments unless the context is very clear. Include external parameter names if it makes function calls more readable.
+
+```swift
+func dateFromString(dateString: NSString) -> NSDate
+func convertPointAt(#column: Int, #row: Int) -> CGPoint
+func timedAction(#delay: NSTimeInterval, perform action: SKAction) -> SKAction!
+
+// would be called like this:
+dateFromString("2014-03-14")
+convertPointAt(column: 42, row: 13)
+timedAction(delay: 1.0, perform: someOtherAction)
+```
+
+When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective.
+
+```
+The dateFromString() function is great.
+Call convertPointAt(column:, row:) from your init() method.
+The return value of timedAction(delay:, perform:) may be nil.
+You shouldn't call the data source method tableView(cellForRowAtIndexPath:) directly.
+```
 
 
 ## Semicolons
