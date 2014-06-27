@@ -6,10 +6,6 @@ Our overarching goals are conciseness, readability, and simplicity.
 
 Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide) too.
 
-## Credits
-
-TK
-
 ## Table of Contents
 
 * [Language](#language)
@@ -28,6 +24,8 @@ TK
 * [Control Flow](#control-flow)
 * [Use of Self](#use-of-self)
 * [Smiley Face](#smiley-face)
+* [Credits](#credits)
+
 
 ## Language
 
@@ -384,3 +382,36 @@ Smiley faces are a very prominent style feature of the raywenderlich.com site! I
 ```
 :)
 ```  
+
+
+## Credits
+
+This style guide is a collaborative effort from the most stylish raywenderlich.com team members: 
+
+* [Soheil Moayedi Azarpour](https://github.com/moayes)
+* [Scott Berrevoets](https://github.com/Scott90)
+* [Eric Cerney](https://github.com/ecerney)
+* [Sam Davies](https://github.com/sammyd)
+* [Evan Dekhayser](https://github.com/edekhayser)
+* [Jean-Pierre Distler](https://github.com/pdistler)
+* [Colin Eberhardt](https://github.com/ColinEberhardt)
+* [Greg Heo](https://github.com/gregheo)
+* [Matthijs Hollemans](https://github.com/hollance)
+* [Erik Kerber](https://github.com/eskerber)
+* [Christopher LaPollo](https://github.com/elephantronic)
+* [Andy Pereira](https://github.com/macandyp)
+* [Ryan Nystrom](https://github.com/rnystrom)
+* [Cesare Rocchi](https://github.com/funkyboy)
+* [Ellen Shapiro](https://github.com/designatednerd)
+* [Marin Todorov](https://github.com/icanzilb)
+* [Chris Wagner](https://github.com/cwagdev)
+* [Ray Wenderlich](https://github.com/rwenderlich)
+* [Jack Wu](https://github.com/jackwu95)
+
+Hat tip to [Nicholas Waynik](https://github.com/ndubbs) and the [Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide) team!
+
+We also drew inspiration from Apple’s reference material on Swift:
+
+* [The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html)
+* [Using Swift with Cocoa and Objective-C](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html)
+* [Swift Standard Library Reference](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html)
