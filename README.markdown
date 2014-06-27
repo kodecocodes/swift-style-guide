@@ -21,6 +21,7 @@ TK
 * [Function Declarations](#function-declarations)
 * [Use of Self](#use-of-self)
 * [Var vs. let](#var-vs-let)
+* [Optionals](#optionals)
 * [Class Prefixes](#class-prefixes)
 * [Type Inference](#type-inference)
 * [Type Choice](#type-choice)
@@ -233,6 +234,27 @@ func reticulateSplines(spline: Double[], adjustmentFactor: Double,
 With Swift, constants are defined using the `let` keyword, and variables with the `var` keyword. Any value which **is** a constant **must** be defined appropriately, using the `let` keyword. As a result, you will likely find yourself using `let` far more than `var`.
 
 **NOTE:** One technique that might help meet this standard is to define everything as a constant and only change it to a variable when the compiler complains!
+
+
+## Optionals
+
+Declare variables and function return types as optional with `?` where a nil value is acceptable.
+
+Use implicitly unwrapped types declared with `!` only for instance variables that you know will be initialized later before use, such as subviews that will be set up in `viewDidLoad`.
+
+When accessing an optional value, use optional chaining if the value is only accessed once or if there are many optionals in the chain:
+
+```swift
+myOptional?.anotherOne?.optionalView?.setNeedsDisplay()
+```
+
+Use optional binding when it's more convenient to unwrap once and perform multiple operations:
+
+```swift
+if let view = self.optionalView {
+  // do many things with view
+}
+```
 
 
 ## Class Prefixes
