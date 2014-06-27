@@ -17,6 +17,7 @@ TK
 * [Comments](#comments)
 * [Semicolons](#semicolons)
 * [Classes and Structures](#classes-and-structures)
+* [Function Declarations](#function-declarations)
 * [Use of Self](#use-of-self)
 * [Var vs. let](#var-vs-let)
 * [Class Prefixes](#class-prefixes)
@@ -156,6 +157,26 @@ class BoardLocation {
   }
 }
 ```
+
+## Function Declarations
+
+Keep short function declarations on one line including the opening brace:
+
+```swift
+func reticulateSplines(spline: Double[]) -> Bool {
+  // reticulate code goes here
+}
+```
+
+For functions with long signatures, add line breaks at appropriate points and add an extra indent on subsequent lines:
+
+```swift
+func reticulateSplines(spline: Double[], adjustmentFactor: Double,
+    translateConstant: Int, comment: String) -> Bool {
+  // reticulate code goes here
+}
+```
+
 
 ## Var vs. Let
 
