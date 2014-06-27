@@ -16,13 +16,13 @@ TK
 * [Spacing](#spacing)
 * [Comments](#comments)
 * [Naming](#naming)
+  * [Class Prefixes](#class-prefixes)
 * [Semicolons](#semicolons)
 * [Classes and Structures](#classes-and-structures)
 * [Function Declarations](#function-declarations)
 * [Use of Self](#use-of-self)
 * [Var vs. let](#var-vs-let)
 * [Optionals](#optionals)
-* [Class Prefixes](#class-prefixes)
 * [Type Inference](#type-inference)
 * [Type Choice](#type-choice)
 * [Smiley Face](#smiley-face)
@@ -121,6 +121,26 @@ The dateFromString() function is great.
 Call convertPointAt(column:, row:) from your init() method.
 The return value of timedAction(delay:, perform:) may be nil.
 You shouldn't call the data source method tableView(cellForRowAtIndexPath:) directly.
+```
+
+### Class Prefixes
+
+Swift types are all automatically namespaced by the module that contains them. As a result, prefixes are not required in order to minimize naming collisions. If two names from different modules collide you can disambiguate by prefixing the type name with the module name:
+
+```swift
+import MyModule
+
+var myClass = MyModule.MyClass()
+```
+
+You **should not** add prefixes to your Swift types.
+
+If you need to expose a Swift type for use within Objective-C you can provide a suitable prefix (following our [Objective-C style guide](https://github.com/raywenderlich/objective-c-style-guide)) as follows:
+
+```swift
+@objc (RWTChicken) class Chicken {
+   ...
+}
 ```
 
 
@@ -256,26 +276,6 @@ if let view = self.optionalView {
 }
 ```
 
-
-## Class Prefixes
-
-Swift types are all automatically namespaced by the module that contains them. As a result, prefixes are not required in order to minimize naming collisions. If two names from different modules collide you can disambiguate by prefixing the type name with the module name:
-
-```swift
-import MyModule
-
-var myClass = MyModule.MyClass()
-```
-
-You **should not** add prefixes to your Swift types.
-
-If you need to expose a Swift type for use within Objective-C you can provide a suitable prefix (following our [Objective-C style guide](https://github.com/raywenderlich/objective-c-style-guide)) as follows:
-
-```swift
-@objc (RWTChicken) class Chicken {
-   ...
-}
-```
 
 ## Type Inference
 
