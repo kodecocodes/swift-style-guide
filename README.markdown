@@ -116,12 +116,21 @@ convertPointAt(column: 42, row: 13)
 timedAction(delay: 1.0, perform: someOtherAction)
 ```
 
+For methods, follow the standard Apple convention of referring to the first parameter in the method name:
+```swift
+class Guideline {
+  func combineWithString(incoming: String, options: Dictionary?) { ... }
+  func upvoteBy(amount: Int) { ... }
+}
+```
+
 When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective.
 
 ```
 The dateFromString() function is great.
 Call convertPointAt(column:, row:) from your init() method.
 The return value of timedAction(delay:, perform:) may be nil.
+Guideline objects only have two methods: combineWithString(options:) and upvoteBy()
 You shouldn't call the data source method tableView(cellForRowAtIndexPath:) directly.
 ```
 
