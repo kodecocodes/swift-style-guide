@@ -20,6 +20,7 @@ TK
 * [Semicolons](#semicolons)
 * [Classes and Structures](#classes-and-structures)
 * [Function Declarations](#function-declarations)
+* [Control Flow](#control-flow)
 * [Use of Self](#use-of-self)
 * [Var vs. let](#var-vs-let)
 * [Optionals](#optionals)
@@ -245,6 +246,34 @@ For functions with long signatures, add line breaks at appropriate points and ad
 func reticulateSplines(spline: Double[], adjustmentFactor: Double,
     translateConstant: Int, comment: String) -> Bool {
   // reticulate code goes here
+}
+```
+
+
+## Control Flow
+
+Prefer the `for-in` style of `for` loop over the `for-condition-increment` style.
+
+**Preferred:**
+```swift
+for _ in 0..5 {
+  println("Hello five times")
+}
+
+for person in attendeeList {
+  // do something
+}
+```
+
+**Not Preferred:**
+```swift
+for var i = 0; i < 5; i++ {
+  println("Hello five times")
+}
+
+for var i = 0; i < attendeeList.count; i++ {
+  let person = attendeeList[i]
+  // do something
 }
 ```
 
