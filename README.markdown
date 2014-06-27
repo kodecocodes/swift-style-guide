@@ -30,7 +30,7 @@ TK
 
 ## Language
 
-US English should be used.
+Use US English spelling to match Apple's API.
 
 **Preferred:**
 ```swift
@@ -44,7 +44,7 @@ var colour = "red"
 
 ## Spacing
 
-* Indent using 2 spaces (this conserves space in print and makes line wrapping less likely). Never indent with tabs. Be sure to set this preference in Xcode.
+* Indent using 2 spaces rather than tabs to conserves space and help prevent line wrapping. Be sure to set this preference in Xcode.
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 
 **Preferred:**
@@ -67,13 +67,13 @@ else {
 }
 ```
 
-* There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but often there should probably be new methods.
+* There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.
 
 ## Comments
 
-When they are needed, comments should be used to explain **why** a particular piece of code does something. Any comments that are used must be kept up-to-date or deleted.
+When they are needed, use comments to explain **why** a particular piece of code does something. Comments must be kept up-to-date or deleted.
 
-Block comments should generally be avoided, as code should be as self-documenting as possible, with only the need for intermittent, few-line explanations. *Exception: This does not apply to those comments used to generate documentation.*
+Avoid block comments inline with code, as the code should be as self-documenting as possible. *Exception: This does not apply to those comments used to generate documentation.*
 
 
 ## Naming
@@ -149,7 +149,7 @@ If you need to expose a Swift type for use within Objective-C you can provide a 
 
 Swift does not require a semicolon after each statement in your code. They are only required if you wish to combine multiple statements on a single line.
 
-Multiple statements should not be placed on a single line and semicolons should not be used.
+Do not write multiple statements on a single line separated with semicolons.
 
 The only exception to this rule is the `for-conditional-increment` construct, which requires semicolons. However, alternative `for-in` constructs should be used where possible.
 
@@ -167,7 +167,11 @@ var swift = "not a scripting language";
 
 ## Classes and Structures
 
-Classes and structures (i.e. types defined using `struct`) should be organized as follows:
+Organize classes and structures (i.e. types defined using `struct`) in the following order:
+  * variable and constant properties
+  * initializers
+  * public methods
+  * private methods
 
 ```swift
 class Circle: Shape {
@@ -204,20 +208,15 @@ class Circle: Shape {
 
 The example above demonstrates the following style guidelines:
 
- + Properties, variables, constants, argument declarations and other statements where a type is specified should be formatted with a space after the colon but not before, e.g. `x: Int`, and `Circle: Shape`.
- + Getter and setter definitions should be indented. The same applies to property observers.
- + Classes and structures should be organized in the following order:
-     + variable and constant properties
-     + initializers
-     + public methods
-     + private methods
- + Multiple variables and structures can be defined on a single line if they share a common purpose / context
+ + Specify types for properties, variables, constants, argument declarations and other statements with a space after the colon but not before, e.g. `x: Int`, and `Circle: Shape`.
+ + Indent getter and setter definitions and property observers.
+ + Define multiple variables and structures on a single line if they share a common purpose / context.
 
 ## Use of Self
 
-Swift does not require the use of the `self` keyword to access an object's properties or invoke its methods. The `self` keyword should not be used in contexts where the compiler does not require its usage.
+Avoid using `self` since Swift does not require it to access an object's properties or invoke its methods.
 
-The only reason for requiring the use of `self` is to differentiate between property names and arguments when initialising a class or structure:
+The only reason for requiring the use of `self` is to differentiate between property names and arguments when initializing a class or structure:
 
 ```swift
 class BoardLocation {
@@ -280,9 +279,9 @@ for var i = 0; i < attendeeList.count; i++ {
 
 ## Var vs. Let
 
-With Swift, constants are defined using the `let` keyword, and variables with the `var` keyword. Any value which **is** a constant **must** be defined appropriately, using the `let` keyword. As a result, you will likely find yourself using `let` far more than `var`.
+Constants are defined using the `let` keyword, and variables with the `var` keyword. Any value which **is** a constant **must** be defined appropriately, using the `let` keyword. As a result, you will likely find yourself using `let` far more than `var`.
 
-**NOTE:** One technique that might help meet this standard is to define everything as a constant and only change it to a variable when the compiler complains!
+**Tip:** One technique that might help meet this standard is to define everything as a constant and only change it to a variable when the compiler complains!
 
 
 ## Optionals
@@ -310,7 +309,7 @@ if let view = self.optionalView {
 
 The Swift compiler is able to infer the type of variables and constants. You can provide an explicit type via a type alias (which is indicated by the type after the colon), but in the majority of cases this is not necessary.
 
-Wherever the compiler is able to infer the type for a constant or variable, type aliases should not be used, resulting in more compact code.  
+Prefer compact code and let the compiler infer the type for a constant or variable.
 
 **Preferred:**
 ```swift
@@ -324,11 +323,12 @@ let message: String = "Click the button"
 var currentBounds: CGRect = computeViewBounds()
 ```
 
-**NOTE**: As a result, descriptive variable and constant names are even more important than before.
+**NOTE**: Following this guideline means picking descriptive names is even more important than before.
+
 
 ## Type Choice
 
-When programming in Swift, always use Swift's native types when available. Swift offers bridging to Objective-C so you can still use the full set of methods as needed.
+Always use Swift's native types when available. Swift offers bridging to Objective-C so you can still use the full set of methods as needed.
 
 **Preferred:**
 ```swift
@@ -347,7 +347,7 @@ In Sprite Kit code, use `CGFloat` if it make the code more succinct by avoiding 
 
 ## Smiley Face
 
-Smiley faces are a very prominent style feature of the raywenderlich.com site!  It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic.  The end square bracket is used because it represents the largest smile able to be captured using ASCII art.  A half-hearted smile is represented if an end parenthesis is used, and thus not preferred.
+Smiley faces are a very prominent style feature of the raywenderlich.com site! It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The closing square bracket `]` is used because it represents the largest smile able to be captured using ASCII art. A closing parenthesis `)` creates a half-hearted smile, and thus is not preferred.
 
 **Preferred:**
 ```
