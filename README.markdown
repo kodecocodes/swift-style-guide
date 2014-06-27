@@ -21,12 +21,12 @@ TK
 * [Classes and Structures](#classes-and-structures)
 * [Function Declarations](#function-declarations)
 * [Closures](#closures)
+* [Types](#types)
+  * [Constants](#constants)
+  * [Optionals](#optionals)
+  * [Type Inference](#type-inference)
 * [Control Flow](#control-flow)
 * [Use of Self](#use-of-self)
-* [Var vs. let](#var-vs-let)
-* [Optionals](#optionals)
-* [Type Inference](#type-inference)
-* [Type Choice](#type-choice)
 * [Smiley Face](#smiley-face)
 
 ## Language
@@ -269,6 +269,71 @@ attendeeList.sort { a, b in
 ```
 
 
+## Types
+
+Always use Swift's native types when available. Swift offers bridging to Objective-C so you can still use the full set of methods as needed.
+
+**Preferred:**
+```swift
+let width = 120.0                                           //Double
+let widthString = width.bridgeToObjectiveC().stringValue    //String
+```
+
+**Not Preferred:**
+```swift
+let width: NSNumber = 120.0                                 //NSNumber
+let widthString: NSString = width.stringValue               //NSString
+```
+
+In Sprite Kit code, use `CGFloat` if it make the code more succinct by avoiding too many conversions.
+
+### Constants
+
+Constants are defined using the `let` keyword, and variables with the `var` keyword. Any value which **is** a constant **must** be defined appropriately, using the `let` keyword. As a result, you will likely find yourself using `let` far more than `var`.
+
+**Tip:** One technique that might help meet this standard is to define everything as a constant and only change it to a variable when the compiler complains!
+
+### Optionals
+
+Declare variables and function return types as optional with `?` where a nil value is acceptable.
+
+Use implicitly unwrapped types declared with `!` only for instance variables that you know will be initialized later before use, such as subviews that will be set up in `viewDidLoad`.
+
+When accessing an optional value, use optional chaining if the value is only accessed once or if there are many optionals in the chain:
+
+```swift
+myOptional?.anotherOne?.optionalView?.setNeedsDisplay()
+```
+
+Use optional binding when it's more convenient to unwrap once and perform multiple operations:
+
+```swift
+if let view = self.optionalView {
+  // do many things with view
+}
+```
+
+### Type Inference
+
+The Swift compiler is able to infer the type of variables and constants. You can provide an explicit type via a type alias (which is indicated by the type after the colon), but in the majority of cases this is not necessary.
+
+Prefer compact code and let the compiler infer the type for a constant or variable.
+
+**Preferred:**
+```swift
+let message = "Click the button"
+var currentBounds = computeViewBounds()
+```
+
+**Not Preferred:**
+```swift
+let message: String = "Click the button"
+var currentBounds: CGRect = computeViewBounds()
+```
+
+**NOTE**: Following this guideline means picking descriptive names is even more important than before.
+
+
 ## Control Flow
 
 Prefer the `for-in` style of `for` loop over the `for-condition-increment` style.
@@ -295,74 +360,6 @@ for var i = 0; i < attendeeList.count; i++ {
   // do something
 }
 ```
-
-
-## Var vs. Let
-
-Constants are defined using the `let` keyword, and variables with the `var` keyword. Any value which **is** a constant **must** be defined appropriately, using the `let` keyword. As a result, you will likely find yourself using `let` far more than `var`.
-
-**Tip:** One technique that might help meet this standard is to define everything as a constant and only change it to a variable when the compiler complains!
-
-
-## Optionals
-
-Declare variables and function return types as optional with `?` where a nil value is acceptable.
-
-Use implicitly unwrapped types declared with `!` only for instance variables that you know will be initialized later before use, such as subviews that will be set up in `viewDidLoad`.
-
-When accessing an optional value, use optional chaining if the value is only accessed once or if there are many optionals in the chain:
-
-```swift
-myOptional?.anotherOne?.optionalView?.setNeedsDisplay()
-```
-
-Use optional binding when it's more convenient to unwrap once and perform multiple operations:
-
-```swift
-if let view = self.optionalView {
-  // do many things with view
-}
-```
-
-
-## Type Inference
-
-The Swift compiler is able to infer the type of variables and constants. You can provide an explicit type via a type alias (which is indicated by the type after the colon), but in the majority of cases this is not necessary.
-
-Prefer compact code and let the compiler infer the type for a constant or variable.
-
-**Preferred:**
-```swift
-let message = "Click the button"
-var currentBounds = computeViewBounds()
-```
-
-**Not Preferred:**
-```swift
-let message: String = "Click the button"
-var currentBounds: CGRect = computeViewBounds()
-```
-
-**NOTE**: Following this guideline means picking descriptive names is even more important than before.
-
-
-## Type Choice
-
-Always use Swift's native types when available. Swift offers bridging to Objective-C so you can still use the full set of methods as needed.
-
-**Preferred:**
-```swift
-let width = 120.0                                           //Double
-let widthString = width.bridgeToObjectiveC().stringValue    //String
-```
-
-**Not Preferred:**
-```swift
-let width: NSNumber = 120.0                                 //NSNumber
-let widthString: NSString = width.stringValue               //NSString
-```
-
-In Sprite Kit code, use `CGFloat` if it make the code more succinct by avoiding too many conversions.
 
 
 ## Smiley Face
