@@ -43,7 +43,7 @@ var colour = "red"
 
 ## Spacing
 
-* Indent using 2 spaces rather than tabs to conserves space and help prevent line wrapping. Be sure to set this preference in Xcode.
+* Indent using 2 spaces rather than tabs to conserve space and help prevent line wrapping. Be sure to set this preference in Xcode.
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 
 **Preferred:**
