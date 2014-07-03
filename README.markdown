@@ -175,11 +175,7 @@ var swift = "not a scripting language";
 
 ## Classes and Structures
 
-Organize classes and structures (i.e. types defined using `struct`) in the following order:
-  * variable and constant properties
-  * initializers
-  * public methods
-  * private methods
+Here's an example of a well-styled class definition:
 
 ```swift
 class Circle: Shape {
