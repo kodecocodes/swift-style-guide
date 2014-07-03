@@ -292,7 +292,7 @@ let width: NSNumber = 120.0                                 //NSNumber
 let widthString: NSString = width.stringValue               //NSString
 ```
 
-In Sprite Kit code, use `CGFloat` if it make the code more succinct by avoiding too many conversions.
+In Sprite Kit code, use `CGFloat` if it makes the code more succinct by avoiding too many conversions.
 
 ### Constants
 
