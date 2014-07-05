@@ -29,14 +29,43 @@
 	
 使用美式英语拼写以匹配苹果的API
 
-**优选**
+**优选：**
 ```swift
 var color = "red"
 ```
 
-**不建议使用**
+**不建议使用：**
 ```swift
 var colour = "red"
 ```
+
+## 间隔
+
+* 使用2个空格进行缩进而不是使用Tab，这样可以节省空格，阻止换行。确保在Xcode的配置项中进行了设置。
+* 方法的花括号以及其它花括号（`if`/`else`/`switch`/`while`等等）总是跟语句在同一行开始，但是在新的一行中结束。
+
+**优选：**
+```swift
+if user.isHappy {
+  //Do something
+} else {
+  //Do something else
+}
+```
+
+**不建议使用：**
+```swift
+if user.isHappy
+{
+    //Do something
+}
+else {
+    //Do something else
+}
+```
+
+* 方法之间应该总是用一空白行进行分隔以提高视觉以及结构上的清晰度。方法中的空白符用来隔离功能块，但是如果一个方法中存在太多这种功能块时，通常也意味着你需要将它重构为多个方法了。
+
+
 
 [objc-style-guide]: https://github.com/raywenderlich/objective-c-style-guide
