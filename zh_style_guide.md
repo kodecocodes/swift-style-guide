@@ -174,5 +174,45 @@ var swift = "not a scripting language";
 
 ## 类与结构体
 
+下面的代码是一个很有标准范儿的类定义，请参考：
+
+```swift
+class Circle: Shape {
+  var x: Int, y: Int
+  var radius: Double
+  var diameter: Double {
+    get {
+      return radius * 2
+    }
+    set {
+      radius = newValue / 2
+    }
+  }
+
+  init(x: Int, y: Int, radius: Double) {
+    self.x = x
+    self.y = y
+    self.radius = radius
+  }
+
+  convenience init(x: Int, y: Int, diameter: Double) {
+    self.init(x: x, y: y, radius: diameter / 2)
+  }
+
+  func describe() -> String {
+    return "I am a circle at (\(x),\(y)) with an area of \(computeArea())"
+  }
+
+  func computeArea() -> Double {
+    return M_PI * radius * radius
+  }  
+}
+```
+上面的例子阐述了这么几个风格上的准则：
+
++ 当为属性、变量、常量、参数声明以及其它语句等定义类型时，而冒号的后面加上空格而不是前面，比如：`x: Int`跟`Circle: Shape`。
++ 要对getter跟setter定义以及属性观察器进行缩进。
++ 如果多个变量、结构有着同样的目的或者上下文，在同一行上进行定义。
+
 
 [objc-style-guide]: https://github.com/raywenderlich/objective-c-style-guide
