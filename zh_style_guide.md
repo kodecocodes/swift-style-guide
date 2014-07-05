@@ -152,7 +152,27 @@ var myClass = MyModule.MyClass()
 }
 ```
 
+## 分号
 
+Swift中，每条语句后的分号都不是必需的。只有在一行中有多条语句时才需要添加上分号。
+
+请不要在一行中写上用分号隔开的多条语句。
+
+这条规则的唯一例外就是`for-conditional-increment`结构，该结构中分号是必需的。不过，请尽可能地使用另外一种结构，`for-in`循环。
+
+**优选：**
+```swift
+var swift = "not a scripting language"
+```
+
+**不建议使用：**
+```swift
+var swift = "not a scripting language";
+```
+
+**请注意**：Swift与JavaScript不同, 在后者中省略分号[通常是不安全的](http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript)。
+
+## 类与结构体
 
 
 [objc-style-guide]: https://github.com/raywenderlich/objective-c-style-guide
