@@ -27,7 +27,7 @@
 
 ## 语言
 	
-使用美式英语拼写以匹配苹果的API
+使用美式英语拼写以匹配苹果公司的API
 
 **优选：**
 ```swift
@@ -113,7 +113,7 @@ convertPointAt(column: 42, row: 13)
 timedAction(delay: 1.0, perform: someOtherAction)
 ```
 
-对于方法，遵循苹果的命名标准，在方法名中提及第一个参数：
+对于方法，遵循苹果公司的命名标准，在方法名中提及第一个参数：
 
 ```swift
 class Guideline {
@@ -324,12 +324,86 @@ let message = "Click the button"
 var currentBounds = computeViewBounds()
 ```
 
-**不推荐使用：**
+**不建议使用：**
 ```swift
 let message: String = "Click the button"
 var currentBounds: CGRect = computeViewBounds()
 ```
 
 **注意**：遵循这条准则意味着描述性强的名称比之前更为重要了。
+
+## 控制流
+
+对于`for`循环，优选`for-in`风格而不是`for-condition-increment`风格：
+
+**优选：**
+```swift
+for _ in 0..5 {
+  println("Hello five times")
+}
+
+for person in attendeeList {
+  // do something
+}
+```
+
+**不建议使用：**
+```swift
+for var i = 0; i < 5; i++ {
+  println("Hello five times")
+}
+
+for var i = 0; i < attendeeList.count; i++ {
+  let person = attendeeList[i]
+  // do something
+}
+```
+
+## 笑脸
+
+笑脸对于raywenderlich.com来说是一个格外重要的风格特征。使用正确的笑脸可以表示出对某个主题的无穷尽的高兴以及兴奋程度。选用了`]`是因为它在ASCII艺术可以表示得最大的笑脸。而闭圆括号`)`因为给人一种“**呵呵**”的感觉而不建议使用。
+
+**优选：**
+```
+:]
+```
+
+**不建议使用：**
+```
+:)
+``` 
+
+## 工作人员
+
+该风格指南是由下面这些格外有范儿的raywenderlich.com团队成员齐心协力一同打造：
+
+* [Soheil Moayedi Azarpour](https://github.com/moayes)
+* [Scott Berrevoets](https://github.com/Scott90)
+* [Eric Cerney](https://github.com/ecerney)
+* [Sam Davies](https://github.com/sammyd)
+* [Evan Dekhayser](https://github.com/edekhayser)
+* [Jean-Pierre Distler](https://github.com/pdistler)
+* [Colin Eberhardt](https://github.com/ColinEberhardt)
+* [Greg Heo](https://github.com/gregheo)
+* [Matthijs Hollemans](https://github.com/hollance)
+* [Erik Kerber](https://github.com/eskerber)
+* [Christopher LaPollo](https://github.com/elephantronic)
+* [Andy Pereira](https://github.com/macandyp)
+* [Ryan Nystrom](https://github.com/rnystrom)
+* [Cesare Rocchi](https://github.com/funkyboy)
+* [Ellen Shapiro](https://github.com/designatednerd)
+* [Marin Todorov](https://github.com/icanzilb)
+* [Chris Wagner](https://github.com/cwagdev)
+* [Ray Wenderlich](https://github.com/rwenderlich)
+* [Jack Wu](https://github.com/jackwu95)
+
+向[Nicholas Waynik](https://github.com/ndubbs)以及[Objective-C风格指南](https://github.com/raywenderlich/objective-c-style-guide)团队脱帽致礼！
+
+我们也从苹果公司的有关Swift的参考材料中获取了灵感：
+
+* [The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html)
+* [Using Swift with Cocoa and Objective-C](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html)
+* [Swift Standard Library Reference](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html)
+
 
 [objc-style-guide]: https://github.com/raywenderlich/objective-c-style-guide
