@@ -76,7 +76,7 @@ else {
 
 ## 命名
 
-使用驼峰法为类、方法、变量等等取一个描述性的名字。模块范围的类名以及常量名称要以大写字母开头，而方法名跟变量名则应该以小写字母开头。
+使用驼峰法为类、方法、变量等等取一个描述性强的名字。模块范围的类名以及常量名称要以大写字母开头，而方法名跟变量名则应该以小写字母开头。
 
 **优选：**
 
@@ -144,7 +144,7 @@ var myClass = MyModule.MyClass()
 
 **不应该**在自己创建的类型上加前缀。
 
-如果需要将Swift类型暴露在Objective-C环境中使用，请按照以下方式提供合适的前缀（前缀的命名请参考[Objective-C风格指南](https://github.com/raywenderlich/objective-c-style-guide)）:
+如果需要将Swift类型暴露在Objective-C环境中使用，请按照以下方式提供合适的前缀（前缀的命名请参考[Objective-C风格指南][objc-style-guide]）:
 
 ```swift
 @objc (RWTChicken) class Chicken {
@@ -214,5 +214,122 @@ class Circle: Shape {
 + 要对getter跟setter定义以及属性观察器进行缩进。
 + 如果多个变量、结构有着同样的目的或者上下文，在同一行上进行定义。
 
+## Self的使用
+
+考虑到在Swift中访问一个对象的属性或者调用它的方法并不需要使用`self`，所以请避免使用它。
+
+需要使用`self`的唯一理由就是在初始化一个类或者结构体时，使用其在属性名和参数之间加以区分：
+
+```swift
+class BoardLocation {
+  let row: Int, column: Int
+
+  init(row: Int,column: Int) {
+    self.row = row
+    self.column = column
+  }
+}
+```
+
+## 函数声明
+
+保持函数声明短小精悍，尽量在一行中完成声明，同时还包含了开括号：
+
+```swift
+func reticulateSplines(spline: Double[]) -> Bool {
+  // reticulate code goes here
+}
+```
+
+对于有着长长的参数的函数，请在适当的位置进行断行且对后续行缩进一级：
+
+```swift
+func reticulateSplines(spline: Double[], adjustmentFactor: Double,
+    translateConstant: Int, comment: String) -> Bool {
+  // reticulate code goes here
+}
+```
+
+## 闭包
+
+尽可能地使用尾闭包语法。在所有的情况下都需要给闭包参数一个描述性强的名称：
+
+```swift
+return SKAction.customActionWithDuration(effect.duration) { node, elapsedTime in 
+  // more code goes here
+}
+```
+
+对于上下文清晰的单表达式闭包，使用隐式的返回值：
+
+```swift
+attendeeList.sort { a, b in
+  a > b
+}
+```
+
+## 类型
+
+尽可能地使用Swift原生类型。Swift提供了对Objective-C的桥接所以在需要的时候仍然可以使用全部的Objective-C方法：
+
+**优选：**
+```swift
+let width = 120.0                                           //Double
+let widthString = width.bridgeToObjectiveC().stringValue    //String
+```
+
+**不建议使用：**
+```swift
+let width: NSNumber = 120.0                                 //NSNumber
+let widthString: NSString = width.stringValue               //NSString
+```
+
+在Sprite Kit的代码中，如果`CGFloat`可以避免过多的转换而使得代码简洁明了，那么请用上它。
+
+### 常量
+
+常量通过`let`关键字定义，而变量使用`var`关键字定义。任何值如果**是**一个不变量，那么请使用`let`关键字恰如其分地定义它。最后你会发现自己喜欢使用`let`远多于`far`。
+
+**Tip：**有一个方法可以帮你符合该项规则，将所有值都定义成常量，然后编译器提示的时候将其改为变量。
+
+### Optional值
+
+在nil值可能出现的情况下，将变量跟函数返回值的类型通过`?`定义成Optional。
+
+只有在确定实例变量会在初始化之后才被使用的情况下，通过`!`将其定义为隐式解包类型（Implicitly Unwrapped Types），比如说会在`viewDidLoad`中被创建的子视图。
+
+在访问一个Optional值时，如果该值只被访问一次，或者之后需要连续访问多个Optional值，请使用链式Optional语法：
+
+```swift
+myOptional?.anotherOne?.optionalView?.setNeedsDisplay()
+```
+
+对于需要将Optional值解开一次，然后进行多个操作的情况，使用Optional绑定更为方便：
+
+```swift
+if let view = self.optionalView {
+  // do many things with view
+}
+```
+
+### 类型推断
+
+Swift的编译器可以推断出变量跟常量的类型。可以通过类型别名（在冒号后面指出其类型）提供显式类型，不过大多数情况下这都是不必要的。
+
+保持代码紧凑，然后让编译器推断变量跟常量的类型。
+
+**优选：**
+```swift
+let message = "Click the button"
+var currentBounds = computeViewBounds()
+```
+
+**不推荐使用：**
+```swift
+let message: String = "Click the button"
+var currentBounds: CGRect = computeViewBounds()
+```
+
+**注意**：遵循这条准则意味着描述性强的名称比之前更为重要了。
 
 [objc-style-guide]: https://github.com/raywenderlich/objective-c-style-guide
