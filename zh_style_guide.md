@@ -13,6 +13,7 @@
 * [注释](#注释)
 * [命名](#命名)
   * [类前缀](#类前缀)
+* [分号](#分号)
 * [类与结构体](#类与结构体)
 * [函数声明](#函数声明)
 * [闭包](#闭包)
@@ -122,14 +123,14 @@ class Guideline {
 }
 ```
 
-在文章中（包括教程，书以及评论）提到函数时，请从调用者的视觉来考虑，将所有的必要参数名都包含进来：
+在所有提及到函数的文章中（包括教程，书以及评论），请从调用者的视角进行考虑，将所有的必要参数名都包含进来：
 
 ```
-The dateFromString() function is great.
-Call convertPointAt(column:, row:) from your init() method.
-The return value of timedAction(delay:, perform:) may be nil.
-Guideline objects only have two methods: combineWithString(options:) and upvoteBy()
-You shouldn't call the data source method tableView(cellForRowAtIndexPath:) directly.
+dateFromString()函数真是太棒了。
+在你的init()方法中调用convertPointAt(column:, row:)。
+timedAction(delay:, perform:)的返回值可能为nil。
+Guideline对象只有两个方法：combineWithString(options:)跟upvoteBy()。
+你不应该直接调用数据源方法tableView(cellForRowAtIndexPath:)。
 ```
 
 ### 类前缀
