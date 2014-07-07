@@ -238,7 +238,7 @@ class BoardLocation {
 Keep short function declarations on one line including the opening brace:
 
 ```swift
-func reticulateSplines(spline: Double[]) -> Bool {
+func reticulateSplines(spline: [Double]) -> Bool {
   // reticulate code goes here
 }
 ```
@@ -246,7 +246,7 @@ func reticulateSplines(spline: Double[]) -> Bool {
 For functions with long signatures, add line breaks at appropriate points and add an extra indent on subsequent lines:
 
 ```swift
-func reticulateSplines(spline: Double[], adjustmentFactor: Double,
+func reticulateSplines(spline: [Double], adjustmentFactor: Double,
     translateConstant: Int, comment: String) -> Bool {
   // reticulate code goes here
 }
@@ -343,8 +343,8 @@ Prefer the `for-in` style of `for` loop over the `for-condition-increment` style
 
 **Preferred:**
 ```swift
-for _ in 0..5 {
-  println("Hello five times")
+for _ in 0..<3 {
+  println("Hello three times")
 }
 
 for person in attendeeList {
@@ -354,8 +354,8 @@ for person in attendeeList {
 
 **Not Preferred:**
 ```swift
-for var i = 0; i < 5; i++ {
-  println("Hello five times")
+for var i = 0; i < 3; i++ {
+  println("Hello three times")
 }
 
 for var i = 0; i < attendeeList.count; i++ {
