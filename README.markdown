@@ -21,6 +21,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Constants](#constants)
   * [Optionals](#optionals)
   * [Type Inference](#type-inference)
+  * [Syntactic Sugar](#syntactic-sugar)
 * [Control Flow](#control-flow)
 * [Use of Self](#use-of-self)
 * [Smiley Face](#smiley-face)
@@ -335,6 +336,26 @@ var currentBounds: CGRect = computeViewBounds()
 ```
 
 **NOTE**: Following this guideline means picking descriptive names is even more important than before.
+
+
+### Syntactic Sugar
+
+Prefer the shortcut versions of type declarations over the full generics syntax.
+
+**Preferred:**
+```swift
+var deviceModels: [String]
+var employees: [Int: String]
+var faxNumber: Int?
+```
+
+**Not Preferred:**
+```swift
+var deviceModels: Array<String>
+var employees: Dictionary<Int, String>
+var faxNumber: Optional<Int>
+```
+
 
 
 ## Control Flow
