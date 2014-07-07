@@ -21,6 +21,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Constants](#constants)
   * [Optionals](#optionals)
   * [Type Inference](#type-inference)
+  * [Syntactic Sugar](#syntactic-sugar)
 * [Control Flow](#control-flow)
 * [Use of Self](#use-of-self)
 * [Smiley Face](#smiley-face)
@@ -238,7 +239,7 @@ class BoardLocation {
 Keep short function declarations on one line including the opening brace:
 
 ```swift
-func reticulateSplines(spline: Double[]) -> Bool {
+func reticulateSplines(spline: [Double]) -> Bool {
   // reticulate code goes here
 }
 ```
@@ -246,7 +247,7 @@ func reticulateSplines(spline: Double[]) -> Bool {
 For functions with long signatures, add line breaks at appropriate points and add an extra indent on subsequent lines:
 
 ```swift
-func reticulateSplines(spline: Double[], adjustmentFactor: Double,
+func reticulateSplines(spline: [Double], adjustmentFactor: Double,
     translateConstant: Int, comment: String) -> Bool {
   // reticulate code goes here
 }
@@ -337,14 +338,34 @@ var currentBounds: CGRect = computeViewBounds()
 **NOTE**: Following this guideline means picking descriptive names is even more important than before.
 
 
+### Syntactic Sugar
+
+Prefer the shortcut versions of type declarations over the full generics syntax.
+
+**Preferred:**
+```swift
+var deviceModels: [String]
+var employees: [Int: String]
+var faxNumber: Int?
+```
+
+**Not Preferred:**
+```swift
+var deviceModels: Array<String>
+var employees: Dictionary<Int, String>
+var faxNumber: Optional<Int>
+```
+
+
+
 ## Control Flow
 
 Prefer the `for-in` style of `for` loop over the `for-condition-increment` style.
 
 **Preferred:**
 ```swift
-for _ in 0..5 {
-  println("Hello five times")
+for _ in 0..<3 {
+  println("Hello three times")
 }
 
 for person in attendeeList {
@@ -354,8 +375,8 @@ for person in attendeeList {
 
 **Not Preferred:**
 ```swift
-for var i = 0; i < 5; i++ {
-  println("Hello five times")
+for var i = 0; i < 3; i++ {
+  println("Hello three times")
 }
 
 for var i = 0; i < attendeeList.count; i++ {
