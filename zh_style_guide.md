@@ -19,8 +19,9 @@
 * [闭包](#闭包)
 * [类型](#类型)
   * [常量](#常量)
-  * [Optionals](#Optionals)
-  * [类型推断](#类型推断)
+  * [Optional](#Optional)
+  * [类型推导](#类型推导)
+  * [语法糖](#语法糖)
 * [控制流](#控制流)
 * [Self的使用](#Self的使用)
 * [笑脸](#笑脸)
@@ -237,7 +238,7 @@ class BoardLocation {
 保持函数声明短小精悍，保持在一行内，花括号在同一行内开始：
 
 ```swift
-func reticulateSplines(spline: Double[]) -> Bool {
+func reticulateSplines(spline: [Double]) -> Bool {
   // reticulate code goes here
 }
 ```
@@ -245,7 +246,7 @@ func reticulateSplines(spline: Double[]) -> Bool {
 对于有着长签名的函数，请在适当的位置进行断行且对后续行缩进一级：
 
 ```swift
-func reticulateSplines(spline: Double[], adjustmentFactor: Double,
+func reticulateSplines(spline: [Double], adjustmentFactor: Double,
     translateConstant: Int, comment: String) -> Bool {
   // reticulate code goes here
 }
@@ -293,7 +294,7 @@ let widthString: NSString = width.stringValue               //NSString
 
 **Tip：**有一个方法可以帮你满足该项规则，将所有值都定义成常量，然后编译器提示的时候将其改为变量。
 
-### Optionals
+### Optional
 
 在nil值可能出现的情况下，将变量跟函数返回值的类型通过`?`定义成Optional。
 
@@ -333,14 +334,34 @@ var currentBounds: CGRect = computeViewBounds()
 
 **注意**：遵循这条准则意味着使用描述性强的名称比之前更为重要了。
 
+### 语法糖
+
+Prefer the shortcut versions of type declarations over the full generics syntax.
+
+使用简写的类型声明，而不是它的全泛型版本。
+
+**优选：**
+```swift
+var deviceModels: [String]
+var employees: [Int: String]
+var faxNumber: Int?
+```
+
+**不建议使用：**
+```swift
+var deviceModels: Array<String>
+var employees: Dictionary<Int, String>
+var faxNumber: Optional<Int>
+```
+
 ## 控制流
 
 对于`for`循环，优选`for-in`风格而不是`for-condition-increment`风格：
 
 **优选：**
 ```swift
-for _ in 0..5 {
-  println("Hello five times")
+for _ in 0..<3 {
+  println("Hello three times")
 }
 
 for person in attendeeList {
@@ -350,8 +371,8 @@ for person in attendeeList {
 
 **不建议使用：**
 ```swift
-for var i = 0; i < 5; i++ {
-  println("Hello five times")
+for var i = 0; i < 3; i++ {
+  println("Hello three times")
 }
 
 for var i = 0; i < attendeeList.count; i++ {
