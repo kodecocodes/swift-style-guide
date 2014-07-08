@@ -1,6 +1,6 @@
 # raywenderlich.com Swift风格指南
 
-因为该指南关注于网页上以及打印版的可读性，所以它与它你可能阅读过的指南有所不同。为了保证那些在我们的书中、教程里以及配套工程里的代码看上去美观且一致，我们写下了这份风格指南，尽管书由许多不同作者共同创作而成。
+因为该指南关注于网页上以及打印版的可读性，所以它可能与你阅读过的指南有所不同。为了保证那些在我们书中、教程里以及初学者工程里的代码美观并且一致，我们写下了这份风格指南，尽管书由许多不同作者共同创作而成。
 
 该指南的首要目标是让代码紧凑，可读性高且简洁。
 
@@ -19,16 +19,17 @@
 * [闭包](#闭包)
 * [类型](#类型)
   * [常量](#常量)
-  * [Optionals](#Optionals)
-  * [类型推断](#类型推断)
+  * [Optional](#Optional)
+  * [类型推导](#类型推导)
+  * [语法糖](#语法糖)
 * [控制流](#控制流)
-* [Self](#Self)
+* [Self的使用](#Self的使用)
 * [笑脸](#笑脸)
-* [工作人员](#工作人员)
+* [致谢](#致谢)
 
 ## 语言
 	
-使用美式英语拼写以匹配苹果公司的API
+使用美式英语拼写以确保和苹果公司的API一致
 
 **优选：**
 ```swift
@@ -42,8 +43,8 @@ var colour = "red"
 
 ## 间隔
 
-* 使用2个空格进行缩进而不是使用Tab，这样可以节省空格，阻止换行。确保在Xcode的配置项中进行了设置。
-* 方法的花括号以及其它花括号（`if`/`else`/`switch`/`while`等等）总是跟语句在同一行开始，但是在新的一行中结束。
+* 使用2个空格而不是Tab进行缩进，可以减少换行。确保在Xcode的配置项中使用此设置。
+* 方法的花括号以及其它花括号（`if`/`else`/`switch`/`while`等等）总是跟语句在同一行开始，新起一行结束。
 
 **优选：**
 
@@ -67,17 +68,17 @@ else {
 }
 ```
 
-* 方法之间应该总是用一空白行进行分隔以提高视觉以及结构上的清晰度。方法中的空白符用来隔离功能块，但是如果一个方法中存在太多这种功能块时，通常也意味着你需要将它重构为多个方法了。
+* 方法之间应该总是用一个空行进行分隔以提高视觉以及结构上的清晰度。方法中的空白用来分开功能块，但是如果一个方法中存在太多功能块时，通常意味着你需要将它重构为多个方法。
 
 ## 注释
 
 * 在需要的时候使用注释说明一块代码**为什么**这么做。注释必须时刻跟进代码，不然删了得了。
 
-* 因为代码应该尽可能的自文档化，所以避免在代码中使用成块的注释。**例外：该规则不适用与用于生成文档的成块注释。**
+* 代码应该尽可能的自文档化，避免在代码中使用成块的注释。**例外：该规则不适用与用于生成文档的块注释。**
 
 ## 命名
 
-使用驼峰法为类、方法、变量等等取一个描述性强的名字。模块范围的类名以及常量名称要以大写字母开头，而方法名跟变量名则应该以小写字母开头。
+使用驼峰法为类、方法、变量等取一个描述性强的名字。模块范围的类名和常量名以大写字母开头，而方法名和变量名应以小写字母开头。
 
 **优选：**
 
@@ -101,7 +102,7 @@ class app_widgetContainer {
 }
 ```
 
-对于普通函数以及构造函数名称，除非上下文含义非常清楚，对所有的参数都加以命名是更为推荐的做法。如果外部参数名称可以使得函数调用更具有可读性，那么请带上它。
+对于函数以及初始化方法，除非上下文含义非常清楚，推荐对所有的参数都加以命名。如果外部参数名称可以使得函数调用更易读，请加上它。
 
 ```swift
 func dateFromString(dateString: NSString) -> NSDate
@@ -114,7 +115,7 @@ convertPointAt(column: 42, row: 13)
 timedAction(delay: 1.0, perform: someOtherAction)
 ```
 
-对于方法，遵循苹果公司的命名标准，在方法名中提及第一个参数：
+对于方法，遵循苹果公司的命名规范，在方法名中提及第一个参数：
 
 ```swift
 class Guideline {
@@ -129,13 +130,13 @@ class Guideline {
 dateFromString()函数真是太棒了。
 在你的init()方法中调用convertPointAt(column:, row:)。
 timedAction(delay:, perform:)的返回值可能为nil。
-Guideline对象只有两个方法：combineWithString(options:)跟upvoteBy()。
+Guideline对象只有两个方法：combineWithString(options:)和upvoteBy()。
 你不应该直接调用数据源方法tableView(cellForRowAtIndexPath:)。
 ```
 
 ### 类前缀
 
-Swift中的类型会自动加入包含它们的模块的命名空间。所以即使是为了最小化命名冲突的可能性，前缀也是不必要的。如果来自于不同模块的两个名称冲突了，可以通过在名称前面加上模块名以消除歧义：
+Swift中的类型会被自动加入包含它们的模块的命名空间。所以减少命名冲突的前缀已经不必要了。如果同模块的两个名称冲突了，可以在名称前加上模块名消除歧义：
 
 ```swift
 import MyModule
@@ -143,9 +144,9 @@ import MyModule
 var myClass = MyModule.MyClass()
 ```
 
-**不应该**在自己创建的类型上加前缀。
+**不应该**给自己创建的Swift类型加前缀。
 
-如果需要将Swift类型暴露在Objective-C环境中使用，请按照以下方式提供合适的前缀（前缀的命名请参考[Objective-C风格指南][objc-style-guide]）:
+如果需要把Swift类型暴露给Objective-C使用，你可以添加一个合适的前缀（前缀的命名请参考[Objective-C风格指南][objc-style-guide]）:
 
 ```swift
 @objc (RWTChicken) class Chicken {
@@ -155,11 +156,11 @@ var myClass = MyModule.MyClass()
 
 ## 分号
 
-Swift中，每条语句后的分号都不是必需的。只有在一行中有多条语句时才需要添加上分号。
+Swift不要求每条语句后加分号。只有在你想把多条语句写到一行时才需要加上分号。
 
 请不要在一行中写上用分号隔开的多条语句。
 
-这条规则的唯一例外就是`for-conditional-increment`结构，该结构中分号是必需的。不过，请尽可能地使用另外一种结构，`for-in`循环。
+这条规则的唯一例外就是`for-conditional-increment`结构，该结构中分号是必需的。不过请尽量用`for-in`结构代替它们。
 
 **优选：**
 ```swift
@@ -175,7 +176,7 @@ var swift = "not a scripting language";
 
 ## 类与结构体
 
-下面的代码是一个很有标准范儿的类定义，请参考：
+下面是一个风格良好的类定义代码例子，请参考：
 
 ```swift
 class Circle: Shape {
@@ -209,17 +210,17 @@ class Circle: Shape {
   }  
 }
 ```
-上面的例子阐述了这么几个风格上的准则：
+上面的例子阐述了如下的风格准则：
 
-+ 当为属性、变量、常量、参数声明以及其它语句等定义类型时，而冒号的后面加上空格而不是前面，比如：`x: Int`跟`Circle: Shape`。
-+ 要对getter跟setter定义以及属性观察器进行缩进。
++ 给属性、变量、常量、参数及其它语句指定类型时，在冒号的后面加上空格而不是前面，比如：`x: Int`跟`Circle: Shape`。
++ 对getter跟setter定义以及属性观察器进行缩进。
 + 如果多个变量、结构有着同样的目的或者上下文，在同一行上进行定义。
 
-## Self
+## Self的使用
 
-考虑到在Swift中访问一个对象的属性或者调用它的方法并不需要使用`self`，所以请避免使用它。
+在Swift中访问对象属性或调用方法时不需要使用`self`，请避免使用它。
 
-需要使用`self`的唯一理由就是在初始化一个类或者结构体时，使用其在属性名和参数之间加以区分：
+使用`self`的唯一理由是在初始化一个类或结构体时区分属性名和参数名：
 
 ```swift
 class BoardLocation {
@@ -234,18 +235,18 @@ class BoardLocation {
 
 ## 函数声明
 
-保持函数声明短小精悍，尽量在一行中完成声明，同时还包含了开括号：
+保持函数声明短小精悍，保持在一行内，花括号在同一行内开始：
 
 ```swift
-func reticulateSplines(spline: Double[]) -> Bool {
+func reticulateSplines(spline: [Double]) -> Bool {
   // reticulate code goes here
 }
 ```
 
-对于有着长长的参数的函数，请在适当的位置进行断行且对后续行缩进一级：
+对于有着长签名的函数，请在适当的位置进行断行且对后续行缩进一级：
 
 ```swift
-func reticulateSplines(spline: Double[], adjustmentFactor: Double,
+func reticulateSplines(spline: [Double], adjustmentFactor: Double,
     translateConstant: Int, comment: String) -> Bool {
   // reticulate code goes here
 }
@@ -253,7 +254,7 @@ func reticulateSplines(spline: Double[], adjustmentFactor: Double,
 
 ## 闭包
 
-尽可能地使用尾闭包语法。在所有的情况下都需要给闭包参数一个描述性强的名称：
+尽可能地使用尾闭包语法。在所有的情况下给闭包参数一个描述性强的名称：
 
 ```swift
 return SKAction.customActionWithDuration(effect.duration) { node, elapsedTime in 
@@ -271,7 +272,7 @@ attendeeList.sort { a, b in
 
 ## 类型
 
-尽可能地使用Swift原生类型。Swift提供了对Objective-C的桥接所以在需要的时候仍然可以使用全部的Objective-C方法：
+如果可能，使用Swift的原生类型。Swift提供了对Objective-C的桥接，如果需要，仍然可以使用全部的Objective-C方法：
 
 **优选：**
 ```swift
@@ -285,15 +286,15 @@ let width: NSNumber = 120.0                                 //NSNumber
 let widthString: NSString = width.stringValue               //NSString
 ```
 
-在Sprite Kit的代码中，如果`CGFloat`可以避免过多的转换而使得代码简洁明了，那么请用上它。
+在Sprite Kit的代码中，如果`CGFloat`可以避免过多的转换从而使得代码简洁，那么请使用它。
 
 ### 常量
 
 常量通过`let`关键字定义，而变量使用`var`关键字定义。任何值如果**是**一个不变量，那么请使用`let`关键字恰如其分地定义它。最后你会发现自己喜欢使用`let`远多于`far`。
 
-**Tip：**有一个方法可以帮你符合该项规则，将所有值都定义成常量，然后编译器提示的时候将其改为变量。
+**Tip：**有一个方法可以帮你满足该项规则，将所有值都定义成常量，然后编译器提示的时候将其改为变量。
 
-### Optionals
+### Optional
 
 在nil值可能出现的情况下，将变量跟函数返回值的类型通过`?`定义成Optional。
 
@@ -313,9 +314,9 @@ if let view = self.optionalView {
 }
 ```
 
-### 类型推断
+### 类型推导
 
-Swift的编译器可以推断出变量跟常量的类型。可以通过类型别名（在冒号后面指出其类型）提供显式类型，不过大多数情况下这都是不必要的。
+Swift的编译器可以推导出变量和常量的类型。可以显式地提供类型别名（冒号后面声明的类型），不过大多数情况下这都是不必要的。
 
 保持代码紧凑，然后让编译器推断变量跟常量的类型。
 
@@ -331,7 +332,27 @@ let message: String = "Click the button"
 var currentBounds: CGRect = computeViewBounds()
 ```
 
-**注意**：遵循这条准则意味着描述性强的名称比之前更为重要了。
+**注意**：遵循这条准则意味着使用描述性强的名称比之前更为重要了。
+
+### 语法糖
+
+Prefer the shortcut versions of type declarations over the full generics syntax.
+
+使用简写的类型声明，而不是它的全泛型版本。
+
+**优选：**
+```swift
+var deviceModels: [String]
+var employees: [Int: String]
+var faxNumber: Int?
+```
+
+**不建议使用：**
+```swift
+var deviceModels: Array<String>
+var employees: Dictionary<Int, String>
+var faxNumber: Optional<Int>
+```
 
 ## 控制流
 
@@ -339,8 +360,8 @@ var currentBounds: CGRect = computeViewBounds()
 
 **优选：**
 ```swift
-for _ in 0..5 {
-  println("Hello five times")
+for _ in 0..<3 {
+  println("Hello three times")
 }
 
 for person in attendeeList {
@@ -350,8 +371,8 @@ for person in attendeeList {
 
 **不建议使用：**
 ```swift
-for var i = 0; i < 5; i++ {
-  println("Hello five times")
+for var i = 0; i < 3; i++ {
+  println("Hello three times")
 }
 
 for var i = 0; i < attendeeList.count; i++ {
@@ -374,7 +395,7 @@ for var i = 0; i < attendeeList.count; i++ {
 :)
 ``` 
 
-## 工作人员
+## 致谢
 
 该风格指南是由下面这些格外有范儿的raywenderlich.com团队成员齐心协力一同打造：
 
