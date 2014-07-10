@@ -293,7 +293,7 @@ In Sprite Kit code, use `CGFloat` if it makes the code more succinct by avoiding
 
 ### Constants
 
-Constants are defined using the `let` keyword, and variables with the `var` keyword. Any value which **is** a constant **must** be defined appropriately, using the `let` keyword. As a result, you will likely find yourself using `let` far more than `var`.
+Constants are defined using the `let` keyword, and variables with the `var` keyword. Any value that **is** a constant **must** be defined appropriately, using the `let` keyword. As a result, you will likely find yourself using `let` far more than `var`.
 
 **Tip:** One technique that might help meet this standard is to define everything as a constant and only change it to a variable when the compiler complains!
 
