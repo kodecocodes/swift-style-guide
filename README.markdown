@@ -125,13 +125,13 @@ class Guideline {
 
 When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective.
 
-```
-The dateFromString() function is great.
-Call convertPointAt(column:, row:) from your init() method.
-The return value of timedAction(delay:, perform:) may be nil.
-Guideline objects only have two methods: combineWithString(options:) and upvoteBy()
-You shouldn't call the data source method tableView(cellForRowAtIndexPath:) directly.
-```
+
+> The `dateFromString()` function is great.
+> Call `convertPointAt(column:, row:)` from your `init()` method.
+> The return value of `timedAction(delay:, perform:)` may be nil.
+> Guideline objects only have two methods: `combineWithString(options:)` and `upvoteBy()`
+> You shouldn't call the data source method `tableView(cellForRowAtIndexPath:)` directly.
+
 
 ### Class Prefixes
 
