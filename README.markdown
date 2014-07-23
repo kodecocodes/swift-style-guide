@@ -19,6 +19,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 * [Types](#types)
   * [Constants](#constants)
   * [Optionals](#optionals)
+  * [Struct Initializers](#struct-initializers)
   * [Type Inference](#type-inference)
   * [Syntactic Sugar](#syntactic-sugar)
 * [Control Flow](#control-flow)
@@ -290,6 +291,22 @@ Use optional binding when it's more convenient to unwrap once and perform multip
 if let view = self.optionalView {
   // do many things with view
 }
+```
+
+### Struct Initializers
+
+Use the native Swift struct initializers rather than the legacy CGGeometry constructors.
+
+**Preferred:**
+```swift
+let bounds = CGRect(x: 40, y: 20, width: 120, height: 80)
+var centerPoint = CGPoint(x: 96, y: 42)
+```
+
+**Not Preferred:**
+```swift
+let bounds = CGRectMake(40, 20, 120, 80)
+var centerPoint = CGPointMake(96, 42)
 ```
 
 ### Type Inference
