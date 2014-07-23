@@ -8,13 +8,12 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 
 ## Table of Contents
 
-* [Language](#language)
-* [Spacing](#spacing)
-* [Comments](#comments)
 * [Naming](#naming)
   * [Class Prefixes](#class-prefixes)
-* [Semicolons](#semicolons)
+* [Spacing](#spacing)
+* [Comments](#comments)
 * [Classes and Structures](#classes-and-structures)
+  * [Use of Self](#use-of-self)
 * [Function Declarations](#function-declarations)
 * [Closures](#closures)
 * [Types](#types)
@@ -23,57 +22,10 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Type Inference](#type-inference)
   * [Syntactic Sugar](#syntactic-sugar)
 * [Control Flow](#control-flow)
-* [Use of Self](#use-of-self)
+* [Semicolons](#semicolons)
+* [Language](#language)
 * [Smiley Face](#smiley-face)
 * [Credits](#credits)
-
-
-## Language
-
-Use US English spelling to match Apple's API.
-
-**Preferred:**
-```swift
-var color = "red"
-```
-
-**Not Preferred:**
-```swift
-var colour = "red"
-```
-
-## Spacing
-
-* Indent using 2 spaces rather than tabs to conserve space and help prevent line wrapping. Be sure to set this preference in Xcode.
-* Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
-
-**Preferred:**
-```swift
-if user.isHappy {
-  //Do something
-} else {
-  //Do something else
-}
-```
-
-**Not Preferred:**
-```swift
-if user.isHappy
-{
-    //Do something
-}
-else {
-    //Do something else
-}
-```
-
-* There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.
-
-## Comments
-
-When they are needed, use comments to explain **why** a particular piece of code does something. Comments must be kept up-to-date or deleted.
-
-Avoid block comments inline with code, as the code should be as self-documenting as possible. *Exception: This does not apply to those comments used to generate documentation.*
 
 
 ## Naming
@@ -125,11 +77,14 @@ class Guideline {
 
 When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective.
 
-
 > The `dateFromString()` function is great.
+>
 > Call `convertPointAt(column:, row:)` from your `init()` method.
+>
 > The return value of `timedAction(delay:, perform:)` may be nil.
+>
 > Guideline objects only have two methods: `combineWithString(options:)` and `upvoteBy()`
+>
 > You shouldn't call the data source method `tableView(cellForRowAtIndexPath:)` directly.
 
 
@@ -154,25 +109,39 @@ If you need to expose a Swift type for use within Objective-C you can provide a 
 ```
 
 
-## Semicolons
+## Spacing
 
-Swift does not require a semicolon after each statement in your code. They are only required if you wish to combine multiple statements on a single line.
-
-Do not write multiple statements on a single line separated with semicolons.
-
-The only exception to this rule is the `for-conditional-increment` construct, which requires semicolons. However, alternative `for-in` constructs should be used where possible.
+* Indent using 2 spaces rather than tabs to conserve space and help prevent line wrapping. Be sure to set this preference in Xcode.
+* Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 
 **Preferred:**
 ```swift
-var swift = "not a scripting language"
+if user.isHappy {
+  //Do something
+} else {
+  //Do something else
+}
 ```
 
 **Not Preferred:**
 ```swift
-var swift = "not a scripting language";
+if user.isHappy
+{
+    //Do something
+}
+else {
+    //Do something else
+}
 ```
 
-**NOTE**: Swift is very different to JavaScript, where omitting semicolons is [generally considered unsafe](http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript)
+* There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.
+
+## Comments
+
+When they are needed, use comments to explain **why** a particular piece of code does something. Comments must be kept up-to-date or deleted.
+
+Avoid block comments inline with code, as the code should be as self-documenting as possible. *Exception: This does not apply to those comments used to generate documentation.*
+
 
 ## Classes and Structures
 
@@ -217,7 +186,7 @@ The example above demonstrates the following style guidelines:
  + Indent getter and setter definitions and property observers.
  + Define multiple variables and structures on a single line if they share a common purpose / context.
 
-## Use of Self
+### Use of Self
 
 Avoid using `self` since Swift does not require it to access an object's properties or invoke its methods.
 
@@ -385,6 +354,40 @@ for var i = 0; i < attendeeList.count; i++ {
 }
 ```
 
+
+## Semicolons
+
+Swift does not require a semicolon after each statement in your code. They are only required if you wish to combine multiple statements on a single line.
+
+Do not write multiple statements on a single line separated with semicolons.
+
+The only exception to this rule is the `for-conditional-increment` construct, which requires semicolons. However, alternative `for-in` constructs should be used where possible.
+
+**Preferred:**
+```swift
+var swift = "not a scripting language"
+```
+
+**Not Preferred:**
+```swift
+var swift = "not a scripting language";
+```
+
+**NOTE**: Swift is very different to JavaScript, where omitting semicolons is [generally considered unsafe](http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript)
+
+## Language
+
+Use US English spelling to match Apple's API.
+
+**Preferred:**
+```swift
+var color = "red"
+```
+
+**Not Preferred:**
+```swift
+var colour = "red"
+```
 
 ## Smiley Face
 
