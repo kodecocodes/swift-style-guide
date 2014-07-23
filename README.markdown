@@ -171,20 +171,26 @@ class Circle: Shape {
   }
 
   func describe() -> String {
-    return "I am a circle at (\(x),\(y)) with an area of \(computeArea())"
+    return "I am a circle at \(centerString()) with an area of \(computeArea())"
   }
 
-  func computeArea() -> Double {
+  override func computeArea() -> Double {
     return M_PI * radius * radius
-  }  
+  }
+
+  private func centerString() -> String {
+    return "(\(x),\(y))"
+  }
 }
 ```
 
 The example above demonstrates the following style guidelines:
 
  + Specify types for properties, variables, constants, argument declarations and other statements with a space after the colon but not before, e.g. `x: Int`, and `Circle: Shape`.
- + Indent getter and setter definitions and property observers.
  + Define multiple variables and structures on a single line if they share a common purpose / context.
+ + Indent getter and setter definitions and property observers.
+ + Don't add modifiers such as `internal` when they're already the default. Similarly, don't repeat the access modifier when overriding a method.
+
 
 ### Use of Self
 
