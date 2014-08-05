@@ -251,8 +251,8 @@ Always use Swift's native types when available. Swift offers bridging to Objecti
 
 **Preferred:**
 ```swift
-let width = 120.0                                           //Double
-let widthString = width.bridgeToObjectiveC().stringValue    //String
+let width = 120.0                                    //Double
+let widthString = (width as NSNumber).stringValue    //String
 ```
 
 **Not Preferred:**
