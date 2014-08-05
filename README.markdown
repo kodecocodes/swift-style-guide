@@ -76,17 +76,13 @@ class Guideline {
 }
 ```
 
-When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective.
+When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective. If the context is clear and the exact signature is not important, you can use just the method name.
 
-> The `dateFromString()` function is great.
+> Call `convertPointAt(column:row:)` from your own `init` implementation.
 >
-> Call `convertPointAt(column:, row:)` from your `init()` method.
+> If you implement `didSelectRowAtIndexPath`, remember to deselect the row when you're done.
 >
-> The return value of `timedAction(delay:, perform:)` may be nil.
->
-> Guideline objects only have two methods: `combineWithString(options:)` and `upvoteBy()`
->
-> You shouldn't call the data source method `tableView(cellForRowAtIndexPath:)` directly.
+> You shouldn't call the data source method `tableView(_:cellForRowAtIndexPath:)` directly.
 
 
 ### Class Prefixes
