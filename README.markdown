@@ -193,7 +193,7 @@ The example above demonstrates the following style guidelines:
 
 Avoid using `self` since Swift does not require it to access an object's properties or invoke its methods.
 
-The only reason for requiring the use of `self` is to differentiate between property names and arguments when initializing a class or structure:
+The only reasons for requiring the use of `self` is to differentiate between property names and arguments when initializing a class or structure and when referencing properties in closures to make capture semantics explicit:
 
 ```swift
 class BoardLocation {
@@ -202,6 +202,10 @@ class BoardLocation {
   init(row: Int,column: Int) {
     self.row = row
     self.column = column
+    
+    let closure = { () -> () in
+      println(self.row)
+    }
   }
 }
 ```
