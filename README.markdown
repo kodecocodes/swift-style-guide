@@ -100,7 +100,7 @@ You **should not** add prefixes to your Swift types.
 If you need to expose a Swift type for use within Objective-C you can provide a suitable prefix (following our [Objective-C style guide](https://github.com/raywenderlich/objective-c-style-guide)) as follows:
 
 ```swift
-@objc (RWTChicken) class Chicken {
+@objc (Chicken) class RWTChicken {
    ...
 }
 ```
