@@ -309,6 +309,8 @@ let bounds = CGRectMake(40, 20, 120, 80)
 var centerPoint = CGPointMake(96, 42)
 ```
 
+Prefer the struct-scope constants `CGRect.infiniteRect`, `CGRect.nullRect`, etc. over global constants `CGRectInfinite`, `CGRectNull`, etc. For existing variables, you can use the shorter `.zeroRect`.
+
 ### Type Inference
 
 The Swift compiler is able to infer the type of variables and constants. You can provide an explicit type via a type alias (which is indicated by the type after the colon), but in the majority of cases this is not necessary.
