@@ -15,7 +15,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 * [Classes and Structures](#classes-and-structures)
   * [Use of Self](#use-of-self)
 * [Function Declarations](#function-declarations)
-* [Closures](#closures)
+* [Closure Expressions](#closure-expressions)
 * [Types](#types)
   * [Constants](#constants)
   * [Optionals](#optionals)
@@ -193,7 +193,7 @@ The example above demonstrates the following style guidelines:
 
 For conciseness, avoid using `self` since Swift does not require it to access an object's properties or invoke its methods.
 
-Use `self` when required to differentiate between property names and arguments in initializers, and when referencing properties in closures to make capture semantics explicit:
+Use `self` when required to differentiate between property names and arguments in initializers, and when referencing properties in closure expressions (as required by the compiler):
 
 ```swift
 class BoardLocation {
@@ -230,7 +230,7 @@ func reticulateSplines(spline: [Double], adjustmentFactor: Double,
 ```
 
 
-## Closures
+## Closure Expressions
 
 Use trailing closure syntax wherever possible. In all cases, give the closure parameters descriptive names:
 
