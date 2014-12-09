@@ -282,14 +282,37 @@ Use implicitly unwrapped types declared with `!` only for instance variables tha
 When accessing an optional value, use optional chaining if the value is only accessed once or if there are many optionals in the chain:
 
 ```swift
-myOptional?.anotherOne?.optionalView?.setNeedsDisplay()
+self.textContainer?.textLabel?.setNeedsDisplay()
 ```
 
 Use optional binding when it's more convenient to unwrap once and perform multiple operations:
 
 ```swift
-if let view = self.optionalView {
-  // do many things with view
+if let textContainer = self.textContainer {
+  // do many things with textContainer
+}
+```
+
+When naming optional variables and properties, avoid naming them like `optionalString` or `maybeView` since their optional-ness is already in the type declaration.
+
+For optional binding, shadow the original name when appropriate rather than using names like `unwrappedView` or `actualLabel`.
+
+**Preferred:**
+```swift
+var subview: UIView?
+
+// later on...
+if let subview = subview {
+  // do something with unwrapped subview
+}
+```
+
+**Not Preferred:**
+```swift
+var optionalSubview: UIView?
+
+if let unwrappedSubview = optionalSubview {
+  // do something with unwrappedSubview
 }
 ```
 
