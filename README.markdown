@@ -14,6 +14,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 * [Comments](#comments)
 * [Classes and Structures](#classes-and-structures)
   * [Use of Self](#use-of-self)
+  * [Protocol Conformance](#protocol-conformance)
 * [Function Declarations](#function-declarations)
 * [Closure Expressions](#closure-expressions)
 * [Types](#types)
@@ -219,6 +220,33 @@ class BoardLocation {
   }
 }
 ```
+
+### Protocol Conformance
+
+When adding protocol conformance to a class, prefer adding a separate class extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
+
+**Preferred:**
+```swift
+class MyViewcontroller: UIViewController {
+  // class stuff here
+}
+
+extension MyViewcontroller: UITableViewDataSource {
+  // table view data source methods
+}
+
+extension MyViewcontroller: UIScrollViewDelegate {
+  // scroll view delegate methods
+}
+```
+
+**Not Preferred:**
+```swift
+class MyViewcontroller: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
+  // all methods
+}
+```
+
 
 ## Function Declarations
 
