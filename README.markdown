@@ -423,8 +423,8 @@ for _ in 0..<3 {
   println("Hello three times")
 }
 
-for person in attendeeList {
-  // do something
+for (index, person) in enumerate(attendeeList) {
+  println("\(person) is at position #\(index)")
 }
 ```
 
@@ -436,7 +436,7 @@ for var i = 0; i < 3; i++ {
 
 for var i = 0; i < attendeeList.count; i++ {
   let person = attendeeList[i]
-  // do something
+  println("\(person) is at position #\(i)")
 }
 ```
 
