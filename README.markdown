@@ -81,10 +81,13 @@ When referring to functions in prose (tutorials, books, comments) include the re
 
 > Call `convertPointAt(column:row:)` from your own `init` implementation.
 >
-> If you implement `didSelectRowAtIndexPath`, remember to deselect the row when you're done.
+> If you implement `timedAction`, remember to provide an appropriate delay value.
 >
 > You shouldn't call the data source method `tableView(_:cellForRowAtIndexPath:)` directly.
 
+When in doubt, look at how Xcode lists the method in the jump bar – our style here matches that.
+
+![Methods in Xcode jump bar](screens/xcode-jump-bar.png)
 
 ### Class Prefixes
 
