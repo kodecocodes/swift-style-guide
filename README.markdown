@@ -245,7 +245,7 @@ extension MyViewcontroller: UITableViewDataSource {
   // table view data source methods
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - UIScrollViewDelegate
 extension MyViewcontroller: UIScrollViewDelegate {
   // scroll view delegate methods
 }
