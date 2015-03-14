@@ -15,6 +15,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 * [Classes and Structures](#classes-and-structures)
   * [Use of Self](#use-of-self)
   * [Protocol Conformance](#protocol-conformance)
+  * [Computed Properties](#computed-properties)
 * [Function Declarations](#function-declarations)
 * [Closure Expressions](#closure-expressions)
 * [Types](#types)
@@ -258,6 +259,25 @@ class MyViewcontroller: UIViewController, UITableViewDataSource, UIScrollViewDel
 }
 ```
 
+### Computed Properties
+
+For conciseness, if a computed property is read-only, omit the get clause. The get clause is required only when a set clause is provided.
+
+**Preferred:**
+```swift
+var diameter: Double {
+  return radius * 2
+}
+```
+
+**Not Preferred:**
+```swift
+var diameter: Double {
+  get {
+    return radius * 2
+  }
+}
+```
 
 ## Function Declarations
 
