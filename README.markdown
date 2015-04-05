@@ -60,7 +60,7 @@ class app_widgetContainer {
 For functions and init methods, prefer named parameters for all arguments unless the context is very clear. Include external parameter names if it makes function calls more readable.
 
 ```swift
-func dateFromString(dateString: NSString) -> NSDate
+func dateFromString(dateString: String) -> NSDate
 func convertPointAt(#column: Int, #row: Int) -> CGPoint
 func timedAction(#delay: NSTimeInterval, perform action: SKAction) -> SKAction!
 
@@ -123,9 +123,9 @@ If you need to expose a Swift type for use within Objective-C you can provide a 
 **Preferred:**
 ```swift
 if user.isHappy {
-  //Do something
+  // Do something
 } else {
-  //Do something else
+  // Do something else
 }
 ```
 
@@ -133,10 +133,10 @@ if user.isHappy {
 ```swift
 if user.isHappy
 {
-    //Do something
+    // Do something
 }
 else {
-    //Do something else
+    // Do something else
 }
 ```
 
@@ -218,11 +218,11 @@ Use `self` when required to differentiate between property names and arguments i
 class BoardLocation {
   let row: Int, column: Int
 
-  init(row: Int,column: Int) {
+  init(row: Int, column: Int) {
     self.row = row
     self.column = column
     
-    let closure = { () -> () in
+    let closure = {
       println(self.row)
     }
   }
@@ -233,7 +233,7 @@ class BoardLocation {
 
 When adding protocol conformance to a class, prefer adding a separate class extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
 
-Also, don't forget the `// MARK` comment to keep things well-organized!
+Also, don't forget the `// MARK: -` comment to keep things well-organized!
 
 **Preferred:**
 ```swift
@@ -324,14 +324,14 @@ Always use Swift's native types when available. Swift offers bridging to Objecti
 
 **Preferred:**
 ```swift
-let width = 120.0                                    //Double
-let widthString = (width as NSNumber).stringValue    //String
+let width = 120.0                                    // Double
+let widthString = (width as NSNumber).stringValue    // String
 ```
 
 **Not Preferred:**
 ```swift
-let width: NSNumber = 120.0                                 //NSNumber
-let widthString: NSString = width.stringValue               //NSString
+let width: NSNumber = 120.0                                 // NSNumber
+let widthString: NSString = width.stringValue               // NSString
 ```
 
 In Sprite Kit code, use `CGFloat` if it makes the code more succinct by avoiding too many conversions.
