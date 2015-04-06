@@ -301,7 +301,59 @@ func reticulateSplines(spline: [Double], adjustmentFactor: Double,
 
 ## Closure Expressions
 
-Use trailing closure syntax wherever possible. In all cases, give the closure parameters descriptive names:
+Use trailing closure syntax wherever possible. 
+
+**Preferred:**
+```swift
+UIView.animateWithDuration(1.0) {
+  self.myView.alpha = 0
+}
+```
+
+**Not Preferred:**
+```swift
+UIView.animateWithDuration(1.0, animations: {
+  self.myView.alpha = 0
+})
+```
+
+However, avoid trailing closure syntax when using a method that contains multiple closures.
+
+**Preferred:**
+```swift
+UIView.animateWithDuration(1.0,
+  animations: {
+    self.myView.alpha = 0
+  },
+  completion: { finished in
+    self.myView.removeFromSuperview()
+  }
+)
+```
+
+**Not Preferred:**
+```swift
+UIView.animateWithDuration(1.0,
+  animations: {
+    self.myView.alpha = 0
+  }) { finished in
+    self.myView.removeFromSuperview()
+}
+```
+
+**Also Not Preferred:**
+
+Note that this how Xcode will indent the code when using Ctrl-I
+
+```swift
+UIView.animateWithDuration(1.0, animations: {
+  self.myView.alpha = 0
+  }) { finished in
+    self.myView.removeFromSuperview()
+}
+```
+
+In all cases, give the closure parameters descriptive names.
 
 ```swift
 return SKAction.customActionWithDuration(effect.duration) { node, elapsedTime in 
