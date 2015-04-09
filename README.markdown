@@ -361,8 +361,8 @@ let widthString = (width as NSNumber).stringValue    // String
 
 **Not Preferred:**
 ```swift
-let width: NSNumber = 120.0                                 // NSNumber
-let widthString: NSString = width.stringValue               // NSString
+let width: NSNumber = 120.0                          // NSNumber
+let widthString: NSString = width.stringValue        // NSString
 ```
 
 In Sprite Kit code, use `CGFloat` if it makes the code more succinct by avoiding too many conversions.
