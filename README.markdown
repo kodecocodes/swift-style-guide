@@ -109,22 +109,12 @@ When in doubt, look at how Xcode lists the method in the jump bar – our style
 
 ### Class Prefixes
 
-Swift types are all automatically namespaced by the module that contains them. As a result, prefixes are not required in order to minimize naming collisions. If two names from different modules collide you can disambiguate by prefixing the type name with the module name:
+Swift types are automatically namespaced by the module that contains them and you should not add a class prefix. If two names from different modules collide you can disambiguate by prefixing the type name with the module name.
 
 ```swift
-import MyModule
+import SomeModule
 
-let myClass = MyModule.MyClass()
-```
-
-You **should not** add prefixes to your Swift types.
-
-If you need to expose a Swift type for use within Objective-C you can provide a suitable prefix (following our [Objective-C style guide](https://github.com/raywenderlich/objective-c-style-guide)) as follows:
-
-```swift
-@objc (RWTChicken) class Chicken {
-   ...
-}
+let myClass = MyModule.UsefulClass()
 ```
 
 
