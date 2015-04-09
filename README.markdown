@@ -301,11 +301,35 @@ func reticulateSplines(spline: [Double], adjustmentFactor: Double,
 
 ## Closure Expressions
 
-Use trailing closure syntax wherever possible. In all cases, give the closure parameters descriptive names:
+Use trailing closure syntax only if there's a single closure expression parameter at the end of the argument list. Give the closure parameters descriptive names.
 
+**Preferred:**
 ```swift
-return SKAction.customActionWithDuration(effect.duration) { node, elapsedTime in 
-  // more code goes here
+UIView.animateWithDuration(1.0) {
+  self.myView.alpha = 0
+}
+
+UIView.animateWithDuration(1.0,
+  animations: {
+    self.myView.alpha = 0
+  },
+  completion: { finished in
+    self.myView.removeFromSuperview()
+  }
+)
+```
+
+**Not Preferred:**
+```swift
+UIView.animateWithDuration(1.0, animations: {
+  self.myView.alpha = 0
+})
+
+UIView.animateWithDuration(1.0,
+  animations: {
+    self.myView.alpha = 0
+  }) { f in
+    self.myView.removeFromSuperview()
 }
 ```
 
@@ -525,6 +549,7 @@ Smiley faces are a very prominent style feature of the raywenderlich.com site! I
 
 This style guide is a collaborative effort from the most stylish raywenderlich.com team members: 
 
+* [Jawwad Ahmad](https://github.com/jawwad)
 * [Soheil Moayedi Azarpour](https://github.com/moayes)
 * [Scott Berrevoets](https://github.com/Scott90)
 * [Eric Cerney](https://github.com/ecerney)
