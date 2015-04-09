@@ -33,12 +33,12 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 
 ## Naming
 
-Use descriptive names with camel case for classes, methods, variables, etc. Class names and constants in module scope should be capitalized, while method names and variables should start with a lower case letter.
+Use descriptive names with camel case for classes, methods, variables, etc. Class names should be capitalized, while method names and variables should start with a lower case letter.
 
 **Preferred:**
 
 ```swift
-let MaximumWidgetCount = 100
+private let maximumWidgetCount = 100
 
 class WidgetContainer {
   var widgetButton: UIButton
