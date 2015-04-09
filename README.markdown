@@ -401,19 +401,23 @@ For optional binding, shadow the original name when appropriate rather than usin
 **Preferred:**
 ```swift
 var subview: UIView?
+var volume: Double?
 
 // later on...
-if let subview = subview {
-  // do something with unwrapped subview
+if let subview = subview, volume = volume {
+  // do something with unwrapped subview and volume
 }
 ```
 
 **Not Preferred:**
 ```swift
 var optionalSubview: UIView?
+var volume: Double?
 
 if let unwrappedSubview = optionalSubview {
-  // do something with unwrappedSubview
+  if let realVolume = volume {
+    // do something with unwrappedSubview and realVolume
+  }
 }
 ```
 
