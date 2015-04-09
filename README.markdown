@@ -364,23 +364,8 @@ In Sprite Kit code, use `CGFloat` if it makes the code more succinct by avoiding
 
 Constants are defined using the `let` keyword, and variables with the `var` keyword. Always use `let` instead of `var` if the value of the variable will not change.
 
-**Tip:** A good technique is to define everything using `let` and only change it to `var` when the compiler complains!
+**Tip:** A good technique is to define everything using `let` and only change it to `var` if the compiler complains!
 
-**Preferred:**
-```swift
-let myClass = MyClass()
-let sectionCount = 5
-let request = NSMutableURLRequest(URL: myURL)
-request.HTTPMethod = "GET"
-```
-
-**Not Preferred:**
-```swift
-var myClass = MyClass()
-var sectionCount = 5
-var request = NSMutableURLRequest(URL: myURL)
-request.HTTPMethod = "GET"
-```
 
 ### Optionals
 
