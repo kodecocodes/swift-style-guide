@@ -9,6 +9,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 ## Table of Contents
 
 * [Naming](#naming)
+  * [Prose](#prose)
   * [Class Prefixes](#class-prefixes)
 * [Spacing](#spacing)
 * [Comments](#comments)
@@ -78,11 +79,13 @@ class Guideline {
 }
 ```
 
-When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective. If the context is clear and the exact signature is not important, you can use just the method name.
+### Prose
+
+When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective or `_` for unnamed parameters.
 
 > Call `convertPointAt(column:row:)` from your own `init` implementation.
 >
-> If you implement `timedAction`, remember to provide an appropriate delay value.
+> If you call `timedAction(_:)` from `viewDidLoad()` remember to provide an adjusted delay value.
 >
 > You shouldn't call the data source method `tableView(_:cellForRowAtIndexPath:)` directly.
 
