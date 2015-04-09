@@ -72,10 +72,24 @@ timedAction(delay: 1.0, perform: someOtherAction)
 ```
 
 For methods, follow the standard Apple convention of referring to the first parameter in the method name:
+
 ```swift
 class Guideline {
   func combineWithString(incoming: String, options: Dictionary?) { ... }
   func upvoteBy(amount: Int) { ... }
+}
+```
+
+### Enumerations
+
+Use UpperCamelCase for enumeration values:
+
+```swift
+enum Shape {
+  case Rectangle
+  case Square
+  case Triangle
+  case Circle
 }
 ```
 
