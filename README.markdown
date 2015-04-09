@@ -441,20 +441,21 @@ Prefer the struct-scope constants `CGRect.infiniteRect`, `CGRect.nullRect`, etc.
 
 ### Type Inference
 
-The Swift compiler is able to infer the type of variables and constants. You can provide an explicit type via a type alias (which is indicated by the type after the colon), but in the majority of cases this is not necessary.
-
-Prefer compact code and let the compiler infer the type for a constant or variable.
+Prefer compact code and let the compiler infer the type for a constant or variable, unless you need a specific type other than the default such as `CGFloat` or `Int16`.
 
 **Preferred:**
 ```swift
 let message = "Click the button"
 let currentBounds = computeViewBounds()
+var names = [String]()
+let maximumWidth: CGFloat = 106.5
 ```
 
 **Not Preferred:**
 ```swift
 let message: String = "Click the button"
 let currentBounds: CGRect = computeViewBounds()
+var names: [String] = []
 ```
 
 **NOTE**: Following this guideline means picking descriptive names is even more important than before.
@@ -477,7 +478,6 @@ var deviceModels: Array<String>
 var employees: Dictionary<Int, String>
 var faxNumber: Optional<Int>
 ```
-
 
 
 ## Control Flow
