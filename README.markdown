@@ -97,7 +97,7 @@ Swift types are all automatically namespaced by the module that contains them. A
 ```swift
 import MyModule
 
-var myClass = MyModule.MyClass()
+let myClass = MyModule.MyClass()
 ```
 
 You **should not** add prefixes to your Swift types.
@@ -362,9 +362,10 @@ In Sprite Kit code, use `CGFloat` if it makes the code more succinct by avoiding
 
 ### Constants
 
-Constants are defined using the `let` keyword, and variables with the `var` keyword. Any value that **is** a constant **must** be defined appropriately, using the `let` keyword. As a result, you will likely find yourself using `let` far more than `var`.
+Constants are defined using the `let` keyword, and variables with the `var` keyword. Always use `let` instead of `var` if the value of the variable will not change.
 
-**Tip:** One technique that might help meet this standard is to define everything as a constant and only change it to a variable when the compiler complains!
+**Tip:** A good technique is to define everything using `let` and only change it to `var` if the compiler complains!
+
 
 ### Optionals
 
@@ -416,13 +417,13 @@ Use the native Swift struct initializers rather than the legacy CGGeometry const
 **Preferred:**
 ```swift
 let bounds = CGRect(x: 40, y: 20, width: 120, height: 80)
-var centerPoint = CGPoint(x: 96, y: 42)
+let centerPoint = CGPoint(x: 96, y: 42)
 ```
 
 **Not Preferred:**
 ```swift
 let bounds = CGRectMake(40, 20, 120, 80)
-var centerPoint = CGPointMake(96, 42)
+let centerPoint = CGPointMake(96, 42)
 ```
 
 Prefer the struct-scope constants `CGRect.infiniteRect`, `CGRect.nullRect`, etc. over global constants `CGRectInfinite`, `CGRectNull`, etc. For existing variables, you can use the shorter `.zeroRect`.
@@ -436,13 +437,13 @@ Prefer compact code and let the compiler infer the type for a constant or variab
 **Preferred:**
 ```swift
 let message = "Click the button"
-var currentBounds = computeViewBounds()
+let currentBounds = computeViewBounds()
 ```
 
 **Not Preferred:**
 ```swift
 let message: String = "Click the button"
-var currentBounds: CGRect = computeViewBounds()
+let currentBounds: CGRect = computeViewBounds()
 ```
 
 **NOTE**: Following this guideline means picking descriptive names is even more important than before.
@@ -506,12 +507,12 @@ The only exception to this rule is the `for-conditional-increment` construct, wh
 
 **Preferred:**
 ```swift
-var swift = "not a scripting language"
+let swift = "not a scripting language"
 ```
 
 **Not Preferred:**
 ```swift
-var swift = "not a scripting language";
+let swift = "not a scripting language";
 ```
 
 **NOTE**: Swift is very different to JavaScript, where omitting semicolons is [generally considered unsafe](http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript)
@@ -522,12 +523,12 @@ Use US English spelling to match Apple's API.
 
 **Preferred:**
 ```swift
-var color = "red"
+let color = "red"
 ```
 
 **Not Preferred:**
 ```swift
-var colour = "red"
+let colour = "red"
 ```
 
 ## Smiley Face
