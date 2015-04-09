@@ -549,6 +549,7 @@ Smiley faces are a very prominent style feature of the raywenderlich.com site! I
 
 This style guide is a collaborative effort from the most stylish raywenderlich.com team members: 
 
+* [Jawwad Ahmad](https://github.com/jawwad)
 * [Soheil Moayedi Azarpour](https://github.com/moayes)
 * [Scott Berrevoets](https://github.com/Scott90)
 * [Eric Cerney](https://github.com/ecerney)
