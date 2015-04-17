@@ -99,7 +99,9 @@ When referring to functions in prose (tutorials, books, comments) include the re
 
 > Call `convertPointAt(column:row:)` from your own `init` implementation.
 >
-> If you call `timedAction(_:)` from `viewDidLoad()` remember to provide an adjusted delay value.
+> If you call `dateFromString(_:)` make sure that you provide a string with the format "yyyy-MM-dd".
+>
+> If you call `timedAction(delay:perform:)` from `viewDidLoad()` remember to provide an adjusted delay value and an action to perform.
 >
 > You shouldn't call the data source method `tableView(_:cellForRowAtIndexPath:)` directly.
 
