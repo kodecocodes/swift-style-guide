@@ -238,35 +238,6 @@ class BoardLocation {
 }
 ```
 
-### Protocol Conformance
-
-When adding protocol conformance to a class, prefer adding a separate class extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
-
-Also, don't forget the `// MARK: -` comment to keep things well-organized!
-
-**Preferred:**
-```swift
-class MyViewcontroller: UIViewController {
-  // class stuff here
-}
-
-// MARK: - UITableViewDataSource
-extension MyViewcontroller: UITableViewDataSource {
-  // table view data source methods
-}
-
-// MARK: - UIScrollViewDelegate
-extension MyViewcontroller: UIScrollViewDelegate {
-  // scroll view delegate methods
-}
-```
-
-**Not Preferred:**
-```swift
-class MyViewcontroller: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
-  // all methods
-}
-```
 
 ### Computed Properties
 
