@@ -75,7 +75,7 @@ For methods, follow the standard Apple convention of referring to the first para
 
 ```swift
 class Guideline {
-  func combineWithString(incoming: String, options: Dictionary?) { ... }
+  func combineWith(incoming: String, options: Dictionary?) { ... }
   func upvoteBy(amount: Int) { ... }
 }
 ```
@@ -584,6 +584,7 @@ This style guide is a collaborative effort from the most stylish raywenderlich.c
 * [Chris Wagner](https://github.com/cwagdev)
 * [Ray Wenderlich](https://github.com/rwenderlich)
 * [Jack Wu](https://github.com/jackwu95)
+* [Andy Obusek](https://github.com/obuseme)
 
 Hat tip to [Nicholas Waynik](https://github.com/ndubbs) and the [Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide) team!
 
