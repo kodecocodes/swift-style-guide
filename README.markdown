@@ -63,8 +63,8 @@ For functions and init methods, prefer named parameters for all arguments unless
 
 ```swift
 func dateFromString(dateString: String) -> NSDate
-func convertPointAt(#column: Int, #row: Int) -> CGPoint
-func timedAction(#delay: NSTimeInterval, perform action: SKAction) -> SKAction!
+func convertPointAt(column column: Int, row: Int) -> CGPoint
+func timedAction(delay delay: NSTimeInterval, perform action: SKAction) -> SKAction!
 
 // would be called like this:
 dateFromString("2014-03-14")
@@ -75,9 +75,9 @@ timedAction(delay: 1.0, perform: someOtherAction)
 For methods, follow the standard Apple convention of referring to the first parameter in the method name:
 
 ```swift
-class Guideline {
-  func combineWithString(incoming: String, options: Dictionary?) { ... }
-  func upvoteBy(amount: Int) { ... }
+class Counter {
+  func combineWith(otherCounter: Counter, options: Dictionary?) { ... }
+  func incrementBy(amount: Int) { ... }
 }
 ```
 
@@ -606,6 +606,7 @@ This style guide is a collaborative effort from the most stylish raywenderlich.c
 * [Ben Morrow](https://github.com/benmorrow)
 * [Andy Pereira](https://github.com/macandyp)
 * [Ryan Nystrom](https://github.com/rnystrom)
+* [Andy Obusek](https://github.com/obuseme)
 * [Cesare Rocchi](https://github.com/funkyboy)
 * [Ellen Shapiro](https://github.com/designatednerd)
 * [Marin Todorov](https://github.com/icanzilb)
