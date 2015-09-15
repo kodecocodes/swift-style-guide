@@ -493,7 +493,7 @@ for _ in 0..<3 {
   println("Hello three times")
 }
 
-for (index, person) in enumerate(attendeeList) {
+for (index, person) in attendeeList.enumerate() {
   println("\(person) is at position #\(index)")
 }
 ```
