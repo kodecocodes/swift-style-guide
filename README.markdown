@@ -64,12 +64,12 @@ For functions and init methods, prefer named parameters for all arguments unless
 ```swift
 func dateFromString(dateString: String) -> NSDate
 func convertPointAt(column column: Int, row: Int) -> CGPoint
-func timedAction(delay delay: NSTimeInterval, perform action: SKAction) -> SKAction!
+func timedAction(afterDelay delay: NSTimeInterval, perform action: SKAction) -> SKAction!
 
 // would be called like this:
 dateFromString("2014-03-14")
 convertPointAt(column: 42, row: 13)
-timedAction(delay: 1.0, perform: someOtherAction)
+timedAction(afterDelay: 1.0, perform: someOtherAction)
 ```
 
 For methods, follow the standard Apple convention of referring to the first parameter in the method name:
@@ -102,7 +102,7 @@ When referring to functions in prose (tutorials, books, comments) include the re
 >
 > If you call `dateFromString(_:)` make sure that you provide a string with the format "yyyy-MM-dd".
 >
-> If you call `timedAction(delay:perform:)` from `viewDidLoad()` remember to provide an adjusted delay value and an action to perform.
+> If you call `timedAction(afterDelay:perform:)` from `viewDidLoad()` remember to provide an adjusted delay value and an action to perform.
 >
 > You shouldn't call the data source method `tableView(_:cellForRowAtIndexPath:)` directly.
 
