@@ -28,6 +28,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 * [Control Flow](#control-flow)
 * [Semicolons](#semicolons)
 * [Language](#language)
+* [Copyright Statement](#copyright-statement)
 * [Smiley Face](#smiley-face)
 * [Credits](#credits)
 
@@ -62,21 +63,21 @@ For functions and init methods, prefer named parameters for all arguments unless
 
 ```swift
 func dateFromString(dateString: String) -> NSDate
-func convertPointAt(#column: Int, #row: Int) -> CGPoint
-func timedAction(#delay: NSTimeInterval, perform action: SKAction) -> SKAction!
+func convertPointAt(column column: Int, row: Int) -> CGPoint
+func timedAction(afterDelay delay: NSTimeInterval, perform action: SKAction) -> SKAction!
 
 // would be called like this:
 dateFromString("2014-03-14")
 convertPointAt(column: 42, row: 13)
-timedAction(delay: 1.0, perform: someOtherAction)
+timedAction(afterDelay: 1.0, perform: someOtherAction)
 ```
 
 For methods, follow the standard Apple convention of referring to the first parameter in the method name:
 
 ```swift
-class Guideline {
-  func combineWithString(incoming: String, options: Dictionary?) { ... }
-  func upvoteBy(amount: Int) { ... }
+class Counter {
+  func combineWith(otherCounter: Counter, options: Dictionary?) { ... }
+  func incrementBy(amount: Int) { ... }
 }
 ```
 
@@ -99,7 +100,9 @@ When referring to functions in prose (tutorials, books, comments) include the re
 
 > Call `convertPointAt(column:row:)` from your own `init` implementation.
 >
-> If you call `timedAction(_:)` from `viewDidLoad()` remember to provide an adjusted delay value.
+> If you call `dateFromString(_:)` make sure that you provide a string with the format "yyyy-MM-dd".
+>
+> If you call `timedAction(afterDelay:perform:)` from `viewDidLoad()` remember to provide an adjusted delay value and an action to perform.
 >
 > You shouldn't call the data source method `tableView(_:cellForRowAtIndexPath:)` directly.
 
@@ -437,7 +440,7 @@ let bounds = CGRectMake(40, 20, 120, 80)
 let centerPoint = CGPointMake(96, 42)
 ```
 
-Prefer the struct-scope constants `CGRect.infiniteRect`, `CGRect.nullRect`, etc. over global constants `CGRectInfinite`, `CGRectNull`, etc. For existing variables, you can use the shorter `.zeroRect`.
+Prefer the struct-scope constants `CGRect.infinite`, `CGRect.null`, etc. over global constants `CGRectInfinite`, `CGRectNull`, etc. For existing variables, you can use the shorter `.zero`.
 
 ### Type Inference
 
@@ -490,7 +493,7 @@ for _ in 0..<3 {
   println("Hello three times")
 }
 
-for (index, person) in enumerate(attendeeList) {
+for (index, person) in attendeeList.enumerate() {
   println("\(person) is at position #\(index)")
 }
 ```
@@ -542,6 +545,33 @@ let color = "red"
 let colour = "red"
 ```
 
+## Copyright Statement
+
+The following copyright statement should be included at the top of every source
+file:
+
+    /*
+     * Copyright (c) 2015 Razeware LLC
+     * 
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     * 
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     * 
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+
 ## Smiley Face
 
 Smiley faces are a very prominent style feature of the raywenderlich.com site! It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The closing square bracket `]` is used because it represents the largest smile able to be captured using ASCII art. A closing parenthesis `)` creates a half-hearted smile, and thus is not preferred.
@@ -576,6 +606,7 @@ This style guide is a collaborative effort from the most stylish raywenderlich.c
 * [Ben Morrow](https://github.com/benmorrow)
 * [Andy Pereira](https://github.com/macandyp)
 * [Ryan Nystrom](https://github.com/rnystrom)
+* [Andy Obusek](https://github.com/obuseme)
 * [Cesare Rocchi](https://github.com/funkyboy)
 * [Ellen Shapiro](https://github.com/designatednerd)
 * [Marin Todorov](https://github.com/icanzilb)
