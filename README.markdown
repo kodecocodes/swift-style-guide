@@ -59,12 +59,12 @@ class app_widgetContainer {
 }
 ```
 
-For functions and init methods, prefer named parameters for all arguments unless the context is very clear. Include external parameter names if it makes function calls more readable.
+For functions and init methods, prefer named parameters for all arguments unless the context is very clear. Include external parameter names if it makes function calls more readable. To name the first parameter, double up the paramenter name. Subsequent parameters are named by default.
 
 ```swift
 func dateFromString(dateString: String) -> NSDate
-func convertPointAt(#column: Int, #row: Int) -> CGPoint
-func timedAction(#delay: NSTimeInterval, perform action: SKAction) -> SKAction!
+func convertPointAt(column column: Int, row: Int) -> CGPoint
+func timedAction(delay delay: NSTimeInterval, perform action: SKAction) -> SKAction!
 
 // would be called like this:
 dateFromString("2014-03-14")
