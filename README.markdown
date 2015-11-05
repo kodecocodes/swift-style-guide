@@ -63,7 +63,7 @@ For functions and init methods, prefer named parameters for all arguments unless
 
 ```swift
 func dateFromString(dateString: String) -> NSDate
-func convertPointAt(column column: Int, #row: Int) -> CGPoint
+func convertPointAt(column column: Int, row: Int) -> CGPoint
 func timedAction(delay delay: NSTimeInterval, perform action: SKAction) -> SKAction!
 
 // would be called like this:
