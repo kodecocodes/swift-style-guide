@@ -1,10 +1,12 @@
 # The Official HE:labs Swift Style Guide.
 
-This is the official Swift style guide of HE:labs iOS Team. In case of you are in a Objective-C project, please take a look at our [Objective-C Style Guide](https://github.com/HEmobile/objective-c-style-guide)
+This is the official Swift style guide of HE:labs iOS Team. In case of you are in a Objective-C project, please take a look at our [Objective-C Style Guide](https://github.com/HEmobile/objective-c-style-guide).
 
 ## Table of Contents
 
+* [Project Structure](#project-structure)
 * [Naming](#naming)
+  * [Enumerations](#enumerations) 
   * [Prose](#prose)
   * [Class Prefixes](#class-prefixes)
 * [Spacing](#spacing)
@@ -24,10 +26,15 @@ This is the official Swift style guide of HE:labs iOS Team. In case of you are i
 * [Control Flow](#control-flow)
 * [Semicolons](#semicolons)
 * [Language](#language)
-* [Copyright Statement](#copyright-statement)
-* [Smiley Face](#smiley-face)
 * [Credits](#credits)
 
+## Project Structure
+
+### Liftoff
+
+If you're creating a new project please install this tool. We use [liftoff](https://github.com/thoughtbot/liftoff) to generate all new projects with a standard project structure. 
+
+To start a new project you should get our `.liftoffrc` file and the `templates folder`. Please always keep an updated version of this files.
 
 ## Naming
 
@@ -126,7 +133,7 @@ let myClass = MyModule.UsefulClass()
 
 **Preferred:**
 ```swift
-if user.isHappy {
+if user.isHappy { 
   // Do something
 } 
 else {
