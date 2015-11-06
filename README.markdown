@@ -63,21 +63,21 @@ For functions and init methods, prefer named parameters for all arguments unless
 
 ```swift
 func dateFromString(dateString: String) -> NSDate
-func convertPointAt(#column: Int, #row: Int) -> CGPoint
-func timedAction(#delay: NSTimeInterval, perform action: SKAction) -> SKAction!
+func convertPointAt(column column: Int, row: Int) -> CGPoint
+func timedAction(afterDelay delay: NSTimeInterval, perform action: SKAction) -> SKAction!
 
 // would be called like this:
 dateFromString("2014-03-14")
 convertPointAt(column: 42, row: 13)
-timedAction(delay: 1.0, perform: someOtherAction)
+timedAction(afterDelay: 1.0, perform: someOtherAction)
 ```
 
 For methods, follow the standard Apple convention of referring to the first parameter in the method name:
 
 ```swift
-class Guideline {
-  func combineWithString(incoming: String, options: Dictionary?) { ... }
-  func upvoteBy(amount: Int) { ... }
+class Counter {
+  func combineWith(otherCounter: Counter, options: Dictionary?) { ... }
+  func incrementBy(amount: Int) { ... }
 }
 ```
 
@@ -102,7 +102,7 @@ When referring to functions in prose (tutorials, books, comments) include the re
 >
 > If you call `dateFromString(_:)` make sure that you provide a string with the format "yyyy-MM-dd".
 >
-> If you call `timedAction(delay:perform:)` from `viewDidLoad()` remember to provide an adjusted delay value and an action to perform.
+> If you call `timedAction(afterDelay:perform:)` from `viewDidLoad()` remember to provide an adjusted delay value and an action to perform.
 >
 > You shouldn't call the data source method `tableView(_:cellForRowAtIndexPath:)` directly.
 
@@ -440,7 +440,7 @@ let bounds = CGRectMake(40, 20, 120, 80)
 let centerPoint = CGPointMake(96, 42)
 ```
 
-Prefer the struct-scope constants `CGRect.infiniteRect`, `CGRect.nullRect`, etc. over global constants `CGRectInfinite`, `CGRectNull`, etc. For existing variables, you can use the shorter `.zeroRect`.
+Prefer the struct-scope constants `CGRect.infinite`, `CGRect.null`, etc. over global constants `CGRectInfinite`, `CGRectNull`, etc. For existing variables, you can use the shorter `.zero`.
 
 ### Type Inference
 
@@ -493,7 +493,7 @@ for _ in 0..<3 {
   println("Hello three times")
 }
 
-for (index, person) in enumerate(attendeeList) {
+for (index, person) in attendeeList.enumerate() {
   println("\(person) is at position #\(index)")
 }
 ```
@@ -606,6 +606,7 @@ This style guide is a collaborative effort from the most stylish raywenderlich.c
 * [Ben Morrow](https://github.com/benmorrow)
 * [Andy Pereira](https://github.com/macandyp)
 * [Ryan Nystrom](https://github.com/rnystrom)
+* [Andy Obusek](https://github.com/obuseme)
 * [Cesare Rocchi](https://github.com/funkyboy)
 * [Ellen Shapiro](https://github.com/designatednerd)
 * [Marin Todorov](https://github.com/icanzilb)
