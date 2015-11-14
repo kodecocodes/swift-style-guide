@@ -1,0 +1,12 @@
+#import "<%= project_name %>-Prefix.pch"
+
+#ifdef __OBJC__
+<% if dependency_manager_enabled?("cocoapods") %>
+    #define EXP_SHORTHAND
+    #import <Specta/Specta.h>
+    #import <Expecta/Expecta.h>
+    #import <OCMock/OCMock.h>
+<% else %>
+    @import XCTest;
+<% end %>
+#endif

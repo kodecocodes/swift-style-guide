@@ -34,7 +34,9 @@ This is the official Swift style guide of HE:labs iOS Team. In case of you are i
 
 If you're creating a new project please install this tool. We use [liftoff](https://github.com/thoughtbot/liftoff) to generate all new projects with a standard project structure. 
 
-To start a new project you should get our `.liftoffrc` file and the `templates folder`. Please always keep an updated version of this files.
+To start a new project you should get our `liftoffrc` file and the `liftoff folder` that contains the `templates folder`. The files are located in `resources` folder and please always keep an updated version of this files. 
+
+After download and put these files into your workspace folder you need to rename `liftoffrc` to `.liftoffrc` and `liftoff` to `.liftoff`. These steps are necessary to make liftoff use them to configure the project.
 
 ## Naming
 

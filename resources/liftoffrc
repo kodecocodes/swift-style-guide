@@ -1,0 +1,131 @@
+############################################################################
+# The following keys can be used to configure defaults for project creation
+# project_name:
+# company:  
+# author: 
+# prefix:
+# company_identifier: 
+############################################################################
+ 
+test_target_name: UnitTests
+configure_git: true
+warnings_as_errors: true
+enable_static_analyzer: true
+indentation_level: 4
+use_tabs: false
+use_cocoapods: true
+enable_settings: true
+strict_prompts: false
+deployment_target: 8.0
+ 
+run_script_phases:
+  - file: bundle_version.sh
+    name: Set version number
+ 
+warnings:
+  - GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED
+  - GCC_WARN_MISSING_PARENTHESES
+  - GCC_WARN_ABOUT_RETURN_TYPE
+  - GCC_WARN_SIGN_COMPARE
+  - GCC_WARN_CHECK_SWITCH_STATEMENTS
+  - GCC_WARN_UNUSED_FUNCTION
+  - GCC_WARN_UNUSED_LABEL
+  - GCC_WARN_UNUSED_VALUE
+  - GCC_WARN_UNUSED_VARIABLE
+  - GCC_WARN_SHADOW
+  - GCC_WARN_64_TO_32_BIT_CONVERSION
+  - GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS
+  - GCC_WARN_ABOUT_MISSING_NEWLINE
+  - GCC_WARN_UNDECLARED_SELECTOR
+  - GCC_WARN_TYPECHECK_CALLS_TO_PRINTF
+  - GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS
+  - CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS
+  - CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF
+  - CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION
+  - CLANG_WARN_EMPTY_BODY
+  - CLANG_WARN_ENUM_CONVERSION
+  - CLANG_WARN_INT_CONVERSION
+  - CLANG_WARN_CONSTANT_CONVERSION
+ 
+xcode_command: open -a 'Xcode' .
+ 
+project_template: swift
+ 
+app_target_templates:
+  objc:
+    - <%= project_name %>:
+      - Model:
+      - View:
+      - Controller:
+      - Client:
+      - Util:
+      - AppDelegate: 
+        - <%= prefix %>AppDelegate.h
+        - <%= prefix %>AppDelegate.m     
+      - Resources:
+        - Fonts:        
+        - Storyboards:
+          - Main.storyboard
+        - Assets.xcassets        
+        - LaunchScreen.storyboard        
+      - Supporting Files:
+        - main.m
+        - Info.plist
+        - <%= project_name %>-Prefix.pch     
+        
+  swift:
+  - <%= project_name %>:
+    - Model:
+    - View:
+    - Controller:
+    - Client:
+    - Util:
+      - Extensions:
+    - AppDelegate:
+      - AppDelegate.swift  
+    - Resources:
+      - Fonts:
+      - Storyboards:
+        - Main.storyboard
+        - LaunchScreen.storyboard
+      - Assets.xcassets
+    - Supporting Files
+      - Info.plist        
+
+  viper-swift:
+  - <%= project_name %>:
+    - AppDelegate:
+      - AppDelegate.swift
+    - Common:
+    - Modules:
+    - Resources:
+      - Fonts:
+      - Storyboards:
+        - Main.storyboard
+        - LaunchScreen.storyboard
+      - Assets.xcassets
+    - Supporting Files:
+      - Info.plist 
+ 
+test_target_templates:
+  objc:
+    - <%= test_target_name %>:
+      - Resources:
+        - <%= test_target_name %>-Info.plist
+        - <%= test_target_name %>-Prefix.pch
+      - Helpers:
+      - Tests:  
+
+  swift:
+    - <%= test_target_name %>:
+      - Resources:
+        - <%= test_target_name %>-Info.plist
+      - Helpers:
+      - Tests:
+
+  viper-swift:
+    - <%= test_target_name %>:
+      - Resources:
+        - <%= test_target_name %>-Info.plist
+      - Common:
+      - Tests:    

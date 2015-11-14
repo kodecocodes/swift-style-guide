@@ -1,0 +1,2 @@
+*.pbxproj merge=union
+*.strings text diff

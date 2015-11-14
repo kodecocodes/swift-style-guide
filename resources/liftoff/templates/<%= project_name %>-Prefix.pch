@@ -1,0 +1,10 @@
+#import <Availability.h>
+
+#ifndef __IPHONE_<%= deployment_target.to_s.gsub('.', '_') %>
+#warning "This project uses features only available in iOS SDK <%= deployment_target %> and later."
+#endif
+
+#ifdef __OBJC__
+    @import UIKit;
+    @import Foundation;
+#endif
