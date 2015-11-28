@@ -1,11 +1,38 @@
 source 'https://github.com/CocoaPods/Specs'
 
 platform :ios, '<%= deployment_target %>'
+<% if project_template.eql?("swift") || project_template.eql?("viper-swift") %>use_frameworks!<% end %>
+inhibit_all_warnings!
 
-# Add Application pods here
+target :app, :exclusive => true do
+  link_with '<%= project_name %>'
+<% if project_template.eql?("swift") || project_template.eql?("viper-swift") %>
+  pod 'Swinject'
+    
+  pod 'Alamofire'
+  pod 'Genome'
+  
+  pod 'Nuke'
+  
+  pod 'SwiftDate'
+  pod 'SwiftyColor'
+  pod 'SpringIndicator'
+  pod 'SnapKit'
+  pod 'AsyncSwift'
+
+  pod 'StatefulViewController'
+end
+<% else %>  
+  pod 'AFNetworking'
+  pod 'Mantle'
+
+  pod 'SDWebImage'
+end
+<% end %>
 
 target :unit_tests, :exclusive => true do
   link_with '<%= test_target_name %>'
+
   pod 'Specta'
   pod 'Expecta'
   pod 'OCMock'
