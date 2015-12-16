@@ -13,10 +13,10 @@ warnings_as_errors: true
 enable_static_analyzer: true
 indentation_level: 4
 use_tabs: false
-use_cocoapods: true
+dependency_managers: cocoapods
 enable_settings: true
 strict_prompts: false
-deployment_target: 8.0
+deployment_target: 9.0
  
 run_script_phases:
   - file: bundle_version.sh
@@ -89,7 +89,7 @@ app_target_templates:
         - Main.storyboard
         - LaunchScreen.storyboard
       - Assets.xcassets
-    - Supporting Files
+    - Supporting Files:
       - Info.plist        
 
   viper-swift:
