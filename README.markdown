@@ -210,20 +210,22 @@ When adding protocol conformance to a class, prefer adding a separate class exte
 
 Also, don't forget the `// MARK: -` comment to keep things well-organized!
 
+Sort extensions in a file in alphabet order.
+
 **Preferred:**
 ```swift
 class MyViewcontroller: UIViewController {
   // class stuff here
 }
 
-// MARK: - UITableViewDataSource
-extension MyViewcontroller: UITableViewDataSource {
-  // table view data source methods
-}
-
 // MARK: - UIScrollViewDelegate
 extension MyViewcontroller: UIScrollViewDelegate {
   // scroll view delegate methods
+}
+
+// MARK: - UITableViewDataSource
+extension MyViewcontroller: UITableViewDataSource {
+  // table view data source methods
 }
 ```
 
