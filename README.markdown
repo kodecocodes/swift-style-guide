@@ -1,10 +1,4 @@
-# The Official raywenderlich.com Swift Style Guide.
-
-This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on the books.
-
-Our overarching goals are conciseness, readability, and simplicity.
-
-Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide) too.
+# Swift Style Guide
 
 ## Table of Contents
 
@@ -59,19 +53,6 @@ class app_widgetContainer {
 }
 ```
 
-For functions and init methods, prefer named parameters for all arguments unless the context is very clear. Include external parameter names if it makes function calls more readable.
-
-```swift
-func dateFromString(dateString: String) -> NSDate
-func convertPointAt(column column: Int, row: Int) -> CGPoint
-func timedAction(afterDelay delay: NSTimeInterval, perform action: SKAction) -> SKAction!
-
-// would be called like this:
-dateFromString("2014-03-14")
-convertPointAt(column: 42, row: 13)
-timedAction(afterDelay: 1.0, perform: someOtherAction)
-```
-
 For methods, follow the standard Apple convention of referring to the first parameter in the method name:
 
 ```swift
@@ -93,22 +74,6 @@ enum Shape {
   case Circle
 }
 ```
-
-### Prose
-
-When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective or `_` for unnamed parameters.
-
-> Call `convertPointAt(column:row:)` from your own `init` implementation.
->
-> If you call `dateFromString(_:)` make sure that you provide a string with the format "yyyy-MM-dd".
->
-> If you call `timedAction(afterDelay:perform:)` from `viewDidLoad()` remember to provide an adjusted delay value and an action to perform.
->
-> You shouldn't call the data source method `tableView(_:cellForRowAtIndexPath:)` directly.
-
-When in doubt, look at how Xcode lists the method in the jump bar – our style here matches that.
-
-![Methods in Xcode jump bar](screens/xcode-jump-bar.png)
 
 ### Class Prefixes
 
@@ -220,7 +185,7 @@ The example above demonstrates the following style guidelines:
 
 ### Use of Self
 
-For conciseness, avoid using `self` since Swift does not require it to access an object's properties or invoke its methods.
+Avoid using `self` since Swift does not require it to access an object's properties or invoke its methods. Some good reasons for not to use it can be found [here](https://lists.swift.org/pipermail/swift-evolution/Week-of-Mon-20160104/005478.html).
 
 Use `self` when required to differentiate between property names and arguments in initializers, and when referencing properties in closure expressions (as required by the compiler):
 
@@ -245,20 +210,22 @@ When adding protocol conformance to a class, prefer adding a separate class exte
 
 Also, don't forget the `// MARK: -` comment to keep things well-organized!
 
+Sort extensions in a file in alphabet order.
+
 **Preferred:**
 ```swift
 class MyViewcontroller: UIViewController {
   // class stuff here
 }
 
-// MARK: - UITableViewDataSource
-extension MyViewcontroller: UITableViewDataSource {
-  // table view data source methods
-}
-
 // MARK: - UIScrollViewDelegate
 extension MyViewcontroller: UIScrollViewDelegate {
   // scroll view delegate methods
+}
+
+// MARK: - UITableViewDataSource
+extension MyViewcontroller: UITableViewDataSource {
+  // table view data source methods
 }
 ```
 
@@ -291,7 +258,7 @@ var diameter: Double {
 
 ## Function Declarations
 
-Keep short function declarations on one line including the opening brace:
+Keep function declarations on one line including the opening brace:
 
 ```swift
 func reticulateSplines(spline: [Double]) -> Bool {
@@ -299,14 +266,7 @@ func reticulateSplines(spline: [Double]) -> Bool {
 }
 ```
 
-For functions with long signatures, add line breaks at appropriate points and add an extra indent on subsequent lines:
-
-```swift
-func reticulateSplines(spline: [Double], adjustmentFactor: Double,
-    translateConstant: Int, comment: String) -> Bool {
-  // reticulate code goes here
-}
-```
+If function declaration gets too long it might indicate you need to refactor it. I.e. you might want to [introduce a parameter object](http://www.refactoring.com/catalog/introduceParameterObject.html) in case parameters naturally go together.
 
 
 ## Closure Expressions
@@ -351,6 +311,11 @@ attendeeList.sort { a, b in
 }
 ```
 
+Single-line is acceptable as well:
+
+```swift
+attendeeList.sort { a, b in a > b }
+```
 
 ## Types
 
@@ -367,8 +332,6 @@ let widthString = (width as NSNumber).stringValue    // String
 let width: NSNumber = 120.0                          // NSNumber
 let widthString: NSString = width.stringValue        // NSString
 ```
-
-In Sprite Kit code, use `CGFloat` if it makes the code more succinct by avoiding too many conversions.
 
 ### Constants
 
@@ -461,9 +424,6 @@ let currentBounds: CGRect = computeViewBounds()
 var names: [String] = []
 ```
 
-**NOTE**: Following this guideline means picking descriptive names is even more important than before.
-
-
 ### Syntactic Sugar
 
 Prefer the shortcut versions of type declarations over the full generics syntax.
@@ -485,7 +445,7 @@ var faxNumber: Optional<Int>
 
 ## Control Flow
 
-Prefer the `for-in` style of `for` loop over the `for-condition-increment` style.
+Use `for-in` style.
 
 **Preferred:**
 ```swift
@@ -498,18 +458,7 @@ for (index, person) in attendeeList.enumerate() {
 }
 ```
 
-**Not Preferred:**
-```swift
-for var i = 0; i < 3; i++ {
-  println("Hello three times")
-}
-
-for var i = 0; i < attendeeList.count; i++ {
-  let person = attendeeList[i]
-  println("\(person) is at position #\(i)")
-}
-```
-
+Avoid using `for-condition-increment` style because it's [going to be removed](https://github.com/apple/swift-evolution/blob/master/proposals/0007-remove-c-style-for-loops.md).
 
 ## Semicolons
 
@@ -544,80 +493,6 @@ let color = "red"
 ```swift
 let colour = "red"
 ```
-
-## Copyright Statement
-
-The following copyright statement should be included at the top of every source
-file:
-
-    /*
-     * Copyright (c) 2015 Razeware LLC
-     * 
-     * Permission is hereby granted, free of charge, to any person obtaining a copy
-     * of this software and associated documentation files (the "Software"), to deal
-     * in the Software without restriction, including without limitation the rights
-     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     * copies of the Software, and to permit persons to whom the Software is
-     * furnished to do so, subject to the following conditions:
-     * 
-     * The above copyright notice and this permission notice shall be included in
-     * all copies or substantial portions of the Software.
-     * 
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-     * THE SOFTWARE.
-     */
-
-## Smiley Face
-
-Smiley faces are a very prominent style feature of the raywenderlich.com site! It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The closing square bracket `]` is used because it represents the largest smile able to be captured using ASCII art. A closing parenthesis `)` creates a half-hearted smile, and thus is not preferred.
-
-**Preferred:**
-```
-:]
-```
-
-**Not Preferred:**
-```
-:)
-```  
-
-
 ## Credits
 
-This style guide is a collaborative effort from the most stylish raywenderlich.com team members: 
-
-* [Jawwad Ahmad](https://github.com/jawwad)
-* [Soheil Moayedi Azarpour](https://github.com/moayes)
-* [Scott Berrevoets](https://github.com/Scott90)
-* [Eric Cerney](https://github.com/ecerney)
-* [Sam Davies](https://github.com/sammyd)
-* [Evan Dekhayser](https://github.com/edekhayser)
-* [Jean-Pierre Distler](https://github.com/pdistler)
-* [Colin Eberhardt](https://github.com/ColinEberhardt)
-* [Greg Heo](https://github.com/gregheo)
-* [Matthijs Hollemans](https://github.com/hollance)
-* [Erik Kerber](https://github.com/eskerber)
-* [Christopher LaPollo](https://github.com/elephantronic)
-* [Ben Morrow](https://github.com/benmorrow)
-* [Andy Pereira](https://github.com/macandyp)
-* [Ryan Nystrom](https://github.com/rnystrom)
-* [Andy Obusek](https://github.com/obuseme)
-* [Cesare Rocchi](https://github.com/funkyboy)
-* [Ellen Shapiro](https://github.com/designatednerd)
-* [Marin Todorov](https://github.com/icanzilb)
-* [Chris Wagner](https://github.com/cwagdev)
-* [Ray Wenderlich](https://github.com/rwenderlich)
-* [Jack Wu](https://github.com/jackwu95)
-
-Hat tip to [Nicholas Waynik](https://github.com/ndubbs) and the [Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide) team!
-
-We also drew inspiration from Apple’s reference material on Swift:
-
-* [The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html)
-* [Using Swift with Cocoa and Objective-C](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html)
-* [Swift Standard Library Reference](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html)
+This style guide is based on [raywenderlich/swift-style-guide](https://github.com/raywenderlich/swift-style-guide).
