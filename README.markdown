@@ -424,9 +424,6 @@ let currentBounds: CGRect = computeViewBounds()
 var names: [String] = []
 ```
 
-**NOTE**: Following this guideline means picking descriptive names is even more important than before.
-
-
 ### Syntactic Sugar
 
 Prefer the shortcut versions of type declarations over the full generics syntax.
