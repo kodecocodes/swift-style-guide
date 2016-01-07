@@ -311,6 +311,11 @@ attendeeList.sort { a, b in
 }
 ```
 
+Single-line is acceptable as well:
+
+```swift
+attendeeList.sort { a, b in a > b }
+```
 
 ## Types
 
