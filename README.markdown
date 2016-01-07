@@ -445,7 +445,7 @@ var faxNumber: Optional<Int>
 
 ## Control Flow
 
-Prefer the `for-in` style of `for` loop over the `for-condition-increment` style.
+Use `for-in` style.
 
 **Preferred:**
 ```swift
@@ -458,18 +458,7 @@ for (index, person) in attendeeList.enumerate() {
 }
 ```
 
-**Not Preferred:**
-```swift
-for var i = 0; i < 3; i++ {
-  println("Hello three times")
-}
-
-for var i = 0; i < attendeeList.count; i++ {
-  let person = attendeeList[i]
-  println("\(person) is at position #\(i)")
-}
-```
-
+Avoid using `for-condition-increment` style because it's [going to be removed](https://github.com/apple/swift-evolution/blob/master/proposals/0007-remove-c-style-for-loops.md).
 
 ## Semicolons
 
