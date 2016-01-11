@@ -551,7 +551,7 @@ The following copyright statement should be included at the top of every source
 file:
 
     /*
-     * Copyright (c) 2015 Razeware LLC
+     * Copyright (c) 2016 Razeware LLC
      * 
      * Permission is hereby granted, free of charge, to any person obtaining a copy
      * of this software and associated documentation files (the "Software"), to deal
