@@ -222,9 +222,7 @@ The example above demonstrates the following style guidelines:
 
 ### Use of Self
 
-For conciseness, avoid using `self` since Swift does not require it to access an object's properties or invoke its methods.
-
-Use `self` when required to differentiate between property names and arguments in initializers, and when referencing properties in closure expressions (as required by the compiler):
+Swift does not require 'self' to access an object's properties or invoke its methods, However use it as we are from obj-c world:
 
 ```swift
 class BoardLocation {
