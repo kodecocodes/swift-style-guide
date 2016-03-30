@@ -512,6 +512,7 @@ for var i = 0; i < attendeeList.count; i++ {
 }
 ```
 
+The C-style for loops [will be dropped in Swift 3 anyway](https://github.com/apple/swift-evolution/blob/master/proposals/0007-remove-c-style-for-loops.md).
 
 ## Semicolons
 
