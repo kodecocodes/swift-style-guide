@@ -235,7 +235,7 @@ class BoardLocation {
     self.column = column
     
     let closure = {
-      println(self.row)
+      print(self.row)
     }
   }
 }
@@ -496,19 +496,19 @@ for _ in 0..<3 {
 }
 
 for (index, person) in attendeeList.enumerate() {
-  println("\(person) is at position #\(index)")
+  print("\(person) is at position #\(index)")
 }
 ```
 
 **Not Preferred:**
 ```swift
 for var i = 0; i < 3; i++ {
-  println("Hello three times")
+  print("Hello three times")
 }
 
 for var i = 0; i < attendeeList.count; i++ {
   let person = attendeeList[i]
-  println("\(person) is at position #\(i)")
+  print("\(person) is at position #\(i)")
 }
 ```
 
