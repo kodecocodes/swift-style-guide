@@ -492,7 +492,7 @@ Prefer the `for-in` style of `for` loop over the `for-condition-increment` style
 **Preferred:**
 ```swift
 for _ in 0..<3 {
-  println("Hello three times")
+  print("Hello three times")
 }
 
 for (index, person) in attendeeList.enumerate() {
