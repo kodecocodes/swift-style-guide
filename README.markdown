@@ -12,6 +12,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Enumerations](#enumerations)
   * [Prose](#prose)
   * [Class Prefixes](#class-prefixes)
+  * [Language](#language)
 * [Spacing](#spacing)
 * [Comments](#comments)
 * [Classes and Structures](#classes-and-structures)
@@ -28,7 +29,6 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Syntactic Sugar](#syntactic-sugar)
 * [Control Flow](#control-flow)
 * [Semicolons](#semicolons)
-* [Language](#language)
 * [Copyright Statement](#copyright-statement)
 * [Smiley Face](#smiley-face)
 * [Credits](#credits)
@@ -119,6 +119,19 @@ Swift types are automatically namespaced by the module that contains them and yo
 import SomeModule
 
 let myClass = MyModule.UsefulClass()
+```
+### Language
+
+Use US English spelling to match Apple's API.
+
+**Preferred:**
+```swift
+let color = "red"
+```
+
+**Not Preferred:**
+```swift
+let colour = "red"
 ```
 
 
@@ -534,19 +547,6 @@ let swift = "not a scripting language";
 
 **NOTE**: Swift is very different to JavaScript, where omitting semicolons is [generally considered unsafe](http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript)
 
-## Language
-
-Use US English spelling to match Apple's API.
-
-**Preferred:**
-```swift
-let color = "red"
-```
-
-**Not Preferred:**
-```swift
-let colour = "red"
-```
 
 ## Copyright Statement
 
