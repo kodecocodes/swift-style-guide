@@ -9,6 +9,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 ## Table of Contents
 
 * [Naming](#naming)
+  * [Enumerations](#enumerations)
   * [Prose](#prose)
   * [Class Prefixes](#class-prefixes)
 * [Spacing](#spacing)
@@ -35,7 +36,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 
 ## Naming
 
-Use descriptive names with camel case for classes, methods, variables, etc. Class names should be capitalized, while method names and variables should start with a lower case letter.
+Use descriptive names with camel case for classes, methods, variables, etc. Type names and protocols should be capitalized, while method names and variables should start with a lower case letter.
 
 **Preferred:**
 
