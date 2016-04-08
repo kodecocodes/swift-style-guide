@@ -131,7 +131,7 @@ Selectors may include a class name prefix. Omit this prefix when possible.
 ```swift
 extension ViewController {
    :
-   \#selector(ViewController.viewDidLoad)
+   #selector(ViewController.viewDidLoad)
    :
 }
 ```
@@ -140,8 +140,8 @@ extension ViewController {
 ```swift
 extension ViewController {
   :
-  \#selector(viewDidLoad)
-  \#selector(UIView.insertSubview(_:at:))
+  #selector(viewDidLoad)
+  #selector(UIView.insertSubview(_:at:))
   :
 }
 ```
