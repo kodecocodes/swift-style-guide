@@ -367,6 +367,16 @@ attendeeList.sort { a, b in
 }
 ```
 
+Chained methods using trailing closures should be clear and easy to read in context.  Decisions on spacing, line breaks, and when to use named versus anonymous arguments is left to the discretion of the author.  Examples:
+
+```swift
+let value = numbers.map { $0 * 2 }.filter { $0 % 3 == 0 }.indexOf(90)
+
+let value = numbers
+   .map {$0 * 2}
+   .filter {$0 > 50}
+   .map {$0 + 10}
+```
 
 ## Types
 
