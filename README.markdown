@@ -460,13 +460,13 @@ Prefer the struct-scope constants `CGRect.infinite`, `CGRect.null`, etc. over gl
 
 ### Type Inference
 
-Prefer compact code and let the compiler infer the type for a constant or variable, unless you need a specific type other than the default such as `CGFloat` or `Int16`.
+Prefer compact code and let the compiler infer the type for constants or variables of single instances.  Type inference is also appropriate for small (non-empty) arrays and dictionaries. When required, specify the specific type such as `CGFloat` or `Int16`.
 
 **Preferred:**
 ```swift
 let message = "Click the button"
 let currentBounds = computeViewBounds()
-var names = [String]()
+var names = ["Mic", "Sam", "Christine"]
 let maximumWidth: CGFloat = 106.5
 ```
 
@@ -474,7 +474,23 @@ let maximumWidth: CGFloat = 106.5
 ```swift
 let message: String = "Click the button"
 let currentBounds: CGRect = computeViewBounds()
+let names = [String]()
+```
+
+#### Type Annotation for Empty Arrays and Dictionaries
+
+For empty arrays and dictionaries, use the type annotation. (For an array or dictionary assigned to a large, multi-line literal, use the type annotation.)
+
+**Preferred:**
+```swift
 var names: [String] = []
+var lookup: [String: Int] = [:]
+```
+
+**Not Preferred:**
+```swift
+var names = [String]()
+var lookup = [String: Int]()
 ```
 
 **NOTE**: Following this guideline means picking descriptive names is even more important than before.
