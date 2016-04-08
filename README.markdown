@@ -479,7 +479,7 @@ let names = [String]()
 
 #### Type Annotation for Empty Arrays and Dictionaries
 
-For empty arrays and dictionaries, use the type annotation. (For an array or dictionary assigned to a large, multi-line literal, use the type annotation.)
+For empty arrays and dictionaries, use type annotation. (For an array or dictionary assigned to a large, multi-line literal, use type annotation.)
 
 **Preferred:**
 ```swift
