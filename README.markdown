@@ -8,6 +8,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 
 ## Table of Contents
 
+* [Correctness](#correctness)
 * [Naming](#naming)
   * [Enumerations](#enumerations)
   * [Prose](#prose)
@@ -33,6 +34,11 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 * [Smiley Face](#smiley-face)
 * [Credits](#credits)
 
+
+## Correctness
+
+Consider warnings to be errors. This single rule informs many stylistic decisions such
+as not to use the `++` or `--` operators, C-style for loops, or strings as selectors.
 
 ## Naming
 
@@ -512,17 +518,30 @@ for _ in 0..<3 {
 for (index, person) in attendeeList.enumerate() {
   print("\(person) is at position #\(index)")
 }
+
+for index in 0.stride(to: items.count, by: 2) {
+    print(index)
+}
+
+for index in (0...3).reverse() {
+    print(index)
+}
 ```
 
 **Not Preferred:**
 ```swift
-for var i = 0; i < 3; i++ {
-  print("Hello three times")
+var i = 0
+while i < 3 {
+    print("Hello three times")
+    i += 1
 }
 
-for var i = 0; i < attendeeList.count; i++ {
+
+var i = 0
+while i < attendeeList.count {
   let person = attendeeList[i]
   print("\(person) is at position #\(i)")
+  i += 1
 }
 ```
 
