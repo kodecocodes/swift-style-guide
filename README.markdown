@@ -13,6 +13,9 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Prose](#prose)
   * [Class Prefixes](#class-prefixes)
   * [Language](#language)
+* [Code Organization](#code-organization)
+  * [Extensions](#extension)
+  * [Final](#final)
 * [Spacing](#spacing)
 * [Comments](#comments)
 * [Classes and Structures](#classes-and-structures)
@@ -134,6 +137,41 @@ let color = "red"
 let colour = "red"
 ```
 
+## Code Organization
+
+Use extensions to organize your code into logical blocks of functionality. Each extension should be set off with a `// MARK: -` comment to keep things well-organized.
+
+### Protocol Conformance
+
+ In particular, when adding protocol conformance to a model, prefer adding a separate extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
+
+**Preferred:**
+```swift
+class MyViewcontroller: UIViewController {
+  // class stuff here
+}
+
+// MARK: - UITableViewDataSource
+extension MyViewcontroller: UITableViewDataSource {
+  // table view data source methods
+}
+
+// MARK: - UIScrollViewDelegate
+extension MyViewcontroller: UIScrollViewDelegate {
+  // scroll view delegate methods
+}
+```
+
+**Not Preferred:**
+```swift
+class MyViewcontroller: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
+  // all methods
+}
+```
+
+Since the compiler does not allow you to re-declare protocol conformance in a derived class, it is not always required to replicate the extension groups of the base class.  This is especially true if the derived class is a terminal class and a small number of methods are being overriden.  When to preserve the extension groups is left to the discretion of the author.
+
+For UIKit view controllers, consider grouping lifecyle, custom accessors, and IBAction in separate class extensions.
 
 ## Spacing
 
@@ -252,36 +290,6 @@ class BoardLocation {
       print(self.row)
     }
   }
-}
-```
-
-### Protocol Conformance
-
-When adding protocol conformance to a class, prefer adding a separate class extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
-
-Also, don't forget the `// MARK: -` comment to keep things well-organized!
-
-**Preferred:**
-```swift
-class MyViewcontroller: UIViewController {
-  // class stuff here
-}
-
-// MARK: - UITableViewDataSource
-extension MyViewcontroller: UITableViewDataSource {
-  // table view data source methods
-}
-
-// MARK: - UIScrollViewDelegate
-extension MyViewcontroller: UIScrollViewDelegate {
-  // scroll view delegate methods
-}
-```
-
-**Not Preferred:**
-```swift
-class MyViewcontroller: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
-  // all methods
 }
 ```
 
