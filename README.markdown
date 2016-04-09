@@ -60,6 +60,20 @@ class app_widgetContainer {
 }
 ```
 
+Abbreviations and and acronyms should generally be avoided. Following Apple Design guidelines, abbreviations and initialisms that appear in all upper case should be uniformly uppercase or lowercase. Examples:
+
+**Preferred**
+```swift
+let urlString: URLString
+let userID: UserID
+```
+
+**Not Preferred**
+```swift
+let uRLString: UrlString
+let userId: UserId
+```
+
 For functions and init methods, prefer named parameters for all arguments unless the context is very clear. Include external parameter names if it makes function calls more readable.
 
 ```swift
@@ -324,7 +338,6 @@ func reticulateSplines(spline: [Double], adjustmentFactor: Double,
 }
 ```
 
-
 ## Closure Expressions
 
 Use trailing closure syntax only if there's a single closure expression parameter at the end of the argument list. Give the closure parameters descriptive names.
@@ -366,7 +379,6 @@ attendeeList.sort { a, b in
   a > b
 }
 ```
-
 
 ## Types
 
@@ -526,7 +538,6 @@ for var i = 0; i < attendeeList.count; i++ {
 }
 ```
 
-
 ## Semicolons
 
 Swift does not require a semicolon after each statement in your code. They are only required if you wish to combine multiple statements on a single line.
@@ -619,8 +630,9 @@ This style guide is a collaborative effort from the most stylish raywenderlich.c
 
 Hat tip to [Nicholas Waynik](https://github.com/ndubbs) and the [Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide) team!
 
-We also drew inspiration from Apple’s reference material on Swift:
+We also draw inspiration from Apple’s reference material on Swift:
 
+* [The Swift API Design Guide](https://swift.org/documentation/api-design-guidelines/)
 * [The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html)
 * [Using Swift with Cocoa and Objective-C](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html)
 * [Swift Standard Library Reference](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html)
