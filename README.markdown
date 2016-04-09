@@ -9,6 +9,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 ## Table of Contents
 
 * [Naming](#naming)
+  * [Protocols](#protocols)
   * [Enumerations](#enumerations)
   * [Prose](#prose)
   * [Class Prefixes](#class-prefixes)
@@ -81,6 +82,10 @@ class Counter {
   func incrementBy(amount: Int) { ... }
 }
 ```
+
+### Protocols
+
+Following API Design Guidelines, protocols names that describe what something is should be a noun.  Examples: `Collection`, `WidgetFactory`.  Protocols names that describe an ability should end in -ing, -able, or -ible.  Examples: `Equatable`, `Resizing`.
 
 ### Enumerations
 
