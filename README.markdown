@@ -521,7 +521,6 @@ let tuples = zip(a, b)  // feels natural as a free function (symmetry)
 let value = max(x,y,z)  // another free function that feels natural
 ```
 
-
 ## Control Flow
 
 Prefer the `for-in` style of `for` loop over the `for-condition-increment` style.
