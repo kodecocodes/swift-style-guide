@@ -33,6 +33,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Syntactic Sugar](#syntactic-sugar)
 * [Control Flow](#control-flow)
 * [Semicolons](#semicolons)
+* [Parenthesis](#parenthesis)
 * [Copyright Statement](#copyright-statement)
 * [Smiley Face](#smiley-face)
 * [Credits](#credits)
@@ -600,6 +601,23 @@ let swift = "not a scripting language";
 
 **NOTE**: Swift is very different to JavaScript, where omitting semicolons is [generally considered unsafe](http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript)
 
+## Parenthesis
+
+Parenthesis around conditionals are not required and should be omitted.
+
+**Preferred:**
+```swift
+if name == "Hello" {
+  print("World")
+}
+```
+
+**Not Preferred:**
+```swift
+if (name == "Hello") {
+  print("World")
+}
+```
 
 ## Copyright Statement
 
