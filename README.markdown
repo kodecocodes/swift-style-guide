@@ -28,6 +28,8 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Type Inference](#type-inference)
   * [Syntactic Sugar](#syntactic-sugar)
 * [Control Flow](#control-flow)
+* [Golden Path](#golden-path)
+  * [Failing Guards](#failing-guards)
 * [Semicolons](#semicolons)
 * [Copyright Statement](#copyright-statement)
 * [Smiley Face](#smiley-face)
@@ -526,6 +528,75 @@ for var i = 0; i < attendeeList.count; i++ {
 }
 ```
 
+## Golden Path
+
+When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path. That is, don't nest `if` statements. Multiple return statements are OK.  The `guard` statement is built for this.
+
+**Preferred:**
+```swift
+func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
+    
+    guard let context = context else { throw FFTError.NoContext }
+    guard let inputData = inputData else { throw FFTError.NoInputData }
+    
+    // use context and input to compute the frequencies
+    
+    return frequencies
+}
+```
+
+**Not Preferred:**
+```swift
+func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
+
+    if let context = context {
+        if let inputData = inputData {
+
+            // use context and input to compute the frequencies            
+
+            return frequencies
+        }
+        else {
+            throw FFTError.NoInputData
+        }
+    }
+    else {
+        throw FFTError.NoContext
+    }
+}
+```
+
+When multiple optionals are unwrapped either with `guard` or `if let`, minimize nesting by using the compound version when possible. Example:
+
+**Preferred:**
+```swift
+guard let number1 = number1, number2 = number2, number3 = number3 else { fatalError("impossible") }
+// do something with numbers
+```
+
+**Not Preferred:**
+```swift
+if let number1 = number1 {
+  if let number2 = number2 {
+    if let number3 = number3 {
+      // do something with numbers
+    }
+    else {
+      fatalError("impossible")
+    }
+  }
+  else {
+    fatalError("impossible")
+  }
+}
+else {
+  fatalError("impossible")
+}
+```
+
+### Failing Guards
+
+Guard statements are required to exit in some way.  Generally, this should be simple one line statement such as `return`, `throw`, `break`, `continue`, and `fatalError()`.  Large code blocks should be avoided.  If cleanup code is required for multiple exit points, consider using a `defer` block to avoid cleanup code duplication.
 
 ## Semicolons
 
