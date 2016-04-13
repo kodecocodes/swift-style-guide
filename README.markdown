@@ -177,7 +177,6 @@ extension ViewController {
 }
 ```
 
-
 ### Language
 
 Use US English spelling to match Apple's API.
@@ -795,7 +794,6 @@ Smiley faces are a very prominent style feature of the raywenderlich.com site! I
 ```
 :)
 ```  
-
 
 ## Credits
 
