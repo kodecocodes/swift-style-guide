@@ -32,6 +32,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Struct Initializers](#struct-initializers)
   * [Type Inference](#type-inference)
   * [Syntactic Sugar](#syntactic-sugar)
+* [Functions vs Methods](#functions-vs-methods)
 * [Control Flow](#control-flow)
 * [Semicolons](#semicolons)
 * [Parenthesis](#parenthesis)
@@ -545,6 +546,27 @@ var employees: Dictionary<Int, String>
 var faxNumber: Optional<Int>
 ```
 
+## Functions vs Methods
+
+Methods are functions associated with a type and preferred because of their autocomplete discoverability. Free functions are less common but make sense when an operation is not closely associated with a particular type or instance.
+
+**Preferred**
+```swift
+let sorted = items.mergeSort()  // easily discoverable
+rocket.launch()  // clearly acts on the model
+```
+
+**Not Preferred**
+```swift
+let sorted = mergeSort(items)  // hard to discover
+launch(&rocket)
+```
+
+**Free Function Exceptions**
+```swift
+let tuples = zip(a, b)  // feels natural as a free function (symmetry)
+let value = max(x,y,z)  // another free function that feels natural
+```
 
 ## Control Flow
 
