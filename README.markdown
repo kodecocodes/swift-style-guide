@@ -828,7 +828,7 @@ Hat tip to [Nicholas Waynik](https://github.com/ndubbs) and the [Objective-C Sty
 
 We also draw inspiration from Apple’s reference material on Swift:
 
-* [The Swift API Design Guide](https://swift.org/documentation/api-design-guidelines/)
+* [The Swift API Design Guidelines](https://swift.org/documentation/api-design-guidelines/)
 * [The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html)
 * [Using Swift with Cocoa and Objective-C](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html)
 * [Swift Standard Library Reference](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html)
