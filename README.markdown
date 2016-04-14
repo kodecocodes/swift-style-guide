@@ -638,7 +638,7 @@ Full access control annotation in tutorials can distract from the main topic and
 **Preferred:**
 ```swift
 class TimeMachine {  
-  private lazy dynamic var fluxCapacitor = FluxCapacitor()
+  private dynamic lazy var fluxCapacitor = FluxCapacitor()
 }
 ```
 
