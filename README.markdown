@@ -539,7 +539,7 @@ Consider using lazy initialization for finer grain control over object lifetime.
 ```swift
 lazy var locationManager: CLLocationManager = self.makeLocationManager()
 
-private func makeLocationManager() -> CLLocationManager
+private func makeLocationManager() -> CLLocationManager {
   let manager = CLLocationManager()
   manager.desiredAccuracy = kCLLocationAccuracyBest
   manager.delegate = self
