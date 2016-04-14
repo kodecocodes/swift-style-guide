@@ -651,7 +651,7 @@ class TimeMachine {
 
 ## Control Flow
 
-Prefer the `for-in` style of `for` loop over the `for-condition-increment` style.
+Prefer the `for-in` style of `for` loop over the `while-condition-increment` style.
 
 **Preferred:**
 ```swift
