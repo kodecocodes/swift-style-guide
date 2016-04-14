@@ -14,6 +14,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Enumerations](#enumerations)
   * [Prose](#prose)
   * [Selectors](#selectors)
+  * [Generics](#generics)
   * [Class Prefixes](#class-prefixes)
   * [Language](#language)
 * [Code Organization](#code-organization)
@@ -177,6 +178,24 @@ extension ViewController {
   #selector(UIView.insertSubview(_:at:))
   :
 }
+```
+
+### Generics
+
+Generic type parameters should be descriptive, upper camel case names. When a type name doesn't have a meaningful relationship or role, use a traditional single uppercase letter such as `T`, `U`, or `V`.
+
+**Preferred:**
+```swift
+struct Stack<Element> { ... }
+func writeTo<Target: OutputStream>(inout target: Target)
+func max<T: Comparable>(x: T, _ y: T) -> T
+```
+
+**Not Preferred:**
+```swift
+struct Stack<T> { ... }
+func writeTo<target: OutputStream>(inout t: target)
+func max<Thing: Comparable>(x: Thing, _ y: Thing) -> Thing
 ```
 
 ### Language
