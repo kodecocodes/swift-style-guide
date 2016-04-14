@@ -633,7 +633,7 @@ let value = max(x,y,z)  // another free function that feels natural
 
 ## Access Control
 
-Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` appropriately, however, adds clarity and promotes encapsulation.  Use `private` as the first property specifier. The only property specifier that should come before access control is `static`.
+Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` appropriately, however, adds clarity and promotes encapsulation.  Use `private` as the first property specifier. The only specifier that should come before access control is `static`.
 
 **Preferred:**
 ```swift
@@ -642,7 +642,7 @@ class TimeMachine {
 }
 ```
 
-***Not Preferred:**
+**Not Preferred:**
 ```swift
 class TimeMachine {  
   lazy dynamic private var fluxCapacitor = FluxCapacitor()
