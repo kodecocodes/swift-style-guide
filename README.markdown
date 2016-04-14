@@ -647,7 +647,6 @@ class TimeMachine {
 class TimeMachine {  
   lazy dynamic private var fluxCapacitor = FluxCapacitor()
 }
-
 ```
 
 ## Control Flow
