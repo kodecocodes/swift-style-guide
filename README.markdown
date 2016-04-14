@@ -849,6 +849,7 @@ This style guide is a collaborative effort from the most stylish raywenderlich.c
 * [Evan Dekhayser](https://github.com/edekhayser)
 * [Jean-Pierre Distler](https://github.com/pdistler)
 * [Colin Eberhardt](https://github.com/ColinEberhardt)
+* [Ray Fix](https://github.com/rayfix)
 * [Greg Heo](https://github.com/gregheo)
 * [Matthijs Hollemans](https://github.com/hollance)
 * [Erik Kerber](https://github.com/eskerber)
