@@ -34,6 +34,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Type Inference](#type-inference)
   * [Syntactic Sugar](#syntactic-sugar)
 * [Functions vs Methods](#functions-vs-methods)
+* [Access Control](#access-control)
 * [Control Flow](#control-flow)
 * [Golden Path](#golden-path)
   * [Failing Guards](#failing-guards)
@@ -605,6 +606,25 @@ launch(&rocket)
 ```swift
 let tuples = zip(a, b)  // feels natural as a free function (symmetry)
 let value = max(x,y,z)  // another free function that feels natural
+```
+
+## Access Control
+
+Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` appropriately, however, adds clarity and promotes encapsulation.  Use `private` as the first property specifier. The only property specifier that should come before access control is `static`.
+
+**Preferred:**
+```swift
+class TimeMachine {  
+  private lazy dynamic var fluxCapacitor = FluxCapacitor()
+}
+```
+
+***Not Preferred:**
+```swift
+class TimeMachine {  
+  lazy dynamic private fluxCapacitor: FluxCapacitor()
+}
+
 ```
 
 ## Control Flow
