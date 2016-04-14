@@ -645,7 +645,7 @@ class TimeMachine {
 ***Not Preferred:**
 ```swift
 class TimeMachine {  
-  lazy dynamic private fluxCapacitor: FluxCapacitor()
+  lazy dynamic private var fluxCapacitor = FluxCapacitor()
 }
 
 ```
