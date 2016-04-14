@@ -31,6 +31,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Constants](#constants)
   * [Optionals](#optionals)
   * [Struct Initializers](#struct-initializers)
+  * [Lazy Initialization](#lazy-initialization)
   * [Type Inference](#type-inference)
   * [Syntactic Sugar](#syntactic-sugar)
 * [Functions vs Methods](#functions-vs-methods)
@@ -528,6 +529,28 @@ let centerPoint = CGPointMake(96, 42)
 ```
 
 Prefer the struct-scope constants `CGRect.infinite`, `CGRect.null`, etc. over global constants `CGRectInfinite`, `CGRectNull`, etc. For existing variables, you can use the shorter `.zero`.
+
+
+### Lazy Initialization
+
+Consider using lazy initialization for finer grain control over object lifetime. This is especially true for `UIViewController` that loads views lazily.  You can either use a closure that is immediately called `{ }()` or call a private factory method. Example:
+
+```swift
+lazy var locationManager: CLLocationManager = self.makeLocationManager()
+
+private func makeLocationManager() -> CLLocationManager
+  let manager = CLLocationManager()
+  manager.desiredAccuracy = kCLLocationAccuracyBest
+  manager.delegate = self
+  manager.requestAlwaysAuthorization()
+  return manager
+}
+```
+
+**Notes:**
+  - `[unowned self]` is not required here. A retain cycle is not created.
+  - Location manager has a side-effect for popping up UI to ask the user for permission so fine grain control makes sense here.*
+
 
 ### Type Inference
 
