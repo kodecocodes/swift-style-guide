@@ -500,7 +500,7 @@ radius * Math.pi * 2 // circumference
 
 ### Static Methods and Variable Properties
 
-Static methods and variables work similarly to global variables and should be used sparingly. They are useful when functionality is scoped to a particular type or when Objective-C interoperability is required. 
+Static methods and variables work similarly to global functions and global variables and should be used sparingly. They are useful when functionality is scoped to a particular type or when Objective-C interoperability is required. 
 
 ### Optionals
 
