@@ -484,6 +484,23 @@ Constants are defined using the `let` keyword, and variables with the `var` keyw
 
 **Tip:** A good technique is to define everything using `let` and only change it to `var` if the compiler complains!
 
+Program constants can be defined with `static let` usually scoped to within a `struct`, `enum` or `class`.  Example:
+
+```swift
+enum Math {
+  static let e  = 2.718281828459045235360287
+  static let pi = 3.141592653589793238462643
+}
+
+radius * Math.pi * 2 // circumference
+
+```
+
+**Note:** The advantage of using a case-less enumeration is that it can't accidentally be instantiated and works as a pure namespace.
+
+### Static Methods and Variable Properties
+
+Static methods and variables work similarly to global functions and global variables and should be used sparingly. They are useful when functionality is scoped to a particular type or when Objective-C interoperability is required. 
 
 ### Optionals
 
