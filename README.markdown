@@ -611,7 +611,9 @@ var faxNumber: Optional<Int>
 
 ## Functions vs Methods
 
-Methods are functions associated with a type and preferred because of their autocomplete discoverability. Free functions are less common but make sense when an operation is not closely associated with a particular type or instance.
+Free functions, which aren't attached to a class or type, should be used sparingly. When possible, prefer to use a method instead of a free function. This aids in readability and discoverability.
+
+Free functions are most appropriate when they aren't associated with any particular type or instance.
 
 **Preferred**
 ```swift
@@ -850,6 +852,7 @@ This style guide is a collaborative effort from the most stylish raywenderlich.c
 * [Jean-Pierre Distler](https://github.com/pdistler)
 * [Colin Eberhardt](https://github.com/ColinEberhardt)
 * [Ray Fix](https://github.com/rayfix)
+* [Joshua Greene](https://github.com/JRG-Developer)
 * [Greg Heo](https://github.com/gregheo)
 * [Matthijs Hollemans](https://github.com/hollance)
 * [Erik Kerber](https://github.com/eskerber)
