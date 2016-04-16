@@ -281,7 +281,7 @@ else {
 
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.
 
-* Colons always have no space on the left and one space on the right.  An exception is the ternary operator.
+* Colons always have no space on the left and one space on the right.  Exceptions are the ternary operator `? :` and empty dictionary `[:]`.
 
 **Preferred:**
 ```swift
@@ -293,7 +293,7 @@ class TestDatabase: Database {
 **Not Preferred:**
 ```swift
 class TestDatabase : Database {
-  var data: [String: CGFloat] = ["A" : 1.2, "B":3.2]
+  var data :[String:CGFloat] = ["A" : 1.2, "B":3.2]
 }
 ```
 
