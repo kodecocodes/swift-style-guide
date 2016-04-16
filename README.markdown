@@ -602,7 +602,7 @@ private func makeLocationManager() -> CLLocationManager {
 
 **Notes:**
   - `[unowned self]` is not required here. A retain cycle is not created.
-  - Location manager has a side-effect for popping up UI to ask the user for permission so fine grain control makes sense here.*
+  - Location manager has a side-effect for popping up UI to ask the user for permission so fine grain control makes sense here.
 
 
 ### Type Inference
