@@ -32,6 +32,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 * [Closure Expressions](#closure-expressions)
 * [Types](#types)
   * [Constants](#constants)
+  * [Static Methods and Variable Properties](#static-methods-and-variable-properties)
   * [Optionals](#optionals)
   * [Struct Initializers](#struct-initializers)
   * [Lazy Initialization](#lazy-initialization)
