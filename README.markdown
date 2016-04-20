@@ -27,6 +27,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Use of Self](#use-of-self)
   * [Protocol Conformance](#protocol-conformance)
   * [Computed Properties](#computed-properties)
+  * [Final](#final)
 * [Function Declarations](#function-declarations)
 * [Closure Expressions](#closure-expressions)
 * [Types](#types)
@@ -438,6 +439,20 @@ var diameter: Double {
 var diameter: Double {
   get {
     return radius * 2
+  }
+}
+```
+
+### Final
+
+Mark classes `final` when inheritance is not intended.  Example:
+
+```swift
+// Turn any generic type into a reference type using this Box class.
+final class Box<T> {
+  let value: T     
+  init(_ value: T) {
+    self.value = value
   }
 }
 ```
