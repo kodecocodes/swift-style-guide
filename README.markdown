@@ -37,6 +37,8 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Type Inference](#type-inference)
   * [Syntactic Sugar](#syntactic-sugar)
 * [Functions vs Methods](#functions-vs-methods)
+* [Memory Management](#memory-management)
+  * [Extending Lifetime](#extending-lifetime)
 * [Access Control](#access-control)
 * [Control Flow](#control-flow)
 * [Golden Path](#golden-path)
@@ -719,6 +721,41 @@ launch(&rocket)
 ```swift
 let tuples = zip(a, b)  // feels natural as a free function (symmetry)
 let value = max(x,y,z)  // another free function that feels natural
+```
+
+## Memory Management
+
+Code (even non-production, tutorial demo code) should not create reference cycles. Analyze your object graph and prevent strong cycles with `weak` and `unowned` references.  Alternatively, use value types (`struct`, `enum`) to prevent cycles altogether.
+
+### Extending object lifetime
+
+Extend object lifetime using the `[weak self]` and `guard let strongSelf = self else { return }` idiom.  `[weak self]` is preferred to `[unowned self]` where it is not immediately obvious that `self` outlives the closure.  Explicitly extending lifetime is preferred to optional unwrapping.
+
+**Preferred**
+```swift
+resource.request().onComplete { [weak self] response in
+  guard let strongSelf = self else { return }
+  let model = strongSelf.updateModel(response)
+  strongSelf.updateUI(model)
+}
+```
+
+**Not Preferred**
+```swift
+// might crash if self is released before response returns
+resource.request().onComplete { [unowned self] response in
+  let model = self.updateModel(response)
+  self.updateUI(model)
+}
+```
+
+**Not Preferred**
+```swift
+// deallocate could happen between updating the model and updating UI
+resource.request().onComplete { [weak self] response in
+  let model = self?.updateModel(response)
+  self?.updateUI(model)
+}
 ```
 
 ## Access Control
