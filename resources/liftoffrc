@@ -92,7 +92,26 @@ app_target_templates:
     - Supporting Files:
       - Info.plist        
 
-  viper-swift:
+  swift-mvvm:
+  - <%= project_name %>:
+    - Model:
+    - View:
+    - ViewModel:
+    - Client:
+    - Util:
+      - Extensions:
+    - AppDelegate:
+      - AppDelegate.swift  
+    - Resources:
+      - Fonts:
+      - Storyboards:
+        - Main.storyboard
+        - LaunchScreen.storyboard
+      - Assets.xcassets
+    - Supporting Files:
+      - Info.plist   
+
+  swift-viper:
   - <%= project_name %>:
     - AppDelegate:
       - AppDelegate.swift
@@ -123,7 +142,14 @@ test_target_templates:
       - Helpers:
       - Tests:
 
-  viper-swift:
+  swift-mvvm:
+    - <%= test_target_name %>:
+      - Resources:
+        - <%= test_target_name %>-Info.plist
+      - Helpers:
+      - Tests:
+
+  swift-viper:
     - <%= test_target_name %>:
       - Resources:
         - <%= test_target_name %>-Info.plist

@@ -1,26 +1,30 @@
 source 'https://github.com/CocoaPods/Specs'
 
 platform :ios, '<%= deployment_target %>'
-<% if project_template.eql?("swift") || project_template.eql?("viper-swift") %>use_frameworks!<% end %>
+<% if project_template.eql?("swift") || project_template.eql?("swift-viper") || project_template.eql?("swift-mvvm") %>use_frameworks!<% end %>
 inhibit_all_warnings!
 
 target :app, :exclusive => true do
   link_with '<%= project_name %>'
-<% if project_template.eql?("swift") || project_template.eql?("viper-swift") %>
-  pod 'Swinject'
+<% if project_template.eql?("swift") || project_template.eql?("swift-viper") || project_template.eql?("swift-mvvm") %>
+  pod 'Swinject', '~> 1.1'
     
-  pod 'Alamofire'
-  pod 'Genome'
+  pod 'Alamofire', '~> 3.3'
+  pod 'Gloss', '~> 0.7'
   
-  pod 'Nuke'
+  pod 'Nuke', '~> 3.1'
   
-  pod 'SwiftDate'
-  pod 'SwiftyColor'
-  pod 'SpringIndicator'
-  pod 'SnapKit'
-  pod 'AsyncSwift'
+  pod 'SwiftDate', '~> 3.0'
+  pod 'SwiftyColor', '~> 0.1'
+  pod 'SpringIndicator', '~> 1.2'
+  pod 'SnapKit', '~> 0.20'
+  pod 'AsyncSwift', '~> 1.7'
 
-  pod 'StatefulViewController'
+  pod 'StatefulViewController', '~> 1.0'
+
+  pod 'RxSwift', '~> 2.4'
+  pod 'RxCocoa', '~> 2.4'
+  pod 'RxAlamofire', '~> 2.2'
 end
 <% else %>  
   pod 'AFNetworking'
@@ -29,15 +33,6 @@ end
   pod 'SDWebImage'
 end
 <% end %>
-
-target :unit_tests, :exclusive => true do
-  link_with '<%= test_target_name %>'
-
-  pod 'Specta'
-  pod 'Expecta'
-  pod 'OCMock'
-  pod 'OHHTTPStubs'
-end
 
 <% if enable_settings && dependency_manager_enabled?("cocoapods") %>
 # Copy acknowledgements to the Settings.bundle
