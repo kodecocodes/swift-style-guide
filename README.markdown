@@ -981,7 +981,8 @@ Smiley faces are a very prominent style feature of the raywenderlich.com site! I
 
 ## Credits
 
-This style guide is a collaborative effort from the most stylish raywenderlich.com team members: 
+[Ray Fix](https://github.com/rayfix) currently maintains this style guide.
+It is a collaborative effort from the most stylish raywenderlich.com team members and its community: 
 
 * [Jawwad Ahmad](https://github.com/jawwad)
 * [Soheil Moayedi Azarpour](https://github.com/moayes)
