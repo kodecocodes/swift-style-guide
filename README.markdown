@@ -312,10 +312,10 @@ if user.isHappy {
 ```swift
 if user.isHappy
 {
-    // Do something
+  // Do something
 }
 else {
-    // Do something else
+  // Do something else
 }
 ```
 
@@ -451,7 +451,7 @@ Mark classes `final` when inheritance is not intended.  Example:
 ```swift
 // Turn any generic type into a reference type using this Box class.
 final class Box<T> {
-  let value: T     
+  let value: T 
   init(_ value: T) {
     self.value = value
   }
@@ -807,11 +807,11 @@ for (index, person) in attendeeList.enumerate() {
 }
 
 for index in 0.stride(to: items.count, by: 2) {
-    print(index)
+  print(index)
 }
 
 for index in (0...3).reverse() {
-    print(index)
+  print(index)
 }
 ```
 
@@ -819,8 +819,8 @@ for index in (0...3).reverse() {
 ```swift
 var i = 0
 while i < 3 {
-    print("Hello three times")
-    i += 1
+  print("Hello three times")
+  i += 1
 }
 
 
@@ -838,13 +838,13 @@ When coding with conditionals, the left hand margin of the code should be the "g
 **Preferred:**
 ```swift
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
+
+  guard let context = context else { throw FFTError.NoContext }
+  guard let inputData = inputData else { throw FFTError.NoInputData }
     
-    guard let context = context else { throw FFTError.NoContext }
-    guard let inputData = inputData else { throw FFTError.NoInputData }
+  // use context and input to compute the frequencies
     
-    // use context and input to compute the frequencies
-    
-    return frequencies
+  return frequencies
 }
 ```
 
@@ -852,20 +852,19 @@ func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies 
 ```swift
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
 
-    if let context = context {
-        if let inputData = inputData {
+  if let context = context {
+    if let inputData = inputData {
+      // use context and input to compute the frequencies            
 
-            // use context and input to compute the frequencies            
-
-            return frequencies
-        }
-        else {
-            throw FFTError.NoInputData
-        }
+      return frequencies
     }
     else {
-        throw FFTError.NoContext
+      throw FFTError.NoInputData
     }
+  }
+  else {
+    throw FFTError.NoContext
+  }
 }
 ```
 
