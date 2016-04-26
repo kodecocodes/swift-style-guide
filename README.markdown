@@ -164,26 +164,16 @@ let myClass = MyModule.UsefulClass()
 
 ### Selectors
 
-Selectors are Obj-C methods acting as handlers for many Cocoa and Cocoa Touch APIs.  Prior to Swift 2.2, they were typically specified with a type unsafe string.  Using a string now causes a compiler warning to be emitted and so conflicts with this style guide.  Pressing the "Fix it" button replaces the string with the **fully qualified** type, safe selector.  Use context to shorten the #selector expression.
-
-**Not Preferred:**
-```swift
-extension ViewController {
-   
-   // In the context of ViewController
-
-   let sel = #selector(ViewController.viewDidLoad)
-}
-```
+Selectors are Obj-C methods that act as handlers for many Cocoa and Cocoa Touch APIs.  Prior to Swift 2.2, they were specified using type unsafe strings. This now causes a compiler warning. The "Fix it" button replaces these strings with the **fully qualified** type safe selector.  Often, however, you can use context to shorten the expression.  This is the preferred style.
 
 **Preferred:**
 ```swift
-extension ViewController {
+let sel = #selector(viewDidLoad)
+```
 
-   // In the context of ViewController
-
-  let sel = #selector(viewDidLoad)
-}
+**Not Preferred:**
+```swift
+let sel = #selector(ViewController.viewDidLoad)
 ```
 
 ### Generics
