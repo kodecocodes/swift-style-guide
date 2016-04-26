@@ -32,7 +32,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 * [Closure Expressions](#closure-expressions)
 * [Types](#types)
   * [Constants](#constants)
-  * [Static Methods and Variable Properties](#static-methods-and-variable-properties)
+  * [Static Methods and Type Properties](#static-methods-and-type-properties)
   * [Optionals](#optionals)
   * [Struct Initializers](#struct-initializers)
   * [Lazy Initialization](#lazy-initialization)
@@ -568,7 +568,7 @@ let pi = 3.141592653589793238462643
 radius * pi * 2 // is pi instance data or a global constant?
 ```
 
-### Static Methods and Type Variables
+### Static Methods and Type Properties
 
 Static methods and type properties work similarly to global functions and global variables and should be used sparingly. They are useful when functionality is scoped to a particular type or when Objective-C interoperability is required.
 
