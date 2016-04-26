@@ -120,7 +120,7 @@ class Counter {
 
 ### Protocols
 
-Following API Design Guidelines, protocols names that describe what something is should be a noun.  Examples: `Collection`, `WidgetFactory`.  Protocols names that describe an ability should end in -ing, -able, or -ible.  Examples: `Equatable`, `Resizing`.
+Following API Design Guidelines, protocols names that describe what something is should be a noun. Examples: `Collection`, `WidgetFactory`. Protocols names that describe an ability should end in -ing, -able, or -ible. Examples: `Equatable`, `Resizing`.
 
 ### Enumerations
 
@@ -154,7 +154,7 @@ This is the same as the `#selector` syntax. When in doubt, look at how Xcode lis
 
 ### Class Prefixes
 
-Swift types are automatically namespaced by the module that contains them and you should not add a class prefix such as RW. If two names from different modules collide you can disambiguate by prefixing the type name with the module name.  However, only specify the module name when there is possibility for confusion which should be rare.
+Swift types are automatically namespaced by the module that contains them and you should not add a class prefix such as RW. If two names from different modules collide you can disambiguate by prefixing the type name with the module name. However, only specify the module name when there is possibility for confusion which should be rare.
 
 ```swift
 import SomeModule
@@ -164,7 +164,7 @@ let myClass = MyModule.UsefulClass()
 
 ### Selectors
 
-Selectors are Obj-C methods that act as handlers for many Cocoa and Cocoa Touch APIs.  Prior to Swift 2.2, they were specified using type unsafe strings. This now causes a compiler warning. The "Fix it" button replaces these strings with the **fully qualified** type safe selector.  Often, however, you can use context to shorten the expression.  This is the preferred style.
+Selectors are Obj-C methods that act as handlers for many Cocoa and Cocoa Touch APIs. Prior to Swift 2.2, they were specified using type unsafe strings. This now causes a compiler warning. The "Fix it" button replaces these strings with the **fully qualified** type safe selector. Often, however, you can use context to shorten the expression. This is the preferred style.
 
 **Preferred:**
 ```swift
@@ -240,15 +240,15 @@ class MyViewcontroller: UIViewController, UITableViewDataSource, UIScrollViewDel
 }
 ```
 
-Since the compiler does not allow you to re-declare protocol conformance in a derived class, it is not always required to replicate the extension groups of the base class.  This is especially true if the derived class is a terminal class and a small number of methods are being overriden.  When to preserve the extension groups is left to the discretion of the author.
+Since the compiler does not allow you to re-declare protocol conformance in a derived class, it is not always required to replicate the extension groups of the base class. This is especially true if the derived class is a terminal class and a small number of methods are being overriden. When to preserve the extension groups is left to the discretion of the author.
 
 For UIKit view controllers, consider grouping lifecyle, custom accessors, and IBAction in separate class extensions.
 
 ### Unused Code
 
-Unused (dead) code, including Xcode template code and placeholder comments should be removed.  An exception is when your tutorial or book instructs the user to use the commented code.
+Unused (dead) code, including Xcode template code and placeholder comments should be removed. An exception is when your tutorial or book instructs the user to use the commented code.
 
-Aspirational methods not directly associated with the tutorial whose implementation simply calls the super class should also be removed.  This includes any empty/unused UIApplicationDelegate methods.
+Aspirational methods not directly associated with the tutorial whose implementation simply calls the super class should also be removed. This includes any empty/unused UIApplicationDelegate methods.
 
 **Not Preferred:**
 ```swift
@@ -312,7 +312,7 @@ else {
 
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.
 
-* Colons always have no space on the left and one space on the right.  Exceptions are the ternary operator `? :` and empty dictionary `[:]`.
+* Colons always have no space on the left and one space on the right. Exceptions are the ternary operator `? :` and empty dictionary `[:]`.
 
 **Preferred:**
 ```swift
@@ -437,7 +437,7 @@ var diameter: Double {
 
 ### Final
 
-Mark classes `final` when inheritance is not intended.  Example:
+Mark classes `final` when inheritance is not intended. Example:
 
 ```swift
 // Turn any generic type into a reference type using this Box class.
@@ -510,7 +510,7 @@ attendeeList.sort { a, b in
 }
 ```
 
-Chained methods using trailing closures should be clear and easy to read in context.  Decisions on spacing, line breaks, and when to use named versus anonymous arguments is left to the discretion of the author.  Examples:
+Chained methods using trailing closures should be clear and easy to read in context. Decisions on spacing, line breaks, and when to use named versus anonymous arguments is left to the discretion of the author. Examples:
 
 ```swift
 let value = numbers.map { $0 * 2 }.filter { $0 % 3 == 0 }.indexOf(90)
@@ -545,7 +545,7 @@ Immutable constants are defined using the `let` keyword, and variables with the 
 
 **Tip:** A good technique is to define everything using `let` and only change it to `var` if the compiler complains!
 
-Type constants can be defined with `static let` and are scoped to within a type such as `struct`, `enum` or `class`.  Type constants generally preferred to global constants because they are easier to distinguish from instance properties. Example:
+Type constants can be defined with `static let` and are scoped to within a type such as `struct`, `enum` or `class`. Type constants generally preferred to global constants because they are easier to distinguish from instance properties. Example:
 
 **Preferred:**
 ```swift
@@ -640,7 +640,7 @@ Prefer the struct-scope constants `CGRect.infinite`, `CGRect.null`, etc. over gl
 
 ### Lazy Initialization
 
-Consider using lazy initialization for finer grain control over object lifetime. This is especially true for `UIViewController` that loads views lazily.  You can either use a closure that is immediately called `{ }()` or call a private factory method. Example:
+Consider using lazy initialization for finer grain control over object lifetime. This is especially true for `UIViewController` that loads views lazily. You can either use a closure that is immediately called `{ }()` or call a private factory method. Example:
 
 ```swift
 lazy var locationManager: CLLocationManager = self.makeLocationManager()
@@ -661,7 +661,7 @@ private func makeLocationManager() -> CLLocationManager {
 
 ### Type Inference
 
-Prefer compact code and let the compiler infer the type for constants or variables of single instances.  Type inference is also appropriate for small (non-empty) arrays and dictionaries. When required, specify the specific type such as `CGFloat` or `Int16`.
+Prefer compact code and let the compiler infer the type for constants or variables of single instances. Type inference is also appropriate for small (non-empty) arrays and dictionaries. When required, specify the specific type such as `CGFloat` or `Int16`.
 
 **Preferred:**
 ```swift
@@ -741,11 +741,11 @@ let value = max(x,y,z)  // another free function that feels natural
 
 ## Memory Management
 
-Code (even non-production, tutorial demo code) should not create reference cycles. Analyze your object graph and prevent strong cycles with `weak` and `unowned` references.  Alternatively, use value types (`struct`, `enum`) to prevent cycles altogether.
+Code (even non-production, tutorial demo code) should not create reference cycles. Analyze your object graph and prevent strong cycles with `weak` and `unowned` references. Alternatively, use value types (`struct`, `enum`) to prevent cycles altogether.
 
 ### Extending object lifetime
 
-Extend object lifetime using the `[weak self]` and `guard let strongSelf = self else { return }` idiom.  `[weak self]` is preferred to `[unowned self]` where it is not immediately obvious that `self` outlives the closure.  Explicitly extending lifetime is preferred to optional unwrapping.
+Extend object lifetime using the `[weak self]` and `guard let strongSelf = self else { return }` idiom. `[weak self]` is preferred to `[unowned self]` where it is not immediately obvious that `self` outlives the closure. Explicitly extending lifetime is preferred to optional unwrapping.
 
 **Preferred**
 ```swift
@@ -776,7 +776,7 @@ resource.request().onComplete { [weak self] response in
 
 ## Access Control
 
-Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` appropriately, however, adds clarity and promotes encapsulation.  Use `private` as the leading property specifier. The only things that should come before access control are the `static` specifier or attributes such as `@IBAction` and `@IBOutlet`.
+Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` appropriately, however, adds clarity and promotes encapsulation. Use `private` as the leading property specifier. The only things that should come before access control are the `static` specifier or attributes such as `@IBAction` and `@IBOutlet`.
 
 **Preferred:**
 ```swift
@@ -833,7 +833,7 @@ while i < attendeeList.count {
 ```
 ## Golden Path
 
-When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path. That is, don't nest `if` statements. Multiple return statements are OK.  The `guard` statement is built for this.
+When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path. That is, don't nest `if` statements. Multiple return statements are OK. The `guard` statement is built for this.
 
 **Preferred:**
 ```swift
@@ -898,7 +898,7 @@ else {
 
 ### Failing Guards
 
-Guard statements are required to exit in some way.  Generally, this should be simple one line statement such as `return`, `throw`, `break`, `continue`, and `fatalError()`.  Large code blocks should be avoided.  If cleanup code is required for multiple exit points, consider using a `defer` block to avoid cleanup code duplication.
+Guard statements are required to exit in some way. Generally, this should be simple one line statement such as `return`, `throw`, `break`, `continue`, and `fatalError()`. Large code blocks should be avoided. If cleanup code is required for multiple exit points, consider using a `defer` block to avoid cleanup code duplication.
 
 ## Semicolons
 
