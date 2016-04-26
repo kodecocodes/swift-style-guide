@@ -541,11 +541,11 @@ In Sprite Kit code, use `CGFloat` if it makes the code more succinct by avoiding
 
 ### Constants
 
-Immutable constants are defined using the `let` keyword, and variables with the `var` keyword. Always use `let` instead of `var` if the value of the variable will not change.
+Constants are defined using the `let` keyword, and variables with the `var` keyword. Always use `let` instead of `var` if the value of the variable will not change.
 
 **Tip:** A good technique is to define everything using `let` and only change it to `var` if the compiler complains!
 
-Type constants can be defined with `static let` and are scoped to within a type such as `struct`, `enum` or `class`. Type constants generally preferred to global constants because they are easier to distinguish from instance properties. Example:
+You can define constants on a type rather than an instance of that type using type properties. To declare a type property as a constant simply use static let. Type properties declared in this way are generally preferred over global constants because they are easier to distinguish from instance properties. Example:
 
 **Preferred:**
 ```swift
@@ -565,12 +565,12 @@ let e  = 2.718281828459045235360287  // pollutes global namespace
 let pi = 3.141592653589793238462643  
 }
 
-radius * pi * 2 // is pi instance data or a global variable?
+radius * pi * 2 // is pi instance data or a global constant?
 ```
 
 ### Static Methods and Type Variables
 
-Static methods and type variables work similarly to global functions and global variables and should be used sparingly. They are useful when functionality is scoped to a particular type or when Objective-C interoperability is required. 
+Static methods and type properties work similarly to global functions and global variables and should be used sparingly. They are useful when functionality is scoped to a particular type or when Objective-C interoperability is required.
 
 ### Optionals
 
