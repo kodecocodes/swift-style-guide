@@ -164,24 +164,25 @@ let myClass = MyModule.UsefulClass()
 
 ### Selectors
 
-Selectors may include a class name prefix. Omit this prefix when possible.
+Selectors are Obj-C methods acting as handlers for many Cocoa and Cocoa Touch APIs.  Prior to Swift 2.2, they were typically specified with a type unsafe string.  Using a string now causes a compiler warning to be emitted and so conflicts with this style guide.  Pressing the "Fix it" button replaces the string with the **fully qualified** type, safe selector.  Use context to shorten the #selector expression.
 
 **Not Preferred:**
 ```swift
 extension ViewController {
-   :
-   #selector(ViewController.viewDidLoad)
-   :
+   
+   // In the context of ViewController
+
+   let sel = #selector(ViewController.viewDidLoad)
 }
 ```
 
 **Preferred:**
 ```swift
 extension ViewController {
-  :
-  #selector(viewDidLoad)
-  #selector(UIView.insertSubview(_:at:))
-  :
+
+   // In the context of ViewController
+
+  let sel = #selector(viewDidLoad)
 }
 ```
 
