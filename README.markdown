@@ -46,7 +46,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 * [Golden Path](#golden-path)
   * [Failing Guards](#failing-guards)
 * [Semicolons](#semicolons)
-* [Parenthesis](#parenthesis)
+* [Parentheses](#parentheses)
 * [Copyright Statement](#copyright-statement)
 * [Smiley Face](#smiley-face)
 * [Credits](#credits)
@@ -82,7 +82,7 @@ class app_widgetContainer {
 }
 ```
 
-Abbreviations and and acronyms should generally be avoided. Following the Apple Design Guidelines, abbreviations and initialisms that appear in all uppercase should be uniformly uppercase or lowercase. Examples:
+Abbreviations and acronyms should generally be avoided. Following the Apple Design Guidelines, abbreviations and initialisms that appear in all uppercase should be uniformly uppercase or lowercase. Examples:
 
 **Preferred**
 ```swift
@@ -920,9 +920,9 @@ let swift = "not a scripting language";
 
 **NOTE**: Swift is very different to JavaScript, where omitting semicolons is [generally considered unsafe](http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript)
 
-## Parenthesis
+## Parentheses
 
-Parenthesis around conditionals are not required and should be omitted.
+Parentheses around conditionals are not required and should be omitted.
 
 **Preferred:**
 ```swift
