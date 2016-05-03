@@ -46,7 +46,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 * [Golden Path](#golden-path)
   * [Failing Guards](#failing-guards)
 * [Semicolons](#semicolons)
-* [Parenthesis](#parenthesis)
+* [Parentheses](#parentheses)
 * [Copyright Statement](#copyright-statement)
 * [Smiley Face](#smiley-face)
 * [Credits](#credits)
