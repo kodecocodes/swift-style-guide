@@ -920,9 +920,9 @@ let swift = "not a scripting language";
 
 **NOTE**: Swift is very different to JavaScript, where omitting semicolons is [generally considered unsafe](http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript)
 
-## Parenthesis
+## Parentheses
 
-Parenthesis around conditionals are not required and should be omitted.
+Parentheses around conditionals are not required and should be omitted.
 
 **Preferred:**
 ```swift
