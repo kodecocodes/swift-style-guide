@@ -82,7 +82,7 @@ class app_widgetContainer {
 }
 ```
 
-Abbreviations and and acronyms should generally be avoided. Following the Apple Design Guidelines, abbreviations and initialisms that appear in all uppercase should be uniformly uppercase or lowercase. Examples:
+Abbreviations and acronyms should generally be avoided. Following the Apple Design Guidelines, abbreviations and initialisms that appear in all uppercase should be uniformly uppercase or lowercase. Examples:
 
 **Preferred**
 ```swift
