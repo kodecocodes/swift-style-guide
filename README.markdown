@@ -58,7 +58,7 @@ Consider warnings to be errors. This rule informs many stylistic decisions such 
 
 ## Naming
 
-Use descriptive names with camel case for classes, methods, variables, etc. Type names (classes, structures, enumerations and protocols) should be capitalized, while method names and variables should start with a lower case letter.
+Use descriptive names with camel or pascal case for classes, methods, variables, etc. Type names (classes, structures, enumerations and protocols) should be capitalized, while method names and variables should start with a lower case letter.
 
 **Preferred:**
 
