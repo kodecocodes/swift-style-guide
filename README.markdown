@@ -562,8 +562,7 @@ radius * Math.pi * 2 // circumference
 **Not Preferred:**
 ```swift
 let e  = 2.718281828459045235360287  // pollutes global namespace
-let pi = 3.141592653589793238462643  
-}
+let pi = 3.141592653589793238462643
 
 radius * pi * 2 // is pi instance data or a global constant?
 ```
