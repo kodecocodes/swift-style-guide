@@ -16,6 +16,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Selectors](#selectors)
   * [Generics](#generics)
   * [Class Prefixes](#class-prefixes)
+  * [Delegate Methods](#delegate-methods)
   * [Language](#language)
 * [Code Organization](#code-organization)
   * [Extensions](#extension)
@@ -192,6 +193,31 @@ func max<T: Comparable>(x: T, _ y: T) -> T
 struct Stack<T> { ... }
 func writeTo<target: OutputStream>(inout t: target)
 func max<Thing: Comparable>(x: Thing, _ y: Thing) -> Thing
+```
+
+### Delegate Methods
+
+Follow Apple's lead regarding naming delegate methods. Good examples include the [UITableViewDelegate](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDelegate_Protocol/) or the [UIScrollViewDelegate](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/), although they offer contradictory examples.
+
+The method name should always starts with a representation of the delegater. For example: `tableView`, `datePicker`, `navigationController`.
+
+The first parameter should always be the delegater, i.e. the table view.
+
+If the method's only parameter is the delegater itself, then the method name should include the action verb. For example: `scrollViewDidScroll`, `accordionWillCollapse`, etc.
+
+If the method includes parameters other than the delegater, then the second parameter should be named, and should contain the action verb. For example: `didSelectRowAtIndex indexPath: NSIndexPath`, `willScrollToPosition position: CGPoint`, `completedAtDate date: NSDate`, etc.
+
+**Preferred:**
+```swift
+func namePicker(_ namePicker: NamePickerViewController, didSelectFirstName firstName: String, lastName: String)
+func namePickerDidShow(_ namePicker: NamePickerViewController)
+```
+
+**Not Preferred:**
+```swift
+func namePickerDidSelectFirstName(_ namePicker: NamePickerViewController, firstName: String, lastName: String)
+func didSelectFirstName(_ namePicker: NamePickerViewController, firstName: String, lastName: String)
+func namePicker(namePickerDidShow namePicker: NamePickerViewController)
 ```
 
 ### Language
@@ -1005,6 +1031,7 @@ It is a collaborative effort from the most stylish raywenderlich.com team member
 * [Ellen Shapiro](https://github.com/designatednerd)
 * [Marin Todorov](https://github.com/icanzilb)
 * [Chris Wagner](https://github.com/cwagdev)
+* [Fabien Warniez](https://github.com/fabienwarniez)
 * [Ray Wenderlich](https://github.com/rwenderlich)
 * [Jack Wu](https://github.com/jackwu95)
 
