@@ -773,6 +773,17 @@ resource.request().onComplete { [weak self] response in
 }
 ```
 
+**withExtendedLifetime**
+```swift
+// alternatively withExtendedLifetime will keep the instance from deallocating
+resource.request().onComplete { [unowned self] response in
+    withExtendedLifetime(response) {
+        let model = self.updateModel(response)
+        self.updateUI(model)
+    }
+}
+```
+
 ## Access Control
 
 Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` appropriately, however, adds clarity and promotes encapsulation. Use `private` as the leading property specifier. The only things that should come before access control are the `static` specifier or attributes such as `@IBAction` and `@IBOutlet`.
