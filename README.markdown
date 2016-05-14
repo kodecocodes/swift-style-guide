@@ -130,8 +130,8 @@ Following Apple's API Design Guidelines for Swift 3, use lowerCamelCase for enum
 enum Shape {
   case rectangle
   case square
-  case triangle
-  case circle
+  case rightTriangle
+  case equilateralTriangle
 }
 ```
 
