@@ -838,8 +838,8 @@ When coding with conditionals, the left hand margin of the code should be the "g
 ```swift
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
 
-  guard let context = context else { throw FFTError.NoContext }
-  guard let inputData = inputData else { throw FFTError.NoInputData }
+  guard let context = context else { throw FFTError.noContext }
+  guard let inputData = inputData else { throw FFTError.noInputData }
     
   // use context and input to compute the frequencies
     
@@ -858,11 +858,11 @@ func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies 
       return frequencies
     }
     else {
-      throw FFTError.NoInputData
+      throw FFTError.noInputData
     }
   }
   else {
-    throw FFTError.NoContext
+    throw FFTError.noContext
   }
 }
 ```
