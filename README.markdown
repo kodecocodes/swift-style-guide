@@ -242,7 +242,7 @@ class MyViewcontroller: UIViewController, UITableViewDataSource, UIScrollViewDel
 
 Since the compiler does not allow you to re-declare protocol conformance in a derived class, it is not always required to replicate the extension groups of the base class. This is especially true if the derived class is a terminal class and a small number of methods are being overriden. When to preserve the extension groups is left to the discretion of the author.
 
-For UIKit view controllers, consider grouping lifecyle, custom accessors, and IBAction in separate class extensions.
+For UIKit view controllers, consider grouping lifecycle, custom accessors, and IBAction in separate class extensions.
 
 ### Unused Code
 
