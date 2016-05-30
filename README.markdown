@@ -677,20 +677,20 @@ let currentBounds: CGRect = computeViewBounds()
 let names = [String]()
 ```
 
-#### Type Annotation for Empty Arrays and Dictionaries
+#### Type Inference for Empty Arrays and Dictionaries
 
-For empty arrays and dictionaries, use type annotation. (For an array or dictionary assigned to a large, multi-line literal, use type annotation.)
+For empty arrays and dictionaries, use type inference. (For an array or dictionary assigned to a large, multi-line literal, use type inference.)
 
 **Preferred:**
 ```swift
-var names: [String] = []
-var lookup: [String: Int] = [:]
+var names = [String]()
+var lookup = [String: Int]()
 ```
 
 **Not Preferred:**
 ```swift
-var names = [String]()
-var lookup = [String: Int]()
+var names: [String] = []
+var lookup: [String: Int] = [:]
 ```
 
 **NOTE**: Following this guideline means picking descriptive names is even more important than before.
