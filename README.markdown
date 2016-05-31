@@ -168,12 +168,12 @@ Selectors are Obj-C methods that act as handlers for many Cocoa and Cocoa Touch 
 
 **Preferred:**
 ```swift
-let sel = #selector(viewDidLoad)
+let aSelector = #selector(viewDidLoad)
 ```
 
 **Not Preferred:**
 ```swift
-let sel = #selector(ViewController.viewDidLoad)
+let aSelector = #selector(ViewController.viewDidLoad)
 ```
 
 ### Generics
