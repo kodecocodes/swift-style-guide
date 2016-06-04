@@ -1,13 +1,10 @@
-# The Official raywenderlich.com Swift Style Guide.
-
-This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on the books.
+# The Official Kwickie Style Guide for Swift.
 
 Our overarching goals are conciseness, readability, and simplicity.
 
-Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide) too.
-
 ## Table of Contents
 
+* [Documentation](#documentation)
 * [Naming](#naming)
   * [Prose](#prose)
   * [Class Prefixes](#class-prefixes)
@@ -33,6 +30,22 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 * [Credits](#credits)
 
 
+## Documentation
+
+As our code base is constantly changing, documentation is not required in most cases. Developers must follow a standard where the code is the documentation itself as this enforces readable and understandable code. However, code that is complex or is unlikely to change will need documentation to make it easier for other / future developers to understand. Eg. Outbox, DiskRecorder, etc.
+
+* `// MARK: Properties` to make it easier to distinguish between instance variables and storyboard outlets in Xcode.
+
+* `// MARK: Outlets` to make it easier to distinguish between storyboard and instance variables in Xcode.
+
+* `// MARK: Actions` to seperate normal methods from storyboard actions
+
+* `// MARK: [Super Class]` to seperate inherited methods
+
+* `// MARK: Init` to seperate initialisation and deinitialisation methods
+
+* `// MARK: [Group Name]` In some cases, it will be helpful to group related methods together 
+
 ## Naming
 
 Use descriptive names with camel case for classes, methods, variables, etc. Class names should be capitalized, while method names and variables should start with a lower case letter.
@@ -57,7 +70,7 @@ class app_widgetContainer {
   var wBut: UIButton
   let wHeightPct = 0.85
 }
-```
+```g
 
 For functions and init methods, prefer named parameters for all arguments unless the context is very clear. Include external parameter names if it makes function calls more readable.
 
@@ -126,7 +139,7 @@ let myClass = MyModule.UsefulClass()
 * Indent using 2 spaces rather than tabs to conserve space and help prevent line wrapping. Be sure to set this preference in Xcode and in the Project settings as shown below:
 
   ![Xcode indent settings](screens/indentation.png)
-  
+
   ![Xcode Project settings](screens/project_settings.png)
 
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
@@ -222,7 +235,19 @@ The example above demonstrates the following style guidelines:
 
 ### Use of Self
 
-Swift does not require 'self' to access an object's properties or invoke its methods, However use it as we are from obj-c world:
+Swift does not require 'self' to access an object's properties or invoke its methods.
+
+#### Apple's Rationale
+
+* Mandatory `self.` introduces a significant amount of verbosity that does not justify itself with added clarity. Paul Cantrell put it well in his [review]( https://lists.swift.org/pipermail/swift-evolution/Week-of-Mon-20151214/002910.html) when he said, “Anything that is widely repeated becomes invisible.” Swift aims to avoid such boilerplate and repetition in its design, a principle also espoused by the [Swift API Design Guidelines]( https://swift.org/documentation/api-design-guidelines.html).
+
+* The requirement to use `self.` within potentially-escaping closures is a useful indicator of the potential for retain cycles that we don’t want to lose. Additionally, developers can optionally use `self.` when they feel it improves clarity (e.g., when similar operations are being performed on several different instances, of which “self” is one).
+
+* The name-shadowing concerns behind the mandatory `self.` apply equally well to anything found by unqualified name lookup, including names found in the global scope. To call out members of types as requiring qualification while global names do not (even when global names tend to be far more numerous) feels inconsistent, but requiring qualification for everything (e.g., `Swift.print`, `self.name`) exacerbates the problem of visual clutter.
+
+#### Kwickie's Rationale
+
+* We are from obj-c world
 
 ```swift
 class BoardLocation {
@@ -231,7 +256,7 @@ class BoardLocation {
   init(row: Int, column: Int) {
     self.row = row
     self.column = column
-    
+
     let closure = {
       println(self.row)
     }
@@ -589,7 +614,7 @@ Smiley faces are a very prominent style feature of the raywenderlich.com site! I
 
 ## Credits
 
-This style guide is a collaborative effort from the most stylish raywenderlich.com team members: 
+This style guide is a collaborative effort from the most stylish raywenderlich.com team members:
 
 * [Jawwad Ahmad](https://github.com/jawwad)
 * [Soheil Moayedi Azarpour](https://github.com/moayes)
