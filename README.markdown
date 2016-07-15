@@ -47,6 +47,8 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Failing Guards](#failing-guards)
 * [Semicolons](#semicolons)
 * [Parentheses](#parentheses)
+* [UIKit](#uikit)
+  * [Subview Creation](#subview-creation)
 * [Copyright Statement](#copyright-statement)
 * [Smiley Face](#smiley-face)
 * [Credits](#credits)
@@ -936,6 +938,38 @@ if (name == "Hello") {
   print("World")
 }
 ```
+
+## UIKit
+
+### Subview Creation
+
+View properties of UIViews or UIViewControllers should be declared using the 
+`lazy var` pattern to consolidate initialization and configuration logic.
+
+**Preferred**
+```swift
+lazy var subtitleLabel: UILabel = {
+  let label = UILabel()
+  // Set textColor, font, etc.
+  return label
+}
+
+// later
+view.addSubview(subtitleLabel)
+```
+
+**Not Preferred**
+```swift
+viewDidLoad() {
+  label1 = UILabel()
+  // config here
+  label2 = UILabel()
+  // more config
+  label3 = UILabel()
+  // more config
+}
+```
+
 
 ## Copyright Statement
 
