@@ -330,6 +330,7 @@ class TestDatabase : Database {
 ```
 
 * No trailing whitespaces at the ends of lines.
+* New line character at the end of file.
 
 ## Comments
 
