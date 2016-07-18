@@ -328,6 +328,8 @@ class TestDatabase : Database {
 }
 ```
 
+* No trailing whitespaces at the ends of lines.
+
 ## Comments
 
 When they are needed, use comments to explain **why** a particular piece of code does something. Comments must be kept up-to-date or deleted.
