@@ -100,8 +100,10 @@ For functions and init methods, prefer named parameters for all arguments unless
 
 ```swift
 func dateFromString(dateString: String) -> NSDate
-func convertPointAt(column column: Int, row: Int) -> CGPoint
-func timedAction(afterDelay delay: NSTimeInterval, perform action: SKAction) -> SKAction!
+func convertPointAt(column column: Int, 
+                              row: Int) -> CGPoint
+func timedAction(afterDelay delay: NSTimeInterval, 
+                   perform action: SKAction) -> SKAction!
 
 // would be called like this:
 dateFromString("2014-03-14")
@@ -113,7 +115,8 @@ For methods, follow the standard Apple convention of referring to the first para
 
 ```swift
 class Counter {
-  func combineWith(otherCounter: Counter, options: Dictionary?) { ... }
+  func combineWith(otherCounter: Counter, 
+                        options: Dictionary?) { ... }
   func incrementBy(amount: Int) { ... }
 }
 ```
@@ -191,7 +194,8 @@ func max<T: Comparable>(x: T, _ y: T) -> T
 ```swift
 struct Stack<T> { ... }
 func writeTo<target: OutputStream>(inout t: target)
-func max<Thing: Comparable>(x: Thing, _ y: Thing) -> Thing
+func max<Thing: Comparable>(x: Thing, 
+                          _ y: Thing) -> Thing
 ```
 
 ### Language
@@ -262,7 +266,8 @@ override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
    return 1
 }
 
-override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+override func tableView(tableView: UITableView, 
+    numberOfRowsInSection section: Int) -> Int {
   // #warning Incomplete implementation, return the number of rows
   return Database.contacts.count
 }
@@ -271,7 +276,8 @@ override func tableView(tableView: UITableView, numberOfRowsInSection section: I
 
 **Preferred:**
 ```swift
-override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+override func tableView(tableView: UITableView, 
+    numberOfRowsInSection section: Int) -> Int {
   return Database.contacts.count
 }
 ```
@@ -404,7 +410,8 @@ Use `self` when required to differentiate between property names and arguments i
 class BoardLocation {
   let row: Int, column: Int
 
-  init(row: Int, column: Int) {
+  init(row: Int, 
+    column: Int) {
     self.row = row
     self.column = column
     
@@ -459,18 +466,21 @@ func reticulateSplines(spline: [Double]) -> Bool {
 }
 ```
 
-For functions with long signatures, add line breaks at appropriate points and add an extra indent on subsequent lines:
+For functions add line breaks at a new argument:
 
 ```swift
-func reticulateSplines(spline: [Double], adjustmentFactor: Double,
-    translateConstant: Int, comment: String) -> Bool {
+func reticulateSplines(spline: [Double], 
+             adjustmentFactor: Double,
+            translateConstant: Int, comment: String) -> Bool {
   // reticulate code goes here
 }
 ```
 
 ## Closure Expressions
 
-Use trailing closure syntax only if there's a single closure expression parameter at the end of the argument list. Give the closure parameters descriptive names.
+Use trailing closure syntax only if there's a single closure expression parameter at the end of the argument list. Give the closure parameters descriptive names. 
+
+Closure parameter type and parentheses should be omitted.
 
 **Preferred:**
 ```swift
@@ -497,7 +507,7 @@ UIView.animateWithDuration(1.0, animations: {
 UIView.animateWithDuration(1.0,
   animations: {
     self.myView.alpha = 0
-  }) { f in
+  }) { (f: Bool) in
     self.myView.removeFromSuperview()
 }
 ```
@@ -601,7 +611,8 @@ var subview: UIView?
 var volume: Double?
 
 // later on...
-if let subview = subview, volume = volume {
+if let subview = subview, 
+   let volume = volume {
   // do something with unwrapped subview and volume
 }
 ```
@@ -830,13 +841,15 @@ while i < attendeeList.count {
   i += 1
 }
 ```
+
 ## Golden Path
 
 When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path. That is, don't nest `if` statements. Multiple return statements are OK. The `guard` statement is built for this.
 
 **Preferred:**
 ```swift
-func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
+func computeFFT(context: Context?, 
+              inputData: InputData?) throws -> Frequencies {
 
   guard let context = context else { throw FFTError.noContext }
   guard let inputData = inputData else { throw FFTError.noInputData }
@@ -849,7 +862,8 @@ func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies 
 
 **Not Preferred:**
 ```swift
-func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
+func computeFFT(context: Context?, 
+              inputData: InputData?) throws -> Frequencies {
 
   if let context = context {
     if let inputData = inputData {
@@ -867,11 +881,37 @@ func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies 
 }
 ```
 
+## Multiple Conditionals
+
+When multiple conditionals are inside the operator, add line breaks before a new operand. Extract difficult conditions to functions.
+
+**Preferred:**
+```swift
+if isTrue()
+    && isFalse()
+    && tax > MinTax {
+    // ...
+}
+```
+
+**Not Preferred:**
+```swift
+if a > b && b > c && tax > MinTax && currentValue > MaxValue {
+    // ...
+}
+```
+
 When multiple optionals are unwrapped either with `guard` or `if let`, minimize nesting by using the compound version when possible. Example:
 
 **Preferred:**
 ```swift
-guard let number1 = number1, number2 = number2, number3 = number3 else { fatalError("impossible") }
+guard 
+    let number1 = number1, 
+    let number2 = number2, 
+    let number3 = number3 
+else { 
+    fatalError("impossible") 
+}
 // do something with numbers
 ```
 
