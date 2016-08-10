@@ -36,7 +36,7 @@ This is the official Swift style guide of HE:labs iOS Team. In case of you are i
   * [Syntactic Sugar](#syntactic-sugar)
 * [Functions vs Methods](#functions-vs-methods)
 * [Memory Management](#memory-management)
-  * [Extending Lifetime](#extending-lifetime)
+  * [Extending Lifetime](#extending-object-lifetime)
 * [Access Control](#access-control)
 * [Control Flow](#control-flow)
 * [Golden Path](#golden-path)
@@ -177,7 +177,7 @@ When referring to functions in prose (tutorials, books, comments) include the re
 
 > Call `convertPointAt(column:row:)` from your own `init` implementation.
 >
-> If you call `dateF(fromString:)` make sure that you provide a string with the format "yyyy-MM-dd".
+> If you call `date(fromString:)` make sure that you provide a string with the format "yyyy-MM-dd".
 >
 > If you call `timedAction(delay:perform:)` from `viewDidLoad()` remember to provide an adjusted delay value and an action to perform.
 >
