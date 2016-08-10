@@ -78,10 +78,10 @@ app_target_templates:
     - Model:
     - View:
     - Controller:
-    - Client:
-    - Util:
+    - Network:
+    - Common:
       - Extensions:
-    - AppDelegate:
+    - App:
       - AppDelegate.swift  
     - Resources:
       - Fonts:
@@ -96,11 +96,14 @@ app_target_templates:
   - <%= project_name %>:
     - Model:
     - View:
+      - Cells:
+      - Controller:
     - ViewModel:
-    - Client:
-    - Util:
+    - Network:
+    - Common:
       - Extensions:
-    - AppDelegate:
+      - Protocols:
+    - App:
       - AppDelegate.swift  
     - Resources:
       - Fonts:
@@ -113,7 +116,7 @@ app_target_templates:
 
   swift-viper:
   - <%= project_name %>:
-    - AppDelegate:
+    - App:
       - AppDelegate.swift
     - Common:
     - Modules:
@@ -140,18 +143,18 @@ test_target_templates:
       - Resources:
         - <%= test_target_name %>-Info.plist
       - Helpers:
-      - Tests:
+      - Specs:
 
   swift-mvvm:
     - <%= test_target_name %>:
       - Resources:
         - <%= test_target_name %>-Info.plist
       - Helpers:
-      - Tests:
+      - Specs:
 
   swift-viper:
     - <%= test_target_name %>:
       - Resources:
         - <%= test_target_name %>-Info.plist
       - Common:
-      - Tests:    
+      - Specs:    
