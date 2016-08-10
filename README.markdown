@@ -36,7 +36,7 @@ This is the official Swift style guide of HE:labs iOS Team. In case of you are i
   * [Syntactic Sugar](#syntactic-sugar)
 * [Functions vs Methods](#functions-vs-methods)
 * [Memory Management](#memory-management)
-  * [Extending Lifetime](#extending-lifetime)
+  * [Extending Lifetime](#extending-object-lifetime)
 * [Access Control](#access-control)
 * [Control Flow](#control-flow)
 * [Golden Path](#golden-path)
