@@ -177,7 +177,7 @@ When referring to functions in prose (tutorials, books, comments) include the re
 
 > Call `convertPointAt(column:row:)` from your own `init` implementation.
 >
-> If you call `dateF(fromString:)` make sure that you provide a string with the format "yyyy-MM-dd".
+> If you call `date(fromString:)` make sure that you provide a string with the format "yyyy-MM-dd".
 >
 > If you call `timedAction(delay:perform:)` from `viewDidLoad()` remember to provide an adjusted delay value and an action to perform.
 >
