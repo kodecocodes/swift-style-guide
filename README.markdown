@@ -10,7 +10,7 @@ This is the official Swift style guide of HE:labs iOS Team. In case of you are i
   * [Protocols](#protocols)
   * [Enumerations](#enumerations)
   * [Prose](#prose)
-  * [Class Prefixes](#class-prefixes) 
+  * [Class Prefixes](#class-prefixes)
   * [Selectors](#selectors)
   * [Generics](#generics)
 * [Code Organization](#code-organization)
@@ -48,11 +48,17 @@ This is the official Swift style guide of HE:labs iOS Team. In case of you are i
 
 ## Project Structure
 
+### CocoaPods
+
+First of all you should install CocoaPods. We use [CocoaPods](https://cocoapods.org/) to manage our libs version.
+
+This dependency is necessary to use the tool bellow to generate our project structure correctly, including the `podfile`.
+
 ### Liftoff
 
-If you're creating a new project please install this tool. We use [liftoff](https://github.com/thoughtbot/liftoff) to generate all new projects with a standard project structure. 
+If you're creating a new project please install this tool. We use [liftoff](https://github.com/thoughtbot/liftoff) to generate all new projects with a standard project structure.
 
-To start a new project you should get our `liftoffrc` file and the `liftoff folder` that contains the `templates folder`. The files are located in `resources` folder and please always keep an updated version of this files. 
+To start a new project you should get our `liftoffrc` file and the `liftoff folder` that contains the `templates folder`. The files are located in `resources` folder and please always keep an updated version of this files.
 
 After download and put these files into your workspace folder you need to rename `liftoffrc` to `.liftoffrc` and `liftoff` to `.liftoff`. These steps are necessary to make liftoff use them to configure the project.
 
@@ -319,9 +325,9 @@ Keep imports minimal. For example, don't import `UIKit` when importing `Foundati
 **Preferred:**
 
 ```swift
-if user.isHappy { 
+if user.isHappy {
   // Do something
-} 
+}
 else {
   // Do something else
 }
@@ -438,7 +444,7 @@ class BoardLocation {
   init(row: Int, column: Int) {
     self.row = row
     self.column = column
-    
+
     let closure = {
       println(self.row)
     }
@@ -473,7 +479,7 @@ Mark classes `final` when inheritance is not intended. Example:
 ```swift
 // Turn any generic type into a reference type using this Box class.
 final class Box<T> {
-  let value: T 
+  let value: T
   init(_ value: T) {
     self.value = value
   }
@@ -871,14 +877,14 @@ func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies 
 
   guard let context = context else { throw FFTError.noContext }
   guard let inputData = inputData else { throw FFTError.noInputData }
-    
+
   // use context and input to compute the frequencies
-    
+
   return frequencies
 }
 ```
 
-**Not Preferred:** 
+**Not Preferred:**
 
 ```swift
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
