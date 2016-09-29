@@ -54,16 +54,23 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 
 ## Correctness
 
-Consider warnings to be errors. This rule informs many stylistic decisions such as not to use the `++` or `--` operators, C-style for loops, or strings as selectors.
+Consider warnings to be errors.
 
 ## Naming
 
-Use descriptive names with camel case for classes, methods, variables, etc. Type names (classes, structures, enumerations and protocols) should be capitalized, while method names and variables should start with a lower case letter.
+Use descriptive names with camel case for classes, methods, variables, etc. Type names (classes, structures and protocols) should be capitalized, while method names, variables and enumerations should start with a lower case letter.
+
 
 **Preferred:**
 
 ```swift
-private let maximumWidgetCount = 100
+enum Days {
+  case monday
+  case tuesday
+  case wednesday
+}
+
+fileprivate let maximumWidgetCount = 100
 
 class WidgetContainer {
   var widgetButton: UIButton
@@ -72,8 +79,13 @@ class WidgetContainer {
 ```
 
 **Not Preferred:**
-
 ```swift
+enum Days {
+  case Monday
+  case Tuesday
+  case Wednesday
+}
+
 let MAX_WIDGET_COUNT = 100
 
 class app_widgetContainer {
@@ -99,8 +111,8 @@ let userId: UserId
 For functions and init methods, prefer named parameters for all arguments unless the context is very clear. Include external parameter names if it makes function calls more readable.
 
 ```swift
-func dateFromString(dateString: String) -> NSDate
-func convertPointAt(column column: Int, row: Int) -> CGPoint
+func date(from dateString: String) -> NSDate
+func convertPoint(at column: Int, row: Int) -> CGPoint
 func timedAction(afterDelay delay: NSTimeInterval, perform action: SKAction) -> SKAction!
 
 // would be called like this:
@@ -122,18 +134,6 @@ class Counter {
 
 Following Apple's API Design Guidelines, protocols names that describe what something is should be a noun. Examples: `Collection`, `WidgetFactory`. Protocols names that describe an ability should end in -ing, -able, or -ible. Examples: `Equatable`, `Resizing`.
 
-### Enumerations
-
-Following Apple's API Design Guidelines for Swift 3, use lowerCamelCase for enumeration values.
-
-```swift
-enum Shape {
-  case rectangle
-  case square
-  case rightTriangle
-  case equilateralTriangle
-}
-```
 
 ### Prose
 
