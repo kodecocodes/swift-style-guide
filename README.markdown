@@ -221,6 +221,7 @@ Use extensions to organize your code into logical blocks of functionality. Each 
  In particular, when adding protocol conformance to a model, prefer adding a separate extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
 
 **Preferred:**
+
 ```swift
 class MyViewcontroller: UIViewController {
   // class stuff here
@@ -292,6 +293,7 @@ Keep imports minimal. For example, don't import `UIKit` when importing `Foundati
 * Tip: You can re-indent by selecting some code (or ⌘A to select all) and then Control-I (or Editor\Structure\Re-Indent in the menu). Some of the Xcode template code will have 4-space tabs hard coded, so this is a good way to fix that.
 
 **Preferred:**
+
 ```swift
 if user.isHappy {
   // Do something
@@ -301,6 +303,7 @@ if user.isHappy {
 ```
 
 **Not Preferred:**
+
 ```swift
 if user.isHappy
 {
@@ -363,14 +366,23 @@ class Circle: Shape {
     }
   }
 
-  init(x: Int, y: Int, radius: Double) {
+  init(
+      x: Int, 
+      y: Int, 
+      radius: Double) {
     self.x = x
     self.y = y
     self.radius = radius
   }
 
-  convenience init(x: Int, y: Int, diameter: Double) {
-    self.init(x: x, y: y, radius: diameter / 2)
+  convenience init(
+      x: Int, 
+      y: Int, 
+      diameter: Double) {
+    self.init(
+        x: x, 
+        y: y, 
+        radius: diameter / 2)
   }
 
   func describe() -> String {
@@ -445,7 +457,8 @@ Mark classes `final` when inheritance is not intended. Example:
 // Turn any generic type into a reference type using this Box class.
 final class Box<T> {
   let value: T 
-  init(_ value: T) {
+  init(
+      _ value: T) {
     self.value = value
   }
 }
@@ -461,12 +474,13 @@ func reticulateSplines(spline: [Double]) -> Bool {
 }
 ```
 
-For functions add line breaks at a new argument:
+For functions add line breaks at each argument:
 
 ```swift
-func reticulateSplines(spline: [Double], 
-             adjustmentFactor: Double,
-            translateConstant: Int, comment: String) -> Bool {
+func reticulateSplines(
+    spline: [Double], 
+    adjustmentFactor: Double,
+    translateConstant: Int, comment: String) -> Bool {
   // reticulate code goes here
 }
 ```
@@ -802,6 +816,7 @@ class TimeMachine {
 Prefer the `for-in` style of `for` loop over the `while-condition-increment` style.
 
 **Preferred:**
+
 ```swift
 for _ in 0..<3 {
   print("Hello three times")
@@ -821,6 +836,7 @@ for index in (0...3).reverse() {
 ```
 
 **Not Preferred:**
+
 ```swift
 var i = 0
 while i < 3 {
@@ -842,6 +858,7 @@ while i < attendeeList.count {
 When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path. That is, don't nest `if` statements. Multiple return statements are OK. The `guard` statement is built for this.
 
 **Preferred:**
+
 ```swift
 func computeFFT(context: Context?, 
               inputData: InputData?) throws -> Frequencies {
@@ -856,6 +873,7 @@ func computeFFT(context: Context?,
 ```
 
 **Not Preferred:**
+
 ```swift
 func computeFFT(context: Context?, 
               inputData: InputData?) throws -> Frequencies {
@@ -999,53 +1017,8 @@ file:
      * THE SOFTWARE.
      */
 
-## Smiley Face
-
-Smiley faces are a very prominent style feature of the raywenderlich.com site! It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The closing square bracket `]` is used because it represents the largest smile able to be captured using ASCII art. A closing parenthesis `)` creates a half-hearted smile, and thus is not preferred.
-
-**Preferred:**
-```
-:]
-```
-
-**Not Preferred:**
-```
-:)
-```  
 
 ## Credits
-
-[Ray Fix](https://github.com/rayfix) currently maintains this style guide.
-It is a collaborative effort from the most stylish raywenderlich.com team members and its community: 
-
-* [Jawwad Ahmad](https://github.com/jawwad)
-* [Soheil Moayedi Azarpour](https://github.com/moayes)
-* [Scott Berrevoets](https://github.com/Scott90)
-* [Eric Cerney](https://github.com/ecerney)
-* [Sam Davies](https://github.com/sammyd)
-* [Evan Dekhayser](https://github.com/edekhayser)
-* [Jean-Pierre Distler](https://github.com/pdistler)
-* [Colin Eberhardt](https://github.com/ColinEberhardt)
-* [Ray Fix](https://github.com/rayfix)
-* [Joshua Greene](https://github.com/JRG-Developer)
-* [Greg Heo](https://github.com/gregheo)
-* [Matthijs Hollemans](https://github.com/hollance)
-* [Erik Kerber](https://github.com/eskerber)
-* [Christopher LaPollo](https://github.com/elephantronic)
-* [Ben Morrow](https://github.com/benmorrow)
-* [Andy Pereira](https://github.com/macandyp)
-* [Ryan Nystrom](https://github.com/rnystrom)
-* [Andy Obusek](https://github.com/obuseme)
-* [Cesare Rocchi](https://github.com/funkyboy)
-* [Ellen Shapiro](https://github.com/designatednerd)
-* [Marin Todorov](https://github.com/icanzilb)
-* [Chris Wagner](https://github.com/cwagdev)
-* [Ray Wenderlich](https://github.com/rwenderlich)
-* [Jack Wu](https://github.com/jackwu95)
-
-Hat tip to [Nicholas Waynik](https://github.com/ndubbs) and the [Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide) team!
-
-We also draw inspiration from Apple’s reference material on Swift:
 
 * [The Swift API Design Guidelines](https://swift.org/documentation/api-design-guidelines/)
 * [The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html)
