@@ -376,8 +376,8 @@ class Circle: Shape {
     return "I am a circle at \(centerString()) with an area of \(computeArea())"
   }
 
-  override func computeArea() -> Double {
-    return M_PI * radius * radius
+  override func area() -> Double {
+    return Double.pi * radius * radius
   }
 
   private func centerString() -> String {
@@ -551,10 +551,10 @@ You can define constants on a type rather than an instance of that type using ty
 ```swift
 enum Math {
   static let e  = 2.718281828459045235360287
-  static let pi = 3.141592653589793238462643
+  static let root2 = 1.41421356237309504880168872
 }
 
-radius * Math.pi * 2 // circumference
+let hypotenuse = side * Math.root2
 
 ```
 **Note:** The advantage of using a case-less enumeration is that it can't accidentally be instantiated and works as a pure namespace.
@@ -562,9 +562,9 @@ radius * Math.pi * 2 // circumference
 **Not Preferred:**
 ```swift
 let e  = 2.718281828459045235360287  // pollutes global namespace
-let pi = 3.141592653589793238462643
+let root2 = 1.41421356237309504880168872
 
-radius * pi * 2 // is pi instance data or a global constant?
+let hypotenuse = side * root2 // what is root2?
 ```
 
 ### Static Methods and Variable Type Properties
