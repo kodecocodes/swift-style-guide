@@ -184,15 +184,15 @@ Generic type parameters should be descriptive, upper camel case names. When a ty
 **Preferred:**
 ```swift
 struct Stack<Element> { ... }
-func writeTo<Target: OutputStream>(inout target: Target)
-func max<T: Comparable>(x: T, _ y: T) -> T
+func write<Target: OutputStream>(to target: inout Target)
+func max<T: Comparable>(_ x: T, _ y: T) -> T
 ```
 
 **Not Preferred:**
 ```swift
 struct Stack<T> { ... }
-func writeTo<target: OutputStream>(inout t: target)
-func max<Thing: Comparable>(x: Thing, _ y: Thing) -> Thing
+func write<target: OutputStream>(to target: inout target)
+func max<Thing: Comparable>(_ x: Thing, _ y: Thing) -> Thing
 ```
 
 ### Language
@@ -377,8 +377,8 @@ class Circle: Shape {
     return "I am a circle at \(centerString()) with an area of \(computeArea())"
   }
 
-  override func computeArea() -> Double {
-    return M_PI * radius * radius
+  override func area() -> Double {
+    return Double.pi * radius * radius
   }
 
   private func centerString() -> String {
@@ -475,11 +475,11 @@ Use trailing closure syntax only if there's a single closure expression paramete
 
 **Preferred:**
 ```swift
-UIView.animateWithDuration(1.0) {
+UIView.animate(withDuration: 1.0) {
   self.myView.alpha = 0
 }
 
-UIView.animateWithDuration(1.0,
+UIView.animate(withDuration: 1.0,
   animations: {
     self.myView.alpha = 0
   },
@@ -491,11 +491,11 @@ UIView.animateWithDuration(1.0,
 
 **Not Preferred:**
 ```swift
-UIView.animateWithDuration(1.0, animations: {
+UIView.animate(withDuration: 1.0, animations: {
   self.myView.alpha = 0
 })
 
-UIView.animateWithDuration(1.0,
+UIView.animate(withDuration: 1.0,
   animations: {
     self.myView.alpha = 0
   }) { f in
@@ -514,7 +514,7 @@ attendeeList.sort { a, b in
 Chained methods using trailing closures should be clear and easy to read in context. Decisions on spacing, line breaks, and when to use named versus anonymous arguments is left to the discretion of the author. Examples:
 
 ```swift
-let value = numbers.map { $0 * 2 }.filter { $0 % 3 == 0 }.indexOf(90)
+let value = numbers.map { $0 * 2 }.filter { $0 % 3 == 0 }.index(of: 90)
 
 let value = numbers
    .map {$0 * 2}
@@ -552,10 +552,10 @@ You can define constants on a type rather than an instance of that type using ty
 ```swift
 enum Math {
   static let e  = 2.718281828459045235360287
-  static let pi = 3.141592653589793238462643
+  static let root2 = 1.41421356237309504880168872
 }
 
-radius * Math.pi * 2 // circumference
+let hypotenuse = side * Math.root2
 
 ```
 **Note:** The advantage of using a case-less enumeration is that it can't accidentally be instantiated and works as a pure namespace.
@@ -563,9 +563,9 @@ radius * Math.pi * 2 // circumference
 **Not Preferred:**
 ```swift
 let e  = 2.718281828459045235360287  // pollutes global namespace
-let pi = 3.141592653589793238462643
+let root2 = 1.41421356237309504880168872
 
-radius * pi * 2 // is pi instance data or a global constant?
+let hypotenuse = side * root2 // what is root2?
 ```
 
 ### Static Methods and Variable Type Properties
@@ -750,7 +750,9 @@ Extend object lifetime using the `[weak self]` and `guard let strongSelf = self 
 **Preferred**
 ```swift
 resource.request().onComplete { [weak self] response in
-  guard let strongSelf = self else { return }
+  guard let strongSelf = self else { 
+    return 
+  }
   let model = strongSelf.updateModel(response)
   strongSelf.updateUI(model)
 }
@@ -839,8 +841,12 @@ When coding with conditionals, the left hand margin of the code should be the "g
 ```swift
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
 
-  guard let context = context else { throw FFTError.noContext }
-  guard let inputData = inputData else { throw FFTError.noInputData }
+  guard let context = context else { 
+    throw FFTError.noContext 
+  }
+  guard let inputData = inputData else { 
+    throw FFTError.noInputData 
+  }
     
   // use context and input to compute the frequencies
     
@@ -872,7 +878,11 @@ When multiple optionals are unwrapped either with `guard` or `if let`, minimize 
 
 **Preferred:**
 ```swift
-guard let number1 = number1, number2 = number2, number3 = number3 else { fatalError("impossible") }
+guard let number1 = number1, 
+      let number2 = number2, 
+      let number3 = number3 else { 
+  fatalError("impossible") 
+}
 // do something with numbers
 ```
 
