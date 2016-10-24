@@ -169,12 +169,12 @@ Selectors are Obj-C methods that act as handlers for many Cocoa and Cocoa Touch 
 
 **Preferred:**
 ```swift
-let sel = #selector(viewDidLoad)
+let selector = #selector(viewDidLoad)
 ```
 
 **Not Preferred:**
 ```swift
-let sel = #selector(ViewController.viewDidLoad)
+let selector = #selector(ViewController.viewDidLoad)
 ```
 
 ### Generics
@@ -328,6 +328,10 @@ class TestDatabase : Database {
   var data :[String:CGFloat] = ["A" : 1.2, "B":3.2]
 }
 ```
+
+* No trailing whitespaces at the ends of lines.
+* New line character at the end of file.
+* Use maximum 100 characters line width.
 
 ## Comments
 
