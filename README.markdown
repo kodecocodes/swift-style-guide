@@ -1030,6 +1030,7 @@ It is a collaborative effort from the most stylish raywenderlich.com team member
 * [Evan Dekhayser](https://github.com/edekhayser)
 * [Jean-Pierre Distler](https://github.com/pdistler)
 * [Colin Eberhardt](https://github.com/ColinEberhardt)
+* [Vadim Eisenberg](https://github.com/vadimeisenbergibm)
 * [Ray Fix](https://github.com/rayfix)
 * [Joshua Greene](https://github.com/JRG-Developer)
 * [Greg Heo](https://github.com/gregheo)
@@ -1046,7 +1047,6 @@ It is a collaborative effort from the most stylish raywenderlich.com team member
 * [Chris Wagner](https://github.com/cwagdev)
 * [Ray Wenderlich](https://github.com/rwenderlich)
 * [Jack Wu](https://github.com/jackwu95)
-* [Vadim Eisenberg](https://github.com/vadimeisenbergibm)
 
 Hat tip to [Nicholas Waynik](https://github.com/ndubbs) and the [Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide) team!
 
