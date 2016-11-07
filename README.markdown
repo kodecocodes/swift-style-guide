@@ -329,6 +329,8 @@ class TestDatabase : Database {
 }
 ```
 
+* No trailing whitespaces at the ends of lines.
+
 ## Comments
 
 When they are needed, use comments to explain **why** a particular piece of code does something. Comments must be kept up-to-date or deleted.
@@ -1028,6 +1030,7 @@ It is a collaborative effort from the most stylish raywenderlich.com team member
 * [Evan Dekhayser](https://github.com/edekhayser)
 * [Jean-Pierre Distler](https://github.com/pdistler)
 * [Colin Eberhardt](https://github.com/ColinEberhardt)
+* [Vadim Eisenberg](https://github.com/vadimeisenbergibm)
 * [Ray Fix](https://github.com/rayfix)
 * [Joshua Greene](https://github.com/JRG-Developer)
 * [Greg Heo](https://github.com/gregheo)
