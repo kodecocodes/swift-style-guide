@@ -55,7 +55,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 
 ## Correctness
 
-Consider warnings to be errors. This rule informs many stylistic decisions such as not to use the `++` or `--` operators, C-style for loops, or strings as selectors.
+Consider warnings as errors. This rule informs many style decisions such as using `#selector` types instead of string literals.
 
 ## Naming
 
