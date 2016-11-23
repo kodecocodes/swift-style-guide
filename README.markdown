@@ -79,23 +79,6 @@ Descriptive and consistent naming makes software easier to read and understand. 
 - labelling closure and tuple parameters
 - taking advantage of default parameters
 
-### Protocols
-
-Following Apple's API Design Guidelines, protocols names that describe what something is should be a noun. Examples: `Collection`, `WidgetFactory`. Protocols names that describe an ability should end in -ing, -able, or -ible. Examples: `Equatable`, `Resizing`.
-
-### Enumerations
-
-Following Apple's API Design Guidelines for Swift 3, use lowerCamelCase for enumeration values.
-
-```swift
-enum Shape {
-  case rectangle
-  case square
-  case rightTriangle
-  case equilateralTriangle
-}
-```
-
 ### Prose
 
 When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective or `_` for unnamed parameters. Examples:
