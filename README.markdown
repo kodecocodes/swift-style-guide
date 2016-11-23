@@ -79,18 +79,16 @@ Descriptive and consistent naming makes software easier to read and understand. 
 
 ### Prose
 
-When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective or `_` for unnamed parameters. Examples:
+## Prose
 
-> Call `convertPointAt(column:row:)` from your own `init` implementation.
->
-> If you call `dateFromString(_:)` make sure that you provide a string with the format "yyyy-MM-dd".
->
-> If you call `timedAction(afterDelay:perform:)` from `viewDidLoad()` remember to provide an adjusted delay value and an action to perform.
->
-> You shouldn't call the data source method `tableView(_:cellForRowAtIndexPath:)` directly.
+When referring to methods in prose, being unambiguous is critical. To refer to a method name, use the simplest form possible.
+1.  Write the method name with no parameters.  **Example:** Next, you need to call `addTarget()`.
+2. Write the method name with argument labels.  **Example:** Next, you need to call `addTarget(_:action:)`.
+3. Write the full method name with argument labels and types. **Example:** Next, you need to call `addTarget(_: Any?, action: Selector?)`.
 
-This is the same as the `#selector` syntax. When in doubt, look at how Xcode lists the method in the jump bar – our style here matches that.
+For the above example using `UIGestureRecognizer`, 1 is unambiguous and preferred.
 
+**Pro Tip:** You can use Xcode's jump bar methods with argument labels.
 ![Methods in Xcode jump bar](screens/xcode-jump-bar.png)
 
 
