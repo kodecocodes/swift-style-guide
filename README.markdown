@@ -10,8 +10,6 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 
 * [Correctness](#correctness)
 * [Naming](#naming)
-  * [Protocols](#protocols)
-  * [Enumerations](#enumerations)
   * [Prose](#prose)
   * [Selectors](#selectors)
   * [Generics](#generics)
