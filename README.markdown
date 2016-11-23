@@ -891,6 +891,14 @@ if (name == "Hello") {
 }
 ```
 
+Parenthesis can make code read more clearly. While not strictly required for correctness by the compiler, including them is sometimes preferred.
+
+**Preferred:**
+```swift
+let playerMark = (player == current ? "X" : "O")
+```
+
+
 ## Copyright Statement
 
 The following copyright statement should be included at the top of every source
