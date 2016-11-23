@@ -59,65 +59,25 @@ Consider warnings as errors. This rule informs many style decisions such as usin
 
 ## Naming
 
-Use descriptive names with camel case for classes, methods, variables, etc. Type names (classes, structures, enumerations and protocols) should be capitalized, while method names and variables should start with a lower case letter.
+Descriptive and consistent naming makes software easier to read and understand. Use the Swift naming conventions described in the [API Design Guidelines](https://swift.org/documentation/api-design-guidelines/) which contains numerous concrete examples. Additionally, the Swift Standard Library and Apple frameworks have been updated to follow these guidelines. Key takeaways include:
 
-**Preferred:**
-
-```swift
-private let maximumWidgetCount = 100
-
-class WidgetContainer {
-  var widgetButton: UIButton
-  let widgetHeightPercentage = 0.85
-}
-```
-
-**Not Preferred:**
-
-```swift
-let MAX_WIDGET_COUNT = 100
-
-class app_widgetContainer {
-  var wBut: UIButton
-  let wHeightPct = 0.85
-}
-```
-
-Abbreviations and acronyms should generally be avoided. Following the [API Design Guidelines](https://swift.org/documentation/api-design-guidelines/#follow-case-conventions), abbreviations and initialisms that appear in all uppercase should be uniformly uppercase or lowercase. Examples:
-
-**Preferred**
-```swift
-let urlString: URLString
-let userID: UserID
-```
-
-**Not Preferred**
-```swift
-let uRLString: UrlString
-let userId: UserId
-```
-
-For functions and init methods, prefer named parameters for all arguments unless the context is very clear. Include external parameter names if it makes function calls more readable.
-
-```swift
-func dateFromString(dateString: String) -> NSDate
-func convertPointAt(column column: Int, row: Int) -> CGPoint
-func timedAction(afterDelay delay: NSTimeInterval, perform action: SKAction) -> SKAction!
-
-// would be called like this:
-dateFromString("2014-03-14")
-convertPointAt(column: 42, row: 13)
-timedAction(afterDelay: 1.0, perform: someOtherAction)
-```
-
-For methods, follow the standard Apple convention of referring to the first parameter in the method name:
-
-```swift
-class Counter {
-  func combineWith(otherCounter: Counter, options: Dictionary?) { ... }
-  func incrementBy(amount: Int) { ... }
-}
-```
+- striving for clarity at the call site
+- prioritizing clarity over brevity
+- using camel case (not snake case)
+- using uppercase for types (and protocols), lowercase for everything else
+- omitting needless words
+- using names based on roles, not types
+- sometimes compensating for weak type information
+- striving for fluent usage
+- beginning factory methods with `make`
+- naming methods for their side effects
+  - verb methods follow the -ed, -ing rule for the non-mutating version
+  - noun methods follow the formX rule for the non-mutating version
+  - boolean types should read like assertions
+  - protocols that describe _what something is_ should read as nouns
+  - protocols that describe _a capability_ should end in _-able_ or _-ible_
+- labelling closure and tuple parameters
+- taking advantage of default parameters
 
 ### Protocols
 
