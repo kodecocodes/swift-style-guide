@@ -87,7 +87,7 @@ When referring to methods in prose, being unambiguous is critical. To refer to a
 
 For the above example using `UIGestureRecognizer`, 1 is unambiguous and preferred.
 
-**Pro Tip:** You can use Xcode's jump bar methods with argument labels.
+**Pro Tip:** You can use Xcode's jump bar to lookup methods with argument labels.
 
 ![Methods in Xcode jump bar](screens/xcode-jump-bar.png)
 
