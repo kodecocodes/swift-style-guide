@@ -77,7 +77,7 @@ Descriptive and consistent naming makes software easier to read and understand. 
 - generally avoiding abbreviations
 - using precedent for names
 - preferring methods and properties to free functions
-- making acronyms and initialisms are cased uniformly up or down
+- casing acronyms and initialisms uniformly up or down
 - giving the same base name to methods that share the same meaning
 - avoiding overloads on return type
 - choosing good parameter names that serve as documentation
