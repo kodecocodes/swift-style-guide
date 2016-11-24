@@ -47,6 +47,8 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Failing Guards](#failing-guards)
 * [Semicolons](#semicolons)
 * [Parentheses](#parentheses)
+* [UIKit](#uikit)
+  * [Subview Creation](#subview-creation)
 * [Copyright Statement](#copyright-statement)
 * [Smiley Face](#smiley-face)
 * [Style Guide License](#style-guide-license)
@@ -678,20 +680,20 @@ let currentBounds: CGRect = computeViewBounds()
 let names = [String]()
 ```
 
-#### Type Annotation for Empty Arrays and Dictionaries
+#### Type Inference for Empty Arrays and Dictionaries
 
-For empty arrays and dictionaries, use type annotation. (For an array or dictionary assigned to a large, multi-line literal, use type annotation.)
+For empty arrays and dictionaries, use type inference. (For an array or dictionary assigned to a large, multi-line literal, use type inference.)
 
 **Preferred:**
 ```swift
-var names: [String] = []
-var lookup: [String: Int] = [:]
+var names = [String]()
+var lookup = [String: Int]()
 ```
 
 **Not Preferred:**
 ```swift
-var names = [String]()
-var lookup = [String: Int]()
+var names: [String] = []
+var lookup: [String: Int] = [:]
 ```
 
 **NOTE**: Following this guideline means picking descriptive names is even more important than before.
@@ -937,6 +939,38 @@ if (name == "Hello") {
   print("World")
 }
 ```
+
+## UIKit
+
+### Subview Creation
+
+View properties of UIViews or UIViewControllers should be declared using the 
+`lazy var` pattern to consolidate initialization and configuration logic.
+
+**Preferred**
+```swift
+lazy var subtitleLabel: UILabel = {
+  let label = UILabel()
+  // Set textColor, font, etc.
+  return label
+}
+
+// later
+view.addSubview(subtitleLabel)
+```
+
+**Not Preferred**
+```swift
+viewDidLoad() {
+  label1 = UILabel()
+  // config here
+  label2 = UILabel()
+  // more config
+  label3 = UILabel()
+  // more config
+}
+```
+
 
 ## Copyright Statement
 
