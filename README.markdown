@@ -753,15 +753,15 @@ for _ in 0..<3 {
   print("Hello three times")
 }
 
-for (index, person) in attendeeList.enumerate() {
+for (index, person) in attendeeList.enumerated() {
   print("\(person) is at position #\(index)")
 }
 
-for index in 0.stride(to: items.count, by: 2) {
+for index in stride(from: 0, to: items.count, by: 2) {
   print(index)
 }
 
-for index in (0...3).reverse() {
+for index in (0...3).reversed() {
   print(index)
 }
 ```
