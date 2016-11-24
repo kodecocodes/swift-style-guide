@@ -226,12 +226,12 @@ override func didReceiveMemoryWarning() {
   // Dispose of any resources that can be recreated.
 }
 
-override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+override func numberOfSections(in tableView: UITableView) -> Int {
    // #warning Incomplete implementation, return the number of sections
    return 1
 }
 
-override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
   // #warning Incomplete implementation, return the number of rows
   return Database.contacts.count
 }
@@ -240,7 +240,7 @@ override func tableView(tableView: UITableView, numberOfRowsInSection section: I
 
 **Preferred:**
 ```swift
-override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
   return Database.contacts.count
 }
 ```
