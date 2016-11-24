@@ -11,7 +11,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 * [Correctness](#correctness)
 * [Naming](#naming)
   * [Prose](#prose)
-  * [Selectors](#selectors)
+  * [Use Type Inferred Context](#use-type-inferred-context)
   * [Delegates](#delegates)
   * [Generics](#generics)
   * [Class Prefixes](#class-prefixes)
@@ -105,7 +105,7 @@ let myClass = MyModule.UsefulClass()
 
 ### Delegates
 
-When creating custom delegate methods, the first parameter should be the delegate source. (UIKit contains numerous examples of this.)
+When creating custom delegate methods, an unnamed first parameter should be the delegate source. (UIKit contains numerous examples of this.)
 
 **Preferred:**
 ```swift
@@ -115,24 +115,29 @@ func namePickerViewShouldReload(_ namePickerView: NamePickerView) -> Bool
 
 **Not Preferred:**
 ```swift
-func namePickerDidSelectName(_ name: String)
+func didSelectName(namePicker: NamePickerViewController, name: String)
 func namePickerShouldReload() -> Bool
 ```
 
-### Selectors
+### Use Type Inferred Context
 
-Selectors are Obj-C methods that act as handlers for many Cocoa and Cocoa Touch APIs. Prior to Swift 2.2, they were specified using type unsafe strings. This now causes a compiler warning. The "Fix it" button replaces these strings with the **fully qualified** type safe selector. Often, however, you can use context to shorten the expression. This is the preferred style.
+Use compiler inferred context to write shorter, clear code.  (Also see [Type Inference](#type-inference).)
 
 **Preferred:**
 ```swift
-let sel = #selector(viewDidLoad)
+let selector = #selector(viewDidLoad)
+view.backgroundColor = .red
+let toView = context.view(forKey: .to)
+let view = UIView(frame: .zero)
 ```
 
 **Not Preferred:**
 ```swift
-let sel = #selector(ViewController.viewDidLoad)
+let selector = #selector(ViewController.viewDidLoad)
+view.backgroundColor = UIColor.red
+let toView = context.view(forKey: UITransitionContextViewKey.to)
+let view = UIView(frame: CGRect.zero)
 ```
-
 ### Generics
 
 Generic type parameters should be descriptive, upper camel case names. When a type name doesn't have a meaningful relationship or role, use a traditional single uppercase letter such as `T`, `U`, or `V`.
