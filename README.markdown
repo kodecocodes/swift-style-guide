@@ -897,7 +897,7 @@ if (name == "Hello") {
 }
 ```
 
-Parenthesis can make code read more clearly. While not strictly required for correctness by the compiler, including them is sometimes preferred.
+In larger expressions, optional parentheses can sometimes make code read more clearly.
 
 **Preferred:**
 ```swift
