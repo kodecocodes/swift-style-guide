@@ -31,7 +31,6 @@ Our overarching goals are clarity, consistency and brevity, in that order.
   * [Constants](#constants)
   * [Static Methods and Variable Type Properties](#static-methods-and-variable-type-properties)
   * [Optionals](#optionals)
-  * [Struct Initializers](#struct-initializers)
   * [Lazy Initialization](#lazy-initialization)
   * [Type Inference](#type-inference)
   * [Syntactic Sugar](#syntactic-sugar)
@@ -587,25 +586,6 @@ if let unwrappedSubview = optionalSubview {
   }
 }
 ```
-
-### Struct Initializers
-
-Use the native Swift struct initializers rather than the legacy CGGeometry constructors.
-
-**Preferred:**
-```swift
-let bounds = CGRect(x: 40, y: 20, width: 120, height: 80)
-let centerPoint = CGPoint(x: 96, y: 42)
-```
-
-**Not Preferred:**
-```swift
-let bounds = CGRectMake(40, 20, 120, 80)
-let centerPoint = CGPointMake(96, 42)
-```
-
-Prefer the struct-scope constants `CGRect.infinite`, `CGRect.null`, etc. over global constants `CGRectInfinite`, `CGRectNull`, etc. For existing variables, you can use the shorter `.zero`.
-
 
 ### Lazy Initialization
 
