@@ -73,15 +73,15 @@ Descriptive and consistent naming makes software easier to read and understand. 
   - boolean types should read like assertions
   - protocols that describe _what something is_ should read as nouns
   - protocols that describe _a capability_ should end in _-able_ or _-ible_
-- using terms that don't suprise experts or confuse beginners
+- using terms that don't surprise experts or confuse beginners
 - generally avoiding abbreviations
-- using precendent
-- prefer methods and properties to free functions
-- making acronyms and and initialisms are cased uniformly up or down
+- using precedent for names
+- preferring methods and properties to free functions
+- making acronyms and initialisms are cased uniformly up or down
 - giving the same base name to methods that share the same meaning
 - avoiding overloads on return type
 - choosing good parameter names that serve as documentation
-- labelling closure and tuple parameters
+- labeling closure and tuple parameters
 - taking advantage of default parameters
 
 ### Prose
