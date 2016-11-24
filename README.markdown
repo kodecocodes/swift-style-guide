@@ -138,6 +138,7 @@ view.backgroundColor = UIColor.red
 let toView = context.view(forKey: UITransitionContextViewKey.to)
 let view = UIView(frame: CGRect.zero)
 ```
+
 ### Generics
 
 Generic type parameters should be descriptive, upper camel case names. When a type name doesn't have a meaningful relationship or role, use a traditional single uppercase letter such as `T`, `U`, or `V`.
