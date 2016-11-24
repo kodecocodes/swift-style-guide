@@ -692,8 +692,8 @@ Free functions are most appropriate when they aren't associated with any particu
 
 **Preferred**
 ```swift
-let sorted = items.mergeSort()  // easily discoverable
-rocket.launch()  // clearly acts on the model
+let sorted = items.mergeSorted()  // easily discoverable
+rocket.launch()  // acts on the model
 ```
 
 **Not Preferred**
