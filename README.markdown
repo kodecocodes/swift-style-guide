@@ -44,6 +44,7 @@ Our overarching goals are clarity, consistency and brevity, in that order.
   * [Failing Guards](#failing-guards)
 * [Semicolons](#semicolons)
 * [Parentheses](#parentheses)
+* [Organization and Bundle Identifier](#organization-and-bundle-identifier)
 * [Copyright Statement](#copyright-statement)
 * [Smiley Face](#smiley-face)
 * [References](#references)
@@ -918,6 +919,9 @@ Parenthesis can make code read more clearly. While not strictly required for cor
 let playerMark = (player == current ? "X" : "O")
 ```
 
+## Organization and Bundle Identifier
+
+Where an Xcode project is involved, the organization should be set to `Ray Wenderlich` and the Bundle Identifier set to `com.razeware.TutorialName` where `TutorialName` is the name of the tutorial project.
 
 ## Copyright Statement
 
