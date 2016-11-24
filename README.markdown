@@ -12,6 +12,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 * [Naming](#naming)
   * [Prose](#prose)
   * [Selectors](#selectors)
+  * [Delegates](#delegates)
   * [Generics](#generics)
   * [Class Prefixes](#class-prefixes)
   * [Language](#language)
@@ -100,6 +101,22 @@ Swift types are automatically namespaced by the module that contains them and yo
 import SomeModule
 
 let myClass = MyModule.UsefulClass()
+```
+
+### Delegates
+
+When creating custom delegate methods, the first parameter should be the delegate source. (UIKit contains numerous examples of this.)
+
+**Preferred:**
+```swift
+func namePickerView(_ namePickerView: NamePickerView, didSelectName name: String)
+func namePickerViewShouldReload(_ namePickerView: NamePickerView) -> Bool
+```
+
+**Not Preferred:**
+```swift
+func namePickerDidSelectName(_ name: String)
+func namePickerShouldReload() -> Bool
 ```
 
 ### Selectors
