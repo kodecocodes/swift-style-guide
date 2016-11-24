@@ -725,19 +725,27 @@ resource.request().onComplete { [weak self] response in
 
 ## Access Control
 
-Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` appropriately, however, adds clarity and promotes encapsulation. Use `private` as the leading property specifier. The only things that should come before access control are the `static` specifier or attributes such as `@IBAction` and `@IBOutlet`.
+Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` and `fileprivate` appropriately, however, adds clarity and promotes encapsulation. Prefer `private` to `fileprivate` when possible. Using extensions may require you to use `fileprivate`.
+
+Only explicitly use `open`, `public`, and `internal` when you require a full access control specification.
+
+Use access control as the leading property specifier. The only things that should come before access control are the `static` specifier or attributes such as `@IBAction`, `@IBOutlet` and `@discardableResult`.
 
 **Preferred:**
 ```swift
+private let message = "Great Scott!"
+
 class TimeMachine {  
-  private dynamic lazy var fluxCapacitor = FluxCapacitor()
+  fileprivate dynamic lazy var fluxCapacitor = FluxCapacitor()
 }
 ```
 
 **Not Preferred:**
 ```swift
+fileprivate let message = "Great Scott!"
+
 class TimeMachine {  
-  lazy dynamic private var fluxCapacitor = FluxCapacitor()
+  lazy dynamic fileprivate var fluxCapacitor = FluxCapacitor()
 }
 ```
 
@@ -780,6 +788,7 @@ while i < attendeeList.count {
   i += 1
 }
 ```
+
 ## Golden Path
 
 When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path. That is, don't nest `if` statements. Multiple return statements are OK. The `guard` statement is built for this.
