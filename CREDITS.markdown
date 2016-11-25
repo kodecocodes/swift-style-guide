@@ -28,5 +28,6 @@ It is a collaborative effort from the most stylish raywenderlich.com team member
 * [Chris Wagner](https://github.com/cwagdev)
 * [Ray Wenderlich](https://github.com/rwenderlich)
 * [Jack Wu](https://github.com/jackwu95)
+* [Robert Gummesson](https://github.com/RobertGummesson)
 
 Hat tip to [Nicholas Waynik](https://github.com/ndubbs) and the [Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide) team!
