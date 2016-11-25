@@ -14,6 +14,7 @@ It is a collaborative effort from the most stylish raywenderlich.com team member
 * [Vadim Eisenberg](https://github.com/vadimeisenbergibm)
 * [Ray Fix](https://github.com/rayfix)
 * [Joshua Greene](https://github.com/JRG-Developer)
+* [Robert Gummesson](https://github.com/RobertGummesson)
 * [Greg Heo](https://github.com/gregheo)
 * [Matthijs Hollemans](https://github.com/hollance)
 * [Erik Kerber](https://github.com/eskerber)
@@ -28,6 +29,5 @@ It is a collaborative effort from the most stylish raywenderlich.com team member
 * [Chris Wagner](https://github.com/cwagdev)
 * [Ray Wenderlich](https://github.com/rwenderlich)
 * [Jack Wu](https://github.com/jackwu95)
-* [Robert Gummesson](https://github.com/RobertGummesson)
 
 Hat tip to [Nicholas Waynik](https://github.com/ndubbs) and the [Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide) team!
