@@ -136,6 +136,65 @@ enum Shape {
 }
 ```
 
+
+## Groups
+
+Separate the following code groups with newlines and a group marker: constants, variables, outlets, methods, and methods that conform to a specific protocol. Methods that are relative to each other may also be grouped together. Group names in the `MARK` comment should be short and concise, and groups that pertain to certain APIs or protocols should use the API or protocol name as the comment to make use of Xcode's auto-linking. Overall, it's best to use the `// MARK: -` format since it creates a line to separate methods in the symbol navigator.
+
+**Preferred:**
+
+```swift
+class CommentViewController : UIViewController, UITextViewDelegate {
+
+  // MARK: - Constants
+
+  private let titleSpace = CGFloat(16)
+  private let commentHeight = CGFloat(15)
+
+  // MARK: - Variables
+
+  var commentText: String?
+  var previousComment: String?
+  weak var delegate: DSXCommentViewControllerDelegate?
+
+  // MARK: - Outlets
+
+  @IBOutlet private weak var titleLabel: UILabel!
+  @IBOutlet private weak var previousCommentLabel: UILabel!
+  @IBOutlet private weak var tableView: UITableView!
+
+  // MARK: - View Lifecycle
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    ...
+  }
+
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+
+    ...
+  }
+
+
+  // MARK: - UITableViewDelegate
+
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    ...
+  }
+
+  // MARK: - UITextViewDelegate
+
+  func textViewDidChange(textView: UITextView) {
+    ...
+  }
+
+  func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    ...
+  }
+}
+```
+
 ### Prose
 
 When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective or `_` for unnamed parameters. Examples:
