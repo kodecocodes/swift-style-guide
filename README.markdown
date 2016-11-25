@@ -568,7 +568,7 @@ var subview: UIView?
 var volume: Double?
 
 // later on...
-if let subview = subview, volume = volume {
+if let subview = subview, let volume = volume {
   // do something with unwrapped subview and volume
 }
 ```
