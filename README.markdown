@@ -344,15 +344,16 @@ class Circle: Shape {
     self.init(x: x, y: y, radius: diameter / 2)
   }
 
-  func describe() -> String {
-    return "I am a circle at \(centerString()) with an area of \(computeArea())"
-  }
-
   override func area() -> Double {
     return Double.pi * radius * radius
   }
+}
 
-  private func centerString() -> String {
+extension Circle: CustomStringConvertible {
+  var description: String {
+    return "center = \(centerString) area = \(area())"
+  }
+  private var centerString: String {
     return "(\(x),\(y))"
   }
 }
@@ -364,7 +365,8 @@ The example above demonstrates the following style guidelines:
  + Define multiple variables and structures on a single line if they share a common purpose / context.
  + Indent getter and setter definitions and property observers.
  + Don't add modifiers such as `internal` when they're already the default. Similarly, don't repeat the access modifier when overriding a method.
-
+ + Organize extra functionality (e.g. printing) into extensions.
+ + Hide non-shared, implementation details such as `centerString` details inside the extension using `private` access control.
 
 ### Use of Self
 
