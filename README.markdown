@@ -453,10 +453,10 @@ UIView.animate(withDuration: 1.0) {
 }
 
 UIView.animate(withDuration: 1.0, animations: {
-    self.myView.alpha = 0
-  }, completion: { finished in
-    self.myView.removeFromSuperview()
-  })
+  self.myView.alpha = 0
+}, completion: { finished in
+  self.myView.removeFromSuperview()
+})
 ```
 
 **Not Preferred:**
@@ -465,11 +465,10 @@ UIView.animate(withDuration: 1.0, animations: {
   self.myView.alpha = 0
 })
 
-UIView.animate(withDuration: 1.0,
-  animations: {
-    self.myView.alpha = 0
-  }) { f in
-    self.myView.removeFromSuperview()
+UIView.animate(withDuration: 1.0, animations: {
+  self.myView.alpha = 0
+}) { f in
+  self.myView.removeFromSuperview()
 }
 ```
 
