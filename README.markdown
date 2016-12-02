@@ -298,7 +298,7 @@ class TestDatabase : Database {
 
 * Avoid trailing whitespaces at the ends of lines.
 
-* Add a new line character at the end of file.
+* Add a single newline character at the end of each file.
 
 ## Comments
 
