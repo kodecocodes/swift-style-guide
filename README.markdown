@@ -221,13 +221,13 @@ Aspirational methods not directly associated with the tutorial whose implementat
 **Not Preferred:**
 ```swift
 override func didReceiveMemoryWarning() {
-   super.didReceiveMemoryWarning()
+  super.didReceiveMemoryWarning()
   // Dispose of any resources that can be recreated.
 }
 
 override func numberOfSections(in tableView: UITableView) -> Int {
-   // #warning Incomplete implementation, return the number of sections
-   return 1
+  // #warning Incomplete implementation, return the number of sections
+  return 1
 }
 
 override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -487,9 +487,9 @@ Chained methods using trailing closures should be clear and easy to read in cont
 let value = numbers.map { $0 * 2 }.filter { $0 % 3 == 0 }.index(of: 90)
 
 let value = numbers
-   .map {$0 * 2}
-   .filter {$0 > 50}
-   .map {$0 + 10}
+  .map {$0 * 2}
+  .filter {$0 > 50}
+  .map {$0 + 10}
 ```
 
 ## Types
