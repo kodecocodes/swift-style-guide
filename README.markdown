@@ -823,12 +823,10 @@ func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies 
       // use context and input to compute the frequencies
 
       return frequencies
-    }
-    else {
+    } else {
       throw FFTError.noInputData
     }
-  }
-  else {
+  } else {
     throw FFTError.noContext
   }
 }
@@ -852,16 +850,13 @@ if let number1 = number1 {
   if let number2 = number2 {
     if let number3 = number3 {
       // do something with numbers
-    }
-    else {
+    } else {
       fatalError("impossible")
     }
-  }
-  else {
+  } else {
     fatalError("impossible")
   }
-}
-else {
+} else {
   fatalError("impossible")
 }
 ```
