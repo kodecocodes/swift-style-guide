@@ -686,7 +686,7 @@ launch(&rocket)
 **Free Function Exceptions**
 ```swift
 let tuples = zip(a, b)  // feels natural as a free function (symmetry)
-let value = max(x,y,z)  // another free function that feels natural
+let value = max(x, y, z)  // another free function that feels natural
 ```
 
 ## Memory Management
