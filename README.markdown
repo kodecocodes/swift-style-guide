@@ -520,7 +520,7 @@ You can define constants on a type rather than an instance of that type using ty
 **Preferred:**
 ```swift
 enum Math {
-  static let e  = 2.718281828459045235360287
+  static let e = 2.718281828459045235360287
   static let root2 = 1.41421356237309504880168872
 }
 
@@ -531,7 +531,7 @@ let hypotenuse = side * Math.root2
 
 **Not Preferred:**
 ```swift
-let e  = 2.718281828459045235360287  // pollutes global namespace
+let e = 2.718281828459045235360287  // pollutes global namespace
 let root2 = 1.41421356237309504880168872
 
 let hypotenuse = side * root2 // what is root2?
