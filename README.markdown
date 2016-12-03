@@ -51,7 +51,7 @@ Our overarching goals are clarity, consistency and brevity, in that order.
 
 ## Correctness
 
-Consider warnings as errors. This rule informs many style decisions such as using `#selector` types instead of string literals.
+Strive to make your code compile without warnings. This rule informs many style decisions such as using `#selector` types instead of string literals.
 
 ## Naming
 
@@ -68,7 +68,7 @@ Descriptive and consistent naming makes software easier to read and understand. 
 - beginning factory methods with `make`
 - naming methods for their side effects
   - verb methods follow the -ed, -ing rule for the non-mutating version
-  - noun methods follow the formX rule for the mutating version
+  - noun methods follow the formX rule for the non-mutating version
   - boolean types should read like assertions
   - protocols that describe _what something is_ should read as nouns
   - protocols that describe _a capability_ should end in _-able_ or _-ible_
