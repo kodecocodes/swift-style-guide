@@ -6,6 +6,7 @@ It is a collaborative effort from the most stylish raywenderlich.com team member
 * [Jawwad Ahmad](https://github.com/jawwad)
 * [Soheil Moayedi Azarpour](https://github.com/moayes)
 * [Scott Berrevoets](https://github.com/Scott90)
+* [Jessy Catterwaul](https://github.com/JessyCatterwaul)
 * [Eric Cerney](https://github.com/ecerney)
 * [Sam Davies](https://github.com/sammyd)
 * [Evan Dekhayser](https://github.com/edekhayser)

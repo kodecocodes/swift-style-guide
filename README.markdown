@@ -152,14 +152,14 @@ Generic type parameters should be descriptive, upper camel case names. When a ty
 ```swift
 struct Stack<Element> { ... }
 func write<Target: OutputStream>(to target: inout Target)
-func max<T: Comparable>(_ x: T, _ y: T) -> T
+func swap<T>(_ a: inout T, _ b: inout T)
 ```
 
 **Not Preferred:**
 ```swift
 struct Stack<T> { ... }
 func write<target: OutputStream>(to target: inout target)
-func max<Thing: Comparable>(_ x: Thing, _ y: Thing) -> Thing
+func swap<Thing>(_ a: inout Thing, _ b: inout Thing)
 ```
 
 ### Language
