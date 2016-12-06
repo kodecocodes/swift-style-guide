@@ -397,7 +397,7 @@ var diameter: Double {
 
 ### Final
 
-Mark classes `final` when inheritance is not intended. Example:
+Marking classes or members as `final` in tutorials can distract from the main topic and is not required. Nevertheless, use of `final` can sometimes clarify your intent and is worth the cost. In the below example, `Box` has a particular purpose and customization in a derived class is not intended. Marking it `final` makes that clear.
 
 ```swift
 // Turn any generic type into a reference type using this Box class.
