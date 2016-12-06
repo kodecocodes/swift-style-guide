@@ -87,9 +87,9 @@ Descriptive and consistent naming makes software easier to read and understand. 
 
 When referring to methods in prose, being unambiguous is critical. To refer to a method name, use the simplest form possible.
 
-1. Write the method name with no parameters.  **Example:** Next, you need to call `addTarget()`.
-2. Write the method name with argument labels.  **Example:** Next, you need to call `addTarget(_:action:)`.
-3. Write the full method name with argument labels and types. **Example:** Next, you need to call `addTarget(_: Any?, action: Selector?)`.
+1. Write the method name with no parameters.  **Example:** Next, you need to call the method `addTarget`.
+2. Write the method name with argument labels.  **Example:** Next, you need to call the method `addTarget(_:action:)`.
+3. Write the full method name with argument labels and types. **Example:** Next, you need to call the method `addTarget(_: Any?, action: Selector?)`.
 
 For the above example using `UIGestureRecognizer`, 1 is unambiguous and preferred.
 
