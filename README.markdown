@@ -905,7 +905,8 @@ Where an Xcode project is involved, the organization should be set to `Ray Wende
 The following copyright statement should be included at the top of every source
 file:
 
-    /**
+```swift 
+    /**
      * Copyright (c) 2017 Razeware LLC
      *
      * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -925,7 +926,8 @@ file:
      * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
-     */
+     */
+```
 
 ## Smiley Face
 
