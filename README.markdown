@@ -219,6 +219,13 @@ Unused (dead) code, including Xcode template code and placeholder comments shoul
 
 Aspirational methods not directly associated with the tutorial whose implementation simply calls the superclass should also be removed. This includes any empty/unused UIApplicationDelegate methods.
 
+**Preferred:**
+```swift
+override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  return Database.contacts.count
+}
+```
+
 **Not Preferred:**
 ```swift
 override func didReceiveMemoryWarning() {
@@ -236,13 +243,6 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
   return Database.contacts.count
 }
 
-```
-
-**Preferred:**
-```swift
-override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-  return Database.contacts.count
-}
 ```
 ### Minimal Imports
 
