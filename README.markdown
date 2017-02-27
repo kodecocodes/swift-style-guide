@@ -214,8 +214,6 @@ For UIKit view controllers, consider grouping lifecycle, custom accessors, and I
 
 Unused (dead) code, including Xcode template code and placeholder comments should be removed.
 
-Aspirational methods not directly associated with the tutorial whose implementation simply calls the superclass should also be removed. This includes any empty/unused UIApplicationDelegate methods.
-
 **Preferred:**
 ```swift
 override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
