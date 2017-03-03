@@ -12,6 +12,8 @@ https://team.badoo.com/jobs/81
 
 Open an issue on github and describe the change you would like to see or rule that you would like to have added. You can even propose the exact change in github markdown which can be pasted into the guide.
 
+If proposed change is small enough you can create pull request straight away. In that case proposal would be discussed inside PR
+
 ### Step 3: Wait for iOS team feedback
 
 Wait for feedback on the issue. Style guides are very subjective and other developers may not agree with you.
