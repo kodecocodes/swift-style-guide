@@ -713,6 +713,17 @@ resource.request().onComplete { [weak self] response in
 }
 ```
 
+**withExtendedLifetime**
+```swift
+// alternatively withExtendedLifetime will keep the instance from deallocating
+resource.request().onComplete { [unowned self] response in
+    withExtendedLifetime(response) {
+        let model = self.updateModel(response)
+        self.updateUI(model)
+    }
+}
+```
+
 ## Access Control
 
 Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` and `fileprivate` appropriately, however, adds clarity and promotes encapsulation. Prefer `private` to `fileprivate` when possible. Using extensions may require you to use `fileprivate`.
