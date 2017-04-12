@@ -364,10 +364,9 @@ The example above demonstrates the following style guidelines:
 
 ### Use of Self
 
-For conciseness, avoid using `self` since Swift does not require it to access an object's properties or invoke its methods.
+Always use `self` when you access instance property or a function. Apply this rule even if it's not required by compiler. 
 
-Use self only when required by the compiler (in `@escaping` closures, or in initializers to disambiguate properties from arguments). In other words, if it compiles without `self` then omit it.
-
+It will help distinguish local properties from instance properties and local closures from functions.
 
 ### Computed Properties
 
