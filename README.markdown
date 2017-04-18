@@ -36,6 +36,7 @@ This Swift Style Guide is based on https://github.com/raywenderlich/swift-style-
 * [Memory Management](#memory-management)
   * [Extending Lifetime](#extending-lifetime)
 * [Access Control](#access-control)
+* [Objective-C support](#objective-c-support)
 * [Control Flow](#control-flow)
 * [Golden Path](#golden-path)
   * [Failing Guards](#failing-guards)
@@ -729,6 +730,33 @@ fileprivate let message = "Great Scott!"
 class TimeMachine {  
     lazy dynamic fileprivate var fluxCapacitor = FluxCapacitor()
 }
+```
+
+## Objective-C support
+
+`@objc` keyword should be used in a seperate line, on top of entity name, like in provided examples.
+
+```swift
+@objc
+func performCalculations()
+```
+
+```swift
+var isMoving: Bool {
+    @objc(setIsMoving:)
+    set { }
+    get { }
+}
+```
+
+```swift
+@objc(BDFakeNetworkService)
+class FakeNetworkService
+```
+
+```swift
+@objc
+protocol FakeNetworkServiceProtocol 
 ```
 
 ## Control Flow
