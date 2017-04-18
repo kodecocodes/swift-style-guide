@@ -736,25 +736,27 @@ class TimeMachine {
 
 `@objc` keyword should be used in a seperate line, on top of entity name, like in provided examples.
 
-```
+```swift
 @objc
-func performCalculations() { ...
+func performCalculations()
 ```
 
-```
+```swift
 var isMoving: Bool {
-	@objc(setIsMoving:)
-	set { ...
+    @objc(setIsMoving:)
+    set { }
+    get { }
+}
 ```
 
-```
+```swift
 @objc(BDFakeNetworkService)
-class FakeNetworkService { ...
+class FakeNetworkService
 ```
 
-```
+```swift
 @objc
-protocol FakeNetworkServiceProtocol { ...
+protocol FakeNetworkServiceProtocol 
 ```
 
 ## Control Flow
