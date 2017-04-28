@@ -11,7 +11,7 @@ Our overarching goals are clarity, consistency and brevity, in that order.
 * [Naming](#naming)
   * [Prose](#prose)
   * [Delegates](#delegates)
-  * [Use Type Inferred Context](#use-type-inferred-context)  
+  * [Use Type Inferred Context](#use-type-inferred-context)
   * [Generics](#generics)
   * [Class Prefixes](#class-prefixes)
   * [Language](#language)
@@ -403,7 +403,7 @@ Marking classes or members as `final` in tutorials can distract from the main to
 ```swift
 // Turn any generic type into a reference type using this Box class.
 final class Box<T> {
-  let value: T 
+  let value: T
   init(_ value: T) {
     self.value = value
   }
@@ -687,8 +687,8 @@ Extend object lifetime using the `[weak self]` and `guard let strongSelf = self 
 **Preferred**
 ```swift
 resource.request().onComplete { [weak self] response in
-  guard let strongSelf = self else { 
-    return 
+  guard let strongSelf = self else {
+    return
   }
   let model = strongSelf.updateModel(response)
   strongSelf.updateUI(model)
@@ -787,15 +787,14 @@ When coding with conditionals, the left-hand margin of the code should be the "g
 ```swift
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
 
-  guard let context = context else { 
-    throw FFTError.noContext 
+  guard let context = context else {
+    throw FFTError.noContext
   }
-  guard let inputData = inputData else { 
-    throw FFTError.noInputData 
+  guard let inputData = inputData else {
+    throw FFTError.noInputData
   }
-    
+
   // use context and input to compute the frequencies
-    
   return frequencies
 }
 ```
@@ -822,10 +821,10 @@ When multiple optionals are unwrapped either with `guard` or `if let`, minimize 
 
 **Preferred:**
 ```swift
-guard let number1 = number1, 
-      let number2 = number2, 
-      let number3 = number3 else { 
-  fatalError("impossible") 
+guard let number1 = number1,
+      let number2 = number2,
+      let number3 = number3 else {
+  fatalError("impossible")
 }
 // do something with numbers
 ```
@@ -905,7 +904,7 @@ Where an Xcode project is involved, the organization should be set to `Ray Wende
 The following copyright statement should be included at the top of every source
 file:
 
-```swift 
+```swift
     /**
      * Copyright (c) 2017 Razeware LLC
      *
