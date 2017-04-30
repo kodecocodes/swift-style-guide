@@ -424,6 +424,20 @@ func reticulateSplines(spline: [Double], adjustmentFactor: Double,
 
 ## Closure Expressions
 
+Use `Void` as a return type instead of `()`. This is a [standart approach in Apple documentation](https://devforums.apple.com/message/1133616#1133616)
+
+**Preferred:**
+
+```swift
+typealias Completion = () -> Void
+```
+
+**Not Preferred:**
+
+```swift
+typealias Completion = () -> ()
+```
+
 Use trailing closure syntax only if there's a single closure expression parameter at the end of the argument list. Give the closure parameters descriptive names.
 
 **Preferred:**
