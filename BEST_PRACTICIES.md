@@ -1,7 +1,12 @@
-* ### Please use only specific pod versions in Podfile:
+## Cocoapods
 
+Use only specific pod versions in Podfile
+
+**Preferred:**
 ```bash
- right: pod 'FBAudienceNetwork', '= 4.0'
- wrong: pod 'FBAudienceNetwork', '~> 4.0'
+pod 'FBAudienceNetwork', '= 4.0'
 ```
- 
+**Not Preferred:**
+```bash
+pod 'FBAudienceNetwork', '~> 4.0'
+```
