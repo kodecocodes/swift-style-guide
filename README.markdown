@@ -101,7 +101,7 @@ For the above example using `UIGestureRecognizer`, 1 is unambiguous and preferre
 
 ### Class Prefixes
 
-Swift types are automatically namespaced by the module that contains them and you should not add a class prefix such as RW. If two names from different modules collide you can disambiguate by prefixing the type name with the module name. However, only specify the module name when there is possibility for confusion which should be rare.
+Swift types are automatically namespaced by the module that contains them and you should not add a class prefix such as FW. If two names from different modules collide you can disambiguate by prefixing the type name with the module name. However, only specify the module name when there is possibility for confusion which should be rare.
 
 ```swift
 import SomeModule
@@ -227,6 +227,7 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
 ```
 
 **Not Preferred:**
+
 ```swift
 override func didReceiveMemoryWarning() {
   super.didReceiveMemoryWarning()
@@ -244,18 +245,19 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
 }
 
 ```
+
 ### Minimal Imports
 
 Keep imports minimal. For example, don't import `UIKit` when importing `Foundation` will suffice.
 
 ## Spacing
 
-* Indent using 2 spaces rather than tabs to conserve space and help prevent line wrapping. Be sure to set this preference in Xcode and in the Project settings as shown below:
+* Indent using 4 spaces rather than tabs. Be sure to set this preference in Xcode and in the Project settings as shown below:
 
 ![Xcode indent settings](screens/indentation.png)
 
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
-* Tip: You can re-indent by selecting some code (or ⌘A to select all) and then Control-I (or Editor\Structure\Re-Indent in the menu). Some of the Xcode template code will have 4-space tabs hard coded, so this is a good way to fix that.
+* Tip: You can re-indent by selecting some code (or ⌘A to select all) and then Control-I (or Editor\Structure\Re-Indent in the menu).
 
 **Preferred:**
 ```swift
@@ -279,12 +281,12 @@ else {
 
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.
 
-* Colons always have no space on the left and one space on the right. Exceptions are the ternary operator `? :`, empty dictionary `[:]` and `#selector` syntax for unnamed parameters `(_:)`.
+* Colons always have no space on the left and one space on the right. Exceptions are the ternary operator `? :`, dictionaries `["A" : 1.2]`, empty dictionary `[:]` and `#selector` syntax for unnamed parameters `(_:)`.
 
 **Preferred:**
 ```swift
 class TestDatabase: Database {
-  var data: [String: CGFloat] = ["A": 1.2, "B": 3.2]
+  var data: [String : CGFloat] = ["A" : 1.2, "B" : 3.2]
 }
 ```
 
@@ -324,8 +326,10 @@ Here's an example of a well-styled class definition:
 
 ```swift
 class Circle: Shape {
-  var x: Int, y: Int
+  var x: Int
+  var y: Int
   var radius: Double
+  var properties: [String : String]
   var diameter: Double {
     get {
       return radius * 2
@@ -335,10 +339,11 @@ class Circle: Shape {
     }
   }
 
-  init(x: Int, y: Int, radius: Double) {
+  init(x: Int, y: Int, radius: Double, properties: [String : String] = [:]) {
     self.x = x
     self.y = y
     self.radius = radius
+    self.properties = properties
   }
 
   convenience init(x: Int, y: Int, diameter: Double) {
@@ -347,6 +352,10 @@ class Circle: Shape {
 
   override func area() -> Double {
     return Double.pi * radius * radius
+  }
+  
+  func value(forKey key: String) -> String? {
+    return properties[key]
   }
 }
 
@@ -363,7 +372,6 @@ extension Circle: CustomStringConvertible {
 The example above demonstrates the following style guidelines:
 
  + Specify types for properties, variables, constants, argument declarations and other statements with a space after the colon but not before, e.g. `x: Int`, and `Circle: Shape`.
- + Define multiple variables and structures on a single line if they share a common purpose / context.
  + Indent getter and setter definitions and property observers.
  + Don't add modifiers such as `internal` when they're already the default. Similarly, don't repeat the access modifier when overriding a method.
  + Organize extra functionality (e.g. printing) in extensions.
@@ -374,6 +382,8 @@ The example above demonstrates the following style guidelines:
 For conciseness, avoid using `self` since Swift does not require it to access an object's properties or invoke its methods.
 
 Use self only when required by the compiler (in `@escaping` closures, or in initializers to disambiguate properties from arguments). In other words, if it compiles without `self` then omit it.
+
+Do not use `'self' = self` to strongfy `[weak self]` inside closures. Prefer to use `strongSelf`, or other naming convention. This way, the use of `self.` inside a closure shows a declared intentation of using `[unowned self]`, or non-modified self inside closures.
 
 
 ### Computed Properties
@@ -398,7 +408,7 @@ var diameter: Double {
 
 ### Final
 
-Marking classes or members as `final` in tutorials can distract from the main topic and is not required. Nevertheless, use of `final` can sometimes clarify your intent and is worth the cost. In the below example, `Box` has a particular purpose and customization in a derived class is not intended. Marking it `final` makes that clear.
+The use of `final` can sometimes clarify your intent and is worth the cost. In the below example, `Box` has a particular purpose and customization in a derived class is not intended. Marking it `final` makes that clear.
 
 ```swift
 // Turn any generic type into a reference type using this Box class.
@@ -715,7 +725,7 @@ resource.request().onComplete { [weak self] response in
 
 ## Access Control
 
-Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` and `fileprivate` appropriately, however, adds clarity and promotes encapsulation. Prefer `private` to `fileprivate` when possible. Using extensions may require you to use `fileprivate`.
+Prefer `private` to `fileprivate` when possible. Using extensions may require you to use `fileprivate`.
 
 Only explicitly use `open`, `public`, and `internal` when you require a full access control specification.
 
@@ -895,60 +905,9 @@ let playerMark = (player == current ? "X" : "O")
 
 ## Organization and Bundle Identifier
 
-Where an Xcode project is involved, the organization should be set to `Ray Wenderlich` and the Bundle Identifier set to `com.razeware.TutorialName` where `TutorialName` is the name of the tutorial project.
+Where an Xcode project is involved, the organization should be set to `Future Workshops` and the Bundle Identifier set to `com.futureworkshops.ProjectName` where `ProjectName` is the name of the project.
 
 ![Xcode Project settings](screens/project_settings.png)
-
-## Copyright Statement
-
-The following copyright statement should be included at the top of every source
-file:
-
-```swift
-/**
-* Copyright (c) 2017 Razeware LLC
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* Notwithstanding the foregoing, you may not use, copy, modify, merge, publish, 
-* distribute, sublicense, create a derivative work, and/or sell copies of the 
-* Software in any work that is designed, intended, or marketed for pedagogical or 
-* instructional purposes related to programming, coding, application development, 
-* or information technology.  Permission for such use, copying, modification,
-* merger, publication, distribution, sublicensing, creation of derivative works, 
-* or sale is expressly withheld.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
-*/
-```
-
-## Smiley Face
-
-Smiley faces are a very prominent style feature of the [raywenderlich.com](https://www.raywenderlich.com/) site! It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The closing square bracket `]` is used because it represents the largest smile able to be captured using ASCII art. A closing parenthesis `)` creates a half-hearted smile, and thus is not preferred.
-
-**Preferred:**
-```
-:]
-```
-
-**Not Preferred:**
-```
-:)
-```  
 
 ## References
 
