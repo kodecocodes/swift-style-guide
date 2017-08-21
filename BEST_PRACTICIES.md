@@ -14,8 +14,7 @@ pod 'FBAudienceNetwork', '~> 4.0'
 
 ### Tear down
 
-`XCTestCase` instances keep alive after test is finished until all test are passed: https://qualitycoding.org/teardown/
-Therefore, state should be cleaned in `tearDown()` function.
+`XCTestCase` instances are kept alive until all tests passed: https://qualitycoding.org/teardown/ Therefore, state should be cleaned in `tearDown()` function.
 
 **Preferred:**
 ```swift
