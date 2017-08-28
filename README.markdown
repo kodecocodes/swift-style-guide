@@ -538,7 +538,28 @@ func reticulateSplines(
   // reticulate code goes here
 }
 ```
+
 The same rule applied for function calls.
+
+Leave two empty lines between functions and one after `MARK`s.
+
+```swift
+func colorView() {
+	//...
+}
+
+
+func reticulate() {
+	//...
+}
+
+
+// MARK: - Private
+
+private func retry() {
+	//...
+}
+```
 
 ## Closure Expressions
 
@@ -687,6 +708,7 @@ When naming optional variables and properties, avoid naming them like `optionalS
 For optional binding, shadow the original name when appropriate rather than using names like `unwrappedView` or `actualLabel`.
 
 **Preferred:**
+
 ```swift
 var subview: UIView?
 var volume: Double?
@@ -699,6 +721,7 @@ if let subview = subview,
 ```
 
 **Not Preferred:**
+
 ```swift
 var optionalSubview: UIView?
 var volume: Double?
