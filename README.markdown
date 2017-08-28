@@ -108,10 +108,8 @@ For functions and init methods, prefer named parameters for all arguments unless
 
 ```swift
 func dateFromString(dateString: String) -> NSDate
-func convertPointAt(column column: Int, 
-                              row: Int) -> CGPoint
-func timedAction(afterDelay delay: NSTimeInterval, 
-                   perform action: SKAction) -> SKAction!
+func convertPointAt(column column: Int, row: Int) -> CGPoint
+func timedAction(afterDelay delay: NSTimeInterval, perform action: SKAction) -> SKAction!
 
 // would be called like this:
 dateFromString("2014-03-14")
@@ -123,8 +121,7 @@ For methods, follow the standard Apple convention of referring to the first para
 
 ```swift
 class Counter {
-  func combineWith(otherCounter: Counter, 
-                        options: Dictionary?) { ... }
+  func combineWith(otherCounter: Counter, options: Dictionary?) { ... }
   func incrementBy(amount: Int) { ... }
 }
 ```
@@ -223,6 +220,28 @@ let colour = "red"
 ## Code Organization
 
 Use extensions to organize your code into logical blocks of functionality. Each extension should be set off with a `// MARK: -` comment to keep things well-organized.
+The next sequence nice to follow
+
+```swift
+// MARK: - Constants
+
+// MARK: - IBOutlet
+
+// MARK: - Public Properties
+
+// MARK: - Private Properties
+
+// MARK: - Initializers
+
+// MARK: - ViewController Life Cycle
+
+// MARK: - Public methods
+
+// MARK: - IBAction
+
+// MARK: - Private Methods
+
+```
 
 ### Protocol Conformance
 
@@ -264,6 +283,7 @@ Unused (dead) code, including Xcode template code and placeholder comments shoul
 Aspirational methods not directly associated with the tutorial whose implementation simply calls the super class should also be removed. This includes any empty/unused UIApplicationDelegate methods.
 
 **Not Preferred:**
+
 ```swift
 override func didReceiveMemoryWarning() {
    super.didReceiveMemoryWarning()
@@ -275,8 +295,7 @@ override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
    return 1
 }
 
-override func tableView(tableView: UITableView, 
-    numberOfRowsInSection section: Int) -> Int {
+override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
   // #warning Incomplete implementation, return the number of rows
   return Database.contacts.count
 }
@@ -284,12 +303,13 @@ override func tableView(tableView: UITableView,
 ```
 
 **Preferred:**
+
 ```swift
-override func tableView(tableView: UITableView, 
-    numberOfRowsInSection section: Int) -> Int {
+override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
   return Database.contacts.count
 }
 ```
+
 ### Minimal Imports
 
 Keep imports minimal. For example, don't import `UIKit` when importing `Foundation` will suffice.
@@ -887,8 +907,7 @@ When coding with conditionals, the left hand margin of the code should be the "g
 **Preferred:**
 
 ```swift
-func computeFFT(context: Context?, 
-              inputData: InputData?) throws -> Frequencies {
+func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
 
   guard let context = context else { throw FFTError.noContext }
   guard let inputData = inputData else { throw FFTError.noInputData }
@@ -902,8 +921,7 @@ func computeFFT(context: Context?,
 **Not Preferred:**
 
 ```swift
-func computeFFT(context: Context?, 
-              inputData: InputData?) throws -> Frequencies {
+func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
 
   if let context = context {
     if let inputData = inputData {
