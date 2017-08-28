@@ -553,12 +553,14 @@ let value = numbers
 Always use Swift's native types when available. Swift offers bridging to Objective-C so you can still use the full set of methods as needed.
 
 **Preferred:**
+
 ```swift
-let width = 120.0                                    // Double
+let width = 120                                      // Double
 let widthString = (width as NSNumber).stringValue    // String
 ```
 
 **Not Preferred:**
+
 ```swift
 let width: NSNumber = 120.0                          // NSNumber
 let widthString: NSString = width.stringValue        // NSString
@@ -575,6 +577,7 @@ Constants are defined using the `let` keyword, and variables with the `var` keyw
 You can define constants on a type rather than an instance of that type using type properties. To declare a type property as a constant simply use `static let`. Type properties declared in this way are generally preferred over global constants because they are easier to distinguish from instance properties. Example:
 
 **Preferred:**
+
 ```swift
 enum Math {
   static let e  = 2.718281828459045235360287
@@ -582,16 +585,32 @@ enum Math {
 }
 
 radius * Math.pi * 2 // circumference
-
 ```
+
 **Note:** The advantage of using a case-less enumeration is that it can't accidentally be instantiated and works as a pure namespace.
 
 **Not Preferred:**
+
 ```swift
 let e  = 2.718281828459045235360287  // pollutes global namespace
 let pi = 3.141592653589793238462643
 
 radius * pi * 2 // is pi instance data or a global constant?
+```
+
+In case of declaration of single constant use following names
+
+**Preferred:**
+
+```swift
+let TopMargin: CGFloat = 10
+```
+
+**Not Preferred:**
+
+```swift
+let kTopMargin: CGFloat = 10
+let bottomMargin: CGFloat = 100 
 ```
 
 ### Static Methods and Variable Type Properties
