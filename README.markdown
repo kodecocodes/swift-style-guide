@@ -425,8 +425,7 @@ Use `self` when required to differentiate between property names and arguments i
 class BoardLocation {
   let row: Int, column: Int
 
-  init(row: Int, 
-    column: Int) {
+  init(row: Int, column: Int) {
     self.row = row
     self.column = column
     
@@ -459,18 +458,19 @@ var diameter: Double {
 
 ### Final
 
-Mark classes `final` when inheritance is not intended. Example:
+Always mark classes `final` when inheritance is not intended. Example:
 
 ```swift
 // Turn any generic type into a reference type using this Box class.
 final class Box<T> {
   let value: T 
-  init(
-      _ value: T) {
+  
+  init(_ value: T) {
     self.value = value
   }
 }
 ```
+This is improve yout code reading and speed up compilation.
 
 ## Function Declarations
 
