@@ -40,6 +40,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
   * [Lazy Initialization](#lazy-initialization)
   * [Type Inference](#type-inference)
   * [Syntactic Sugar](#syntactic-sugar)
+  * [Arrays and Dictionaries](#arrays-and-dictionaries)
 * [Functions vs Methods](#functions-vs-methods)
 * [Memory Management](#memory-management)
   * [Extending Lifetime](#extending-lifetime)
@@ -486,6 +487,7 @@ class BoardLocation {
 For conciseness, if a computed property is read-only, omit the get clause. The get clause is required only when a set clause is provided.
 
 **Preferred:**
+
 ```swift
 var diameter: Double {
   return radius * 2
@@ -493,11 +495,32 @@ var diameter: Double {
 ```
 
 **Not Preferred:**
+
 ```swift
 var diameter: Double {
   get {
     return radius * 2
   }
+}
+```
+
+Always use computed property instead of method with zero arguments and no side effects.
+
+**Preferred:**
+
+```swift
+var homeFolderPath: Path {
+	//...
+  	return path
+}
+```
+
+**Not Preferred:**
+
+```swift
+func homeFolderPath() -> Path {
+	//...
+  	return path
 }
 ```
 
@@ -738,12 +761,14 @@ if let unwrappedSubview = optionalSubview {
 Use the native Swift struct initializers rather than the legacy CGGeometry constructors.
 
 **Preferred:**
+
 ```swift
 let bounds = CGRect(x: 40, y: 20, width: 120, height: 80)
 let centerPoint = CGPoint(x: 96, y: 42)
 ```
 
 **Not Preferred:**
+
 ```swift
 let bounds = CGRectMake(40, 20, 120, 80)
 let centerPoint = CGPointMake(96, 42)
@@ -778,6 +803,7 @@ private func makeLocationManager() -> CLLocationManager {
 Prefer compact code and let the compiler infer the type for constants or variables of single instances. Type inference is also appropriate for small (non-empty) arrays and dictionaries. When required, specify the specific type such as `CGFloat` or `Int16`.
 
 **Preferred:**
+
 ```swift
 let message = "Click the button"
 let currentBounds = computeViewBounds()
@@ -786,6 +812,7 @@ let maximumWidth: CGFloat = 106.5
 ```
 
 **Not Preferred:**
+
 ```swift
 let message: String = "Click the button"
 let currentBounds: CGRect = computeViewBounds()
@@ -794,18 +821,20 @@ let names = [String]()
 
 #### Type Annotation for Empty Arrays and Dictionaries
 
-For empty arrays and dictionaries, use type annotation. (For an array or dictionary assigned to a large, multi-line literal, use type annotation.)
+For empty arrays and dictionaries, don't use type annotation.
 
 **Preferred:**
-```swift
-var names: [String] = []
-var lookup: [String: Int] = [:]
-```
 
-**Not Preferred:**
 ```swift
 var names = [String]()
 var lookup = [String: Int]()
+```
+
+**Not Preferred:**
+
+```swift
+var names: [String] = []
+var lookup: [String: Int] = [:]
 ```
 
 **NOTE**: Following this guideline means picking descriptive names is even more important than before.
@@ -816,6 +845,7 @@ var lookup = [String: Int]()
 Prefer the shortcut versions of type declarations over the full generics syntax.
 
 **Preferred:**
+
 ```swift
 var deviceModels: [String]
 var employees: [Int: String]
@@ -823,10 +853,31 @@ var faxNumber: Int?
 ```
 
 **Not Preferred:**
+
 ```swift
 var deviceModels: Array<String>
 var employees: Dictionary<Int, String>
 var faxNumber: Optional<Int>
+```
+
+### Arrays and Dictionaries
+
+Use the following carrying when array or dictionary go over page guide.
+
+**Preferred:**
+
+```swift
+let deviceModels = ["BMW": 100, "Mercedes": 120]
+let wheels = [
+	"Continental", 
+	"Vitoria", 
+	....]
+```
+
+**Not Preferred:**
+
+```swift
+let wheels = ["Continental", "Vitoria", // to many over page guide]
 ```
 
 ## Functions vs Methods
@@ -836,18 +887,21 @@ Free functions, which aren't attached to a class or type, should be used sparing
 Free functions are most appropriate when they aren't associated with any particular type or instance.
 
 **Preferred**
+
 ```swift
 let sorted = items.mergeSort()  // easily discoverable
 rocket.launch()  // clearly acts on the model
 ```
 
 **Not Preferred**
+
 ```swift
 let sorted = mergeSort(items)  // hard to discover
 launch(&rocket)
 ```
 
 **Free Function Exceptions**
+
 ```swift
 let tuples = zip(a, b)  // feels natural as a free function (symmetry)
 let value = max(x,y,z)  // another free function that feels natural
@@ -862,6 +916,7 @@ Code (even non-production, tutorial demo code) should not create reference cycle
 Extend object lifetime using the `[weak self]` and `guard let strongSelf = self else { return }` idiom. `[weak self]` is preferred to `[unowned self]` where it is not immediately obvious that `self` outlives the closure. Explicitly extending lifetime is preferred to optional unwrapping.
 
 **Preferred**
+
 ```swift
 resource.request().onComplete { [weak self] response in
   guard let strongSelf = self else { return }
@@ -871,6 +926,7 @@ resource.request().onComplete { [weak self] response in
 ```
 
 **Not Preferred**
+
 ```swift
 // might crash if self is released before response returns
 resource.request().onComplete { [unowned self] response in
@@ -893,6 +949,7 @@ resource.request().onComplete { [weak self] response in
 Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` appropriately, however, adds clarity and promotes encapsulation. Use `private` as the leading property specifier. The only things that should come before access control are the `static` specifier or attributes such as `@IBAction` and `@IBOutlet`.
 
 **Preferred:**
+
 ```swift
 class TimeMachine {  
   private dynamic lazy var fluxCapacitor = FluxCapacitor()
@@ -900,6 +957,7 @@ class TimeMachine {
 ```
 
 **Not Preferred:**
+
 ```swift
 class TimeMachine {  
   lazy dynamic private var fluxCapacitor = FluxCapacitor()
@@ -992,6 +1050,7 @@ func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies 
 When multiple conditionals are inside the operator, add line breaks before a new operand. Extract difficult conditions to functions.
 
 **Preferred:**
+
 ```swift
 if isTrue()
     && isFalse()
@@ -1001,6 +1060,7 @@ if isTrue()
 ```
 
 **Not Preferred:**
+
 ```swift
 if a > b && b > c && tax > MinTax && currentValue > MaxValue {
     // ...
@@ -1010,6 +1070,7 @@ if a > b && b > c && tax > MinTax && currentValue > MaxValue {
 When multiple optionals are unwrapped either with `guard` or `if let`, minimize nesting by using the compound version when possible. Example:
 
 **Preferred:**
+
 ```swift
 guard 
     let number1 = number1, 
@@ -1022,6 +1083,7 @@ else {
 ```
 
 **Not Preferred:**
+
 ```swift
 if let number1 = number1 {
   if let number2 = number2 {
@@ -1054,11 +1116,13 @@ Do not write multiple statements on a single line separated with semicolons.
 The only exception to this rule is the `for-conditional-increment` construct, which requires semicolons. However, alternative `for-in` constructs should be used where possible.
 
 **Preferred:**
+
 ```swift
 let swift = "not a scripting language"
 ```
 
 **Not Preferred:**
+
 ```swift
 let swift = "not a scripting language";
 ```
@@ -1070,6 +1134,7 @@ let swift = "not a scripting language";
 Parentheses around conditionals are not required and should be omitted.
 
 **Preferred:**
+
 ```swift
 if name == "Hello" {
   print("World")
@@ -1077,38 +1142,12 @@ if name == "Hello" {
 ```
 
 **Not Preferred:**
+
 ```swift
 if (name == "Hello") {
   print("World")
 }
 ```
-
-## Copyright Statement
-
-The following copyright statement should be included at the top of every source
-file:
-
-    /**
-     * Copyright (c) 2016 Razeware LLC
-     *
-     * Permission is hereby granted, free of charge, to any person obtaining a copy
-     * of this software and associated documentation files (the "Software"), to deal
-     * in the Software without restriction, including without limitation the rights
-     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     * copies of the Software, and to permit persons to whom the Software is
-     * furnished to do so, subject to the following conditions:
-     *
-     * The above copyright notice and this permission notice shall be included in
-     * all copies or substantial portions of the Software.
-     *
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-     * THE SOFTWARE.
-     */
 
 
 ## Credits
