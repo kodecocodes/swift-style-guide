@@ -482,16 +482,18 @@ func reticulateSplines(spline: [Double]) -> Bool {
 }
 ```
 
-For functions add line breaks at each argument:
+For functions add line breaks at each argument if it's exceed page guide:
 
 ```swift
 func reticulateSplines(
     spline: [Double], 
     adjustmentFactor: Double,
-    translateConstant: Int, comment: String) -> Bool {
+    translateConstant: Int, 
+    comment: String) -> Bool {
   // reticulate code goes here
 }
 ```
+The same rule applied for function calls.
 
 ## Closure Expressions
 
