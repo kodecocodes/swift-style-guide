@@ -61,7 +61,7 @@ Consider warnings to be errors. This rule informs many stylistic decisions such 
 
 Setup page guide in Xcode for 90 symbols. This number is recommended in swiftlint settings. So all code should be inside this page guide.
 
-![Xcode page guide settings](screens/guide line.png)
+![Xcode page guide settings](screens/guide_line.png)
 
 
 ## Naming
