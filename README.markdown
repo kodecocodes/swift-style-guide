@@ -9,6 +9,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 ## Table of Contents
 
 * [Correctness](#correctness)
+* [Page guide](#page-guide)
 * [Naming](#naming)
   * [Protocols](#protocols)
   * [Enumerations](#enumerations)
@@ -55,6 +56,13 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 ## Correctness
 
 Consider warnings to be errors. This rule informs many stylistic decisions such as not to use the `++` or `--` operators, C-style for loops, or strings as selectors.
+
+## Page guide
+
+Setup page guide in Xcode for 90 symbols. This number is recommended in swiftlint settings. So all code should be inside this page guide.
+
+![Xcode page guide settings](screens/guide line.png)
+
 
 ## Naming
 
