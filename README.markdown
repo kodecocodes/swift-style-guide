@@ -11,6 +11,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 * [Correctness](#correctness)
 * [Page guide](#page-guide)
 * [Naming](#naming)
+  * [Booleans](#booleans)
   * [Protocols](#protocols)
   * [Enumerations](#enumerations)
   * [Prose](#prose)
@@ -71,7 +72,7 @@ Use descriptive names with camel case for classes, methods, variables, etc. Type
 **Preferred:**
 
 ```swift
-private let maximumWidgetCount = 100
+private let MaximumWidgetCount = 100
 
 class WidgetContainer {
   var widgetButton: UIButton
@@ -93,12 +94,14 @@ class app_widgetContainer {
 Abbreviations and acronyms should generally be avoided. Following the [API Design Guidelines](https://swift.org/documentation/api-design-guidelines/#follow-case-conventions), abbreviations and initialisms that appear in all uppercase should be uniformly uppercase or lowercase. Examples:
 
 **Preferred**
+
 ```swift
 let urlString: URLString
 let userID: UserID
 ```
 
 **Not Preferred**
+
 ```swift
 let uRLString: UrlString
 let userId: UserId
@@ -124,6 +127,26 @@ class Counter {
   func combineWith(otherCounter: Counter, options: Dictionary?) { ... }
   func incrementBy(amount: Int) { ... }
 }
+```
+
+### Booleans
+
+For boolean variables use auxiliary verb at the beginning.
+
+**Preferred:**
+
+```swift
+var isFavoriteCategoryFilled: Bool
+var hasRoaming: Bool
+var isBlocked: Bool
+```
+
+**Not Preferred:**
+
+```swift
+var favoriteCategoryFilled: Bool
+var roaming: Bool
+var blocked: Bool
 ```
 
 ### Protocols
@@ -175,11 +198,13 @@ let myClass = MyModule.UsefulClass()
 Selectors are Obj-C methods that act as handlers for many Cocoa and Cocoa Touch APIs. Prior to Swift 2.2, they were specified using type unsafe strings. This now causes a compiler warning. The "Fix it" button replaces these strings with the **fully qualified** type safe selector. Often, however, you can use context to shorten the expression. This is the preferred style.
 
 **Preferred:**
+
 ```swift
 let sel = #selector(viewDidLoad)
 ```
 
 **Not Preferred:**
+
 ```swift
 let sel = #selector(ViewController.viewDidLoad)
 ```
