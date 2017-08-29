@@ -376,10 +376,17 @@ Given a block of code that is executed asynchronously, in order to avoid retain 
 
 **Preferred:**
 ```swift
-var diameter: Double {
-    return radius * 2
+func foo() {                              // 1
+ executeAsync { [weak self] in            // 2
+  guard let `self` = self else { return } // 3
+  self.methodA()                          // 4
+  self.methodB()                          // 5 
+ }
 }
 ```
+
+**PROS:**
+* the strong self introduced in line 3 shadows the weak self introduced in line 2, hence weak can't be accidentaly used in line 4 - 5
 
 ### Computed Properties
 
