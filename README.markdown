@@ -385,8 +385,29 @@ func foo() {                              // 1
 }
 ```
 
-**PROS:**
-* the strong self introduced in line 3 shadows the weak self introduced in line 2, hence weak can't be accidentaly used in line 4 - 5
+**PROS**
+* the strong self introduced in line 3 shadows the weak self introduced in line 2, hence weak self can't be accidentaly used in line 4 - 5.
+**CONS**
+* using of `self` is considered being a compiler bug.
+
+**Not Preferred:**
+```swift
+func foo() {                              // 1
+ executeAsync { [weak self] in            // 2
+  guard let sSelf = self else { return }  // 3
+  sSelf.methodA()                         // 4
+  self?.methodB()                         // 5 
+ }
+}
+```
+
+**PROS**
+* the code doesn't exploit compiler bug.
+**CONS**
+* sSelf reference does't shadow weak self reference
+* compiler doesn't prevent of using both sSelf and self references in the code below line 3.
+* sSelf and self have different lifetime and using both of them may produce subtle and hard to catch bugs.
+* it's hard to catch this type of errors at glance, the code looks perfectly valid.
 
 ### Computed Properties
 
