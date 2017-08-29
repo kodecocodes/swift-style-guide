@@ -387,6 +387,7 @@ func foo() {                              // 1
 
 **PROS**
 * the strong self introduced in line 3 shadows the weak self introduced in line 2, hence weak self can't be accidentaly used in line 4 - 5.
+
 **CONS**
 * using of `self` is considered being a compiler bug.
 
@@ -403,6 +404,7 @@ func foo() {                              // 1
 
 **PROS**
 * the code doesn't exploit compiler bug.
+
 **CONS**
 * sSelf reference does't shadow weak self reference
 * compiler doesn't prevent of using both sSelf and self references in the code below line 3.
