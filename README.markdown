@@ -370,6 +370,17 @@ Always use `self` when you access instance property or a function. Apply this ru
 
 It will help distinguish local properties from instance properties and local closures from functions.
 
+### Strong/weak self usage
+
+Given a block of code that is executed asynchronously, in order to avoid retain cycles we want to use weak self reference. If we access this weak self reference more than once, in order to be consistent across the whole block, the strong self reference need to be obtained. 
+
+**Preferred:**
+```swift
+var diameter: Double {
+    return radius * 2
+}
+```
+
 ### Computed Properties
 
 For conciseness, if a computed property is read-only, omit the get clause. The get clause is required only when a set clause is provided.
