@@ -259,7 +259,7 @@ The next sequence nice to follow
 
 // MARK: - Initializers
 
-// MARK: - ViewController Life Cycle
+// MARK: - UIViewController(*)
 
 // MARK: - Public methods
 
@@ -268,6 +268,8 @@ The next sequence nice to follow
 // MARK: - Private Methods
 
 ```
+(*)Instead of `UIViewController` you must write other superclass, that methods you override.
+
 
 ### Protocol Conformance
 
