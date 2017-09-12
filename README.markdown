@@ -734,6 +734,7 @@ if let textContainer = self.textContainer {
 When naming optional variables and properties, avoid naming them like `optionalString` or `maybeView` since their optional-ness is already in the type declaration.
 
 For optional binding, shadow the original name when appropriate rather than using names like `unwrappedView` or `actualLabel`.
+Add new line after `if`, if there are several variables in unwrapping clause.
 
 **Preferred:**
 
@@ -742,8 +743,9 @@ var subview: UIView?
 var volume: Double?
 
 // later on...
-if let subview = subview, 
-   let volume = volume {
+if 
+	let subview = subview, 
+   	let volume = volume {
   // do something with unwrapped subview and volume
 }
 ```
