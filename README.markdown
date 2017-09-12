@@ -245,10 +245,13 @@ let colour = "red"
 
 ## Code Organization
 
-Use extensions to organize your code into logical blocks of functionality. Each extension should be set off with a `// MARK: -` comment to keep things well-organized.
+Use extensions to organize your code into logical blocks if you conform a protocol, for instance.
+Also organize file and class body with a `// MARK: -` comment to keep things well-organized.
 The next sequence nice to follow
 
 ```swift
+// MARK: - Types
+
 // MARK: - Constants
 
 // MARK: - IBOutlet
