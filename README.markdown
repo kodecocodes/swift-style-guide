@@ -1,5 +1,4 @@
 # The Official raywenderlich.com Swift Style Guide.
-### Updated for Swift 3
 
 This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on the books.
 
@@ -8,8 +7,10 @@ Our overarching goals are clarity, consistency and brevity, in that order.
 ## Table of Contents
 
 * [Correctness](#correctness)
+* [Page guide](#page-guide)
 * [Naming](#naming)
   * [Prose](#prose)
+  * [Booleans](#booleans)
   * [Delegates](#delegates)
   * [Use Type Inferred Context](#use-type-inferred-context)
   * [Generics](#generics)
@@ -35,6 +36,7 @@ Our overarching goals are clarity, consistency and brevity, in that order.
   * [Lazy Initialization](#lazy-initialization)
   * [Type Inference](#type-inference)
   * [Syntactic Sugar](#syntactic-sugar)
+  * [Arrays and Dictionaries](#arrays-and-dictionaries)
 * [Functions vs Methods](#functions-vs-methods)
 * [Memory Management](#memory-management)
   * [Extending Lifetime](#extending-lifetime)
@@ -45,14 +47,16 @@ Our overarching goals are clarity, consistency and brevity, in that order.
 * [Semicolons](#semicolons)
 * [Parentheses](#parentheses)
 * [Organization and Bundle Identifier](#organization-and-bundle-identifier)
-* [Copyright Statement](#copyright-statement)
-* [Smiley Face](#smiley-face)
 * [References](#references)
 
 
 ## Correctness
 
 Strive to make your code compile without warnings. This rule informs many style decisions such as using `#selector` types instead of string literals.
+
+## Page guide
+
+Setup page guide in Xcode for 120 symbols. This number is recommended in swiftlint settings. So all code should be inside this page guide.
 
 ## Naming
 
@@ -98,6 +102,25 @@ For the above example using `UIGestureRecognizer`, 1 is unambiguous and preferre
 
 ![Methods in Xcode jump bar](screens/xcode-jump-bar.png)
 
+### Booleans
+
+For boolean variables use auxiliary verb at the beginning.
+
+**Preferred:**
+
+```swift
+var isFavoriteCategoryFilled: Bool
+var hasRoaming: Bool
+var isBlocked: Bool
+```
+
+**Not Preferred:**
+
+```swift
+var favoriteCategoryFilled: Bool
+var roaming: Bool
+var blocked: Bool
+```
 
 ### Class Prefixes
 
@@ -181,6 +204,32 @@ let colour = "red"
 
 Use extensions to organize your code into logical blocks of functionality. Each extension should be set off with a `// MARK: -` comment to keep things well-organized.
 
+The next sequence nice to follow:
+
+```swift
+// MARK: - Types
+
+// MARK: - Constants
+
+// MARK: - IBOutlet
+
+// MARK: - Public Properties
+
+// MARK: - Private Properties
+
+// MARK: - Initializers
+
+// MARK: - UIViewController(*)
+
+// MARK: - Public methods
+
+// MARK: - IBAction
+
+// MARK: - Private Methods
+
+```
+> (*)Instead of `UIViewController` you must write other superclass, that methods you override.
+
 ### Protocol Conformance
 
 In particular, when adding protocol conformance to a model, prefer adding a separate extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
@@ -250,9 +299,7 @@ Keep imports minimal. For example, don't import `UIKit` when importing `Foundati
 
 ## Spacing
 
-* Indent using 2 spaces rather than tabs to conserve space and help prevent line wrapping. Be sure to set this preference in Xcode and in the Project settings as shown below:
-
-![Xcode indent settings](screens/indentation.png)
+* Indent using 4 spaces rather than tabs to conserve space and help prevent line wrapping.
 
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 * Tip: You can re-indent by selecting some code (or ⌘A to select all) and then Control-I (or Editor\Structure\Re-Indent in the menu). Some of the Xcode template code will have 4-space tabs hard coded, so this is a good way to fix that.
@@ -335,13 +382,19 @@ class Circle: Shape {
     }
   }
 
-  init(x: Int, y: Int, radius: Double) {
+  init(
+      x: Int, 
+      y: Int, 
+      radius: Double) {
     self.x = x
     self.y = y
     self.radius = radius
   }
 
-  convenience init(x: Int, y: Int, diameter: Double) {
+  convenience init(
+      x: Int,
+      y: Int,
+      diameter: Double) {
     self.init(x: x, y: y, radius: diameter / 2)
   }
 
@@ -396,9 +449,29 @@ var diameter: Double {
 }
 ```
 
+Always use computed property instead of method with zero arguments and no side effects.
+
+**Preferred:**
+
+```swift
+var homeFolderPath: Path {
+	//...
+  	return path
+}
+```
+
+**Not Preferred:**
+
+```swift
+func homeFolderPath() -> Path {
+	//...
+  	return path
+}
+```
+
 ### Final
 
-Marking classes or members as `final` in tutorials can distract from the main topic and is not required. Nevertheless, use of `final` can sometimes clarify your intent and is worth the cost. In the below example, `Box` has a particular purpose and customization in a derived class is not intended. Marking it `final` makes that clear.
+Always marking classes or members as `final` in tutorials can distract from the main topic and is not required. Nevertheless, use of `final` can sometimes clarify your intent and is worth the cost. In the below example, `Box` has a particular purpose and customization in a derived class is not intended. Marking it `final` makes that clear.
 
 ```swift
 // Turn any generic type into a reference type using this Box class.
@@ -410,6 +483,8 @@ final class Box<T> {
 }
 ```
 
+This is improve yout code reading and speed up compilation.
+
 ## Function Declarations
 
 Keep short function declarations on one line including the opening brace:
@@ -420,18 +495,45 @@ func reticulateSplines(spline: [Double]) -> Bool {
 }
 ```
 
-For functions with long signatures, add line breaks at appropriate points and add an extra indent on subsequent lines:
+For functions add line breaks at each argument if it's exceed page guide:
 
 ```swift
-func reticulateSplines(spline: [Double], adjustmentFactor: Double,
-    translateConstant: Int, comment: String) -> Bool {
+func reticulateSplines(
+    spline: [Double], 
+    adjustmentFactor: Double,
+    translateConstant: Int, 
+    comment: String) -> Bool {
   // reticulate code goes here
+}
+```
+
+The same rule applied for function calls.
+
+Leave two empty lines between functions and one after `MARK`s.
+
+```swift
+func colorView() {
+    //...
+}
+
+
+func reticulate() {
+    //...
+}
+
+
+// MARK: - Private
+
+private func retry() {
+    //...
 }
 ```
 
 ## Closure Expressions
 
 Use trailing closure syntax only if there's a single closure expression parameter at the end of the argument list. Give the closure parameters descriptive names.
+
+Closure parameter type and parentheses should be omitted.
 
 **Preferred:**
 ```swift
@@ -454,7 +556,7 @@ UIView.animate(withDuration: 1.0, animations: {
 
 UIView.animate(withDuration: 1.0, animations: {
   self.myView.alpha = 0
-}) { f in
+}) { (f: Bool) in
   self.myView.removeFromSuperview()
 }
 ```
@@ -470,8 +572,6 @@ attendeeList.sort { a, b in
 Chained methods using trailing closures should be clear and easy to read in context. Decisions on spacing, line breaks, and when to use named versus anonymous arguments is left to the discretion of the author. Examples:
 
 ```swift
-let value = numbers.map { $0 * 2 }.filter { $0 % 3 == 0 }.index(of: 90)
-
 let value = numbers
   .map {$0 * 2}
   .filter {$0 > 50}
@@ -484,7 +584,7 @@ Always use Swift's native types when available. Swift offers bridging to Objecti
 
 **Preferred:**
 ```swift
-let width = 120.0                                    // Double
+let width: Double = 120                              // Double
 let widthString = (width as NSNumber).stringValue    // String
 ```
 
@@ -524,6 +624,21 @@ let root2 = 1.41421356237309504880168872
 let hypotenuse = side * root2 // what is root2?
 ```
 
+In case of declaration of single constant use following names
+
+**Preferred:**
+
+```swift
+let TopMargin: CGFloat = 10
+```
+
+**Not Preferred:**
+
+```swift
+let kTopMargin: CGFloat = 10
+let bottomMargin: CGFloat = 100 
+```
+
 ### Static Methods and Variable Type Properties
 
 Static methods and type properties work similarly to global functions and global variables and should be used sparingly. They are useful when functionality is scoped to a particular type or when Objective-C interoperability is required.
@@ -550,7 +665,7 @@ if let textContainer = self.textContainer {
 
 When naming optional variables and properties, avoid naming them like `optionalString` or `maybeView` since their optional-ness is already in the type declaration.
 
-For optional binding, shadow the original name when appropriate rather than using names like `unwrappedView` or `actualLabel`.
+For optional binding, shadow the original name when appropriate rather than using names like `unwrappedView` or `actualLabel`. Add new line after `if`, if there are several variables in unwrapping clause.
 
 **Preferred:**
 ```swift
@@ -558,7 +673,8 @@ var subview: UIView?
 var volume: Double?
 
 // later on...
-if let subview = subview, let volume = volume {
+if let subview = subview, 
+  let volume = volume {
   // do something with unwrapped subview and volume
 }
 ```
@@ -617,18 +733,18 @@ let names = [String]()
 
 #### Type Annotation for Empty Arrays and Dictionaries
 
-For empty arrays and dictionaries, use type annotation. (For an array or dictionary assigned to a large, multi-line literal, use type annotation.)
+For empty arrays and dictionaries, don't use type annotation.
 
 **Preferred:**
 ```swift
-var names: [String] = []
-var lookup: [String: Int] = [:]
+var names = [String]()
+var lookup = [String: Int]()
 ```
 
 **Not Preferred:**
 ```swift
-var names = [String]()
-var lookup = [String: Int]()
+var names: [String] = []
+var lookup: [String: Int] = [:]
 ```
 
 **NOTE**: Following this guideline means picking descriptive names is even more important than before.
@@ -650,6 +766,27 @@ var faxNumber: Int?
 var deviceModels: Array<String>
 var employees: Dictionary<Int, String>
 var faxNumber: Optional<Int>
+```
+
+### Arrays and Dictionaries
+
+Use the following carrying when array or dictionary go over page guide.
+
+**Preferred:**
+
+```swift
+let deviceModels = ["BMW": 100, "Mercedes": 120]
+let wheels = [
+    "Continental", 
+    "Vitoria", 
+    ...
+]
+```
+
+**Not Preferred:**
+
+```swift
+let wheels = ["Continental", "Vitoria", // to many over page guide]
 ```
 
 ## Functions vs Methods
@@ -682,12 +819,12 @@ Code (even non-production, tutorial demo code) should not create reference cycle
 
 ### Extending object lifetime
 
-Extend object lifetime using the `[weak self]` and `guard let strongSelf = self else { return }` idiom. `[weak self]` is preferred to `[unowned self]` where it is not immediately obvious that `self` outlives the closure. Explicitly extending lifetime is preferred to optional unwrapping.
+Extend object lifetime using the `[weak self]` and ```guard let `self` = self else { return }``` idiom. `[weak self]` is preferred to `[unowned self]` where it is not immediately obvious that `self` outlives the closure. Explicitly extending lifetime is preferred to optional unwrapping.
 
 **Preferred**
 ```swift
 resource.request().onComplete { [weak self] response in
-  guard let strongSelf = self else {
+  guard let `self` = self else {
     return
   }
   let model = strongSelf.updateModel(response)
@@ -817,16 +954,56 @@ func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies 
 }
 ```
 
+## Multiple Conditionals
+
+When multiple conditionals are inside the operator, add line breaks before a new operand. Extract difficult conditions to functions.
+
+**Preferred:**
+
+```swift
+if isTrue(),
+    isFalse(),
+    tax > MinTax {
+    // ...
+}
+```
+
+**Not Preferred:**
+
+```swift
+if a > b && b > c && tax > MinTax && currentValue > MaxValue {
+    // ...
+}
+```
+
 When multiple optionals are unwrapped either with `guard` or `if let`, minimize nesting by using the compound version when possible. Example:
 
 **Preferred:**
 ```swift
-guard let number1 = number1,
-      let number2 = number2,
-      let number3 = number3 else {
-  fatalError("impossible")
+guard
+    let number1 = number1,
+    let number2 = number2,
+    let number3 = number3
+else {
+    fatalError("impossible")
 }
 // do something with numbers
+```
+
+or you can use one-liner with one `else` operation
+
+```swift
+guard 
+    let number1 = number1, 
+    let number2 = number2
+else { return }
+// do something with numbers
+```
+
+or one-liner with one `let` operation
+
+```swift
+guard let number1 = number1 else { return }
 ```
 
 **Not Preferred:**
@@ -898,57 +1075,6 @@ let playerMark = (player == current ? "X" : "O")
 Where an Xcode project is involved, the organization should be set to `Ray Wenderlich` and the Bundle Identifier set to `com.razeware.TutorialName` where `TutorialName` is the name of the tutorial project.
 
 ![Xcode Project settings](screens/project_settings.png)
-
-## Copyright Statement
-
-The following copyright statement should be included at the top of every source
-file:
-
-```swift
-/**
-* Copyright (c) 2017 Razeware LLC
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* Notwithstanding the foregoing, you may not use, copy, modify, merge, publish, 
-* distribute, sublicense, create a derivative work, and/or sell copies of the 
-* Software in any work that is designed, intended, or marketed for pedagogical or 
-* instructional purposes related to programming, coding, application development, 
-* or information technology.  Permission for such use, copying, modification,
-* merger, publication, distribution, sublicensing, creation of derivative works, 
-* or sale is expressly withheld.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
-*/
-```
-
-## Smiley Face
-
-Smiley faces are a very prominent style feature of the [raywenderlich.com](https://www.raywenderlich.com/) site! It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The closing square bracket `]` is used because it represents the largest smile able to be captured using ASCII art. A closing parenthesis `)` creates a half-hearted smile, and thus is not preferred.
-
-**Preferred:**
-```
-:]
-```
-
-**Not Preferred:**
-```
-:)
-```  
 
 ## References
 
