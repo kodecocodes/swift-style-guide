@@ -258,6 +258,10 @@ class MyViewController: UIViewController, UITableViewDataSource, UIScrollViewDel
 }
 ```
 
+> This rule doesn't work for two cases:
+> - When you need override method which implemented in extension (Declarations in extensions cannot override yet)
+> - When you use class with generic and Objective C protocols with optional methods (@objc is not supported within extensions of generic classes or classes that inherit from generic classes)
+
 Since the compiler does not allow you to re-declare protocol conformance in a derived class, it is not always required to replicate the extension groups of the base class. This is especially true if the derived class is a terminal class and a small number of methods are being overridden. When to preserve the extension groups is left to the discretion of the author.
 
 For UIKit view controllers, consider grouping lifecycle, custom accessors, and IBAction in separate class extensions.
@@ -382,19 +386,13 @@ class Circle: Shape {
     }
   }
 
-  init(
-      x: Int, 
-      y: Int, 
-      radius: Double) {
+  init(x: Int, y: Int, radius: Double) {
     self.x = x
     self.y = y
     self.radius = radius
   }
 
-  convenience init(
-      x: Int,
-      y: Int,
-      diameter: Double) {
+  convenience init(x: Int, y: Int, diameter: Double) {
     self.init(x: x, y: y, radius: diameter / 2)
   }
 
@@ -410,6 +408,17 @@ extension Circle: CustomStringConvertible {
   private var centerString: String {
     return "(\(x),\(y))"
   }
+}
+```
+
+When the method signature is too long, parameters should be moved to a new line:
+```swift 
+override func register(
+    withСardNumber cardNumber: String,
+    completion completionBlock: @escaping AuthService.RegisterWithCardNumberCompletionBlock,
+    failure failureBlock: @escaping Service.ServiceFailureBlock) -> WebTransportOperation {
+
+    // reticulate code goes here
 }
 ```
 
