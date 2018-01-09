@@ -44,6 +44,7 @@ As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywend
 * [Parentheses](#parentheses)
 * [Organization and Bundle Identifier](#organization-and-bundle-identifier)
 * [Localisation](#localisation)
+* [Colors](#colours)
 * [Copyright Statement](#copyright-statement)
 * [References](#references)
 
@@ -1003,6 +1004,30 @@ if (name == "Hello") {
   print("World")
 }
 ```
+
+
+## Colors
+
++ Always use the american spelling of color.  Never Colour.
++ Aim to never use colours built with specific colour components directly in code.  Name them and put them in an exention on UIColor instead.
++ Prefer `rgbValue/255` over `fractionalRGBValue`.
++ Prefer compiler inference.  No need to write `UIColor.red` -> `.red` is enough.  
+
+
+**Preferred:**
+```swift
+extension UIColor {
+  static var messageColor = UIColor(red: 31/255.0, green: 33/255.0, blue: 36/255.0, alpha: 1)
+}
+
+messageView.color = .messageColor
+```
+
+**Not Preferred:**
+```swift
+messageView.color = UIColor(red: 0.121568627, green: 0.129411765, blue: 0.141176471, alpha: 1)
+```
+
 
 
 ## Copyright Statement
