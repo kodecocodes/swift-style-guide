@@ -938,9 +938,6 @@ Guard statements are required to exit in some way. Generally, this should be sim
 
 Don't.  Just don't.
 
-Swift does not require a semicolon after each statement in your code. They are only required if you wish to combine multiple statements on a single line.
-
-Do not write multiple statements on a single line separated with semicolons.
 
 **Preferred:**
 ```swift
