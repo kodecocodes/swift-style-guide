@@ -1,12 +1,9 @@
-# The Official raywenderlich.com Swift Style Guide.
-### Updated for Swift 3
-
-Our overarching goals are conciseness, readability, and simplicity. 
-
-Our overarching goals are clarity, consistency and brevity, in that order.
+# The Official Teamwork.com Swift Style Guide
+As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywenderlich/swift-style-guide)
 
 ## Table of Contents
 
+* [Our Aims](#our-aims)
 * [Correctness](#correctness)
 * [Naming](#naming)
   * [Prose](#prose)
@@ -45,9 +42,24 @@ Our overarching goals are clarity, consistency and brevity, in that order.
 * [Semicolons](#semicolons)
 * [Parentheses](#parentheses)
 * [Organization and Bundle Identifier](#organization-and-bundle-identifier)
+* [Localisation](#localisation)
 * [Copyright Statement](#copyright-statement)
-* [Smiley Face](#smiley-face)
 * [References](#references)
+
+
+## Our Aims
+
+Writing code that is easy to read and easy to understand is our number one aim.  It's often tempting to write something that is intellectually satisfying, something that makes use of esoteric features in the language, something that makes us feel like we have full mastery of our craft.  But that's not what this team is about.  We need to think about the people coming after us.  If a new dev can come in, read through the code in a function and straight away have a good idea of what's going on (without having to work hard to build up a mental image/model ), then it's worked and you can feel proud of what you've created.
+
+A few common rules-of-thumb will help produce code that's easy to read and understand.  ( We'll cover these in more detail throughout the document, the 
+
++ Name things well.
++ Keep functions short
++ Functions that perform some operation, should do one thing only.
++ If you need to do multiple operations, separate out each behaviour into a single responsability and group them instead.
++ Be careful of inline blocks.  Use them where appropriate, they're brilliant.  But always pause to see if the code would need less explaination, and provide better direction to the follow-on dev, by using a named function.
+
+
 
 
 ## Correctness
@@ -58,31 +70,36 @@ Strive to make your code compile without warnings. This rule informs many style 
 
 Descriptive and consistent naming makes software easier to read and understand. Use the Swift naming conventions described in the [API Design Guidelines](https://swift.org/documentation/api-design-guidelines/). Some key takeaways include:
 
-- striving for clarity at the call site
-- prioritizing clarity over brevity
-- using camel case (not snake case)
-- using uppercase for types (and protocols), lowercase for everything else
-- including all needed words while omitting needless words
+- strive for clarity at the call site
+  - for example, a function name should read well and make things clearer wherever it's used.
+- prioritize clarity and simplicity over brevity
+- use camel case (not snake case)
+- use uppercase for types (and protocols), lowercase for everything else
+- include all needed words while omitting needless words
+  - for example don't repeat words.
 - using names based on roles, not types
-- sometimes compensating for weak type information
+  - e.g: `taskTitle` rather than `aString`
+- sometimes it may be necessary to compensate for weak type information.
+  - e.g: when the type is Any or NSObject precede each weakly typed param with a noun describing its role.
 - striving for fluent usage
-- beginning factory methods with `make`
-- naming methods for their side effects
-  - verb methods follow the -ed, -ing rule for the non-mutating version
-  - noun methods follow the formX rule for the mutating version
+  - e.g: Prefer method and function names that make use sites form grammatical English phrases.
+- begin factory methods with `make`
+- name methods for their side effects
+  - verb methods follow the -ed, -ing rule for the non-mutating version.  E.g: mutating: `sort()`, non-mutating: `x.sorted()`
+  - noun methods follow the formX rule for the mutating version.  E.g.    E.g: mutating: `union(z)`, non-mutating: `formUnion(z)`
   - boolean types should read like assertions
   - protocols that describe _what something is_ should read as nouns
   - protocols that describe _a capability_ should end in _-able_ or _-ible_
-- using terms that don't surprise experts or confuse beginners
-- generally avoiding abbreviations
-- using precedent for names
-- preferring methods and properties to free functions
-- casing acronyms and initialisms uniformly up or down
-- giving the same base name to methods that share the same meaning
-- avoiding overloads on return type
-- choosing good parameter names that serve as documentation
-- labeling closure and tuple parameters
-- taking advantage of default parameters
+- use terms that don't surprise experts or confuse beginners
+- generally avoid abbreviations
+- use precedent for names - if there's a well known name use it, don't come up with a new term just for the sake of it.
+- prefer methods and properties to free (or global) functions.
+- case for acronyms and initialisms should be uniformly up or down
+- use the same base name for methods that share the same meaning
+- avoid overloads based purely on return type
+- choose good parameter names that serve as documentation
+- label closure and tuple parameters
+- take advantage of default parameters
 
 ### Prose
 
@@ -101,7 +118,7 @@ For the above example using `UIGestureRecognizer`, 1 is unambiguous and preferre
 
 ### Class Prefixes
 
-Swift types are automatically namespaced by the module that contains them and you should not add a class prefix such as RW. If two names from different modules collide you can disambiguate by prefixing the type name with the module name. However, only specify the module name when there is possibility for confusion which should be rare.
+Swift types are automatically namespaced by the module that contains them and you should not add a class prefix such as TW. If two names from different modules collide you can disambiguate by prefixing the type name with the module name. However, only specify the module name when there is possibility for confusion which should be rare.
 
 ```swift
 import SomeModule
@@ -147,7 +164,7 @@ let view = UIView(frame: CGRect.zero)
 
 ### Generics
 
-Generic type parameters should be descriptive, upper camel case names. When a type name doesn't have a meaningful relationship or role, use a traditional single uppercase letter such as `T`, `U`, or `V`.
+Generic type parameters should be descriptive, upper camel case names. When a type name doesn't have a meaningful relationship or role, use a traditional single uppercase letter such as `T`, `U`, or `V`.  But really, in most cases it should be possible to come up with something better than those.
 
 **Preferred:**
 ```swift
@@ -183,6 +200,8 @@ Use extensions to organize your code into logical blocks of functionality. Each 
 
 ### Protocol Conformance
 
+TODO: not sure of this.  It kinda makes sense, but on the flip side, you don't know if a protocol is implemented, you have to search for it exactly.
+
 In particular, when adding protocol conformance to a model, prefer adding a separate extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
 
 **Preferred:**
@@ -215,9 +234,7 @@ For UIKit view controllers, consider grouping lifecycle, custom accessors, and I
 
 ### Unused Code
 
-Unused (dead) code, including Xcode template code and placeholder comments should be removed. An exception is when your tutorial or book instructs the user to use the commented code.
-
-Aspirational methods not directly associated with the tutorial whose implementation simply calls the superclass should also be removed. This includes any empty/unused UIApplicationDelegate methods.
+Unused (dead) code, including Xcode template code and placeholder comments should be removed.
 
 **Preferred:**
 ```swift
@@ -277,7 +294,68 @@ else {
 }
 ```
 
-* There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.
+* There should be three blank lines between methods to help with separatation, visual clarity and organization. Lines with similar or connected behaviour should not be separated by empty newlines.  Whitespace within methods should separate and group functionality, but having too many sections in a method often means you should refactor into several methods.
+
+**Preferred:**
+```swift
+func funStuff() {
+  
+  var thing = makeThing()
+  doThis(thing)
+  doThat(thing)
+
+  var otherThing = somethingElse()
+  blah(otherThing)
+
+}
+
+
+
+func second(){
+
+  hello()
+
+}
+
+
+
+func third(){
+
+  there()
+
+}
+
+
+```
+
+**Not Preferred:**
+```swift
+func funStuff() {
+  
+  var thing = makeThing()
+
+  doThis(thing)
+
+  doThat(thing)
+
+  var otherThing = somethingElse()
+
+  blah(otherThing)
+}
+
+func second(){
+
+  hello()
+}
+
+func third(){
+
+  there()
+}
+
+```
+
+
 
 * Colons always have no space on the left and one space on the right. Exceptions are the ternary operator `? :`, empty dictionary `[:]` and `#selector` syntax for unnamed parameters `(_:)`.
 
@@ -295,7 +373,7 @@ class TestDatabase : Database {
 }
 ```
 
-* Long lines should be wrapped at around 70 characters. A hard limit is intentionally not specified.
+* Long lines should aim to be wrapped at around 70 characters. Although a hard limit is intentionally not specified.
 
 * Avoid trailing whitespaces at the ends of lines.
 
@@ -307,6 +385,10 @@ When they are needed, use comments to explain **why** a particular piece of code
 
 Avoid block comments inline with code, as the code should be as self-documenting as possible. *Exception: This does not apply to those comments used to generate documentation.*
 
+The aim for comments though, is to write simple, clear code that doesn't require much explaintion.  If something multiple complex pieces of behaviour are being performed, break them out into separate functions with good clear names.
+
+
+Most properties should have a comment.  Use /// for property comments as it'll show up in contextual help.
 
 ## Classes and Structures
 
@@ -352,10 +434,7 @@ class Circle: Shape {
 
 extension Circle: CustomStringConvertible {
   var description: String {
-    return "center = \(centerString) area = \(area())"
-  }
-  private var centerString: String {
-    return "(\(x),\(y))"
+    return "Circle area = \(area())"
   }
 }
 ```
@@ -367,8 +446,7 @@ The example above demonstrates the following style guidelines:
  + Indent getter and setter definitions and property observers.
  + Don't add modifiers such as `internal` when they're already the default. Similarly, don't repeat the access modifier when overriding a method.
  + Organize extra functionality (e.g. printing) in extensions.
- + Hide non-shared, implementation details such as `centerString` inside the extension using `private` access control.
-
+ 
 ### Use of Self
 
 For conciseness, avoid using `self` since Swift does not require it to access an object's properties or invoke its methods.
@@ -379,6 +457,8 @@ Use self only when required by the compiler (in `@escaping` closures, or in init
 ### Computed Properties
 
 For conciseness, if a computed property is read-only, omit the get clause. The get clause is required only when a set clause is provided.
+
+If a computed property is expensive, don't do it as a computed property at all  (unless there's a huge mitigating factor.)
 
 **Preferred:**
 ```swift
@@ -398,17 +478,8 @@ var diameter: Double {
 
 ### Final
 
-Marking classes or members as `final` in tutorials can distract from the main topic and is not required. Nevertheless, use of `final` can sometimes clarify your intent and is worth the cost. In the below example, `Box` has a particular purpose and customization in a derived class is not intended. Marking it `final` makes that clear.
+Mark a class as final only if it's necessary and the class absolutely shouldn't be subclassed for some reason.
 
-```swift
-// Turn any generic type into a reference type using this Box class.
-final class Box<T> {
-  let value: T
-  init(_ value: T) {
-    self.value = value
-  }
-}
-```
 
 ## Function Declarations
 
@@ -431,7 +502,7 @@ func reticulateSplines(spline: [Double], adjustmentFactor: Double,
 
 ## Closure Expressions
 
-Use trailing closure syntax only if there's a single closure expression parameter at the end of the argument list. Give the closure parameters descriptive names.
+Use trailing closure syntax if there's a single closure expression parameter at the end of the argument list. Where possible try to avoid multiple inline closures in a single function call. It's too hard to read. Separate them out into well named functions.
 
 **Preferred:**
 ```swift
@@ -439,11 +510,7 @@ UIView.animate(withDuration: 1.0) {
   self.myView.alpha = 0
 }
 
-UIView.animate(withDuration: 1.0, animations: {
-  self.myView.alpha = 0
-}, completion: { finished in
-  self.myView.removeFromSuperview()
-})
+UIView.animate(withDuration: 1.0, animations: performRotation, completion: finishRotation)
 ```
 
 **Not Preferred:**
@@ -467,11 +534,9 @@ attendeeList.sort { a, b in
 }
 ```
 
-Chained methods using trailing closures should be clear and easy to read in context. Decisions on spacing, line breaks, and when to use named versus anonymous arguments is left to the discretion of the author. Examples:
+Chained methods using trailing closures should only ever be used if it's clear and easy to read.
 
 ```swift
-let value = numbers.map { $0 * 2 }.filter { $0 % 3 == 0 }.index(of: 90)
-
 let value = numbers
   .map {$0 * 2}
   .filter {$0 > 50}
@@ -532,7 +597,7 @@ Static methods and type properties work similarly to global functions and global
 
 Declare variables and function return types as optional with `?` where a nil value is acceptable.
 
-Use implicitly unwrapped types declared with `!` only for instance variables that you know will be initialized later before use, such as subviews that will be set up in `viewDidLoad`.
+Use implicitly unwrapped types declared with `!` only for instance variables that you know will be initialized later before use, such as subviews that will be set up in `viewDidLoad`.  Avoid using implicit unwrapping anywhere else.
 
 When accessing an optional value, use optional chaining if the value is only accessed once or if there are many optionals in the chain:
 
@@ -670,12 +735,6 @@ let sorted = mergeSort(items)  // hard to discover
 launch(&rocket)
 ```
 
-**Free Function Exceptions**
-```swift
-let tuples = zip(a, b)  // feels natural as a free function (symmetry)
-let value = max(x, y, z)  // another free function that feels natural
-```
-
 ## Memory Management
 
 Code (even non-production, tutorial demo code) should not create reference cycles. Analyze your object graph and prevent strong cycles with `weak` and `unowned` references. Alternatively, use value types (`struct`, `enum`) to prevent cycles altogether.
@@ -715,7 +774,7 @@ resource.request().onComplete { [weak self] response in
 
 ## Access Control
 
-Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` and `fileprivate` appropriately, however, adds clarity and promotes encapsulation. Prefer `private` to `fileprivate` when possible. Using extensions may require you to use `fileprivate`.
+Using `private` and `fileprivate` appropriately, however, adds clarity and promotes encapsulation. Prefer `private` to `fileprivate` when possible. Using extensions may require you to use `fileprivate`.
 
 Only explicitly use `open`, `public`, and `internal` when you require a full access control specification.
 
@@ -778,6 +837,10 @@ while i < attendeeList.count {
   i += 1
 }
 ```
+
+## Comparisons
+
+
 
 ## Golden Path
 
@@ -852,6 +915,8 @@ Guard statements are required to exit in some way. Generally, this should be sim
 
 ## Semicolons
 
+Don't.  Just don't.
+
 Swift does not require a semicolon after each statement in your code. They are only required if you wish to combine multiple statements on a single line.
 
 Do not write multiple statements on a single line separated with semicolons.
@@ -895,9 +960,30 @@ let playerMark = (player == current ? "X" : "O")
 
 ## Organization and Bundle Identifier
 
-Where an Xcode project is involved, the organization should be set to `Ray Wenderlich` and the Bundle Identifier set to `com.razeware.TutorialName` where `TutorialName` is the name of the tutorial project.
+Where an Xcode project is involved, the organization should be set to `Teamwork.com` and the Bundle Identifier set to `com.teamwork.XXXName` where `XXXName` is the name of the project.
 
 ![Xcode Project settings](screens/project_settings.png)
+
+
+## Localisation
+
++ Any user visible text, defined in the app, must always be localisable.  
++ All localisable strings should use a key that isn't just the original English text.  That way if the Englist text is adjust it won't break the matching translations.  Plus the same text may need to be localised differently in different situations - which wouldn't be possible if the key is the original text.
++ Localised text should be added as an extension on String.
++ Always provide useful instructions for the `comment` property of `NSLocalizedString()`.  Don't just repeat the original text.  If necessary also indiciate to the localiser where/what type of thing the text will appear in.  (Button, window title etc...)
+
+**Preferred:**
+```swift
+let blah = NSStri
+```
+
+**Not Preferred:**
+```swift
+if (name == "Hello") {
+  print("World")
+}
+```
+
 
 ## Copyright Statement
 
@@ -934,18 +1020,6 @@ file:
 /// THE SOFTWARE.
 ```
 
-
-Smiley faces are a very prominent style feature of the [raywenderlich.com](https://www.raywenderlich.com/) site! It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The closing square bracket `]` is used because it represents the largest smile able to be captured using ASCII art. A closing parenthesis `)` creates a half-hearted smile, and thus is not preferred.
-
-**Preferred:**
-```
-:]
-```
-
-**Not Preferred:**
-```
-:)
-```  
 
 ## References
 
