@@ -1,5 +1,5 @@
-# The Official Teamwork.com Swift Style Guide
-As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywenderlich/swift-style-guide)
+# The Official Teamwork.com iOS development Guide
+As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywenderlich/swift-style-guide).  Includes more than just swift style guide.  It describes how we work ( with git etc. )
 
 ## Table of Contents
 
@@ -46,6 +46,10 @@ As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywend
 * [Localisation](#localisation)
 * [Colors](#colours)
 * [Copyright Statement](#copyright-statement)
+* [Using Git]
+  * [Pull Requests](#pull-requests)
+  * [Releases](#releases)
+  * [Tagging](#tagging)
 * [References](#references)
 
 
@@ -1087,6 +1091,39 @@ file:
 /// THE SOFTWARE.
 ```
 
+
+## Using Git
+
+We use a slightly simplified version of git-flow.
+
+| name    | Description                                                                                                                                                                                                                      |
+|:--------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| master  | Sent to Apple for Review.                                                                                                                                                                                                        |
+| develop | Contains all of the changes merged in from reviewed PR's.  Will become the next release to be promoted to Master                                                                                                                 |
+| feature | used for implementing a feature                                                                                                                                                                                                  |
+| bug     | used for fixing a bug.  Branched from develop.  Merges back to develop                                                                                                                                                           |
+| hotfix  | used for fixing a bug.  Branched from master.  Merges back to master. It's for when a bug in the released app needs to be fixed quickly and Develop already has other changes merged in.  Ideally this should be very very rare. |
+
+
+Always make a branch before you start working.  Try not to make changes and then branch afterwards - it's too easy to merge straight back to develop etc.
+
+Always include a reasonable message as part of the commit.  Never ever commit with an empty or useless comment.
+
+Don't squash history.
+
+### Pull Requests
+
+When your feature or fix is ready create a [Pull Request](https://help.github.com/articles/about-pull-requests/) and choose a reviewer.  For the moment, while the team is small, you can assign all iOS devs.  As we grow we'll review and change this specification.  Once the PR has been reviewed by two people it's okay to merge.  One of those two people should be the owner of the project.  Once a PR is approved, the person who created the PR is the one who performs the merge (and fixes and merge conflicts).
+
+Once the PR is merged, the original branch must be deleted.
+
+### Releases
+
+When a release is about to be sent to Apple for review, develop is merged to master.  A tag is applied and the app is then built directly from master and submitted to Apple for review.  The app should never be built from develop.
+
+### Tagging
+
+Whenever the app is sent out to anyone, such as the test team, beta groups, or even individuals in the company for a demo, a tag should be added of the form: TYPE_VERSION_BUILD.  Where `TYPE` is Release|Test|Beta|Demo, `VERSION` is the app version number and `BUILD` is the build number to allow for further distinction.
 
 ## References
 
