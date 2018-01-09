@@ -37,6 +37,7 @@ As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywend
   * [Extending Lifetime](#extending-lifetime)
 * [Access Control](#access-control)
 * [Control Flow](#control-flow)
+* [Comparisons](#comparisons)
 * [Golden Path](#golden-path)
   * [Failing Guards](#failing-guards)
 * [Semicolons](#semicolons)
@@ -839,6 +840,25 @@ while i < attendeeList.count {
 ```
 
 ## Comparisons
+
+Returning the result of Boolean comparisons:  if the bool is non-optional, simply return the bool.  If it's optional then return the comparison against true or false.
+
+**Preferred:**
+```swift
+
+var isDone = false
+:
+:
+return isDone
+```
+
+**Not Preferred:**
+```swift
+var isDone: Bool?
+:
+:
+return isDone == true
+```
 
 
 
