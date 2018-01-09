@@ -800,6 +800,31 @@ class TimeMachine {
 }
 ```
 
+IBOutlets  should always be marked as private and weak.
+IBActions  should always be marked as private.
+
+**Preferred:**
+```swift
+@IBOutlet private weak var butt: UIButton!
+
+@IBAction private func buttonTouched(_ sender: Any) {
+   print("click")
+}
+```
+
+**Not Preferred:**
+```swift
+@IBOutlet var butt: UIButton!
+
+@IBAction func buttonTouched(_ sender: Any) {
+   print("click")
+}
+```
+
+
+
+
+
 ## Control Flow
 
 Prefer the `for-in` style of `for` loop over the `while-condition-increment` style.
