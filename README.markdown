@@ -550,10 +550,12 @@ UIView.animate(withDuration: 1.0) {
   self.myView.alpha = 0
 }
 
-UIView.animate(withDuration: 1.0, animations: {
-  self.myView.alpha = 0
-}, completion: { finished in
-  self.myView.removeFromSuperview()
+UIView.animate(
+    withDuration: 1.0, animations: {
+        self.myView.alpha = 0
+},
+    completion: { finished in
+        self.myView.removeFromSuperview()
 })
 ```
 
