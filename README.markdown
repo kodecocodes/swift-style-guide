@@ -36,7 +36,7 @@ We created this style guide to keep our code in our appstore apps, example apps 
   * [Syntactic Sugar](#syntactic-sugar)
 * [Functions vs Methods](#functions-vs-methods)
 * [Memory Management](#memory-management)
-  * [Extending Lifetime](#extending-lifetime)
+  * [Extending Lifetime](#extending-object-lifetime)
 * [Access Control](#access-control)
 * [Control Flow](#control-flow)
 * [Golden Path](#golden-path)
