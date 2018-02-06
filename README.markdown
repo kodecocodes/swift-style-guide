@@ -1,9 +1,7 @@
-# The Official raywenderlich.com Swift Style Guide.
+# Weight Watchers iOS Swift Style Guide.
 ### Updated for Swift 3
 
-This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on the books.
-
-Our overarching goals are clarity, consistency and brevity, in that order.
+We created this style guide to keep our code in our appstore apps, example apps and pods nice and consistent. Our overarching goals are clarity, consistency and brevity, in that order.
 
 ## Table of Contents
 
@@ -11,7 +9,7 @@ Our overarching goals are clarity, consistency and brevity, in that order.
 * [Naming](#naming)
   * [Prose](#prose)
   * [Delegates](#delegates)
-  * [Use Type Inferred Context](#use-type-inferred-context)  
+  * [Use Type Inferred Context](#use-type-inferred-context)
   * [Generics](#generics)
   * [Class Prefixes](#class-prefixes)
   * [Language](#language)
@@ -28,6 +26,7 @@ Our overarching goals are clarity, consistency and brevity, in that order.
   * [Final](#final)
 * [Function Declarations](#function-declarations)
 * [Closure Expressions](#closure-expressions)
+  * [Capture Lists](#capture-lists)
 * [Types](#types)
   * [Constants](#constants)
   * [Static Methods and Variable Type Properties](#static-methods-and-variable-type-properties)
@@ -36,16 +35,12 @@ Our overarching goals are clarity, consistency and brevity, in that order.
   * [Type Inference](#type-inference)
   * [Syntactic Sugar](#syntactic-sugar)
 * [Functions vs Methods](#functions-vs-methods)
-* [Memory Management](#memory-management)
-  * [Extending Lifetime](#extending-lifetime)
+* [Extending Lifetime](#extending-lifetime)
 * [Access Control](#access-control)
 * [Control Flow](#control-flow)
 * [Golden Path](#golden-path)
   * [Failing Guards](#failing-guards)
-* [Semicolons](#semicolons)
 * [Parentheses](#parentheses)
-* [References](#references)
-
 
 ## Correctness
 
@@ -66,7 +61,7 @@ Descriptive and consistent naming makes software easier to read and understand. 
 - beginning factory methods with `make`
 - naming methods for their side effects
   - verb methods follow the -ed, -ing rule for the non-mutating version
-  - noun methods follow the formX rule for the non-mutating version
+  - noun methods follow the formX rule for the mutating version
   - boolean types should read like assertions
   - protocols that describe _what something is_ should read as nouns
   - protocols that describe _a capability_ should end in _-able_ or _-ible_
@@ -180,7 +175,7 @@ Use extensions to organize your code into logical blocks of functionality. Each 
 
 ### Protocol Conformance
 
- In particular, when adding protocol conformance to a model, prefer adding a separate extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
+In particular, when adding protocol conformance to a model, prefer adding a separate extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
 
 **Preferred:**
 ```swift
@@ -249,8 +244,8 @@ Keep imports minimal. For example, don't import `UIKit` when importing `Foundati
 
 * Indent using 2 spaces rather than tabs to conserve space and help prevent line wrapping. Be sure to set this preference in Xcode and in the Project settings as shown below:
 
-  ![Xcode indent settings](screens/indentation.png)
-  
+![Xcode indent settings](screens/indentation.png)
+
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 * Tip: You can re-indent by selecting some code (or ⌘A to select all) and then Control-I (or Editor\Structure\Re-Indent in the menu). Some of the Xcode template code will have 4-space tabs hard coded, so this is a good way to fix that.
 
@@ -276,7 +271,7 @@ else {
 
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.
 
-* Colons always have no space on the left and one space on the right. Exceptions are the ternary operator `? :`, empty dictionary `[:]` and  `#selector` syntax for unnamed parameters `(_:)`.
+* Colons always have no space on the left and one space on the right. Exceptions are the ternary operator `? :`, empty dictionary `[:]` and `#selector` syntax for unnamed parameters `(_:)`.
 
 **Preferred:**
 ```swift
@@ -400,7 +395,7 @@ Marking classes or members as `final` in tutorials can distract from the main to
 ```swift
 // Turn any generic type into a reference type using this Box class.
 final class Box<T> {
-  let value: T 
+  let value: T
   init(_ value: T) {
     self.value = value
   }
@@ -473,6 +468,25 @@ let value = numbers
   .map {$0 * 2}
   .filter {$0 > 50}
   .map {$0 + 10}
+```
+
+### Capture Lists
+
+By default, a closure expression captures constants and variables from its surrounding scope with strong references to those values. You can use a capture list to explicitly control how values are captured in a closure and avoid strong reference cycles.
+
+**Preferred:**
+```swift
+Service.fetchPhotos {[weak self] (photos) in
+    self?.photos = photos
+}
+```
+
+**Not Preferred:**
+```swift
+weak var weakSelf = self
+Service.fetchPhotos {(photos) in
+    weakSelf?.photos = photos
+}
 ```
 
 ## Types
@@ -673,10 +687,6 @@ let tuples = zip(a, b)  // feels natural as a free function (symmetry)
 let value = max(x, y, z)  // another free function that feels natural
 ```
 
-## Memory Management
-
-Code (even non-production, tutorial demo code) should not create reference cycles. Analyze your object graph and prevent strong cycles with `weak` and `unowned` references. Alternatively, use value types (`struct`, `enum`) to prevent cycles altogether.
-
 ### Extending object lifetime
 
 Extend object lifetime using the `[weak self]` and `guard let strongSelf = self else { return }` idiom. `[weak self]` is preferred to `[unowned self]` where it is not immediately obvious that `self` outlives the closure. Explicitly extending lifetime is preferred to optional unwrapping.
@@ -684,8 +694,8 @@ Extend object lifetime using the `[weak self]` and `guard let strongSelf = self 
 **Preferred**
 ```swift
 resource.request().onComplete { [weak self] response in
-  guard let strongSelf = self else { 
-    return 
+  guard let strongSelf = self else {
+    return
   }
   let model = strongSelf.updateModel(response)
   strongSelf.updateUI(model)
@@ -784,15 +794,14 @@ When coding with conditionals, the left-hand margin of the code should be the "g
 ```swift
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
 
-  guard let context = context else { 
-    throw FFTError.noContext 
+  guard let context = context else {
+    throw FFTError.noContext
   }
-  guard let inputData = inputData else { 
-    throw FFTError.noInputData 
+  guard let inputData = inputData else {
+    throw FFTError.noInputData
   }
-    
+
   // use context and input to compute the frequencies
-    
   return frequencies
 }
 ```
@@ -819,10 +828,10 @@ When multiple optionals are unwrapped either with `guard` or `if let`, minimize 
 
 **Preferred:**
 ```swift
-guard let number1 = number1, 
-      let number2 = number2, 
-      let number3 = number3 else { 
-  fatalError("impossible") 
+guard let number1 = number1,
+      let number2 = number2,
+      let number3 = number3 else {
+  fatalError("impossible")
 }
 // do something with numbers
 ```
@@ -848,24 +857,6 @@ if let number1 = number1 {
 
 Guard statements are required to exit in some way. Generally, this should be simple one line statement such as `return`, `throw`, `break`, `continue`, and `fatalError()`. Large code blocks should be avoided. If cleanup code is required for multiple exit points, consider using a `defer` block to avoid cleanup code duplication.
 
-## Semicolons
-
-Swift does not require a semicolon after each statement in your code. They are only required if you wish to combine multiple statements on a single line.
-
-Do not write multiple statements on a single line separated with semicolons.
-
-**Preferred:**
-```swift
-let swift = "not a scripting language"
-```
-
-**Not Preferred:**
-```swift
-let swift = "not a scripting language";
-```
-
-**NOTE**: Swift is very different from JavaScript, where omitting semicolons is [generally considered unsafe](http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript)
-
 ## Parentheses
 
 Parentheses around conditionals are not required and should be omitted.
@@ -890,10 +881,3 @@ In larger expressions, optional parentheses can sometimes make code read more cl
 ```swift
 let playerMark = (player == current ? "X" : "O")
 ```
-
-## References
-
-* [The Swift API Design Guidelines](https://swift.org/documentation/api-design-guidelines/)
-* [The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html)
-* [Using Swift with Cocoa and Objective-C](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html)
-* [Swift Standard Library Reference](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html)
