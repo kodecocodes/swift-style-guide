@@ -551,7 +551,8 @@ UIView.animate(withDuration: 1.0) {
 }
 
 UIView.animate(
-    withDuration: 1.0, animations: {
+    withDuration: 1.0,
+    animations: {
         self.myView.alpha = 0
 },
     completion: { finished in
