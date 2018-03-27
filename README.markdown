@@ -877,7 +877,8 @@ func doSomething() -> Int {
   
   if isB() {
     return 2
-  } else if isC() {
+  }
+  if isC() {
     return 3
   }
   
@@ -893,7 +894,7 @@ func doSomething() -> Int {
   if isA() {
     if isB() {
       result = 2 // is 2 final? It can still be accidentally modified.
-    } eise if isC() {
+    } else if isC() {
       result = 3
     }
   } else {
