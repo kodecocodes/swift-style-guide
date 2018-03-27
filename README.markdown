@@ -862,6 +862,47 @@ if let number1 = number1 {
 
 Guard statements are required to exit in some way. Generally, this should be simple one line statement such as `return`, `throw`, `break`, `continue`, and `fatalError()`. Large code blocks should be avoided. If cleanup code is required for multiple exit points, consider using a `defer` block to avoid cleanup code duplication.
 
+### Return Early
+
+* Return as soon as you know your function cannot do any more meaningful work
+* Avoid accidental modification of result by returning early
+* Reduce indentation by using if-or-guard/return instead of top-level if/else and nesting
+* Return early > Single return
+
+**Preferred:**
+```swift
+func doSomething() -> Int {
+  guard isA() else { return 0 }
+  
+  if isB() {
+    return 2
+  } else if isC() {
+    return 3
+  }
+  
+  return 4
+}
+```
+
+**Not Preferred:**
+```swift
+func doSomething() -> Int {
+  var result: Int = 4
+  
+  if isA() {
+    if isB() {
+      result = 2 // is 2 final? It can still be accidentally modified.
+    } eise if isC() {
+      result = 3
+    }
+  } else {
+    result = 0
+  }
+  
+  return result
+}
+```
+
 ## Parentheses
 
 Parentheses around conditionals are not required and should be omitted.
