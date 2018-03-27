@@ -867,7 +867,7 @@ Guard statements are required to exit in some way. Generally, this should be sim
 * Return as soon as you know your function cannot do any more meaningful work
 * Avoid accidental modification of result by returning early
 * Reduce indentation by using if-or-guard/return instead of top-level if/else and nesting
-* Return early > Single return
+* Return early > Return from a single location
 
 **Preferred:**
 ```swift
