@@ -41,6 +41,7 @@ We created this style guide to keep our code in our appstore apps, example apps 
 * [Control Flow](#control-flow)
 * [Golden Path](#golden-path)
   * [Failing Guards](#failing-guards)
+  * [Return Early](#return-early)
 * [Parentheses](#parentheses)
 
 ## Correctness
