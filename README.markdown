@@ -41,6 +41,7 @@ We created this style guide to keep our code in our appstore apps, example apps 
 * [Control Flow](#control-flow)
 * [Golden Path](#golden-path)
   * [Failing Guards](#failing-guards)
+  * [Return Early](#return-early)
 * [Parentheses](#parentheses)
 
 ## Correctness
@@ -861,6 +862,48 @@ if let number1 = number1 {
 ### Failing Guards
 
 Guard statements are required to exit in some way. Generally, this should be simple one line statement such as `return`, `throw`, `break`, `continue`, and `fatalError()`. Large code blocks should be avoided. If cleanup code is required for multiple exit points, consider using a `defer` block to avoid cleanup code duplication.
+
+### Return Early
+
+* Return as soon as you know your function cannot do any more meaningful work
+* Avoid accidental modification of result by returning early
+* Reduce indentation by using if-or-guard/return instead of top-level if/else and nesting
+* Return early > Return from a single location
+
+**Preferred:**
+```swift
+func doSomething() -> Int {
+  guard isA() else { return 0 }
+  
+  if isB() {
+    return 2
+  }
+  if isC() {
+    return 3
+  }
+  
+  return 4
+}
+```
+
+**Not Preferred:**
+```swift
+func doSomething() -> Int {
+  var result: Int = 4
+  
+  if isA() {
+    if isB() {
+      result = 2 // is 2 final? It can still be accidentally modified.
+    } else if isC() {
+      result = 3
+    }
+  } else {
+    result = 0
+  }
+  
+  return result
+}
+```
 
 ## Parentheses
 
