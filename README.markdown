@@ -1,4 +1,4 @@
-# The Official raywenderlich.com Swift Style Guide.
+# The Official Beehivr Swift Style Guide.
 ### Updated for Swift 3
 
 This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on the books.
@@ -46,7 +46,6 @@ Our overarching goals are clarity, consistency and brevity, in that order.
 * [Parentheses](#parentheses)
 * [Organization and Bundle Identifier](#organization-and-bundle-identifier)
 * [Copyright Statement](#copyright-statement)
-* [Smiley Face](#smiley-face)
 * [References](#references)
 
 
@@ -191,12 +190,18 @@ class MyViewController: UIViewController {
   // class stuff here
 }
 
+/ --------------------------------
 // MARK: - UITableViewDataSource
+/ --------------------------------
+
 extension MyViewController: UITableViewDataSource {
   // table view data source methods
 }
 
+/ --------------------------------
 // MARK: - UIScrollViewDelegate
+/ --------------------------------
+
 extension MyViewController: UIScrollViewDelegate {
   // scroll view delegate methods
 }
@@ -301,6 +306,20 @@ class TestDatabase : Database {
 
 * Add a single newline character at the end of each file.
 
+* Guard statement with only `return` in body should be a single line.
+
+**Preferred:**
+```swift
+guard let value = value else { return }
+```
+
+**Not Preferred:**
+```swift
+guard let value = value else {
+  return
+}
+```
+
 ## Comments
 
 When they are needed, use comments to explain **why** a particular piece of code does something. Comments must be kept up-to-date or deleted.
@@ -371,10 +390,8 @@ The example above demonstrates the following style guidelines:
 
 ### Use of Self
 
-For conciseness, avoid using `self` since Swift does not require it to access an object's properties or invoke its methods.
-
-Use self only when required by the compiler (in `@escaping` closures, or in initializers to disambiguate properties from arguments). In other words, if it compiles without `self` then omit it.
-
+Always use `self` to access an object's properties or invoke its methods, using `self`.
+This helps to quickly distinguish instance variable/methods over other scoped variables/methods.
 
 ### Computed Properties
 
@@ -895,7 +912,8 @@ let playerMark = (player == current ? "X" : "O")
 
 ## Organization and Bundle Identifier
 
-Where an Xcode project is involved, the organization should be set to `Ray Wenderlich` and the Bundle Identifier set to `com.razeware.TutorialName` where `TutorialName` is the name of the tutorial project.
+For Beehivr owned applications, the Bundle Identifier shoud be set to `com.beehivr.beehivrAppName`.
+For VPP distributed applications, the Bundle Identifier shoud be set to `com.beehivr.thirdPartyCompanyName.vppAppName`.
 
 ![Xcode Project settings](screens/project_settings.png)
 
@@ -905,48 +923,11 @@ The following copyright statement should be included at the top of every source
 file:
 
 ```swift
-/// Copyright (c) 2018 Razeware LLC
-/// 
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
-/// distribute, sublicense, create a derivative work, and/or sell copies of the
-/// Software in any work that is designed, intended, or marketed for pedagogical or
-/// instructional purposes related to programming, coding, application development,
-/// or information technology.  Permission for such use, copying, modification,
-/// merger, publication, distribution, sublicensing, creation of derivative works,
-/// or sale is expressly withheld.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
+//
+//  Created by {DEV_FIRST_NAME DEV_LAST_NAME} on {DATE}.
+//  Copyright © {YEAR} Beehivr. All rights reserved.
+//
 ```
-
-## Smiley Face
-
-Smiley faces are a very prominent style feature of the [raywenderlich.com](https://www.raywenderlich.com/) site! It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The closing square bracket `]` is used because it represents the largest smile able to be captured using ASCII art. A closing parenthesis `)` creates a half-hearted smile, and thus is not preferred.
-
-**Preferred:**
-```
-:]
-```
-
-**Not Preferred:**
-```
-:)
-```  
 
 ## References
 
