@@ -282,6 +282,23 @@ else {
 }
 ```
 
+* The first line in the implementation of a function should always be empty.
+
+**Preferred:**
+```swift
+func aFunction() -> Bool {
+
+  return false
+}
+```
+
+**Not Preferred:**
+```swift
+func aFunction() -> Bool {
+  return false
+}
+```
+
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.
 
 * Colons always have no space on the left and one space on the right. Exceptions are the ternary operator `? :`, empty dictionary `[:]` and `#selector` syntax for unnamed parameters `(_:)`.
