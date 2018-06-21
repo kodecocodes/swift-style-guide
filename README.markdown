@@ -1062,7 +1062,7 @@ When writing new code, it should have a considerable amount of tests backing tho
 It's been agreed that unit tests should be written using the Quick/Nimble framework because of the increased readability over `XCTest`. The methods `describe`, `context` and `it` should be used accordingly to build the test specs in a manner that is easy to read, like english, such as:
 ```swift
 describe("Given a set of strings") {
-    contex("When comparing two strings that are equal") {
+    context("When comparing two strings that are equal") {
         it("Should return true") {
             /* Test code goes here */
         }
