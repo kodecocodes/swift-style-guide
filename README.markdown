@@ -79,7 +79,8 @@ Descriptive and consistent naming makes software easier to read and understand. 
 - strive for clarity at the call site
   - for example, a function name should read well and make things clearer wherever it's used.
 - prioritize clarity and simplicity over brevity
-- use camel case (not snake case)
+- use [camel case](https://en.wikipedia.org/wiki/Camel_case) (not [snake case](https://en.wikipedia.org/wiki/Snake_case))
+  - e.g: `taskTitle` rather than `task_title`
 - use uppercase for types (and protocols), lowercase for everything else
 - include all needed words while omitting needless words
   - for example don't repeat words.
