@@ -107,11 +107,26 @@ Descriptive and consistent naming makes software easier to read and understand. 
 - avoid overloads based purely on return type. Avoid using [Covariant Returns](https://en.wikipedia.org/wiki/Covariant_return_type) which are allowed in Swift.
 - choose good parameter names that serve as documentation
 - label closure and tuple parameters
+  - e.g.:
+
+Instead of:
+```swift
+func makeLocation() -> (Float, Float) {
+   // ... 
+}
+```
+do:
+```swift
+func makeLocation() -> (latitude: Float, longitude: Float) {
+    // ...
+}
+```
+
 - take advantage of default parameters
 
 ### Prose
 
-When referring to methods in prose, being unambiguous is critical. To refer to a method name, use the simplest form possible.
+When referring to methods in prose (in developer documentation), being unambiguous is critical. To refer to a method name, use the simplest form possible.
 
 1. Write the method name with no parameters.  **Example:** Next, you need to call the method `addTarget`.
 2. Write the method name with argument labels.  **Example:** Next, you need to call the method `addTarget(_:action:)`.
