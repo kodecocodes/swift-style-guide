@@ -91,6 +91,7 @@ Descriptive and consistent naming makes software easier to read and understand. 
 - striving for fluent usage
   - e.g: Prefer method and function names that make use sites form grammatical English phrases.
 - begin factory methods with `make`
+  - e.g: `makeGetAllProjectInteractor` rather than `initGetAllProjectInteractor` or `createGetAllProjectInteractor`
 - name methods for their side effects
   - verb methods follow the -ed, -ing rule for the non-mutating version.  E.g: mutating: `sort()`, non-mutating: `x.sorted()`
   - noun methods follow the formX rule for the mutating version.  E.g.    E.g: mutating: `union(z)`, non-mutating: `formUnion(z)`
