@@ -57,13 +57,13 @@ As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywend
 
 Writing code that is easy to read and easy to understand is our number one aim.  It's often tempting to write something that is intellectually satisfying, something that makes use of esoteric features in the language, something that makes us feel like we have full mastery of our craft.  But that's not what this team is about.  We need to think about the people coming after us.  If a new dev can come in, read through the code in a function and straight away have a good idea of what's going on (without having to work hard to build up a mental image/model ), then it's worked and you can feel proud of what you've created.
 
-A few common rules-of-thumb will help produce code that's easy to read and understand.  ( We'll cover these in more detail throughout the document, the 
+A few common rules-of-thumb will help produce code that's easy to read and understand.  ( We'll cover these in more detail throughout the document )
 
 + Name things well.
 + Keep functions short
 + Functions that perform some operation, should do one thing only.
-+ If you need to do multiple operations, separate out each behaviour into a single responsability and group them instead.
-+ Be careful of inline blocks.  Use them where appropriate, they're brilliant.  But always pause to see if the code would need less explaination, and provide better direction to the follow-on dev, by using a named function.
++ If you need to do multiple operations, separate out each behaviour into a single responsibility and group them instead.
++ Be careful of inline blocks.  Use them where appropriate, they're brilliant.  But always pause to see if the code would need less explanation, and provide better direction to the follow-on dev, by using a named function.
 
 
 
