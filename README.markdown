@@ -87,7 +87,7 @@ Descriptive and consistent naming makes software easier to read and understand. 
 - using names based on roles, not types
   - e.g: `taskTitle` rather than `aString`
 - sometimes it may be necessary to compensate for weak type information.
-  - e.g: when the type is Any or NSObject precede each weakly typed param with a noun describing its role.
+  - e.g: when the type is Any or NSObject precede each weakly typed param with a noun describing its role. That is, use [Hungarian Notation](https://en.wikipedia.org/wiki/Hungarian_notation)
 - striving for fluent usage
   - e.g: Prefer method and function names that make use sites form grammatical English phrases.
 - begin factory methods with `make`
