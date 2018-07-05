@@ -104,7 +104,7 @@ Descriptive and consistent naming makes software easier to read and understand. 
 - prefer methods and properties to free (or global) functions.
 - case for acronyms and initialisms should be uniformly up or down
 - use the same base name for methods that share the same meaning
-- avoid overloads based purely on return type
+- avoid overloads based purely on return type. Avoid using [Covariant Returns](https://en.wikipedia.org/wiki/Covariant_return_type) which are allowed in Swift.
 - choose good parameter names that serve as documentation
 - label closure and tuple parameters
 - take advantage of default parameters
