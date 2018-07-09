@@ -213,16 +213,19 @@ In particular, when adding protocol conformance to a model, prefer adding a sepa
 **Preferred:**
 ```swift
 class MyViewController: UIViewController {
+  
   // class stuff here
 }
 
 // MARK: - UITableViewDataSource
 extension MyViewController: UITableViewDataSource {
+  
   // table view data source methods
 }
 
 // MARK: - UIScrollViewDelegate
 extension MyViewController: UIScrollViewDelegate {
+  
   // scroll view delegate methods
 }
 ```
@@ -230,6 +233,7 @@ extension MyViewController: UIScrollViewDelegate {
 **Not Preferred:**
 ```swift
 class MyViewController: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
+  
   // all methods
 }
 ```
@@ -245,6 +249,7 @@ Unused (dead) code, including Xcode template code and placeholder comments shoul
 **Preferred:**
 ```swift
 override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+ 
   return Database.contacts.count
 }
 ```
@@ -283,8 +288,10 @@ Keep imports minimal. For example, don't import `UIKit` when importing `Foundati
 **Preferred:**
 ```swift
 if user.isHappy {
+ 
   // Do something
 } else {
+  
   // Do something else
 }
 ```
@@ -293,9 +300,11 @@ if user.isHappy {
 ```swift
 if user.isHappy
 {
+ 
   // Do something
 }
 else {
+ 
   // Do something else
 }
 ```
@@ -368,6 +377,7 @@ func third(){
 **Preferred:**
 ```swift
 class TestDatabase: Database {
+  
   var data: [String: CGFloat] = ["A": 1.2, "B": 3.2]
 }
 ```
@@ -375,6 +385,7 @@ class TestDatabase: Database {
 **Not Preferred:**
 ```swift
 class TestDatabase : Database {
+  
   var data :[String:CGFloat] = ["A" : 1.2, "B":3.2]
 }
 ```
@@ -412,34 +423,43 @@ Here's an example of a well-styled class definition:
 
 ```swift
 class Circle: Shape {
+  
   var x: Int, y: Int
   var radius: Double
   var diameter: Double {
+
     get {
+     
       return radius * 2
     }
     set {
+
       radius = newValue / 2
     }
   }
 
   init(x: Int, y: Int, radius: Double) {
+
     self.x = x
     self.y = y
     self.radius = radius
   }
 
   convenience init(x: Int, y: Int, diameter: Double) {
+
     self.init(x: x, y: y, radius: diameter / 2)
   }
 
   override func area() -> Double {
+
     return Double.pi * radius * radius
   }
 }
 
 extension Circle: CustomStringConvertible {
+
   var description: String {
+
     return "Circle area = \(area())"
   }
 }
@@ -469,6 +489,7 @@ If a computed property is expensive, don't do it as a computed property at all  
 **Preferred:**
 ```swift
 var diameter: Double {
+
   return radius * 2
 }
 ```
@@ -476,7 +497,9 @@ var diameter: Double {
 **Not Preferred:**
 ```swift
 var diameter: Double {
+
   get {
+
     return radius * 2
   }
 }
@@ -493,6 +516,7 @@ Keep short function declarations on one line including the opening brace:
 
 ```swift
 func reticulateSplines(spline: [Double]) -> Bool {
+
   // reticulate code goes here
 }
 ```
@@ -502,6 +526,7 @@ For functions with long signatures, add line breaks at appropriate points and ad
 ```swift
 func reticulateSplines(spline: [Double], adjustmentFactor: Double,
     translateConstant: Int, comment: String) -> Bool {
+
   // reticulate code goes here
 }
 ```
@@ -513,6 +538,7 @@ Use trailing closure syntax if there's a single closure expression parameter at 
 **Preferred:**
 ```swift
 UIView.animate(withDuration: 1.0) {
+
   self.myView.alpha = 0
 }
 
@@ -522,12 +548,15 @@ UIView.animate(withDuration: 1.0, animations: performRotation, completion: finis
 **Not Preferred:**
 ```swift
 UIView.animate(withDuration: 1.0, animations: {
+
   self.myView.alpha = 0
 })
 
 UIView.animate(withDuration: 1.0, animations: {
+
   self.myView.alpha = 0
 }) { f in
+
   self.myView.removeFromSuperview()
 }
 ```
@@ -536,6 +565,7 @@ For single-expression closures where the context is clear, use implicit returns:
 
 ```swift
 attendeeList.sort { a, b in
+
   a > b
 }
 ```
@@ -544,9 +574,9 @@ Chained methods using trailing closures should only ever be used if it's clear a
 
 ```swift
 let value = numbers
-  .map {$0 * 2}
-  .filter {$0 > 50}
-  .map {$0 + 10}
+  .map { $0 * 2} 
+  .filter { $0 > 50 }
+  .map { $0 + 10 }
 ```
 
 ## Types
@@ -578,6 +608,7 @@ You can define constants on a type rather than on an instance of that type using
 **Preferred:**
 ```swift
 enum Math {
+
   static let e = 2.718281828459045235360287
   static let root2 = 1.41421356237309504880168872
 }
@@ -615,6 +646,7 @@ Use optional binding when it's more convenient to unwrap once and perform multip
 
 ```swift
 if let textContainer = self.textContainer {
+
   // do many things with textContainer
 }
 ```
@@ -630,6 +662,7 @@ var volume: Double?
 
 // later on...
 if let subview = subview, let volume = volume {
+
   // do something with unwrapped subview and volume
 }
 ```
@@ -640,7 +673,9 @@ var optionalSubview: UIView?
 var volume: Double?
 
 if let unwrappedSubview = optionalSubview {
+
   if let realVolume = volume {
+
     // do something with unwrappedSubview and realVolume
   }
 }
@@ -654,6 +689,7 @@ Consider using lazy initialization for finer grain control over object lifetime.
 lazy var locationManager: CLLocationManager = self.makeLocationManager()
 
 private func makeLocationManager() -> CLLocationManager {
+
   let manager = CLLocationManager()
   manager.desiredAccuracy = kCLLocationAccuracyBest
   manager.delegate = self
@@ -752,9 +788,12 @@ Extend object lifetime using the `[weak self]` and `guard let strongSelf = self 
 **Preferred**
 ```swift
 resource.request().onComplete { [weak self] response in
+
   guard let strongSelf = self else {
+
     return
   }
+
   let model = strongSelf.updateModel(response)
   strongSelf.updateUI(model)
 }
@@ -764,6 +803,7 @@ resource.request().onComplete { [weak self] response in
 ```swift
 // might crash if self is released before response returns
 resource.request().onComplete { [unowned self] response in
+
   let model = self.updateModel(response)
   self.updateUI(model)
 }
@@ -773,6 +813,7 @@ resource.request().onComplete { [unowned self] response in
 ```swift
 // deallocate could happen between updating the model and updating UI
 resource.request().onComplete { [weak self] response in
+
   let model = self?.updateModel(response)
   self?.updateUI(model)
 }
@@ -791,6 +832,7 @@ Use access control as the leading property specifier. The only things that shoul
 private let message = "Great Scott!"
 
 class TimeMachine {  
+
   fileprivate dynamic lazy var fluxCapacitor = FluxCapacitor()
 }
 ```
@@ -800,6 +842,7 @@ class TimeMachine {
 fileprivate let message = "Great Scott!"
 
 class TimeMachine {  
+
   lazy dynamic fileprivate var fluxCapacitor = FluxCapacitor()
 }
 ```
@@ -812,6 +855,7 @@ IBActions  should always be marked as private.
 @IBOutlet private weak var butt: UIButton!
 
 @IBAction private func buttonTouched(_ sender: Any) {
+
    print("click")
 }
 ```
@@ -821,6 +865,7 @@ IBActions  should always be marked as private.
 @IBOutlet var butt: UIButton!
 
 @IBAction func buttonTouched(_ sender: Any) {
+
    print("click")
 }
 ```
@@ -836,18 +881,22 @@ Prefer the `for-in` style of `for` loop over the `while-condition-increment` sty
 **Preferred:**
 ```swift
 for _ in 0..<3 {
+
   print("Hello three times")
 }
 
 for (index, person) in attendeeList.enumerated() {
+
   print("\(person) is at position #\(index)")
 }
 
 for index in stride(from: 0, to: items.count, by: 2) {
+
   print(index)
 }
 
 for index in (0...3).reversed() {
+
   print(index)
 }
 ```
@@ -856,6 +905,7 @@ for index in (0...3).reversed() {
 ```swift
 var i = 0
 while i < 3 {
+
   print("Hello three times")
   i += 1
 }
@@ -863,6 +913,7 @@ while i < 3 {
 
 var i = 0
 while i < attendeeList.count {
+
   let person = attendeeList[i]
   print("\(person) is at position #\(i)")
   i += 1
@@ -917,14 +968,19 @@ func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies 
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
 
   if let context = context {
+
     if let inputData = inputData {
+
       // use context and input to compute the frequencies
 
       return frequencies
     } else {
+
       throw FFTError.noInputData
     }
+
   } else {
+
     throw FFTError.noContext
   }
 }
@@ -937,24 +993,34 @@ When multiple optionals are unwrapped either with `guard` or `if let`, minimize 
 guard let number1 = number1,
       let number2 = number2,
       let number3 = number3 else {
+
   fatalError("impossible")
 }
+
 // do something with numbers
 ```
 
 **Not Preferred:**
 ```swift
 if let number1 = number1 {
+
   if let number2 = number2 {
+
     if let number3 = number3 {
+
       // do something with numbers
     } else {
+
       fatalError("impossible")
     }
+
   } else {
+
     fatalError("impossible")
   }
+
 } else {
+
   fatalError("impossible")
 }
 ```
@@ -987,6 +1053,7 @@ Parentheses around conditionals are not required and should be omitted.
 **Preferred:**
 ```swift
 if name == "Hello" {
+
   print("World")
 }
 ```
@@ -994,6 +1061,7 @@ if name == "Hello" {
 **Not Preferred:**
 ```swift
 if (name == "Hello") {
+
   print("World")
 }
 ```
@@ -1021,12 +1089,13 @@ Where an Xcode project is involved, the organization should be set to `Teamwork.
 
 **Preferred:**
 ```swift
-let blah = NSStri
+let blahTitle =  NSLocalizedString("blah", comment:"a blah title to use in modal screens")
 ```
 
 **Not Preferred:**
 ```swift
 if (name == "Hello") {
+
   print("World")
 }
 ```
@@ -1043,6 +1112,7 @@ if (name == "Hello") {
 **Preferred:**
 ```swift
 extension UIColor {
+  
   static var messageColor = UIColor(red: 31/255.0, green: 33/255.0, blue: 36/255.0, alpha: 1)
 }
 
