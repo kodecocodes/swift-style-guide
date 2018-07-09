@@ -45,6 +45,7 @@ As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywend
 * [Organization and Bundle Identifier](#organization-and-bundle-identifier)
 * [Localisation](#localisation)
 * [Colors](#colours)
+* [Unit Tests](#unit-tests)
 * [Copyright Statement](#copyright-statement)
 * [Using Git]
   * [Pull Requests](#pull-requests)
@@ -1054,7 +1055,42 @@ messageView.color = .messageColor
 messageView.color = UIColor(red: 0.121568627, green: 0.129411765, blue: 0.141176471, alpha: 1)
 ```
 
+## Unit Tests
 
+When writing new code, it should have a considerable amount of tests backing those additions. There is no code coverage requisite yet for this.
+
+It's been agreed that unit tests should be written using the Quick/Nimble framework because of the increased readability over `XCTest`. The methods `describe`, `context` and `it` should be used accordingly to build the test specs in a manner that is easy to read, like english, such as:
+```swift
+describe("Given a set of strings") {
+    context("When comparing two strings that are equal") {
+        it("Should return true") {
+            /* Test code goes here */
+        }
+    }
+}
+```
+
+When writing your tests use force unwraps (`!`) to unwrap optional values when needed since safely unwraping (`?` or using `guard`/`if` statements) may give us false positives (not fail a test when it should). The only acceptable case to not forcibly unwrap a variable is when it is being compared to another value using the `expect` method, since if it is `nil` the test will fail with a nice test error message instead of a stacktrace error. E.g.
+```swift
+struct SomeStruct {
+    let name: String
+}
+
+let optionalValue: SomeStruct? = SomeStruct(name: "test")
+expect(optionalValue?.name).to(equal("test")) // This will fail with a message saying value was nil if optionalValue is nil rather than blowing everything up like using !
+```
+Please notice that one of the sides of the comparison must not be optional, otherwise we may end up with a false positive, e.g.
+```swift
+let dateFormatter = DateFormatter()
+dateFormatter.dateFormat = "yyyy-MM-dd"
+
+struct SomeStruct {
+    let date: Date
+}
+
+let optionalValue: SomeStruct? = SomeStruct(date: Date())
+expect(optionalValue?.date).to(equal(dateFormatter.date(from: "2018-06-20")!)) // Notice than one of the sides must be forcibly unwraped otherwise we might be comparing two nil objects, which might not be what we want. Force unwrap your test values (the desired value), not the values to be tested
+```
 
 ## Copyright Statement
 
