@@ -107,6 +107,14 @@ Descriptive and consistent naming makes software easier to read and understand. 
 - label closure and tuple parameters
 - take advantage of default parameters
 
+### Lists of items
+
+When creating the screen for a collection of items we need to think carefully about how we plan to name each object. Simply using the term "list" could cause confusion down the line with items like a tasklist which is already predefined within the context of Projects and a list of tasklists, which is something we will have to implement within the project ourselves.
+
+The conclusion to this was that anytime we are creating an object which will have a list of items, we are going to use the term "Collection" for that object. eg. `TasklistCollection`, `ProjectCollection`
+
+That way, we are not overlapping with the list term defined within Projects and don't end up with an object that looks like `TasklistList`, it would be `TasklistCollection` instead.
+
 ### Prose
 
 When referring to methods in prose, being unambiguous is critical. To refer to a method name, use the simplest form possible.
