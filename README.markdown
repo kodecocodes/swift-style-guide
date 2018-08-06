@@ -723,6 +723,28 @@ var employees: Dictionary<Int, String>
 var faxNumber: Optional<Int>
 ```
 
+When working with elements related to **Viper** architecture, especially when variable names are generic (e.g., presenter, router, dataManager, view etc), it's recommended to include the type or protocol comformance in order to facilitate understanding and provide more context. 
+
+**Preferred:**
+```swift
+let dataManager: ProjectApiProtocol = MockedApi()
+```
+
+**Not Preferred:**
+```swift
+let dataManager = MockedApi()
+```
+
+**Preferred:**
+```swift
+let repositoryToDomainMapper: AnyMapper<[ProjectEntity], [Project]> = AnyMapper(ProjectCollectionRepositoryToDomainMapper())
+```
+
+**Not Preferred:**
+```swift
+let repositoryToDomainMapper = AnyMapper(ProjectCollectionRepositoryToDomainMapper())
+```
+
 ## Functions vs Methods
 
 Free functions, which aren't attached to a class or type, should be used sparingly. When possible, prefer to use a method instead of a free function. This aids in readability and discoverability.
