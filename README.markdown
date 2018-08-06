@@ -723,7 +723,7 @@ var employees: Dictionary<Int, String>
 var faxNumber: Optional<Int>
 ```
 
-When working with elements related to **Viper** architecture, especially when variable names are generic (e.g., presenter, router, dataManager, view etc), it's recommended to include the type or protocol comformance in order to facilitate understanding and provide more context. 
+When working with elements related to **Viper** architecture, especially when variable names are generic (e.g., presenter, router, dataManager, view etc), it's recommended to include the type or protocol conformance in order to facilitate understanding and provide more context. 
 
 **Preferred:**
 ```swift
