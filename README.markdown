@@ -484,7 +484,7 @@ var diameter: Double {
 
 ### Final
 
-Mark a class as final only if it's necessary and the class absolutely shouldn't be subclassed for some reason.
+Mark a class as final unless it needs to be subclassed.
 
 
 ## Function Declarations
