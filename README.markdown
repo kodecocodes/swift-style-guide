@@ -188,6 +188,7 @@ In particular, when adding protocol conformance to a model, prefer adding a sepa
 **Preferred:**
 ```swift
 class MyViewController: UIViewController {
+
   // class stuff here
 }
 
@@ -205,6 +206,7 @@ extension MyViewController: UIScrollViewDelegate {
 **Not Preferred:**
 ```swift
 class MyViewController: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
+
   // all methods
 }
 ```
@@ -284,6 +286,7 @@ else {
 **Preferred:**
 ```swift
 class TestDatabase: Database {
+
   var data: [String: CGFloat] = ["A": 1.2, "B": 3.2]
 }
 ```
@@ -291,6 +294,7 @@ class TestDatabase: Database {
 **Not Preferred:**
 ```swift
 class TestDatabase : Database {
+
   var data :[String:CGFloat] = ["A" : 1.2, "B":3.2]
 }
 ```
@@ -324,6 +328,8 @@ Here's an example of a well-styled class definition:
 
 ```swift
 class Circle: Shape {
+
+  // MARK: - Properties
   var x: Int, y: Int
   var radius: Double
   var diameter: Double {
@@ -362,6 +368,8 @@ extension Circle: CustomStringConvertible {
 
 The example above demonstrates the following style guidelines:
 
+ + Include an empty space below the type definition.
+ + Pragma mark properties.
  + Specify types for properties, variables, constants, argument declarations and other statements with a space after the colon but not before, e.g. `x: Int`, and `Circle: Shape`.
  + Define multiple variables and structures on a single line if they share a common purpose / context.
  + Indent getter and setter definitions and property observers.
@@ -403,6 +411,7 @@ Marking classes or members as `final` in tutorials can distract from the main to
 ```swift
 // Turn any generic type into a reference type using this Box class.
 final class Box<T> {
+
   let value: T
   init(_ value: T) {
     self.value = value
@@ -726,6 +735,7 @@ Use access control as the leading property specifier. The only things that shoul
 private let message = "Great Scott!"
 
 class TimeMachine {  
+
   fileprivate dynamic lazy var fluxCapacitor = FluxCapacitor()
 }
 ```
@@ -735,6 +745,7 @@ class TimeMachine {
 fileprivate let message = "Great Scott!"
 
 class TimeMachine {  
+
   lazy dynamic fileprivate var fluxCapacitor = FluxCapacitor()
 }
 ```
