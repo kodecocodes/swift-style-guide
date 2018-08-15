@@ -1,5 +1,5 @@
 # The Official Teamwork.com iOS development Guide
-As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywenderlich/swift-style-guide).  Includes more than just swift style guide.  It describes how we work ( with git etc. )
+As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywenderlich/swift-style-guide)
 
 ## Table of Contents
 
@@ -47,10 +47,6 @@ As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywend
 * [Colors](#colours)
 * [Unit Tests](#unit-tests)
 * [Copyright Statement](#copyright-statement)
-* [Using Git]
-  * [Pull Requests](#pull-requests)
-  * [Releases](#releases)
-  * [Tagging](#tagging)
 * [References](#references)
 
 
@@ -58,13 +54,13 @@ As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywend
 
 Writing code that is easy to read and easy to understand is our number one aim.  It's often tempting to write something that is intellectually satisfying, something that makes use of esoteric features in the language, something that makes us feel like we have full mastery of our craft.  But that's not what this team is about.  We need to think about the people coming after us.  If a new dev can come in, read through the code in a function and straight away have a good idea of what's going on (without having to work hard to build up a mental image/model ), then it's worked and you can feel proud of what you've created.
 
-A few common rules-of-thumb will help produce code that's easy to read and understand.  ( We'll cover these in more detail throughout the document, the 
+A few common rules-of-thumb will help produce code that's easy to read and understand.  ( We'll cover these in more detail throughout the document )
 
 + Name things well.
 + Keep functions short
 + Functions that perform some operation, should do one thing only.
-+ If you need to do multiple operations, separate out each behaviour into a single responsability and group them instead.
-+ Be careful of inline blocks.  Use them where appropriate, they're brilliant.  But always pause to see if the code would need less explaination, and provide better direction to the follow-on dev, by using a named function.
++ If you need to do multiple operations, separate out each behaviour into a single responsibility and group them instead.
++ Be careful of inline blocks.  Use them where appropriate, they're brilliant.  But always pause to see if the code would need less explanation, and provide better direction to the follow-on dev, by using a named function.
 
 
 
@@ -80,17 +76,19 @@ Descriptive and consistent naming makes software easier to read and understand. 
 - strive for clarity at the call site
   - for example, a function name should read well and make things clearer wherever it's used.
 - prioritize clarity and simplicity over brevity
-- use camel case (not snake case)
+- use [camel case](https://en.wikipedia.org/wiki/Camel_case) (not [snake case](https://en.wikipedia.org/wiki/Snake_case))
+  - e.g: `taskTitle` rather than `task_title`
 - use uppercase for types (and protocols), lowercase for everything else
 - include all needed words while omitting needless words
   - for example don't repeat words.
 - using names based on roles, not types
   - e.g: `taskTitle` rather than `aString`
 - sometimes it may be necessary to compensate for weak type information.
-  - e.g: when the type is Any or NSObject precede each weakly typed param with a noun describing its role.
+  - e.g: when the type is Any or NSObject precede each weakly typed param with a noun describing its role. That is, use [Hungarian Notation](https://en.wikipedia.org/wiki/Hungarian_notation)
 - striving for fluent usage
   - e.g: Prefer method and function names that make use sites form grammatical English phrases.
 - begin factory methods with `make`
+  - e.g: `makeGetAllProjectInteractor` rather than `initGetAllProjectInteractor` or `createGetAllProjectInteractor`
 - name methods for their side effects
   - verb methods follow the -ed, -ing rule for the non-mutating version.  E.g: mutating: `sort()`, non-mutating: `x.sorted()`
   - noun methods follow the formX rule for the mutating version.  E.g.    E.g: mutating: `union(z)`, non-mutating: `formUnion(z)`
@@ -103,9 +101,24 @@ Descriptive and consistent naming makes software easier to read and understand. 
 - prefer methods and properties to free (or global) functions.
 - case for acronyms and initialisms should be uniformly up or down
 - use the same base name for methods that share the same meaning
-- avoid overloads based purely on return type
+- avoid overloads based purely on return type. Avoid using [Covariant Returns](https://en.wikipedia.org/wiki/Covariant_return_type) which are allowed in Swift.
 - choose good parameter names that serve as documentation
 - label closure and tuple parameters
+  - e.g.:
+
+Instead of:
+```swift
+func makeLocation() -> (Float, Float) {
+   // ... 
+}
+```
+do:
+```swift
+func makeLocation() -> (latitude: Float, longitude: Float) {
+    // ...
+}
+```
+
 - take advantage of default parameters
 
 ### Lists of items
@@ -118,7 +131,7 @@ That way, we are not overlapping with the list term defined within Projects and 
 
 ### Prose
 
-When referring to methods in prose, being unambiguous is critical. To refer to a method name, use the simplest form possible.
+When referring to methods in prose (in developer documentation), being unambiguous is critical. To refer to a method name, use the simplest form possible.
 
 1. Write the method name with no parameters.  **Example:** Next, you need to call the method `addTarget`.
 2. Write the method name with argument labels.  **Example:** Next, you need to call the method `addTarget(_:action:)`.
@@ -1205,39 +1218,6 @@ file:
 /// THE SOFTWARE.
 ```
 
-
-## Using Git
-
-We use a slightly simplified version of git-flow.
-
-| name    | Description                                                                                                                                                                                                                      |
-|:--------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| master  | Sent to Apple for Review.                                                                                                                                                                                                        |
-| develop | Contains all of the changes merged in from reviewed PR's.  Will become the next release to be promoted to Master                                                                                                                 |
-| feature | used for implementing a feature                                                                                                                                                                                                  |
-| bug     | used for fixing a bug.  Branched from develop.  Merges back to develop                                                                                                                                                           |
-| hotfix  | used for fixing a bug.  Branched from master.  Merges back to master. It's for when a bug in the released app needs to be fixed quickly and Develop already has other changes merged in.  Ideally this should be very very rare. |
-
-
-Always make a branch before you start working.  Try not to make changes and then branch afterwards - it's too easy to merge straight back to develop etc.
-
-Always include a reasonable message as part of the commit.  Never ever commit with an empty or useless comment.
-
-Don't squash history.
-
-### Pull Requests
-
-When your feature or fix is ready create a [Pull Request](https://help.github.com/articles/about-pull-requests/) and choose a reviewer.  For the moment, while the team is small, you can assign all iOS devs.  As we grow we'll review and change this specification.  Once the PR has been reviewed by two people it's okay to merge.  One of those two people should be the owner of the project.  Once a PR is approved, the person who created the PR is the one who performs the merge (and fixes and merge conflicts).
-
-Once the PR is merged, the original branch must be deleted.
-
-### Releases
-
-When a release is about to be sent to Apple for review, develop is merged to master.  A tag is applied and the app is then built directly from master and submitted to Apple for review.  The app should never be built from develop.
-
-### Tagging
-
-Whenever the app is sent out to anyone, such as the test team, beta groups, or even individuals in the company for a demo, a tag should be added of the form: TYPE_VERSION_BUILD.  Where `TYPE` is Release|Test|Beta|Demo, `VERSION` is the app version number and `BUILD` is the build number to allow for further distinction.
 
 ## References
 
