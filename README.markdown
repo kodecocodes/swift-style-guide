@@ -529,7 +529,7 @@ var diameter: Double {
 
 ### Property Observers
 
-When writing didSets make sure that the logic is no more than a couple of lines long. If they need to be longer write the logic inside a private method or inside an external component. 
+When writing didSets make sure that the logic is no more than a couple of lines long. If they need to be longer write the logic inside a private method or inside an external component.
 
 ### Final
 
