@@ -260,6 +260,15 @@ class MyViewController: UIViewController, UITableViewDataSource, UIScrollViewDel
 }
 ```
 
+When putting protocol conformance for an object in an extension as previously mentioned, consider creating a folder and separated files to put its its ancillary extensions therefore reducing the file of the initial component and facilitating looking for specific conformance.
+
+The container folder should have the name of the component (E.g., MyViewController) and inside the folder the main component should be placed alongside with the extensions, which will be named using the following convention: `ComponentName+ConformanceName`.
+
+**Preferred:**
+
+![Protocol Conformance Extensions](screens/protocolConformanceExtensions.png)
+
+
 Since the compiler does not allow you to re-declare protocol conformance in a derived class, it is not always required to replicate the extension groups of the base class. This is especially true if the derived class is a terminal class and a small number of methods are being overridden. When to preserve the extension groups is left to the discretion of the author.
 
 For UIKit view controllers, consider grouping lifecycle, custom accessors, and IBAction in separate class extensions.
