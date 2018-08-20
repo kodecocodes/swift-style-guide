@@ -527,6 +527,10 @@ var diameter: Double {
 }
 ```
 
+### Property Observers
+
+When writing didSets they can be a few lines long if they are related to setting up a component and they don't encapsulate logic. If they need to be longer write the logic inside a private method or inside an external component.
+
 ### Final
 
 Mark a class as final only if it's necessary and the class absolutely shouldn't be subclassed for some reason.
