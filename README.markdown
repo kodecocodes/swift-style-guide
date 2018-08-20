@@ -266,8 +266,15 @@ The container folder should have the name of the component (E.g., MyViewControll
 
 **Preferred:**
 
-![Protocol Conformance Extensions](screens/protocolConformanceExtensions.png)
-
+```
+[MyViewController] (folder)|- MyViewController.swift  
+|- MyViewController+SomeDelegate.swift  
+|- MyViewController+SomeViewProtocol.swift  
+|- MyViewController+UITableViewDelegate.swift  
+|- MyViewController+Themable.swift  
+|- MyViewController+StoryboardInstantiable.swift  
+|- MyViewController+UITextViewDelegate.swift`
+```
 
 Since the compiler does not allow you to re-declare protocol conformance in a derived class, it is not always required to replicate the extension groups of the base class. This is especially true if the derived class is a terminal class and a small number of methods are being overridden. When to preserve the extension groups is left to the discretion of the author.
 
