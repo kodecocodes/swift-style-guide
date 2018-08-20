@@ -260,7 +260,7 @@ class MyViewController: UIViewController, UITableViewDataSource, UIScrollViewDel
 }
 ```
 
-When putting protocol conformance for an object in an extension as previously mentioned, consider creating a folder and separated files to put its its ancillary extensions therefore reducing the file of the initial component and facilitating looking for specific conformance.
+When putting protocol conformance for an object in an extension as previously mentioned, consider creating a folder and separated files to put its ancillary extensions therefore reducing the file of the initial component and facilitating looking for specific conformance.
 
 The container folder should have the name of the component (E.g., MyViewController) and inside the folder the main component should be placed alongside with the extensions, which will be named using the following convention: `ComponentName+ConformanceName`.
 
