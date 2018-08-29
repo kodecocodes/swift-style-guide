@@ -42,6 +42,7 @@ As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywend
   * [Failing Guards](#failing-guards)
 * [Semicolons](#semicolons)
 * [Parentheses](#parentheses)
+* [Linting](#linting)
 * [Organization and Bundle Identifier](#organization-and-bundle-identifier)
 * [Localisation](#localisation)
 * [Colors](#colours)
@@ -1093,6 +1094,97 @@ In larger expressions, optional parentheses can sometimes make code read more cl
 **Preferred:**
 ```swift
 let playerMark = (player == current ? "X" : "O")
+```
+## Linting
+
+ We use SwiftLint to lint our projects so we guarantee our guidelines are being enforced during development. For more details on how SwiftLint works and how to install it please [check this](https://github.com/realm/SwiftLint).
+ 
+ This is a sample of the `.swiftlint.yml` file to be used in all projects.
+```yaml
+# All rules: https://github.com/realm/SwiftLint/blob/master/Rules.md#mark
+ disabled_rules: # rule identifiers to exclude from running
+- shorthand_operator        # Prefer shorthand operators (+=, -=, *=, /=) over doing the operation and assigning
+- trailing_whitespace
+- file_header
+- trailing_newline
+- todo
+ opt_in_rules: # some rules are only opt-in
+- empty_count                                   # Prefer checking isEmpty over comparing count to zero
+- private_outlet                                # IBOutlets should be private to avoid leaking UIKit to higher layers.
+- file_header
+- modifier_order                                # Modifier order should be consistent.
+- multiline_arguments                           # Arguments should be either on the same line, or one per line.
+- number_separator                              # Underscores should be used as thousand separator in large decimal numbers
+- operator_usage_whitespace                     # Operators should be surrounded by a single whitespace when they are being used.
+- operator_whitespace                           # Operators should be surrounded by a single whitespace when defining them.
+- prohibited_super_call                         # Some methods should not call super
+- overridden_super_call                         # Some overridden methods should always call super
+- vertical_parameter_alignment_on_call          # Function parameters should be aligned vertically if they're in multiple lines in a method call.
+- array_init                                    # Prefer using Array(seq) over seq.map { $0 } to convert a sequence into an Array.
+- attributes                                    # Attributes should be on their own lines in functions and types, but on the same line as variables and imports.
+- closure_end_indentation                       # Closure end should have the same indentation as the line that started it.
+- closure_spacing                               # Closure expressions should have a single space inside each brace.
+- contains_over_first_not_nil                   # Prefer contains over first(where:) != nil
+- empty_string                                  # Prefer checking isEmpty over comparing string to an empty string literal.
+- explicit_init                                 # Explicitly calling .init() should be avoided.
+- extension_access_modifier                     # Prefer to use extension access modifiers
+- fallthrough                                   # Fallthrough should be avoided.
+- fatal_error_message                           # A fatalError call should have a message.
+- first_where                                   # Prefer using .first(where:) over .filter { }.first in collections.
+- force_unwrapping                              # Force unwrapping should be avoided.
+- function_default_parameter_at_end             # Prefer to locate parameters with defaults toward the end of the parameter list.
+- implicit_return                               # Prefer implicit returns in closures.
+- implicitly_unwrapped_optional                 # Implicitly unwrapped optionals should be avoided when possible.
+- joined_default_parameter                      # Discouraged explicit usage of the default separator.
+- literal_expression_end_indentation            # Array and dictionary literal end should have the same indentation as the line that started it.
+- lower_acl_than_parent                         # Ensure definitions have a lower access control level than their enclosing parent
+- multiline_function_chains                     # Chained function calls should be either on the same line, or one per line.
+- multiline_parameters                          # Functions and methods parameters should be either on the same line, or one per line.
+- pattern_matching_keywords                     # Combine multiple pattern matching bindings by moving keywords out of tuples.
+- prefixed_toplevel_constant                    # Top-level constants should be prefixed by k
+- private_action                                # IBActions should be private.
+- redundant_nil_coalescing                      # nil coalescing operator is only evaluated if the lhs is nil, coalescing operator with nil as rhs is redundant
+- sorted_first_last                             # Prefer using min() or max() over sorted().first or sorted().last
+- trailing_closure                              # Trailing closure syntax should be used whenever possible.
+- unavailable_function                          # Unimplemented functions should be marked as unavailable.
+- unneeded_parentheses_in_closure_argument      # Parentheses are not needed when declaring closure arguments.
+- yoda_condition                                # The variable should be placed on the left, the constant on the right of a comparison operator.
+- nimble_operator                               # Prefer Nimble operator overloads over free matcher functions.
+- quick_discouraged_call                        # Discouraged call inside 'describe' and/or 'context' block.
+- quick_discouraged_focused_test                # Discouraged focused test. Other tests won't run while this one is focused.
+- quick_discouraged_pending_test                # Discouraged pending test. This test won't run while it's marked as pending.
+- required_enum_case                            # Enums conforming to a specified protocol must implement a specific case(s).
+- single_test_class                             # Test files should contain a single QuickSpec or XCTestCase class.
+ excluded: # paths to ignore during linting. Takes precedence over `included`.
+- Pods
+ # configurable rules can be customized from this configuration file
+ line_length:
+    warning: 140
+    ignores_comments: true
+ nesting:
+    type_level: 2
+ vertical_whitespace: 1
+force_cast: warning
+force_try: warning
+force_unwrapping: warning
+ file_length:
+    warning: 600
+    ignore_comment_only_lines: true
+ function_body_length: 40
+ function_parameter_count:
+    warning: 6
+ type_body_length: 600
+ identifier_name:
+    min_length: # only min_length
+        warning: 3 # only error
+    excluded: # excluded via string array
+        - id
+ reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
+ custom_rules:
+    more_than_one_variable_declaration:
+        regex: '^(let|var) \w+,'
+        message: "Don't put more than one declaration in the same line."
+        severity: error
 ```
 
 ## Organization and Bundle Identifier
