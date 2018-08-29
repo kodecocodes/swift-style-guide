@@ -509,7 +509,7 @@ func reticulateSplines(spline: [Double], adjustmentFactor: Double,
 
 When declaring a new function, we recommend using markup to create a richly formatted 'Quick Help' describing the function, it's parameters and it's return object. This way, other users simply have to select the option key and select the function in any context to see the information about the function with it's intended use.
 
-To create a 'Quick Help' style decleration format your function like this which can be automatically done using the hotkey OPT+CMD+/:
+You can create a 'Quick Help' declaration format for your function using the hotkey 'OPT+CMD+/'. You may also check [Apple's documentation](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html) for more details.
 
 ```
     /// Finds and return the range of the content inside some enclosing keys, if any. If there are more than one enclosing content it will return the first one.
