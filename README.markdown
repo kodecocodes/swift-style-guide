@@ -533,7 +533,7 @@ When writing didSets they can be a few lines long if they are related to setting
 
 ### Final
 
-Mark a class as final only if it's necessary and the class absolutely shouldn't be subclassed for some reason.
+Mark a class as final unless it needs to be subclassed.
 
 
 ## Function Declarations
