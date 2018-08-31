@@ -573,6 +573,20 @@ func reticulateSplines(spline: [Double], adjustmentFactor: Double,
 }
 ```
 
+When declaring a new function, we recommend using markup to create a richly formatted 'Quick Help' describing the function, it's parameters and it's return object. This way, other users simply have to select the option key and select the function in any context to see the information about the function with it's intended use.
+
+You can create a 'Quick Help' declaration format for your function using the hotkey 'OPT+CMD+/'. You may also check [Apple's documentation](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html) for more details.
+
+```
+    /// Finds and return the range of the content inside some enclosing keys, if any. If there are more than one enclosing content it will return the first one.
+    ///
+    /// - Parameters:
+    ///   - startKey: the start key for the enclosing content
+    ///   - endKey: the end key for the enclosing content
+    /// - Returns: the range of the content enclosed by the startKey and endKey
+    func rangeForEnclosingKeys(startKey: String, endKey: String) -> Range<String.Index>? { }
+```
+
 ## Closure Expressions
 
 Use trailing closure syntax if there's a single closure expression parameter at the end of the argument list. Where possible try to avoid multiple inline closures in a single function call. It's too hard to read. Separate them out into well named functions.
