@@ -1097,7 +1097,16 @@ let playerMark = (player == current ? "X" : "O")
 ```
 ## Linting
 
- We use SwiftLint to lint our projects so we guarantee our guidelines are being enforced during development. For more details on how SwiftLint works and how to install it please [check this](https://github.com/realm/SwiftLint).
+ We use SwiftLint to lint our projects so we guarantee our guidelines are being enforced during development. 
+ 
+ To install SwiftLint we use CocoaPods, since it's a easy way to install and maintain versioning on this tool. To do so just add SwiftLint as a pod in the project's Podfile (`pod 'SwiftLint'`) and execute the `pod install` command. You also have to include a build phase bash script:
+ ```
+ "${PODS_ROOT}/SwiftLint/swiftlint"
+ ```
+ 
+ After the installation is complete include the `.swiftlint.yml` file at the root folder of the project. Be sure to include `.swiftlint.yml` in to source versioning, so that everybody has the same set of rules (including CI/CD).
+ 
+ For more details on how SwiftLint works and how to install it please [check this](https://github.com/realm/SwiftLint).
  
  This is a sample of the `.swiftlint.yml` file to be used in all projects.
 ```yaml
