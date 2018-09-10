@@ -1107,6 +1107,12 @@ if let number1 = number1 {
 
 Guard statements are required to exit in some way. Generally, this should be simple one line statement such as `return`, `throw`, `break`, `continue`, and `fatalError()`. Large code blocks should be avoided. If cleanup code is required for multiple exit points, consider using a `defer` block to avoid cleanup code duplication.
 
+### Use of returns
+
+On facing a method, we expect to find at the top the `guard` to check for the execution conditions, followed by the method's body and finishing with a return when requested. This simple flow helps on code readability. 
+
+Whenever possible use only one return command for method/function. This does not include the use of one or more `guard` for an early return on checking execution conditions.
+
 ## Semicolons
 
 Don't.  Just don't.
