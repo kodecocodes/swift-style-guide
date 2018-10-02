@@ -1317,7 +1317,7 @@ It's been agreed that unit tests should be written using the Quick/Nimble framew
 ```swift
 describe("Given a set of strings") {
     context("When comparing two strings that are equal") {
-        it("Should return true") {
+        it("Then return true") {
             /* Test code goes here */
         }
     }
