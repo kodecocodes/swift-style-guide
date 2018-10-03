@@ -42,7 +42,7 @@ As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywend
   * [Failing Guards](#failing-guards)
 * [Semicolons](#semicolons)
 * [Parentheses](#parentheses)
-* [Deprecated Code](#deprecated)
+* [Deprecated](#deprecated)
 * [Linting](#linting)
 * [Organization and Bundle Identifier](#organization-and-bundle-identifier)
 * [Localisation](#localisation)
@@ -1159,7 +1159,7 @@ In larger expressions, optional parentheses can sometimes make code read more cl
 let playerMark = (player == current ? "X" : "O")
 ```
 
-## Deprecated Code
+## Deprecated
 
 Sometimes there's code that will be refactored in the near future, so it may be interesting to mark vars, methods etc with **@available**. 
 
