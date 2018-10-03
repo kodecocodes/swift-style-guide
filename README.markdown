@@ -898,7 +898,7 @@ resource.request().onComplete { [weak self] response in
 }
 ```
 
-As an *better* alternative to the weak self/strong self scenario, if we just need to capture some variables or objects, instead of addressinh the whole self,we can use a capture list with the name of the vars that we need.
+As a *better* alternative to the weak self/strong self scenario, if we just need to capture some variables or objects, instead of addressinh the whole self,we can use a capture list with the name of the vars that we need.
 
 **Preferred**
 ```swift
