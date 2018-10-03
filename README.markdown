@@ -42,6 +42,7 @@ As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywend
   * [Failing Guards](#failing-guards)
 * [Semicolons](#semicolons)
 * [Parentheses](#parentheses)
+* [Deprecated Code](#deprecated)
 * [Linting](#linting)
 * [Organization and Bundle Identifier](#organization-and-bundle-identifier)
 * [Localisation](#localisation)
@@ -1157,6 +1158,43 @@ In larger expressions, optional parentheses can sometimes make code read more cl
 ```swift
 let playerMark = (player == current ? "X" : "O")
 ```
+
+## Deprecated Code
+
+Sometimes there's code that will be refactored in the near future, so it may be interesting to mark vars, methods etc with **@available**. 
+
+This way we can get warnings when compiling and when trying to use/access those 'deprecated' code...It's also useful as a better reminder than **//TODO**. If you try to use something marked as deprecated you'll get a warning.
+
+**Preferred:**
+```swift
+@available(*, deprecated, message: "This has to be refactored, it shouldn't be used")
+    @IBOutlet private weak var titleLabel: UILabel! {
+        didSet {
+
+            titleLabel.text = title
+        }
+    }
+```
+
+If we try to access titleLabel (a deprecated var) e.g.
+```
+titleLabel.font = font   
+```
+
+The compiler will show a warning ---> 'titleLabel' is deprecated: This has to be refactored, it shouldn't be used'
+
+
+**Not Preferred:**
+```swift
+/// TODO - Refactor some day, please don't use it! 
+    @IBOutlet private weak var titleLabel: UILabel! {
+        didSet {
+
+            titleLabel.text = title
+        }
+    }
+```
+
 ## Linting
 
  We use SwiftLint to lint our projects so we guarantee our guidelines are being enforced during development. 
