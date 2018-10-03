@@ -898,6 +898,18 @@ resource.request().onComplete { [weak self] response in
 }
 ```
 
+As an *better* alternative to the weak self/strong self scenario, if we just need to capture some variables or objects, instead of addressinh the whole self,we can use a capture list with the name of the vars that we need.
+
+**Preferred**
+```swift
+doSomethingAsync { [myCapturedVar] in
+
+  print(myCapturedVar)
+}
+```
+
+This way the closure doesn't capture self at all, but only the reference to the item it actually needs. The benefit is that we can avoid the somewhat "dangerous" unowned reference to self while also not having to deal with a weak optional self within the closure...
+
 ## Access Control
 
 Using `private` and `fileprivate` appropriately, however, adds clarity and promotes encapsulation. Prefer `private` to `fileprivate` when possible. Using extensions may require you to use `fileprivate`.
