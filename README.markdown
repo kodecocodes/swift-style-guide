@@ -504,7 +504,7 @@ func reticulateSplines(spline: [Double]) -> Bool {
 }
 ```
 
-For functions add line breaks at each argument if it's exceed page guide:
+For functions add line breaks at each argument if it exceeds page guide:
 
 ```swift
 func reticulateSplines(
