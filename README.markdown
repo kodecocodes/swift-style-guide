@@ -685,6 +685,19 @@ Code (even non-production, tutorial demo code) should not create reference cycle
 Extend object lifetime using the `[weak self]` and ```guard let `self` = self else { return }``` idiom. `[weak self]` is preferred to `[unowned self]` where it is not immediately obvious that `self` outlives the closure. Explicitly extending lifetime is preferred to optional unwrapping. In Swift 4.2, you should drop the backticks in the guard statement.
 
 **Preferred**
+
+If your Swift version is 4.2:
+```swift
+resource.request().onComplete { [weak self] response in
+  guard let self = self else {
+    return
+  }
+  let model = self.updateModel(response)
+  self.updateUI(model)
+}
+```
+
+If your Swift version below than Swift 4.2:
 ```swift
 resource.request().onComplete { [weak self] response in
   guard let `self` = self else {
