@@ -450,6 +450,7 @@ Keep short function declarations on one line including the opening brace:
 
 ```swift
 func reticulateSplines(spline: [Double]) -> Bool {
+
   // reticulate code goes here
 }
 ```
@@ -459,6 +460,7 @@ For functions with long signatures, add line breaks at appropriate points and ad
 ```swift
 func reticulateSplines(spline: [Double], adjustmentFactor: Double,
     translateConstant: Int, comment: String) -> Bool {
+    
   // reticulate code goes here
 }
 ```
