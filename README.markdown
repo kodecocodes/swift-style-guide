@@ -1012,7 +1012,7 @@ else { return }
 // do something with numbers
 ```
 
-or one-liner with one `let` operation
+or one-liner with one condition
 
 ```swift
 guard let number1 = number1 else { return }
