@@ -1,6 +1,6 @@
 ## Credits
 
-[Ray Fix](https://github.com/rayfix) currently maintains this style guide.
+[Richard Critz](https://github.com/rcritz) currently maintains this style guide.
 It is a collaborative effort from the most stylish raywenderlich.com team members and its community: 
 
 * [Jawwad Ahmad](https://github.com/jawwad)
@@ -30,5 +30,6 @@ It is a collaborative effort from the most stylish raywenderlich.com team member
 * [Chris Wagner](https://github.com/cwagdev)
 * [Ray Wenderlich](https://github.com/rwenderlich)
 * [Jack Wu](https://github.com/jackwu95)
+* [Richard Critz](https://github.com/rcritz)
 
 Hat tip to [Nicholas Waynik](https://github.com/ndubbs) and the [Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide) team!
