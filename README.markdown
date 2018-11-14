@@ -553,6 +553,34 @@ When writing didSets they can be a few lines long if they are related to setting
 
 Mark a class as final unless it needs to be subclassed.
 
+### Instantiating Storyboards
+
+When instantiating storyboards we avoid using `storyboard.instantiateViewController(withIdentifier: "hardcodedString")` as it is an error prone and has no explicit ties to the ViewController in question.
+
+Instead, we use the StoryboardInstantiable protocol which any ViewController which is defined within a storyboard should confrom to.
+
+The protocol itself includes two properties and a single function:
+
+```
+  static var storyboardIdentifier: String { get }
+  static var mainStoryboard: UIStoryboard { get }
+  static func instantiate(from storyboard: UIStoryboard) -> Self?
+```
+
+mainStoryboard should point to the name of the storyboard, so 
+
+```
+  static var mainStoryboard: UIStoryboard {
+
+    return UIStoryboard("Tasks")
+  }
+```
+
+would point to Tasks.storyboard.
+
+Once you've set this value you must simply call `instantiateFromMainStoryboard()` on the ViewController and the you will be returned an instance of that ViewController.
+
+eg. `ProjectCollectionViewController.instantiateFromMainStoryboard()`
 
 ## Function Declarations
 
