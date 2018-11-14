@@ -561,7 +561,7 @@ Instead, we use the StoryboardInstantiable protocol which any ViewController whi
 
 The protocol itself includes two properties and a single function:
 
-```
+```swift
   static var storyboardIdentifier: String { get }
   static var mainStoryboard: UIStoryboard { get }
   static func instantiate(from storyboard: UIStoryboard) -> Self?
@@ -569,7 +569,7 @@ The protocol itself includes two properties and a single function:
 
 mainStoryboard should point to the name of the storyboard, so 
 
-```
+```swift
   static var mainStoryboard: UIStoryboard {
 
     return UIStoryboard("Tasks")
