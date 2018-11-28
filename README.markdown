@@ -361,7 +361,6 @@ func funStuff() {
 
   var otherThing = somethingElse()
   blah(otherThing)
-
 }
 
 
@@ -369,7 +368,6 @@ func funStuff() {
 func second(){
 
   hello()
-
 }
 
 
@@ -377,7 +375,6 @@ func second(){
 func third(){
 
   there()
-
 }
 
 
