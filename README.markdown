@@ -230,8 +230,6 @@ Use extensions to organize your code into logical blocks of functionality. Each 
 
 ### Protocol Conformance
 
-TODO: not sure of this.  It kinda makes sense, but on the flip side, you don't know if a protocol is implemented, you have to search for it exactly.
-
 In particular, when adding protocol conformance to a model, prefer adding a separate extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
 
 **Preferred:**
@@ -269,7 +267,8 @@ The container folder should have the name of the component (E.g., MyViewControll
 **Preferred:**
 
 ```
-[MyViewController] (folder)|- MyViewController.swift  
+[MyViewController] (folder)
+|- MyViewController.swift  
 |- MyViewController+SomeDelegate.swift  
 |- MyViewController+SomeViewProtocol.swift  
 |- MyViewController+UITableViewDelegate.swift  
@@ -278,7 +277,9 @@ The container folder should have the name of the component (E.g., MyViewControll
 |- MyViewController+UITextViewDelegate.swift`
 ```
 
-Since the compiler does not allow you to re-declare protocol conformance in a derived class, it is not always required to replicate the extension groups of the base class. This is especially true if the derived class is a terminal class and a small number of methods are being overridden. When to preserve the extension groups is left to the discretion of the author.
+This way you can visually see all protocols a class implements from the file names inside that group.
+
+Since the compiler does not allow you to re-declare protocol conformance in a derived class or extension, it is not always required to replicate the extension groups of the base class. This is especially true if the derived class is a terminal class and a small number of methods are being overridden. When to preserve the extension groups is left to the discretion of the author.
 
 For UIKit view controllers, consider grouping lifecycle, custom accessors, and IBAction in separate class extensions.
 
