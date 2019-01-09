@@ -33,6 +33,7 @@ As based on the [raywenderlich.com Swift Style Guide](https://github.com/raywend
   * [Type Inference](#type-inference)
   * [Syntactic Sugar](#syntactic-sugar)
 * [Functions vs Methods](#functions-vs-methods)
+* [Functions vs Computed Variables](#functions-vs-computed-variables)
 * [Memory Management](#memory-management)
   * [Extending Lifetime](#extending-lifetime)
 * [Access Control](#access-control)
@@ -855,6 +856,29 @@ let sorted = mergeSort(items)  // hard to discover
 launch(&rocket)
 ```
 
+## Functions vs Computed Variables
+
+A computed variable is one that returns a calculated value each time it is accessed. That is, it doesn’t store a value. Internally it is implemented as a function.
+
+What is the difference with a function?
+
+- Semantically, a variable is state, a function is an action.
+- A function regulates access to private storage. A calculated variable may do the same in a more compact way. [Example][1].
+- A computed variable can be used with KVO, passed as a #keypath, and has facilities for observing: willSet, didSet.
+
+**You should use a variable when**
+
+- it does not throw
+- it returns a simple property
+- it doesn’t have a side effect or a verb in its name
+- it’s O(1), that is, it doesn’t incur a significant cost. In your example it will be O(n).
+- it is idempotent. Multiple identical invocations return the same value or set the object to the same state.
+
+Irrelevant reasons to prefer a variable over a function
+
+- A computed variable saves you from typing (). However, clarity is more important than brevity, so this is a weak argument.
+- A read only variable can be overriden as read/write. A function indicates it is always read only. However, Apple uses properties for read-only variables like array.count. When in doubt seek consistency with the platform.
+  
 ## Memory Management
 
 Code (even non-production, tutorial demo code) should not create reference cycles. Analyze your object graph and prevent strong cycles with `weak` and `unowned` references. Alternatively, use value types (`struct`, `enum`) to prevent cycles altogether.
@@ -1436,3 +1460,33 @@ file:
 * [The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html)
 * [Using Swift with Cocoa and Objective-C](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html)
 * [Swift Standard Library Reference](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html)
+
+### Functions vs Computed Variables
+
+From [WWDC 2014 - 204 What’s new in Cocoa][2] > 24:40 When to use a @property
+
+> Use property for anything that is about the value or state of an
+> object or its relationship to other objects. Bad candidates:
+> 
+> - Methods that do things: load, parse, toggle, …. They have verbs in its name.
+> - Generators: init, copy, enumerated, …. These methods are not idempotent.
+> - Methods which change state: nextObject.
+
+
+From [Swift Style by Erica Sadun][3] > Computed Properties vs. Methods
+
+> A property expresses an inherent quality of an instance, while a method performs an action.
+>  
+> - Methods have parameters; properties don’t. Prefer methods for any call with side effects. If a method does something (for example, it loads, parses, toggles, or prints) or has a verb name, it should not be a property. 
+> - Prefer properties for simple values that you can get and/or set. 
+> - Properties should express a semantic intrinsic quality of a type instance. 
+> - Properties allow you to add observers via willSet and didSet. Unlike stored instance properties, stored type properties must always be given a default value.
+
+From [Kotlin coding conventions > functions vs properties][4]. See [Daniel’s answer above](https://softwareengineering.stackexchange.com/a/325130/22077).
+
+[Google Swift Style Guide](https://google.github.io/swift/) had no information on the subject.
+
+  [1]: https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/HTTPCookieStorage.swift#L47
+  [2]: https://developer.apple.com/videos/play/wwdc2014/204/
+  [3]: https://pragprog.com/book/esswift/swift-style
+  [4]: https://kotlinlang.org/docs/reference/coding-conventions.html#functions-vs-properties
