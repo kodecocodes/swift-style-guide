@@ -878,37 +878,6 @@ Irrelevant reasons to prefer a variable over a function
 
 - A computed variable saves you from typing (). However, clarity is more important than brevity, so this is a weak argument.
 - A read only variable can be overriden as read/write. A function indicates it is always read only. However, Apple uses properties for read-only variables like array.count. When in doubt seek consistency with the platform.
-
----
-The following are sources I used to write this.
-
-From [WWDC 2014 - 204 What’s new in Cocoa][2] > 24:40 When to use a @property
-
-> Use property for anything that is about the value or state of an
-> object or its relationship to other objects. Bad candidates:
-> 
-> - Methods that do things: load, parse, toggle, …. They have verbs in its name.
-> - Generators: init, copy, enumerated, …. These methods are not idempotent.
-> - Methods which change state: nextObject.
-
-
-From [Swift Style by Erica Sadun][3] > Computed Properties vs. Methods
-
-> A property expresses an inherent quality of an instance, while a method performs an action.
->  
-> - Methods have parameters; properties don’t. Prefer methods for any call with side effects. If a method does something (for example, it loads, parses, toggles, or prints) or has a verb name, it should not be a property. 
-> - Prefer properties for simple values that you can get and/or set. 
-> - Properties should express a semantic intrinsic quality of a type instance. 
-> - Properties allow you to add observers via willSet and didSet. Unlike stored instance properties, stored type properties must always be given a default value.
-
-From [Kotlin coding conventions > functions vs properties][4]. See [Daniel’s answer above](https://softwareengineering.stackexchange.com/a/325130/22077).
-
-[Google Swift Style Guide](https://google.github.io/swift/) had no information on the subject.
-
-  [1]: https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/HTTPCookieStorage.swift#L47
-  [2]: https://developer.apple.com/videos/play/wwdc2014/204/
-  [3]: https://pragprog.com/book/esswift/swift-style
-  [4]: https://kotlinlang.org/docs/reference/coding-conventions.html#functions-vs-properties
   
 ## Memory Management
 
@@ -1491,3 +1460,33 @@ file:
 * [The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html)
 * [Using Swift with Cocoa and Objective-C](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html)
 * [Swift Standard Library Reference](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html)
+
+### Functions vs Computed Variables
+
+From [WWDC 2014 - 204 What’s new in Cocoa][2] > 24:40 When to use a @property
+
+> Use property for anything that is about the value or state of an
+> object or its relationship to other objects. Bad candidates:
+> 
+> - Methods that do things: load, parse, toggle, …. They have verbs in its name.
+> - Generators: init, copy, enumerated, …. These methods are not idempotent.
+> - Methods which change state: nextObject.
+
+
+From [Swift Style by Erica Sadun][3] > Computed Properties vs. Methods
+
+> A property expresses an inherent quality of an instance, while a method performs an action.
+>  
+> - Methods have parameters; properties don’t. Prefer methods for any call with side effects. If a method does something (for example, it loads, parses, toggles, or prints) or has a verb name, it should not be a property. 
+> - Prefer properties for simple values that you can get and/or set. 
+> - Properties should express a semantic intrinsic quality of a type instance. 
+> - Properties allow you to add observers via willSet and didSet. Unlike stored instance properties, stored type properties must always be given a default value.
+
+From [Kotlin coding conventions > functions vs properties][4]. See [Daniel’s answer above](https://softwareengineering.stackexchange.com/a/325130/22077).
+
+[Google Swift Style Guide](https://google.github.io/swift/) had no information on the subject.
+
+  [1]: https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/HTTPCookieStorage.swift#L47
+  [2]: https://developer.apple.com/videos/play/wwdc2014/204/
+  [3]: https://pragprog.com/book/esswift/swift-style
+  [4]: https://kotlinlang.org/docs/reference/coding-conventions.html#functions-vs-properties
