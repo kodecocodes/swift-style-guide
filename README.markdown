@@ -578,7 +578,7 @@ mainStoryboard should point to the name of the storyboard, so
 
 would point to Tasks.storyboard.
 
-Once you've set this value you must simply call `instantiateFromMainStoryboard()` on the ViewController and the you will be returned an instance of that ViewController.
+Once you've set this value you must simply call `instantiateFromMainStoryboard()` on the ViewController and then you will be returned an instance of that ViewController.
 
 eg. `ProjectCollectionViewController.instantiateFromMainStoryboard()`
 
