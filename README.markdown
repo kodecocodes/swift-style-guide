@@ -443,8 +443,9 @@ Avoid block comments inline with code, as the code should be as self-documenting
 
 The aim for comments though, is to write simple, clear code that doesn't require much explaintion.  If something multiple complex pieces of behaviour are being performed, break them out into separate functions with good clear names.
 
+Most properties should have a comment.  Use /// for property comments as it'll show up in contextual help. 
 
-Most properties should have a comment.  Use /// for property comments as it'll show up in contextual help.
+Multiline comments can be set with `/* */` or `///`, but we prefer the later because it matches the format of the template provided by Xcode (`⌥⌘/` shortcut). The template contains most of the documentation needed, even when you may have to extend it. A minor disadvange is that it adds superfluous characters that damage readability, but `///` is more productive overall.
 
 ## Classes and Structures
 
