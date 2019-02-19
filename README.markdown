@@ -485,6 +485,12 @@ Most properties should have a comment.  Use /// for property comments as it'll s
 
 Multiline comments can be set with `/* */` or `///`, but we prefer the later because it matches the format of the template provided by Xcode (`⌥⌘/` shortcut). The template contains most of the documentation needed, even when you may have to extend it. A minor disadvange is that it adds superfluous characters that damage readability, but `///` is more productive overall.
 
+### API documentation policy
+
+Framework's API should always be documented by adding the proper documentation to the classes and methods offered (exposed) by the framework (see [Function Declarations](#function-declarations) for the suggested format).
+
+In classes, functions, methods and protocols internals to a Framework or Application strive for better naming instead of documentation. Add comments when needed to help the reader whenever the meaning and intention is not clear with the code itself.
+
 ## Classes and Structures
 
 ### Which one to use?
@@ -648,7 +654,7 @@ When declaring a new function, we recommend using markup to create a richly form
 
 You can create a 'Quick Help' declaration format for your function using the hotkey 'OPT+CMD+/'. You may also check [Apple's documentation](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html) for more details.
 
-```
+```swift
     /// Finds and return the range of the content inside some enclosing keys, if any. If there are more than one enclosing content it will return the first one.
     ///
     /// - Parameters:
