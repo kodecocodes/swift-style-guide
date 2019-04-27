@@ -1054,7 +1054,7 @@ Do not use emoji in your projects. For those readers who actually type in their 
 
 ## Organization and Bundle Identifier
 
-Where an Xcode project is involved, the organization should be set to `Ray Wenderlich` and the Bundle Identifier set to `com.razeware.TutorialName` where `TutorialName` is the name of the tutorial project.
+Where an Xcode project is involved, the organization should be set to `Ray Wenderlich` and the Bundle Identifier set to `com.raywenderlich.TutorialName` where `TutorialName` is the name of the tutorial project.
 
 ![Xcode Project settings](screens/project_settings.png)
 
