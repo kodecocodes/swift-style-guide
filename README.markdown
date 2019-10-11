@@ -518,18 +518,16 @@ func reticulateSplines(
 
 The same rule applied for function calls.
 
-Leave two empty lines between functions and one after `MARK`s.
+Leave one empty lines between functions and one after `MARK`s.
 
 ```swift
 func colorView() {
     //...
 }
 
-
 func reticulate() {
     //...
 }
-
 
 // MARK: - Private
 
