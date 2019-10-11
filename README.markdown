@@ -932,13 +932,11 @@ When coding with conditionals, the left-hand margin of the code should be the "g
 ```swift
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
 
-    guard let context = context
-        else {
-            throw FFTError.noContext
+    guard let context = context else {
+        throw FFTError.noContext
     }
-    guard let inputData = inputData
-        else {
-            throw FFTError.noInputData
+    guard let inputData = inputData else {
+        throw FFTError.noInputData
     }
 
     // use context and input to compute the frequencies
@@ -1082,7 +1080,7 @@ let playerMark = (player == current ? "X" : "O")
 
 ## Organization and Bundle Identifier
 
-Where an Xcode project is involved, the organization should be set to `Ray Wenderlich` and the Bundle Identifier set to `com.razeware.TutorialName` where `TutorialName` is the name of the tutorial project.
+Where an Xcode project is involved, the organization should be set to `Redmadrobot` and the Bundle Identifier set to `com.redmadrobot.ProjectName` where `ProjectName` is the name of your project.
 
 ![Xcode Project settings](screens/project_settings.png)
 
