@@ -648,7 +648,9 @@ if let subview = subview, let volume = volume {
 
 // another example
 UIView.animate(withDuration: 2.0) { [weak self] in
-  guard let self = self else { return }
+  guard let self = self else { 
+    return
+  }
   self.alpha = 1.0
 }
 ```
@@ -666,7 +668,9 @@ if let unwrappedSubview = optionalSubview {
 
 // another example
 UIView.animate(withDuration: 2.0) { [weak self] in
-  guard let strongSelf = self else { return }
+  guard let strongSelf = self else {
+    return
+  }
   strongSelf.alpha = 1.0
 }
 ```
