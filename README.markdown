@@ -461,7 +461,8 @@ For functions with long signatures, put each parameter on a new line and add an 
 func reticulateSplines(
   spline: [Double], 
   adjustmentFactor: Double,
-  translateConstant: Int, comment: String
+  translateConstant: Int, 
+  comment: String
 ) -> Bool {
   // reticulate code goes here
 }
