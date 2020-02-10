@@ -1,0 +1,101 @@
+disabled_rules:
+  - trailing_whitespace # Lines should not have trailing whitespace.
+  - force_unwrapping # Force unwrapping should be avoided.
+
+opt_in_rules:
+  - closure_end_indentation # Closure end should have the same indentation as the line that started it.
+  - closure_spacing # Closure expressions should have a single space inside each brace.
+  - operator_usage_whitespace # Operators should be surrounded by a single whitespace when they are being used.
+  - explicit_init # Explicitly calling .init() should be avoided.
+  - first_where # Prefer using .first(where:) over .filter { }.first in collections.
+  - redundant_nil_coalescing # nil coalescing operator is only evaluated if the lhs is nil, coalescing operator with nil as rhs is redundant
+  - single_test_class # Test files should contain a single QuickSpec or XCTestCase class.
+  - sorted_imports # Imports should be sorted.
+  - switch_case_on_newline # Cases inside a switch should always be on a newline
+  - object_literal # Prefer object literals over image and color inits.
+  - overridden_super_call # Some overridden methods should always call super
+  - unused_optional_binding # Prefer != nil over let _ =
+  - empty_count # Prefer checking isEmpty over comparing count to zero.
+  - implicit_return # Prefer implicit returns in closures, functions and getters.
+  - multiline_parameters # Functions and methods parameters should be either on the same line, or one per line.
+  - unneeded_parentheses_in_closure_argument # Parentheses are not needed when declaring closure arguments.
+  - vertical_parameter_alignment_on_call # Function parameters should be aligned vertically if they’re in multiple lines in a method call.
+  
+excluded:
+  - vendor
+  - Pods
+  - DAOGenerator
+  - ParserGenerator
+  - ServiceGenerator
+  # Добавить пути на другие сгенерированные классы – цвета/модели/шрифты
+
+identifier_name:
+  min_length: 1
+  max_length: 60
+
+type_body_length:
+  warning: 600
+  error: 800
+
+file_length:
+  warning: 1000
+  error: 1200
+
+line_length:
+  error: 120
+  ignores_urls: true
+  ignores_comments: true
+
+function_body_length:
+  warning: 40
+  error: 120
+
+function_parameter_count:
+  error: 10
+
+large_tuple:
+  warning: 5
+  error: 5
+
+cyclomatic_complexity:
+  warning: 10
+  error: 40
+
+type_name:
+  max_length:
+    warning: 60
+    error: 100
+
+force_cast:
+  warning
+
+control_statement:
+  error
+
+implicit_getter:
+  error
+
+vertical_parameter_alignment:
+  error
+
+return_arrow_whitespace:
+  error
+
+unneeded_break_in_switch:
+  error
+
+syntactic_sugar:
+  error
+
+redundant_optional_initialization:
+  error
+
+custom_rules:
+  mark_without_minus_sign:
+    regex: "(\\/\\/ )+([MARK])\\w+\\:+\\ +(?!-)"
+  service_layer_injection:
+    name: "Service layer DI"
+    regex: "(ServiceLayer\\.shared\\.\\w+\\.)|(ServiceLayer\\.shared\\s+)"
+    match_kinds:
+      - identifier
+    message: "Pass the services as dependencies via init"
