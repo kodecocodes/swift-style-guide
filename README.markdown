@@ -106,7 +106,7 @@ For the above example using `UIGestureRecognizer`, 1 is unambiguous and preferre
 
 ### Class Prefixes
 
-Swift types are automatically namespaced by the module that contains them and you should not add a class prefix such as RW. If two names from different modules collide you can disambiguate by prefixing the type name with the module name. However, only specify the module name when there is possibility for confusion which should be rare.
+Swift types are automatically namespaced by the module that contains them and you should not add a class prefix such as RW. If two names from different modules collide you can disambiguate by prefixing the type name with the module name. However, only specify the module name when there is possibility for confusion, which should be rare.
 
 ```swift
 import SomeModule
@@ -903,7 +903,6 @@ When coding with conditionals, the left-hand margin of the code should be the "g
 **Preferred**:
 ```swift
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
-
   guard let context = context else {
     throw FFTError.noContext
   }
@@ -919,7 +918,6 @@ func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies 
 **Not Preferred**:
 ```swift
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
-
   if let context = context {
     if let inputData = inputData {
       // use context and input to compute the frequencies
