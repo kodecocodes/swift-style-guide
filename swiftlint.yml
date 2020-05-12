@@ -1,6 +1,7 @@
 disabled_rules:
   - trailing_whitespace # Lines should not have trailing whitespace.
   - force_unwrapping # Force unwrapping should be avoided.
+  - implicit_return # Implicit return should not be a strict rule.
 
 opt_in_rules:
   - closure_end_indentation # Closure end should have the same indentation as the line that started it.
@@ -16,7 +17,6 @@ opt_in_rules:
   - overridden_super_call # Some overridden methods should always call super
   - unused_optional_binding # Prefer != nil over let _ =
   - empty_count # Prefer checking isEmpty over comparing count to zero.
-  - implicit_return # Prefer implicit returns in closures, functions and getters.
   - multiline_parameters # Functions and methods parameters should be either on the same line, or one per line.
   - unneeded_parentheses_in_closure_argument # Parentheses are not needed when declaring closure arguments.
   - vertical_parameter_alignment_on_call # Function parameters should be aligned vertically if they’re in multiple lines in a method call.
