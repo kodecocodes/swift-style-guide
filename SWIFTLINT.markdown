@@ -20,6 +20,7 @@ These guides use SwiftLint as a standard. You can learn more about SwiftLint by 
 	* [Force cast](#force-cast)
 	* [Force unwrapping](#force-unwrapping)
 	* [SwiftUI and multiple trailing closures](#swiftui-and-multiple-trailing-closures)
+	* [Open-source files](#open-source-files)
 * [Other notes](#other-notes)
 
 ## Installing SwiftLint
@@ -143,6 +144,14 @@ This violates the rule that you should not use trailing closure syntax when a me
 You can work around this by extracting the `Button`'s action into a separate method. While this is frequently a better solution when the action requires several statements, it's an onerous requirement when the action is a single statement, as in the example above.
 
 In these cases, you're permitted to disable this rule **for the declaration of a SwiftUI view** only. The rule name is `multiple_closures_with_trailing_closure`.
+
+### Open-source files
+
+Occasionally, you'll find it necessary to include an unmodified open-source file in the sample project. It's a virtual certainty that these files won't comply with our style guide. Our practice has always been to leave these files in their original state. In this situation, you should disable SwiftLint for the entire file:
+
+```
+// swiftlint:disable all
+```
 
 ## Other notes
 
