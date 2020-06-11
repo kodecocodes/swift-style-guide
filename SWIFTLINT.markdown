@@ -45,7 +45,7 @@ Download **com.raywenderlich.swiftlint.yml** from the [Swift Style Guide repo](h
 
 You'll need to configure Xcode to remove trailing whitespace from all lines. This is not the default configuration.
 
-In Xcode's Preferences, select **Text Editing** ▸ **Editing** and check off **Including whitespace-only lines**. 
+In Xcode's Preferences, select **Text Editing** ▸ **Editing** and check **Including whitespace-only lines**. 
 
 ![](screens/trailing-whitespace.png)
 
