@@ -129,6 +129,10 @@ static var rwGreen: UIColor {
 }
 ```
 
+You may also use it in the same context as the force cast exception above, dequeuing cells in `UITableViewDataSource` and `UICollectionViewDataSource` methods.
+
+Finally, you may use force unwrapping when constructing a `URL` from a hard-coded, and guaranteed valid, URL string.
+
 ### SwiftUI and multiple trailing closures
 
 Idiomatic SwiftUI uses trailing closures to provide the view content for certain user interface elements. `Button` is a prime example; it has an initializer form that uses a closure to provide its `label`. It's common to write something like the following:
