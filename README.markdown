@@ -654,9 +654,10 @@ if let subview = subview, let volume = volume {
 }
 
 // another example
-UIView.animate(withDuration: 2.0) { [weak self] in
+resource.request().onComplete { [weak self] response in
   guard let self = self else { return }
-  self.alpha = 1.0
+  let model = self.updateModel(response)
+  self.updateUI(model)
 }
 ```
 
