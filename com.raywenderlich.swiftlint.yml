@@ -70,6 +70,9 @@ identifier_name:
   excluded:
     - i
     - id
+    - x
+    - y
+    - z
 
 indentation_width:
   indentation_width: 2

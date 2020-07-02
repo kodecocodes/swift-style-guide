@@ -131,6 +131,8 @@ static var rwGreen: UIColor {
 
 You may also use it in the same context as the force cast exception above, dequeuing cells in `UITableViewDataSource` and `UICollectionViewDataSource` methods.
 
+Although it's preferred that you model appropriately defensive code for our readers, you may use force unwrapping to access resources that you _know_ are included in the app bundle.
+
 Finally, you may use force unwrapping when constructing a `URL` from a hard-coded, and guaranteed valid, URL string.
 
 ### SwiftUI and multiple trailing closures
