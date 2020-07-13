@@ -77,6 +77,8 @@ fi
 
 Your sample project must compile without warnings — SwiftLint or otherwise. In general, you should change your code to eliminate all warnings where necessary. When it comes to SwiftLint, however, there will be times when this isn't possible. In these situations, you'll need to use in-line comments to temporarily disable rules. You can find appropriate syntax to do this in [the SwiftLint documentation](https://realm.github.io/SwiftLint/#disable-rules-in-code).
 
+You may only disable a rule if it is on the list of approved exceptions listed below.
+
 Prefer the form that disables a rule only for the next line:
 ```
 // swiftlint:disable:next implicitly_unwrapped_optional
