@@ -39,7 +39,7 @@ Our overarching goals are clarity, consistency and brevity, in that order.
   * [Syntactic Sugar](#syntactic-sugar)
 * [Functions vs Methods](#functions-vs-methods)
 * [Memory Management](#memory-management)
-  * [Extending Lifetime](#extending-lifetime)
+  * [Extending Object Lifetime](#extending-object-lifetime)
 * [Access Control](#access-control)
 * [Control Flow](#control-flow)
   * [Ternary Operator](#ternary-operator)
