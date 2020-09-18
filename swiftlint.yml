@@ -20,6 +20,7 @@ opt_in_rules:
   - multiline_parameters # Functions and methods parameters should be either on the same line, or one per line.
   - unneeded_parentheses_in_closure_argument # Parentheses are not needed when declaring closure arguments.
   - vertical_parameter_alignment_on_call # Function parameters should be aligned vertically if they’re in multiple lines in a method call.
+  - private_outlet # IBOutlets should be private to avoid leaking UIKit to higher layers.
   
 excluded:
   - vendor
