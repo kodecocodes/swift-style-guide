@@ -10,7 +10,6 @@ disabled_rules:
   - todo
   - unused_capture_list
 
-
 opt_in_rules:
   - array_init
   - attributes
@@ -51,6 +50,15 @@ opt_in_rules:
   - vertical_whitespace_closing_braces
   - vertical_whitespace_opening_braces
   - yoda_condition
+
+
+custom_rules:
+  array_constructor:
+    name: "Array/Dictionary initializer"
+    regex: '[let,var] .+ = (\[.+\]\(\))'
+    capture_group: 1
+    message: "Use explicit type annotation when initializing arrays and dictionaries"
+    severity: warning
 
 
 attributes:
