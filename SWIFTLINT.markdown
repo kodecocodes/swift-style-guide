@@ -68,7 +68,7 @@ To simplify the process for everyone in the content pipeline, you'll need to add
 ```
 if [ -f ~/com.raywenderlich.swiftlint.yml ]; then
   if which swiftlint >/dev/null; then
-    swiftlint --config ~/com.raywenderlich.swiftlint.yml
+    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml
   fi
 fi
 ```
