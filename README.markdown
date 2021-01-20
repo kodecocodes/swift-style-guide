@@ -20,6 +20,12 @@ Our overarching goals are clarity, consistency and brevity, in that order.
   * [Unused Code](#unused-code)
   * [Minimal Imports](#minimal-imports)
 * [Spacing](#spacing)
+  * [Class and Struct](#class-and-struct-spacing)
+  * [Braces](#braces-spacing)
+  * [Function](#function-spacing)
+  * [Dictionary](#dictionary-spacing)
+  * [Guard](#guard-spacing)
+  * [Other](#other-spacing)
 * [Comments](#comments)
 * [Classes and Structures](#classes-and-structures)
   * [Use of Self](#use-of-self)
@@ -44,6 +50,7 @@ Our overarching goals are clarity, consistency and brevity, in that order.
   * [Failing Guards](#failing-guards)
 * [Semicolons](#semicolons)
 * [Parentheses](#parentheses)
+* [Boolean Tests](#boolean-tests)
 * [Organization and Bundle Identifier](#organization-and-bundle-identifier)
 * [Copyright Statement](#copyright-statement)
 * [References](#references)
@@ -259,6 +266,58 @@ Keep imports minimal. For example, don't import `UIKit` when importing `Foundati
 
 ![Xcode indent settings](screens/indentation.png)
 
+### Class and Struct Spacing
+* Class and Struct should have a new line after its declaration
+
+**Preferred:**
+```swift
+class MyClass {
+
+  private var isLoaded: Bool
+
+  func init() {
+
+    self.isLoaded = false
+  }
+}
+```
+
+**Not Preferred:**
+```swift
+class MyClass {
+  private var isLoaded: Bool
+
+  func init() {
+    
+    self.isLoaded = false
+  }
+}
+```
+
+* Class and Struct should not have new line between the last brace of the last method and the ending brace of the Class/Struct
+
+**Preferred:**
+```swift
+class MyClass {
+
+  func init() {
+
+  }
+}
+```
+
+**Not Preferred:**
+```swift
+class MyClass {
+
+  func init() {
+
+  }
+
+}
+```
+
+### Braces Spacing
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 * Tip: You can re-indent by selecting some code (or ⌘A to select all) and then Control-I (or Editor\Structure\Re-Indent in the menu). Some of the Xcode template code will have 4-space tabs hard coded, so this is a good way to fix that.
 
@@ -282,7 +341,10 @@ else {
 }
 ```
 
+### Function Spacing
+
 * The first line in the implementation of a function should always be empty.
+* There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.
 
 **Preferred:**
 ```swift
@@ -299,13 +361,39 @@ func aFunction() -> Bool {
 }
 ```
 
-* There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.
+**Function calling super**
+
+* Function calling super as the first line of implementation should have a new line below the super call.
+* This clarifies where the subclass implementation begins.
+
+
+**Preferred:**
+```swift
+func viewDidLoad() {
+
+  super.viewDidLoad()
+
+  self.setupNavigationBar()
+}
+```
+
+**Not Preferred:**
+```swift
+func viewDidLoad() {
+
+  super.viewDidLoad()
+  self.setupNavigationBar()
+}
+```
+
+### Dictionary Spacing
 
 * Colons always have no space on the left and one space on the right. Exceptions are the ternary operator `? :`, empty dictionary `[:]` and `#selector` syntax for unnamed parameters `(_:)`.
 
 **Preferred:**
 ```swift
 class TestDatabase: Database {
+
   var data: [String: CGFloat] = ["A": 1.2, "B": 3.2]
 }
 ```
@@ -313,15 +401,11 @@ class TestDatabase: Database {
 **Not Preferred:**
 ```swift
 class TestDatabase : Database {
+
   var data :[String:CGFloat] = ["A" : 1.2, "B":3.2]
 }
 ```
-
-* Long lines should be wrapped at around 70 characters. A hard limit is intentionally not specified.
-
-* Avoid trailing whitespaces at the ends of lines.
-
-* Add a single newline character at the end of each file.
+### Guard Spacing
 
 * Guard statement with only `return` in body should be a single line.
 
@@ -336,6 +420,14 @@ guard let value = value else {
   return
 }
 ```
+
+### Other Spacing
+
+* Long lines should be wrapped at around 70 characters. A hard limit is intentionally not specified.
+
+* Avoid trailing whitespaces at the ends of lines.
+
+* Add a single newline character at the end of each file.
 
 ## Comments
 
@@ -409,6 +501,18 @@ The example above demonstrates the following style guidelines:
 
 Always use `self` to access an object's properties or invoke its methods, using `self`.
 This helps to quickly distinguish instance variable/methods over other scoped variables/methods.
+
+**Preferred:**
+
+```swift
+self.name = "Luke"
+```
+
+**Not Preferred:**
+
+```swift
+name = "Luke"
+```
 
 ### Computed Properties
 
@@ -929,6 +1033,32 @@ In larger expressions, optional parentheses can sometimes make code read more cl
 let playerMark = (player == current ? "X" : "O")
 ```
 
+## Boolean tests
+Boolean test shall let the expression evaluate without explicitly compare it to either true or false.
+
+**Preferred:**
+
+```swift
+if isActive {
+  print("It is active")
+}
+
+if !isActive {
+  print("It is not active")
+}
+```
+
+**Not Preferred:**
+
+```swift
+if isActive == true {
+  print("It is active")
+}
+
+if isActive == false {
+  print("It is not active")
+}
+```
 ## Organization and Bundle Identifier
 
 For Beehivr owned applications, the Bundle Identifier shoud be set to `com.beehivr.beehivrAppName`.
