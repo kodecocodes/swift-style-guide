@@ -1,17 +1,11 @@
 excluded:
   - Carthage
-  - Pods
   - DerivedData
-
-disabled_rules:
-  - discarded_notification_center_observer
-  - notification_center_detachment
-  - orphaned_doc_comment
-  - todo
-  - unused_capture_list
+  - fastlane
+  - LakeContentPrep/Engine
+  - Pods
 
 opt_in_rules:
-  - array_init
   - attributes
   - closure_end_indentation
   - closure_spacing
@@ -43,23 +37,13 @@ opt_in_rules:
   - redundant_nil_coalescing
   - redundant_type_annotation
   - strict_fileprivate
+  - todo
   - toggle_bool
-  - trailing_closure
   - unneeded_parentheses_in_closure_argument
   - unused_import
   - vertical_whitespace_closing_braces
   - vertical_whitespace_opening_braces
   - yoda_condition
-
-
-custom_rules:
-  array_constructor:
-    name: "Array/Dictionary initializer"
-    regex: '[let,var] .+ = (\[.+\]\(\))'
-    capture_group: 1
-    message: "Use explicit type annotation when initializing empty arrays and dictionaries"
-    severity: warning
-
 
 attributes:
   always_on_same_line:
@@ -84,12 +68,27 @@ identifier_name:
     - z
 
 indentation_width:
-  indentation_width: 2
+  indentation_width: 4
+
+function_parameter_count:
+  warning: 4
+  error: 5
 
 line_length:
   ignores_urls: true
   ignores_function_declarations: true
   ignores_comments: true
+  warning: 160
+  error: 200
+
+file_length:
+  warning: 400
+  error: 1000
+  ignore_comment_only_lines: true
+
+cyclomatic_complexity:
+  warning: 10
+  error: 15
 
 multiline_arguments:
   first_argument_location: next_line
