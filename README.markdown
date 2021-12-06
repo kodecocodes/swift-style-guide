@@ -319,6 +319,23 @@ else {
 
 * There should be no blank lines after an opening brace or before a closing brace.
 
+* Closing parentheses should not appear on a line by themselves.
+
+**Preferred**:
+```swift
+let user = try await getUser(
+  for: userID,
+  on: connection)
+```
+
+**Not Preferred**:
+```swift
+let user = try await getUser(
+  for: userID,
+  on: connection
+)
+```
+
 * Colons always have no space on the left and one space on the right. Exceptions are the ternary operator `? :`, empty dictionary `[:]` and `#selector` syntax `addTarget(_:action:)`.
 
 **Preferred**:
