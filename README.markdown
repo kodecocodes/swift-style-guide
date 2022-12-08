@@ -654,6 +654,14 @@ Use optional binding when it's more convenient to unwrap once and perform multip
 if let textContainer = textContainer {
   // do many things with textContainer
 }
+
+```
+**Notes:** Swift 5.7 introduced new shorthand syntax for unwrapping optionals into shadowed variables:
+
+```swift
+if let textContainer {
+  // do many things with textContainer
+}
 ```
 
 When naming optional variables and properties, avoid naming them like `optionalString` or `maybeView` since their optional-ness is already in the type declaration.
