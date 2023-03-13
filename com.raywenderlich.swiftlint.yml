@@ -10,6 +10,9 @@ disabled_rules:
   - todo
   - unused_capture_list
 
+analyzer_rules:
+  - unused_import
+
 opt_in_rules:
   - array_init
   - attributes
@@ -46,7 +49,6 @@ opt_in_rules:
   - toggle_bool
   - trailing_closure
   - unneeded_parentheses_in_closure_argument
-  - unused_import
   - vertical_whitespace_closing_braces
   - vertical_whitespace_opening_braces
   - yoda_condition
