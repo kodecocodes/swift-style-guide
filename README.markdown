@@ -1089,7 +1089,7 @@ Likewise, do not use Xcode's ability to drag a color or an image into a source s
 
 ## Organization and Bundle Identifier
 
-Where an Xcode project is involved, the organization should be set to `Ray Wenderlich` and the Bundle Identifier set to `com.raywenderlich.TutorialName` where `TutorialName` is the name of the tutorial project.
+Where an Xcode project is involved, the organization should be set to `Kodeco` and the Bundle Identifier set to `com.yourcompany.TutorialName` where `TutorialName` is the name of the tutorial project.
 
 ![Xcode Project settings](screens/project_settings.png)
 
@@ -1099,7 +1099,7 @@ The following copyright statement should be included at the top of every source
 file:
 
 ```swift
-/// Copyright (c) 2022 Kodeco
+/// Copyright (c) 2023 Kodeco Inc.
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
