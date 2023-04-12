@@ -1,31 +1,31 @@
-# The Official raywenderlich.com SwiftLint Policy
+# The Official Kodeco SwiftLint Policy
 
-The SwiftLint configuration in this repo is designed to ensure the work we create at raywenderlich.com conforms with [The Official raywenderlich.com Swift Style Guide](https://github.com/raywenderlich/swift-style-guide).
+The SwiftLint configuration in this repo is designed to ensure the work we create at Kodeco conforms with [The Official Kodeco Swift Style Guide](https://github.com/kodecocodes/swift-style-guide/blob/main/README.markdown).
 
-The focus of this style is to improve readability in our print and web publications. Therefore, this style may be different from others you've been used to, but the demands of print and online reading are different than other contexts.
+The focus of this style is to improve readability in our print and web publications. Therefore, this style may be different from others you've used, but the demands of print and online reading are different from other contexts.
 
-The policies described here have a goal of achieving consistency between all of our projects, which will also streamline the flow of content through our editing process. Some of the choices are also to make sure that we've removed as much of the burden from our readers as possible.
+The policies described here have a goal of achieving consistency between all of our projects, which will also streamline the flow of content through our editing process. Some of the choices also aim to ensure we've removed as much of the burden from our readers as possible.
 
 These guides use SwiftLint as a standard. You can learn more about SwiftLint by visiting its [official documentation page](https://github.com/realm/SwiftLint).
 
 ## Table of Contents
 
 * [Installing SwiftLint](#installing-swiftlint)
-* [Using the configuration file](#using-the-configuration-file)
-* [Xcode settings](#xcode-settings)
+* [Using the Configuration File](#using-the-configuration-file)
+* [Xcode Settings](#xcode-settings)
 * [Running SwiftLint](#running-swiftlint)
-* [Handling rule exceptions](#handling-rule-exceptions)
-* [Approved exceptions](#approved-exceptions)
+* [Handling Rule Exceptions](#handling-rule-exceptions)
+* [Approved Exceptions](#approved-exceptions)
 	* [Implicitly Unwrapped Optionals](#implicitly-unwrapped-optionals)
-	* [Force cast](#force-cast)
-	* [Force unwrapping](#force-unwrapping)
-	* [SwiftUI and multiple trailing closures](#swiftui-and-multiple-trailing-closures)
-	* [Open-source files](#open-source-files)
-* [Other notes](#other-notes)
+	* [Force Cast](#force-cast)
+	* [Force Unwrapping](#force-unwrapping)
+	* [SwiftUI and Multiple Trailing Closures](#swiftui-and-multiple-trailing-closures)
+	* [Open-Source Files](#open-source-files)
+* [Other Notes](#other-notes)
 
 ## Installing SwiftLint
 
-We recommend that raywenderlich.com team members install SwiftLint using Homebrew:
+We recommend that Kodeco team members install SwiftLint using Homebrew:
 
 ```bash
 brew install swiftlint
@@ -35,13 +35,13 @@ If you are unable to use Homebrew, you may use one of the other methods describe
 
 **Do not** install SwiftLint as a CocoaPod in your project.
 
-## Using the configuration file
+## Using the Configuration File
 
 **Do not** place the configuration file inside your project. We don't want to impose this style on readers without their express knowledge or understanding of what's going on. 
 
-Download **com.raywenderlich.swiftlint.yml** from the [Swift Style Guide repo](https://github.com/raywenderlich/swift-style-guide) and place it your home directory: **~/com.raywenderlich.swiftlint.yml**.
+Download **com.raywenderlich.swiftlint.yml** from the [Swift Style Guide repo]([https://github.com/raywenderlich/swift-style-guide](https://github.com/kodecocodes/swift-style-guide/)) and place it your home directory: **~/com.raywenderlich.swiftlint.yml**.
 
-## Xcode settings
+## Xcode Settings
 
 You'll need to configure Xcode to remove trailing whitespace from all lines. This is not the default configuration.
 
@@ -74,7 +74,7 @@ if [ -f ~/com.raywenderlich.swiftlint.yml ]; then
 fi
 ```
 
-## Handling rule exceptions
+## Handling Rule Exceptions
 
 Your sample project must compile without warnings — SwiftLint or otherwise. In general, you should change your code to eliminate all warnings where necessary. When it comes to SwiftLint, however, there will be times when this isn't possible. In these situations, you'll need to use in-line comments to temporarily disable rules. You can find appropriate syntax to do this in [the SwiftLint documentation](https://realm.github.io/SwiftLint/#disable-rules-in-code).
 
@@ -107,7 +107,7 @@ Finally, if you're not sure which rule is triggering a warning, you can find the
 
 ![](screens/swiftlint-warning.png)
 
-## Approved exceptions
+## Approved Exceptions
 
 There are certain common idioms that violate SwiftLint's strict checking. If you are unable to work around them — and you've already tried to find a better way to structure your code — you may disable rules as described in this section.
 
@@ -117,11 +117,11 @@ If you find that you're struggling with rules other than those described below, 
 
 It is sometimes common, in lieu of using dependency injection, to declare a child view controller's properties as Implicitly Unwrapped Optionals (IUO). If you're unable to structure your project to avoid this, you may disable the `implicitly_unwrapped_optional` rule for those dependency declarations. With the advent of `@IBSegueAction`, this should be rare.
 
-### Force cast
+### Force Cast
 
 You may use force casting — and disable the `force_cast` rule — in the `UITableViewDataSource` and `UICollectionViewDataSource` methods that dequeue cells.
 
-### Force unwrapping
+### Force Unwrapping
 
 You may use forced unwrapping — rule name `force_unwrap` — when returning a color from an asset catalog:
 
@@ -134,11 +134,11 @@ static var rwGreen: UIColor {
 
 You may also use it in the same context as the force cast exception above, dequeuing cells in `UITableViewDataSource` and `UICollectionViewDataSource` methods.
 
-Although it's preferred that you model appropriately defensive code for our readers, you may use force unwrapping to access resources that you _know_ are included in the app bundle.
+Although we prefer you to model appropriately defensive code for our readers, you may use force unwrapping to access resources that you _know_ are included in the app bundle.
 
 Finally, you may use force unwrapping when constructing a `URL` from a hard-coded, and guaranteed valid, URL string.
 
-### SwiftUI and multiple trailing closures
+### SwiftUI and Multiple Trailing Closures
 
 Idiomatic SwiftUI uses trailing closures to provide the view content for certain user interface elements. `Button` is a prime example; it has an initializer form that uses a closure to provide its `label`. It's common to write something like the following:
 
@@ -154,7 +154,7 @@ You can work around this by extracting the `Button`'s action into a separate met
 
 In these cases, you're permitted to disable this rule **for the declaration of a SwiftUI view** only. The rule name is `multiple_closures_with_trailing_closure`.
 
-### Open-source files
+### Open-Source Files
 
 Occasionally, you'll find it necessary to include an unmodified open-source file in the sample project. It's a virtual certainty that these files won't comply with our style guide. Our practice has always been to leave these files in their original state. In this situation, you should disable SwiftLint for the entire file:
 
@@ -162,7 +162,7 @@ Occasionally, you'll find it necessary to include an unmodified open-source file
 // swiftlint:disable all
 ```
 
-## Other notes
+## Other Notes
 
 While SwiftLint goes a long way towards making your source code compliant with our style guide, it doesn't cover everything. For example, it won't catch or force you to correct the formatting for multi-condition `guard` statements. (See [Golden Path](https://github.com/raywenderlich/swift-style-guide#golden-path) for correct formatting.)
 
