@@ -1,4 +1,4 @@
-# Le Guide de style officiel d'Agendrix Swift.
+# Le Guide de style Swift officiel d'Agendrix.
 ### Mis à jour pour Swift 5
 
 Ce guide de style est différent des autres que vous pouvez voir, car l'accent est mis sur la lisibilité pour l'impression et le web. Nous avons créé ce guide de style pour maintenir la cohérence du code dans nos livres, tutoriels et kits de démarrage, même si nous avons de nombreux auteurs différents travaillant sur les livres.
