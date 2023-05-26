@@ -1,4 +1,4 @@
-# Le Guide de style officiel de Kodeco Swift.
+# Le Guide de style officiel d'Agendrix Swift.
 ### Mis à jour pour Swift 5
 
 Ce guide de style est différent des autres que vous pouvez voir, car l'accent est mis sur la lisibilité pour l'impression et le web. Nous avons créé ce guide de style pour maintenir la cohérence du code dans nos livres, tutoriels et kits de démarrage, même si nous avons de nombreux auteurs différents travaillant sur les livres.
@@ -60,7 +60,7 @@ Efforcez-vous de faire en sorte que votre code compile sans avertissements. Cett
 
 ## Utilisation de SwiftLint
 
-Lorsque vous écrivez pour Kodeco, il est fortement recommandé, voire peut-être obligatoire selon votre équipe, d'utiliser notre configuration SwiftLint. Consultez la [Politique SwiftLint](SWIFTLINT.markdown) pour plus d'informations.
+Lorsque vous écrivez pour Agendrix, il est fortement recommandé, voire peut-être obligatoire selon votre équipe, d'utiliser notre configuration SwiftLint. Consultez la [Politique SwiftLint](SWIFTLINT.markdown) pour plus d'informations.
 
 ## Nommage
 
@@ -1101,7 +1101,7 @@ De même, n'utilisez pas la possibilité de Xcode de faire glisser une couleur o
 
 ## Organisation et identifiant de bundle
 
-Lorsqu'un projet Xcode est utilisé, l'organisation doit être définie sur `Kodeco` et l'identifiant de bundle sur `com.yourcompany.TutorialName` où `TutorialName` est le nom du projet du tutoriel.
+Lorsqu'un projet Xcode est utilisé, l'organisation doit être définie sur `Agendrix` et l'identifiant de bundle sur `com.yourcompany.TutorialName` où `TutorialName` est le nom du projet du tutoriel.
 
 ![Réglages du projet Xcode](screens/project_settings.png)
 
