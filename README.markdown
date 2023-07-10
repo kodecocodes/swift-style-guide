@@ -533,7 +533,8 @@ let success = reticulateSplines(
   spline: splines,
   adjustmentFactor: 1.3,
   translateConstant: 2,
-  comment: "normalize the display")
+  comment: "normalize the display"
+)
 ```
 
 ## Expressions de fermeture
