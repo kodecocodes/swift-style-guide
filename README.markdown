@@ -290,9 +290,7 @@ var deviceModels: [String]
 
 ## Espacement
 
-* Utilisez une indentation de 2 espaces plutôt que des tabulations pour économiser de l'espace et éviter les retours à la ligne. Assurez-vous de configurer cette préférence dans Xcode et dans les paramètres du projet comme indiqué ci-dessous :
-
-![Paramètres d'indentation dans Xcode](screens/indentation.png)
+* Utilisez une indentation de 4 espaces plutôt que des tabulations pour économiser de l'espace et éviter les retours à la ligne. Assurez-vous de configurer cette préférence dans Xcode et dans les paramètres du projet.
 
 * Les accolades des méthodes et autres blocs (`if`/`else`/`switch`/`while`, etc.) doivent toujours commencer sur la même ligne que l'instruction, mais se terminer sur une nouvelle ligne.
 * Astuce : vous pouvez ré-indenter en sélectionnant du code (ou en appuyant sur **Commande-A** pour tout sélectionner) puis en utilisant **Contrôle-I** (ou **Éditeur ▸ Structure ▸ Ré-indenter** dans le menu). Certains modèles de code Xcode utilisent des tabulations de 4 espaces codées en dur, donc c'est une bonne façon de corriger cela.
