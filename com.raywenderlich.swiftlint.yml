@@ -69,6 +69,7 @@ attributes:
     - "@IBAction"
     - "@NSManaged"
     - "@objc"
+  attributes_with_arguments_always_on_line_above: false
 
 force_cast: warning
 force_try: warning
