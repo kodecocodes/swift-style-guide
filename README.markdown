@@ -187,6 +187,69 @@ let color = "red"
 ```swift
 let colour = "red"
 ```
+### Acronym Capitalisation
+
+Acronyms should be capitalised, except when used at the beginning of a method or variable name.
+
+__Preferred:__
+
+```swift
+func loadURL(url: String) {
+}
+```
+
+__Not Preferred:__
+
+```swift
+func loadUrl(url: String) {
+}
+```
+__Rationale:__
+
+This matches the style used in the Cocoa Touch frameworks, e.g [`HTTPURLResponse`](https://developer.apple.com/documentation/foundation/nshttpurlresponse?language=objc) instead of `HttpUrlResponse`, or [`value(forHTTPHeaderField:)`](https://developer.apple.com/documentation/foundation/nsurlrequest/1409376-value) instead of `value(forHttpHeaderField:)`.
+
+### Enumerations
+
+Use lowerCamelCase for enumeration cases. Prefer one enum case per line:
+
+```swift
+enum Shape {
+  case rectangle
+  case square
+  case triangle
+  case circle
+}
+```
+
+#### Raw values
+
+Enumerations that are declared as storing integer or string raw values should implictly assign the raw values for each case wherever possible.
+
+__Preferred:__
+
+```swift
+enum CompassPoint: String {
+  case north
+  case south
+  case east
+  case west
+}
+```
+
+__Not Preferred:__
+
+```swift
+enum CompassPoint: String {
+  case north = "north"
+  case south = "south"
+  case east = "east"
+  case west = "west"
+}
+```
+
+__Rationale:__
+
+The raw values for each case of enumerations that are declared with integer or string raw value types are [assigned automatically by Swift](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/enumerations/#Raw-Values) if no raw value is explicitly assigned for a given case.
 
 ## Code Organization
 
@@ -285,6 +348,30 @@ var deviceModels: [String]
 import UIKit
 var deviceModels: [String]
 ```
+
+### Function Odering
+
+Ordering of functions should be parent -> child descending where possible. This is primarily to make it easier to follow without to much jumping and define some kind of order. It may not always be possible to achieve exactly but maintain the principle that things call downwards.
+
+```swift
+    func doSomething() {
+        let number = doMore()
+        doEvenMore(with: number)
+    }
+
+    func doMore() -> Int {
+        return findANumber()
+    }
+
+    func findANumber() -> Int {
+        return 0
+    }
+
+    func doEvenMore(with number: Int) {
+        print(number)
+    }
+```
+
 
 ## Spacing
 
