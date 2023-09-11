@@ -1107,7 +1107,7 @@ Pour le nommage nous nous sommes inspiré de cet  [article](https://qualitycodin
 func test_operation_whenCertainInputs_thenShouldResultSomething() 
 ```
 
-Aussi lors de la création du tests nous utlisons le marquage suivant
+Aussi lors de la création du tests nous utilisons le marquage suivant
 ```swift
     // Given
     Mise à jour des entrées pour pouvoir faire le test
