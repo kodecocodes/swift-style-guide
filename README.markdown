@@ -289,7 +289,7 @@ import UIKit
 var deviceModels: [String]
 ```
 
-## Espacement
+## Espacement et alignement
 
 * Utilisez une indentation de 4 espaces plutôt que des tabulations pour économiser de l'espace et éviter les retours à la ligne. Assurez-vous de configurer cette préférence dans Xcode et dans les paramètres du projet.
 
@@ -320,21 +320,21 @@ else {
 
 * Il ne devrait pas y avoir de lignes vides après une accolade ou avant une accolade fermante.
 
-* Les parenthèses fermantes ne doivent pas apparaître seules sur une ligne.
+* Les parenthèses fermantes doivent apparaître seules sur une ligne.
 
 **Préféré** :
 ```swift
 let user = try await getUser(
   for: userID,
-  on: connection)
+  on: connection
+)
 ```
 
 **Non préféré** :
 ```swift
 let user = try await getUser(
   for: userID,
-  on: connection
-)
+  on: connection)
 ```
 
 * Les deux-points (`:`) n'ont jamais d'espace à gauche et ont un espace à droite. Les exceptions sont l'opérateur ternaire `? :`, le dictionnaire vide `[:]` et la syntaxe `#selector` `addTarget(_:action:)`.
@@ -351,6 +351,25 @@ class TestDatabase: Database {
 class TestDatabase : Database {
   var data :[String:CGFloat] = ["A" : 1.2, "B":3.2]
 }
+```
+* Lorsqu'un appel contient plusieurs paramètres et que vous souhaitez le mettre sur plusieurs ligne, faites un saut de ligne et mettez ensuite un paramètre par ligne.
+
+**Préféré** :
+```swift
+FooBar(
+    id: "foo",
+    name: "bar",
+    paid: true,
+    computeInDays: false
+)
+```
+
+**Non préféré** :
+```swift
+FooBar(id: "foo",
+       name: "bar",
+       paid: true,
+       computeInDays: false)
 ```
 
 * Les lignes longues doivent être coupées autour de 70 caractères. Aucune limite stricte n'est spécifiée.
