@@ -50,6 +50,7 @@ Nos objectifs globaux sont la clarté, la cohérence et la brièveté, dans cet 
 * [Littéraux de chaîne multi-lignes](#littéraux-de-chaînes-multilignes)
 * [Pas d'emoji](#pas-demoji)
 * [Pas de #imageLiteral ni de #colorLiteral](#pas-de-imageliteral-ou-colorliteral)
+* [Tests unitaires](#tests-unitaires)
 * [Organisation et identifiant de bundle](#organisation-et-identifiant-de-bundle)
 * [Références](#références)
 
@@ -1097,6 +1098,28 @@ N'utilisez pas d'emoji dans vos projets. Pour les lecteurs qui saisissent réell
 ## Pas de #imageLiteral ou #colorLiteral
 
 De même, n'utilisez pas la possibilité de Xcode de faire glisser une couleur ou une image dans une instruction source. Cela se transforme en #colorLiteral et #imageLiteral, respectivement, et présente des difficultés désagréables pour un lecteur qui essaie de les saisir en fonction du texte du tutoriel. Utilisez plutôt `UIColor(red:green:blue)` et `UIImage(imageLiteralResourceName:)`.
+
+## Tests unitaires
+
+Afin d'homogénéiser les tests unitaires Agendrix utilise une liste de convention.
+Pour le nommage nous nous sommes inspiré de cet  [article](https://qualitycoding.org/unit-test-naming/)
+```swift 
+func test_operation_whenCertainInputs_thenShouldResultSomething() 
+```
+
+Aussi lors de la création du tests nous utilisons le marquage suivant
+```swift
+    // Given
+    Mise à jour des entrées pour pouvoir faire le test
+    
+    // When
+    Execution de l'opération que l'on souhaite tester
+    
+    // Then
+    Teste que l'opération à bien effectué ce qui était attendu
+    XCAssert...
+    
+```
 
 ## Organisation et identifiant de bundle
 
