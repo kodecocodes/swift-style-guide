@@ -368,7 +368,7 @@ FooBar(
 FooBar(id: "foo",
        name: "bar",
        paid: true,
-       computeInDays: false))
+       computeInDays: false)
 ```
 
 * Les lignes longues doivent être coupées autour de 70 caractères. Aucune limite stricte n'est spécifiée.
