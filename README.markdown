@@ -708,7 +708,7 @@ if let subview = subview, let volume = volume {
 
 // autre exemple
 resource.request().onComplete { [weak self] response in
-  guard let self = self else { return }
+  guard let self else { return }
   let model = self.updateModel(response)
   self.updateUI(model)
 }
@@ -840,12 +840,12 @@ Le code (même le code de démonstration non destiné à la production) ne doit 
 
 ### Prolonger la durée de vie de l'objet
 
-Prolongez la durée de vie d'un objet en utilisant l'idiotisme `[weak self]` et `guard let self = self else { return }`. L'utilisation de `[weak self]` est préférée à `[unowned self]` lorsque cela n'est pas immédiatement évident que `self` survit à la fermeture. Prolonger explicitement la durée de vie est préféré à l'utilisation de chaînage optionnel.
+Prolongez la durée de vie d'un objet en utilisant l'idiotisme `[weak self]` et `guard let self else { return }`. L'utilisation de `[weak self]` est préférée à `[unowned self]` lorsque cela n'est pas immédiatement évident que `self` survit à la fermeture. Prolonger explicitement la durée de vie est préféré à l'utilisation de chaînage optionnel.
 
 **Préféré**
 ```swift
 resource.request().onComplete { [weak self] response in
-  guard let self = self else {
+  guard let self else {
     return
   }
   let model = self.updateModel(response)
