@@ -27,6 +27,7 @@ Nos objectifs globaux sont la clarté, la cohérence et la brièveté, dans cet 
   * [Conformité aux protocoles](#conformité-aux-protocoles)
   * [Propriétés calculées](#propriétés-calculées)
   * [Final](#final)
+  * [Factory](#factory)
 * [Déclarations de fonctions](#déclarations-de-fonctions)
 * [Appels de fonctions](#appels-de-fonctions)
 * [Expressions de fermeture](#expressions-de-fermeture)
